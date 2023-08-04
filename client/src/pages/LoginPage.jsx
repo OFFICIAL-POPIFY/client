@@ -1,8 +1,7 @@
 import React from "react";
 import { useDispatch } from 'react-redux';
-import  {authActions}  from 'store/auth';
+import  {authActions}  from '../store/auth';
 import classes from "./LoginPage.module.css";
-import {login} from 'api/firebase';
 import { Link } from "react-router-dom";
 function Login() {
   const dispatch = useDispatch();
@@ -26,7 +25,6 @@ function Login() {
             <input placeholder="비밀번호"type='password' id='password' />
           </div>
           <button>Login</button>
-          <button onClick={login} >google Login</button>
         </form>
         <Link to="/signup" >회원가입</Link>
       </section>

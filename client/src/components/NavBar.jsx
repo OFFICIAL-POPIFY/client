@@ -29,7 +29,7 @@ function NavBar() {
                 </li>
          <div className={classes.auth} >
                 <input type="text"  placeholder="Search.." />
-                <div className={classes.materialIcons}><BsSearchHeart /></div>
+                <div ><BsSearchHeart /></div>
                 <Link to ="/login"><IoMdLogIn /></Link>
                 < Link onClick={logout}><IoMdLogOut /></Link> 
                 <Link to="https://www.instagram.com/popify.official/"><BsInstagram /></Link>
