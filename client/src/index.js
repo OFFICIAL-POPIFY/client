@@ -4,13 +4,21 @@ import { BrowserRouter,Route,Routes } from 'react-router-dom';
 import './index.css';
 import Contents from '../src/pages/Contents';
 import reportWebVitals from './reportWebVitals';
-
+import About from '../src/pages/About';
+import Mypage from '../src/pages/Mypage';
+import App from '../src/App';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+  
     <Routes>
-    <Route path="/" element={<Contents />} />
+    <Route path='/'element={<App />}>
+    <Route path="/about" element={<About />} />
+    <Route path="/contents" element={<Contents />} />
+    <Route path="/mypage" element={<Mypage />} />
+    </Route>
+  
     </Routes>
     </BrowserRouter>
   </React.StrictMode>
