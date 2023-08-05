@@ -10,6 +10,7 @@ import LoginPage from '../src/pages/LoginPage';
 import App from '../src/App';
 import { Provider } from 'react-redux';
 import store from './store';
+import SignupPage from './pages/SignupPage';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -20,6 +21,7 @@ root.render(
     <Route path='/'element={<App />}>
     <Route path="/about" element={<About />} />
     <Route path="/contents" element={<Contents />} />
+    <Route path="/signup" element={<SignupPage />} />
     <Route path="/mypage" element={<Mypage />} />
     <Route path="/login" element={<LoginPage />} />
     </Route>
