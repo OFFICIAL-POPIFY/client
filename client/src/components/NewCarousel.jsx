@@ -14,28 +14,34 @@ function NewCarouselBox() {
 
   const images = [
     {
-        img: "images/1.jpg",
-        text: "이미지1 입니다.",
+      img: "images/1.jpg",
+      text: "이미지1 입니다.",
+      link: <a href="https://github.com/OFFICIAL-POPIFY/client">링크입니다</a>,
     },
     {
-        img:  "images/2.jpg",
-        text: "이미지2 입니다.",
+      img: "images/2.jpg",
+      text: "이미지2 입니다.",
+      link: <a href="https://github.com/OFFICIAL-POPIFY/client">링크입니다</a>,
     },
     {
-        img:  "images/3.jpg",
-        text: "이미지3 입니다.",
+      img: "images/3.jpg",
+      text: "이미지3 입니다.",
+      link: <a href="https://github.com/OFFICIAL-POPIFY/client">링크입니다</a>,
     },
     {
-        img:  "images/4.jpg",
-        text: "이미지4 입니다.",
+      img: "images/4.jpg",
+      text: "이미지4 입니다.",
+      link: <a href="https://github.com/OFFICIAL-POPIFY/client">링크입니다</a>,
     },
     {
-        img: "images/5.jpg",
-        text: "이미지5 입니다.",
+      img: "images/5.jpg",
+      text: "이미지5 입니다.",
+      link: <a href="https://github.com/OFFICIAL-POPIFY/client">링크입니다</a>,
     },
     {
-        img: "images/6.jpg",
-        text: "이미지6 입니다.",
+      img: "images/6.jpg",
+      text: "이미지6 입니다.",
+      link: <a href="https://github.com/OFFICIAL-POPIFY/client">링크입니다</a>,
     },
   ];
   const items = images.map((image) => {
@@ -44,6 +50,7 @@ function NewCarouselBox() {
         <ItemsWrap>
           <img src={image.img} alt="" />
           <p>{image.text}</p>
+          <p>{image.link}</p>
         </ItemsWrap>
       </ItemsContain>
     );
@@ -83,7 +90,7 @@ const ItemsContain = styled.div`
 
 const ItemsWrap = styled.div`
   width: 100%;
-  height: 220px;
+  height: 300px;
   overflow: hidden;
   margin: 0 20px;
 
