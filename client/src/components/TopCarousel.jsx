@@ -1,14 +1,25 @@
 import React from "react";
-import "react-alice-carousel/lib/alice-carousel.css";
 import AliceCarousel from "react-alice-carousel";
+import "react-alice-carousel/lib/alice-carousel.css";
 import styled from "styled-components";
-function NewCarouselBox() {
+import { useState } from "react";
+
+function CarouselBox() {
+  const [slide, setSlide] = useState("");
+  const onSlideChange = (e) => {
+    e.preventDefault();
+    setSlide(e.item);
+  };
+
   const responsive = {
     0: {
+      items: 1,
+    },
+    600: {
       items: 2,
     },
-    512: {
-      items: 4,
+    1024: {
+      items: 3,
     },
   };
 
@@ -16,41 +27,34 @@ function NewCarouselBox() {
     {
       img: "images/1.jpg",
       text: "이미지1 입니다.",
-      link: <a href="https://github.com/OFFICIAL-POPIFY/client">링크입니다</a>,
     },
     {
       img: "images/2.jpg",
       text: "이미지2 입니다.",
-      link: <a href="https://github.com/OFFICIAL-POPIFY/client">링크입니다</a>,
     },
     {
       img: "images/3.jpg",
       text: "이미지3 입니다.",
-      link: <a href="https://github.com/OFFICIAL-POPIFY/client">링크입니다</a>,
     },
     {
       img: "images/4.jpg",
       text: "이미지4 입니다.",
-      link: <a href="https://github.com/OFFICIAL-POPIFY/client">링크입니다</a>,
     },
     {
       img: "images/5.jpg",
       text: "이미지5 입니다.",
-      link: <a href="https://github.com/OFFICIAL-POPIFY/client">링크입니다</a>,
     },
     {
       img: "images/6.jpg",
       text: "이미지6 입니다.",
-      link: <a href="https://github.com/OFFICIAL-POPIFY/client">링크입니다</a>,
     },
   ];
-  const items = images.map((image) => {
+  const items = images.map((image, index) => {
     return (
-      <ItemsContain>
+      <ItemsContain key={index}>
         <ItemsWrap>
-          <img src={image.img} alt="" />
+          <img src={image} alt="" />
           <p>{image.text}</p>
-          <p>{image.link}</p>
         </ItemsWrap>
       </ItemsContain>
     );
@@ -59,21 +63,24 @@ function NewCarouselBox() {
   return (
     <Contain>
       <AliceCarousel
+        duration={400}
+        autoPlay={true}
+        startIndex={1}
+        fadeOutAnimation={true}
+        mouseDragEnabled={true}
+        playButtonEnabled={true}
         responsive={responsive}
-        mouseTracking
-        infinite={1000}
-        animationDuration={1000}
-        disableDotsControls
-        disableButtonsControls
-        autoPlay
-        items={items}
-        paddingRight={40}
-      />
+        autoPlayInterval={2000}
+        autoPlayDirection="rtl"
+        autoPlayActionDisabled={true}
+        value={slide}
+        onChange={onSlideChange}
+      >
+        {items}
+      </AliceCarousel>
     </Contain>
   );
 }
-
-export default NewCarouselBox;
 
 const Contain = styled.div`
   width: 100%;
@@ -90,13 +97,16 @@ const ItemsContain = styled.div`
 
 const ItemsWrap = styled.div`
   width: 100%;
-  height: 300px;
+  height: 180px;
+  border-radius: 20px;
   overflow: hidden;
   margin: 0 20px;
 
   img {
     width: 100%;
-    height: 170px;
+    height: 100%;
     object-fit: cover;
   }
 `;
+
+export default CarouselBox;
