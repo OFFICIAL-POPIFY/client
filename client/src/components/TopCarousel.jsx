@@ -8,7 +8,7 @@ function CarouselBox() {
   const [slide, setSlide] = useState("");
   const onSlideChange = (e) => {
     e.preventDefault();
-    setSlide(e.item);
+    setSlide(e.items);
   };
 
   const responsive = {

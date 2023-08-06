@@ -23,16 +23,16 @@ function Signup() {
             <input placeholder="비밀번호" type="password" id="password" />
           </div>
           <div className={classes.control}>
-            <label htmlFor="name"></label>
-            <input placeholder="이름" type="text" id="name" />
+            <label htmlFor="password-confirm"></label>
+            <input
+              placeholder="비밀번호확인"
+              type="text"
+              id="passwordconfirm"
+            />
           </div>
           <div className={classes.control}>
-            <label htmlFor="birth"></label>
-            <input placeholder="생년월일" type="text" id="birth" />
-          </div>
-          <div className={classes.control}>
-            <label htmlFor="phone"></label>
-            <input placeholder="휴대폰번호" type="text" id="phone" />
+            <label htmlFor="email"></label>
+            <input placeholder="이메일" type="text" id="email" />
           </div>
           <button>signup</button>
         </form>
