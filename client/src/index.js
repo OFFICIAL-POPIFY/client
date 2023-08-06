@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import reportWebVitals from './reportWebVitals';
 import { BrowserRouter,Route,Routes } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './store';
 import './index.css';
 import Contents from '../src/pages/Contents';
-import reportWebVitals from './reportWebVitals';
 import About from '../src/pages/About';
 import Mypage from '../src/pages/Mypage';
 import LoginPage from '../src/pages/LoginPage';
-import App from '../src/App';
-import { Provider } from 'react-redux';
-import store from './store';
 import SignupPage from './pages/SignupPage';
+import App from '../src/App';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
