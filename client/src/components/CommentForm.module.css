@@ -1,0 +1,57 @@
+.commentForm {
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.commentFormLabel {
+  font-weight: bold;
+}
+
+.commentFormTextarea {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.commentFormButton {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  margin-left: auto;
+}
+
+.submittedData {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.submittedDataImg {
+  max-width: 100px;
+  margin: 5px;
+}
+
+/* 코멘트 목록 출력 스타일 */
+.commentItem {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.commentItem div {
+  margin-bottom: 5px;
+}
+
+.commentImagePreviewContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.commentImagePreview {
+  max-width: 100px;
+  margin: 5px;
+}
