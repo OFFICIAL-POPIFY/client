@@ -1,15 +1,14 @@
 import React from "react";
-
-import Review from "../components/Review";
-import Carousel from "../components/Carousel";
+import Thumbnail from "../components/Thumbnail";
+import NewCarousel from "../components/NewCarousel";
 import MapContainer from "../components/MapContainer";
 import CommentForm from "../components/CommentForm";
 
 function Contents() {
   return (
     <div>
-      <Review />
-      <Carousel />
+      <Thumbnail />
+      <NewCarousel />
       <MapContainer />
       <CommentForm />
     </div>
