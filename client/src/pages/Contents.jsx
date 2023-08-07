@@ -3,11 +3,14 @@ import React from "react";
 import NewCarousel from "../components/NewCarousel";
 import MapContainer from "../components/MapContainer";
 
+import TopCarousel from "../components/TopCarousel";
+import Thumbnail from "../components/Thumbnail";
 function Contents() {
   return (
     <div>
-      <NewCarousel />
-      <MapContainer />
+      <TopCarousel />
+      <Thumbnail />
+      <Review />
     </div>
   );
 }
