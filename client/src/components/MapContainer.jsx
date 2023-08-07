@@ -12,7 +12,7 @@ const KakaoMap = () => {
   const [map, setMap] = useState(null);
   const [markers, setMarkers] = useState([]);
   const [infowindow, setInfowindow] = useState(null);
-  const [formData, setFormData] = useState("이태원 맛집");
+  const [formData, setFormData] = useState("팝업 스토어");
 
   const handleChange = (event) => {
     const value = event.target.value;
