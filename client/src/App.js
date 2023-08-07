@@ -10,9 +10,11 @@ function App() {
 
   return (
     <>
+    <div className='top'>
     <Top />
     <NavBar />
     <RollingBanner />
+    </div>
     <Outlet/>
     </>
   
