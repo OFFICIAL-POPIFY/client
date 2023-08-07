@@ -60,8 +60,8 @@ const KakaoMap = () => {
     } else if (status === window.kakao.maps.services.Status.ERROR) {
       alert("검색 결과 중 오류가 발생했습니다.");
     }
+    console.log(data);
   };
-
   const displayPlaces = (places) => {
     const listEl = document.getElementById("placesList");
     const bounds = new window.kakao.maps.LatLngBounds();
