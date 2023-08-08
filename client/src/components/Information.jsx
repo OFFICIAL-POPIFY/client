@@ -1,23 +1,24 @@
 import React, { useState } from "react";
-import classes from "./SearchBar.module.css";
-import { BsSearchHeart } from "react-icons/bs";
+import classes from "./Information.module.css";
 
-function SearchBar({ placeholder, data }) {
+function Information({ placeholder, data }) {
   const [filteredData, setFilteredData] = useState([]);
   const handleFilter = (event) => {
-    const searchWord = event.target.value;
+    const hashTag = event.target.value;
     const newFilter = data.filter((value) => {
-      return value.place_name.includes(searchWord);
+      return value.hash_tag.includes(hashTag);
     });
-    if (searchWord === "") {
+
+    if (hashTag === "") {
       setFilteredData([]);
     } else {
       setFilteredData(newFilter);
     }
   };
-  // search창 드랍다운 메뉴 구현하기
   return (
-    <>
+    <div>
+      <h1>팝업스토어 소개</h1>
+
       <div className={classes.search}>
         <div className={classes.search_input}>
           <input
@@ -25,21 +26,19 @@ function SearchBar({ placeholder, data }) {
             placeholder={placeholder}
             onChange={handleFilter}
           />
-          <button>
-            <BsSearchHeart />
-          </button>
+          <button>제출</button>
         </div>
         {filteredData.length !== 0 && (
           <div className={classes.data_result}>
             {filteredData.map((value, key) => {
               return (
-                <div>
+                <div key={key}>
                   <a
                     className={classes.data_item}
                     href={value.place_url}
                     target="_blank"
                   >
-                    <p>{value.place_name}</p>
+                    <p>{value.hash_tag}</p>
                   </a>
                 </div>
               );
@@ -47,8 +46,8 @@ function SearchBar({ placeholder, data }) {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }
 
-export default SearchBar;
+export default Information;
