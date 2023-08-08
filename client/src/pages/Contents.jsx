@@ -1,18 +1,17 @@
 import React from "react";
 
 import NewCarousel from "../components/NewCarousel";
-import MapContainer from "../components/MapContainer";
-
-import TopCarousel from "../components/TopCarousel";
 import Thumbnail from "../components/Thumbnail";
+import MapContainer from "../components/MapContainer";
 function Contents() {
   return (
     <div>
-      <TopCarousel />
       <Thumbnail />
-      <Review />
+      <NewCarousel />
+      <MapContainer />
     </div>
   );
 }
 
 export default Contents;
+

@@ -41,16 +41,14 @@ function Thumbnail() {
   return (
     <Contain>
       <AliceCarousel
-        duration={400}
-        autoPlay={true}
+        animationDuration={2000}
         startIndex={1}
-        fadeOutAnimation={true}
-        mouseDragEnabled={true}
-        playButtonEnabled={true}
+        infinite={1000}
         responsive={responsive}
-        autoPlayInterval={2000}
-        autoPlayDirection="rtl"
-        autoPlayActionDisabled={true}
+        mouseTracking
+        autoPlay
+        disableDotsControls
+        disableButtonsControls
         value={slide}
         onChange={onSlideChange}
       >
