@@ -101,7 +101,7 @@ function Login() {
               <div className={classes.control}>
                 <label htmlFor="passwordConfirm"></label>
                 <input
-                  placeholder="비밀번호확인"
+                  placeholder="비밀번호 확인"
                   type="password"
                   id="passwordConfirm"
                   autoComplete="off"
@@ -113,7 +113,7 @@ function Login() {
               <div className={classes.control}>
                 <label htmlFor="email"></label>
                 <input
-                  placeholder="이매알"
+                  placeholder="이메일"
                   type="email"
                   id="email"
                   autoComplete="off"
