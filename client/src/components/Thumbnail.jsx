@@ -47,6 +47,7 @@ function Thumbnail() {
         responsive={responsive}
         mouseTracking
 
+
         // autoPlay
         disableDotsControls
         // disableButtonsControls
