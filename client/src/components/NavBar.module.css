@@ -26,10 +26,40 @@
         margin: 0 1rem;
         padding: 1rem;
     }
-    
-    .auth{
-        margin-left: 10rem;
-        width: 8rem;
-        display: flex;
-        justify-content: space-between;
-    }
+    .dropdown_button {
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+
+.dropdown {
+  position: relative;
+  display: block;
+  float: right; 
+ 
+}
+
+.dropdown_button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown_contents {
+  position: absolute;
+  top: 100%;
+  width: 200px;
+  height: 60vh;
+  right: 0; 
+  padding: 1rem;
+  display: none;
+  background-color: white;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+.dropdown_contents a{
+  display: block;
+  padding: 0.6rem;
+}
+.dropdown:hover .dropdown_contents {
+  display: block;
+}

@@ -49,6 +49,7 @@ const KakaoMap = () => {
 
     const ps = new window.kakao.maps.services.Places();
     ps.keywordSearch(keyword, placesSearchCB);
+    console.log(ps);
   };
 
   const placesSearchCB = (data, status, pagination) => {
@@ -95,7 +96,7 @@ const KakaoMap = () => {
     });
 
     map.setBounds(bounds);
-    // console.log(places);
+    console.log(places);
   };
   const getListItem = (index, place) => {
     const el = document.createElement("li");
