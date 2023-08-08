@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import Rating from 'react-rating-stars-component';
-import ImageUpload from 'react-image-upload';
-import styles from './CommentForm.module.css';
+import React, { useState } from "react";
+import Rating from "react-rating-stars-component";
+import ImageUpload from "react-image-upload";
+import styles from "./CommentForm.module.css";
 // import axios from 'axios';
 
 const CommentForm = () => {
   const [rating, setRating] = useState(0);
-  const [comment, setComment] = useState('');
+  const [comment, setComment] = useState("");
   const [images, setImages] = useState([]);
   const [commentsList, setCommentsList] = useState([]); // 코멘트 목록을 저장하는 상태 추가
   const isLoggedIn = false; // // 로그인 상태 확인용 변수 (예시로 true, false로 로그인 상태 가정) <-- 임시 방편
@@ -32,7 +32,8 @@ const CommentForm = () => {
     // 여기서 서버로 평점, 코멘트 내용, 이미지를 보내는 로직을 추가해야 함
     // 서버로 데이터를 보내는 방법은 axios, fetch 등을 사용
 
-        {/*axios 통신// try {
+    {
+      /*axios 통신// try {
       // 서버로 보낼 데이터
       const data = {
         rating: rating,
@@ -48,12 +49,13 @@ const CommentForm = () => {
     } catch (error) {
       // 에러 처리 (예: 에러 메시지 출력)
       console.error('에러 발생:', error);
-    } */}
+    } */
+    }
 
     // 로그인 상태 확인 <-- 임시 방편
     if (!isLoggedIn) {
-     alert('로그인 후에만 코멘트를 작성할 수 있습니다.');
-     return;
+      alert("로그인 후에만 코멘트를 작성할 수 있습니다.");
+      return;
     }
 
     // 코멘트를 예시로 console.log로 출력
@@ -71,10 +73,10 @@ const CommentForm = () => {
 
     // 폼 데이터 초기화
     setRating(0);
-    setComment('');
+    setComment("");
     setImages([]);
   };
-  
+
   return (
     <form className={styles.commentForm} onSubmit={handleSubmit}>
       <div>
@@ -89,7 +91,11 @@ const CommentForm = () => {
       </div>
       <div>
         <label className={styles.commentFormLabel}>코멘트:</label>
-        <textarea className={styles.commentFormTextarea} value={comment} onChange={handleCommentChange} />
+        <textarea
+          className={styles.commentFormTextarea}
+          value={comment}
+          onChange={handleCommentChange}
+        />
       </div>
       <div>
         <label className={styles.commentFormLabel}>사진 업로드:</label>
@@ -97,12 +103,14 @@ const CommentForm = () => {
           withIcon={true}
           buttonText="이미지 선택"
           onChange={handleImageUpload}
-          imgExtension={['.jpg', '.png', '.gif']}
+          imgExtension={[".jpg", ".png", ".gif"]}
           maxFileSize={5242880}
           withPreview={true}
         />
       </div>
-      <button type="submit" className={styles.commentFormButton}>제출</button>
+      <button type="submit" className={styles.commentFormButton}>
+        제출
+      </button>
 
       {/* 코멘트 목록 출력 */}
       <div>
@@ -116,7 +124,12 @@ const CommentForm = () => {
                 <h4>업로드된 이미지:</h4>
                 <div className={styles.commentImagePreviewContainer}>
                   {comment.images.map((image, imgIndex) => (
-                    <img key={imgIndex} className={styles.commentImagePreview} src={image} alt={`Image ${imgIndex}`} />
+                    <img
+                      key={imgIndex}
+                      className={styles.commentImagePreview}
+                      src={image}
+                      alt={`Image ${imgIndex}`}
+                    />
                   ))}
                 </div>
               </div>

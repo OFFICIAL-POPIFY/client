@@ -3,15 +3,21 @@ import Thumbnail from "../components/Thumbnail";
 import NewCarousel from "../components/NewCarousel";
 import MapContainer from "../components/MapContainer";
 import CommentForm from "../components/CommentForm";
+import styled from "styled-components";
 function Contents() {
   return (
-    <div>
+    <Container>
       <Thumbnail />
-      <NewCarousel />
+      {/* <NewCarousel /> */}
       <CommentForm />
       <MapContainer />
-    </div>
+    </Container>
   );
 }
 
 export default Contents;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
