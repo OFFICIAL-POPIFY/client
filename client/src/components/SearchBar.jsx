@@ -8,7 +8,11 @@ function SearchBar({ placeholder, data }) {
     const newFilter = data.filter((value) => {
       return value.place_name.includes(searchWord);
     });
-    setFilteredData(newFilter);
+    if (searchWord === "") {
+      setFilteredData([]);
+    } else {
+      setFilteredData(newFilter);
+    }
   };
   // search창 드랍다운 메뉴 구현하기
   return (
