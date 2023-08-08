@@ -60,7 +60,6 @@ const KakaoMap = () => {
     } else if (status === window.kakao.maps.services.Status.ERROR) {
       alert("검색 결과 중 오류가 발생했습니다.");
     }
-    console.log(data);
   };
   const displayPlaces = (places) => {
     const listEl = document.getElementById("placesList");
@@ -96,8 +95,8 @@ const KakaoMap = () => {
     });
 
     map.setBounds(bounds);
+    // console.log(places);
   };
-
   const getListItem = (index, place) => {
     const el = document.createElement("li");
     let itemStr = `<span class="markerbg marker_${index + 1}"></span>
