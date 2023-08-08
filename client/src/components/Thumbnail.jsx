@@ -1,8 +1,9 @@
-import React from "react";
-import AliceCarousel from "react-alice-carousel";
+import React, { useRef } from "react";
+import AliceCarousel, { slidePrev } from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import styled from "styled-components";
 import { useState } from "react";
+import classes from "./Thumbnail.module.css";
 
 function Thumbnail() {
   const [slide, setSlide] = useState("");
@@ -37,34 +38,57 @@ function Thumbnail() {
       </ItemsContain>
     );
   });
+  const ref = useRef(null);
 
   return (
     <Contain>
-      <AliceCarousel
-        animationDuration={2000}
-        startIndex={1}
-        infinite={1000}
-        responsive={responsive}
-        mouseTracking
-
-
-        // autoPlay
-        disableDotsControls
-        // disableButtonsControls
-        value={slide}
-        onChange={onSlideChange}
-      >
-        {items}
-      </AliceCarousel>
+      <div className={classes.absolute}>
+        <button
+          className={classes.prevButton}
+          onClick={() => ref?.current?.slidePrev()}
+        >
+          이전
+        </button>
+        <CarouselBox>
+          <AliceCarousel
+            animationDuration={2000}
+            startIndex={1}
+            infinite={1000}
+            responsive={responsive}
+            mouseTracking
+            autoPlay
+            autoHeight
+            disableDotsControls
+            disableButtonsControls
+            value={slide}
+            onChange={onSlideChange}
+            ref={ref}
+          >
+            {items}
+          </AliceCarousel>
+        </CarouselBox>
+        <button
+          className={classes.nextButton}
+          onClick={() => ref?.current?.slideNext()}
+        >
+          이후
+        </button>
+      </div>
     </Contain>
   );
 }
 
 const Contain = styled.div`
   width: 600px;
-  position: relative;
-  align-items: left;
+  height: 400px;
   margin: 0 auto;
+`;
+
+const CarouselBox = styled.div`
+  width: 600px;
+  position: relative;
+  top: 0;
+  left: 0;
 `;
 
 const ItemsContain = styled.div`
