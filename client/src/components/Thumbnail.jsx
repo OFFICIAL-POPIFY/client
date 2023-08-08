@@ -28,9 +28,9 @@ function Thumbnail() {
     "images/5.jpg",
     "images/6.jpg",
   ];
-  const items = images.map((image) => {
+  const items = images.map((image, index) => {
     return (
-      <ItemsContain>
+      <ItemsContain key={index}>
         <ItemsWrap>
           <img src={image} alt="" />
         </ItemsWrap>
@@ -46,9 +46,9 @@ function Thumbnail() {
         infinite={1000}
         responsive={responsive}
         mouseTracking
-        autoPlay
+        // autoPlay
         disableDotsControls
-        disableButtonsControls
+        // disableButtonsControls
         value={slide}
         onChange={onSlideChange}
       >

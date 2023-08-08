@@ -2,6 +2,9 @@
   border: 2px solid black;
   border-radius: 2px;
   overflow: hidden;
+  background-color: antiquewhite;
+  display: flex;
+  justify-content: space-between;
 }
 
 .text {
