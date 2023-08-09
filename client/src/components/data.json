@@ -372,7 +372,8 @@
       "reviews":[{}],
       "placeurl":"http://place.map.kakao.com/791617298"
   },
-  {"corporation": "롸버트치킨 신도림점",
+  {
+    "corporation": "롸버트치킨 신도림점",
   "term": "",
   "location": "서울 구로구 신도림동 292-13",
   "reservation": "예약가능",
