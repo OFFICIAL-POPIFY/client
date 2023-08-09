@@ -3,18 +3,19 @@ import classes from "./Information.module.css";
 
 function Information({ placeholder, data }) {
   const [filteredData, setFilteredData] = useState([]);
+
   const handleFilter = (event) => {
     const hashTag = event.target.value;
     const newFilter = data.filter((value) => {
-      return value.hash_tag.includes(hashTag);
+      return value.tags.some((tag) => tag.includes(hashTag));
     });
-
-    if (hashTag === "") {
+    if (!hashTag) {
       setFilteredData([]);
-    } else {
-      setFilteredData(newFilter);
+      return;
     }
+    setFilteredData(newFilter);
   };
+
   return (
     <div className={classes.wrapper}>
       <h1>팝업스토어 정보</h1>
@@ -29,19 +30,17 @@ function Information({ placeholder, data }) {
         </div>
         {filteredData.length !== 0 && (
           <div className={classes.data_result}>
-            {filteredData.map((value, key) => {
-              return (
-                <div key={key}>
-                  <a
-                    className={classes.data_item}
-                    href={value.placeurl}
-                    target="_blank"
-                  >
-                    <p>{value.tags}</p>
-                  </a>
-                </div>
-              );
-            })}
+            {filteredData.map((value, key) => (
+              <div key={key}>
+                <a
+                  className={classes.data_item}
+                  href={value.placeurl}
+                  target="_blank"
+                >
+                  <p>{value.tags.join(" ")}</p>
+                </a>
+              </div>
+            ))}
           </div>
         )}
       </div>
