@@ -1,10 +1,8 @@
 .container {
-  border: 2px solid black;
+  border: 2px solid rgb(163, 163, 163);
   border-radius: 2px;
   overflow: hidden;
-  background-color: antiquewhite;
-  display: flex;
-  justify-content: space-between;
+  background-color: white;
 }
 
 .text {
@@ -12,7 +10,7 @@
   -moz-transform: translateX(100%);
   -webkit-transform: translateX(100%);
   transform: translateX(100%);
-  
+
   -moz-animation: my-animation 15s linear infinite;
   -webkit-animation: my-animation 15s linear infinite;
   animation: my-animation 15s linear infinite;

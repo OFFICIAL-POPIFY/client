@@ -59,3 +59,18 @@
     a:hover{
         background-color: lighthgrey;
     }
+    @keyframes blink {
+        0% {
+            opacity: 0;
+            transform: translate3d(0, 100%, 0);
+        }
+        to {
+            opacity: 1;
+            transform: translateZ(0);
+        }
+      }
+      
+      /* 깜빡거리는 상태를 정의합니다. */
+      .blink {
+        animation: blink 2.5s 1 linear ;
+      }
