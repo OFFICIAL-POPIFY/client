@@ -17,7 +17,7 @@ function Thumbnail() {
     0: {
       items: 1,
     },
-    1024: {
+    2000: {
       items: 1,
     },
   };
@@ -60,10 +60,11 @@ function Thumbnail() {
         <ItemsWrap>
           <img src={image.img} alt="" />
         </ItemsWrap>
-
-        <h2 className={classes.text}>{image.text}</h2>
-
-        <p className={classes.link}>{image.link}</p>
+        <div>
+          <a className={classes.link} href={image.link}>
+            <h2 className={classes.text}>{image.text}</h2>
+          </a>
+        </div>
       </ItemsContain>
     );
   });
@@ -111,21 +112,25 @@ function Thumbnail() {
 }
 const Wrapper = styled.div`
   display: flex;
+  margin: 2rem;
 `;
 const Contain = styled.div`
-  width: 600px;
-  height: 600px;
+  width: 60rem;
+  height: 400px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
 `;
 
 const CarouselBox = styled.div`
-  width: 500px;
-  height: 400px;
+  width: 700px;
+  height: 600px;
   position: relative;
   top: 0;
   left: 0;
+  li.alice-carousel__stage-item :not(.__cloned) {
+    width: 100%;
+  }
 `;
 
 const ItemsContain = styled.div`
@@ -134,6 +139,9 @@ const ItemsContain = styled.div`
   height: 400px;
   display: flex;
   padding: 0 10px;
+  div {
+    margin: 0 40px;
+  }
 `;
 
 const ItemsWrap = styled.div`
