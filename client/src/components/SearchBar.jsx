@@ -36,10 +36,10 @@ function SearchBar({ placeholder, data }) {
                 <div>
                   <a
                     className={classes.data_item}
-                    href={value.place_url}
+                    href={value.placeurl}
                     target="_blank"
                   >
-                    <p>{value.place_name}</p>
+                    <p>{value.location}</p>
                   </a>
                 </div>
               );

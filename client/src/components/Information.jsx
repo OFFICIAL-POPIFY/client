@@ -34,10 +34,10 @@ function Information({ placeholder, data }) {
                 <div key={key}>
                   <a
                     className={classes.data_item}
-                    href={value.place_url}
+                    href={value.placeurl}
                     target="_blank"
                   >
-                    <p>{value.hash_tag}</p>
+                    <p>{value.tags}</p>
                   </a>
                 </div>
               );
