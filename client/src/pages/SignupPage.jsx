@@ -93,7 +93,7 @@ function Login() {
                   type="password"
                   id="password"
                   autoComplete="off"
-                  onChange={(e) => setPasswordConfrim(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)}
                   value={password}
                   required
                 />
@@ -105,12 +105,12 @@ function Login() {
                   type="password"
                   id="passwordConfirm"
                   autoComplete="off"
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => setPasswordConfrim(e.target.value)}
                   value={passwordConfrim}
                   required
                 />
               </div>
-              <div className={classes.control}>
+              {/* <div className={classes.control}>
                 <label htmlFor="email"></label>
                 <input
                   placeholder="이메일"
@@ -121,10 +121,10 @@ function Login() {
                   value={email}
                   required
                 />
-              </div>
-              <button>Login</button>
+              </div> */}
+              <button>회원가입</button>
             </form>
-            <Link to="/signup">회원가입</Link>
+            <Link to="/login">로그인</Link>
           </section>
         </main>
       ) : (
