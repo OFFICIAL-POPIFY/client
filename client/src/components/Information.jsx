@@ -16,9 +16,9 @@ function Information({ placeholder, data }) {
     }
   };
   return (
-    <div>
-      <h1>팝업스토어 소개</h1>
-
+    <div className={classes.wrapper}>
+      <h1>팝업스토어 정보</h1>
+      <p>해시태그를 입력해서 팝업스토어를 탐색해보세요!</p>
       <div className={classes.search}>
         <div className={classes.search_input}>
           <input
@@ -26,7 +26,6 @@ function Information({ placeholder, data }) {
             placeholder={placeholder}
             onChange={handleFilter}
           />
-          <button>제출</button>
         </div>
         {filteredData.length !== 0 && (
           <div className={classes.data_result}>
