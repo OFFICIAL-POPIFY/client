@@ -1,6 +1,13 @@
 .wrapper{
     padding: 1rem;
     height: 400px;
+    display: flex;
+    position: relative;
+    float:right;
+   
+}
+.wrapper p{
+    width: 20rem;
 }
 .search_input{
 
