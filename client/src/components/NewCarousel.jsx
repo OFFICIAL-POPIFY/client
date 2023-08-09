@@ -48,9 +48,15 @@ function NewCarouselBox() {
     return (
       <ItemsContain>
         <ItemsWrap>
-          <img src={image.img} alt="" />
-          <p>{image.text}</p>
-          <p>{image.link}</p>
+          <Wrap>
+            <img src={image.img} alt="" />
+            <div>
+              <p>{image.text}</p>
+            </div>
+            <div>
+              <p>{image.link}</p>
+            </div>
+          </Wrap>
         </ItemsWrap>
       </ItemsContain>
     );
@@ -99,4 +105,8 @@ const ItemsWrap = styled.div`
     height: 170px;
     object-fit: cover;
   }
+`;
+const Wrap = styled.div`
+  display: flex;
+  flex-direction: column;
 `;

@@ -1,15 +1,20 @@
+.wrapper{
+    padding: 1rem;
+    height: 400px;
+}
 .search_input{
 
     display: flex;
+    
     }
     .search input{
         background-color: white;
-        border: 0;
-        border-radius: 2px;
+        border-color: black;
+        border-radius: 5px ;
         border-top-right-radius: 0px;
         border-bottom-right-radius: 0px;
         font-size: 18px;
-        padding: 15px;
+        padding: 5px;
         height: 30px;
         width: 200px;
     }
@@ -28,7 +33,7 @@
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         overflow: hidden;
         overflow-y: auto;
-        position: absolute;
+        /* position: absolute; */
         top: 100%;
     }
     
