@@ -4,7 +4,8 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import styled from "styled-components";
 import { useState } from "react";
 import classes from "./Thumbnail.module.css";
-
+import PopupData from "./data.json";
+import Information from "./Information";
 function Thumbnail() {
   const [slide, setSlide] = useState("");
   const onSlideChange = (e) => {
@@ -41,40 +42,43 @@ function Thumbnail() {
   const ref = useRef(null);
 
   return (
-    <Contain>
-      <div className={classes.absolute}>
-        <button
-          className={classes.prevButton}
-          onClick={() => ref?.current?.slidePrev()}
-        >
-          이전
-        </button>
-        <CarouselBox>
-          <AliceCarousel
-            animationDuration={2000}
-            startIndex={1}
-            infinite={1000}
-            responsive={responsive}
-            mouseTracking
-            autoPlay
-            autoHeight
-            disableDotsControls
-            disableButtonsControls
-            value={slide}
-            onChange={onSlideChange}
-            ref={ref}
+    <>
+      <Contain>
+        <div className={classes.absolute}>
+          <button
+            className={classes.prevButton}
+            onClick={() => ref?.current?.slidePrev()}
           >
-            {items}
-          </AliceCarousel>
-        </CarouselBox>
-        <button
-          className={classes.nextButton}
-          onClick={() => ref?.current?.slideNext()}
-        >
-          이후
-        </button>
-      </div>
-    </Contain>
+            이전
+          </button>
+          <CarouselBox>
+            <AliceCarousel
+              animationDuration={2000}
+              startIndex={1}
+              infinite={1000}
+              responsive={responsive}
+              mouseTracking
+              autoPlay
+              autoHeight
+              disableDotsControls
+              disableButtonsControls
+              value={slide}
+              onChange={onSlideChange}
+              ref={ref}
+            >
+              {items}
+            </AliceCarousel>
+          </CarouselBox>
+          <button
+            className={classes.nextButton}
+            onClick={() => ref?.current?.slideNext()}
+          >
+            이후
+          </button>
+        </div>
+      </Contain>
+      <Information placeholder="해시태그를 입력하세요" data={PopupData} />
+    </>
   );
 }
 
@@ -82,6 +86,8 @@ const Contain = styled.div`
   width: 600px;
   height: 400px;
   margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const CarouselBox = styled.div`
