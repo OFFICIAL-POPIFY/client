@@ -7,9 +7,13 @@ import styled from "styled-components";
 function Contents() {
   return (
     <Container>
-      <Thumbnail />
-      {/* <NewCarousel /> */}
-      <CommentForm />
+      <></>
+      <div>
+        <Thumbnail />
+      </div>
+      <div>
+        <CommentForm />
+      </div>
       <MapContainer />
     </Container>
   );
@@ -18,6 +22,6 @@ function Contents() {
 export default Contents;
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
+  height: 100vh;
+  width: 100%;
 `;
