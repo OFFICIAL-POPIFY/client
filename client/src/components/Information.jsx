@@ -18,15 +18,17 @@ function Information({ placeholder, data }) {
 
   return (
     <div className={classes.wrapper}>
-      <h1>팝업스토어 정보</h1>
-      <p>해시태그를 입력해서 팝업스토어를 탐색해보세요!</p>
-      <div className={classes.search}>
-        <div className={classes.search_input}>
-          <input
-            type="text"
-            placeholder={placeholder}
-            onChange={handleFilter}
-          />
+      <div className={classes.blink}>
+        <h1>팝업스토어 정보</h1>
+        <p>해시태그를 입력해서 팝업스토어를 탐색해보세요!</p>
+        <div className={classes.search}>
+          <div className={classes.search_input}>
+            <input
+              type="text"
+              placeholder={placeholder}
+              onChange={handleFilter}
+            />
+          </div>
         </div>
         {filteredData.length !== 0 && (
           <div className={classes.data_result}>
