@@ -5,6 +5,7 @@ import Top from '../components/Top';
 import NavBar from '../components/NavBar';
 import RollingBanner from '../components/RollingBanner';
 import InnerLayout from "./InnnerLayout";
+
 function LayoutBox() {
   return (
      
@@ -15,6 +16,7 @@ function LayoutBox() {
             <RollingBanner />
             <Document >
             <Outlet />
+
             </Document>
         </InnerLayout>
     </Layout>);
