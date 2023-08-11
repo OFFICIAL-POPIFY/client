@@ -36,3 +36,10 @@
     transform: scale(0.7);
   }
 }
+#wrap{
+  min-height: calc(100vh - 505px);
+	position: relative;
+}
+footer {
+  height: 505px ;
+}

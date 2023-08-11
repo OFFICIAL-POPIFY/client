@@ -5,11 +5,12 @@ import Top from '../components/Top';
 import NavBar from '../components/NavBar';
 import RollingBanner from '../components/RollingBanner';
 import InnerLayout from "./InnnerLayout";
+import Footer from "../components/Footer";
 import "../App.css";
 function LayoutBox() {
   return (
      
-    <Layout >
+    <Layout id="wrap">
         <InnerLayout>
             <Top />
             <NavBar />
@@ -19,6 +20,8 @@ function LayoutBox() {
             <Outlet />
             </Document>
         </InnerLayout>
+
+        <Footer />
     </Layout>);
  
   

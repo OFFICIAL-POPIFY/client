@@ -20,7 +20,7 @@ function NavBar() {
     <div>
       <header className={classes.header}>
         <Link to="/">
-          <h1>Logo</h1>
+          <img src="./images/logo.png" alt="logo" className={classes.logo} />
         </Link>
         <nav className={classes.navigation}>
           <ul>

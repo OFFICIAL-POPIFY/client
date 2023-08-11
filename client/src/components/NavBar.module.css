@@ -64,3 +64,36 @@
 .dropdown:hover .dropdown_contents {
   display: block;
 }
+
+@media (max-width: 1500px) {
+  .header {
+    width: 100%;
+  }
+  .navigation {
+    width: 100%; /* 화면 너비가 1500px 이하일 때 너비 조정 */
+  }
+}
+
+@media (max-width: 1300px) {
+  .header {
+    width: 80%;
+  }
+  .navigation {
+    width: 80%; /* 화면 너비가 1300px 이하일 때 너비 조정 */
+  }
+}
+
+@media (max-width: 700px) {
+  .header {
+    width: 50%;
+  }
+  .navigation {
+    width: 50%; /* 화면 너비가 700px 이하일 때 너비 조정 */
+  }
+}
+
+
+
+
+
+
