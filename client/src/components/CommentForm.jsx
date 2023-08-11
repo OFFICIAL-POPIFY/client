@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import Rating from "react-rating-stars-component";
 import ImageUpload from "react-image-upload";
 import styles from "./CommentForm.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import { addComment } from "../store/comment";
+
 // import axios from 'axios';
 
 const CommentForm = () => {
@@ -9,8 +12,9 @@ const CommentForm = () => {
   const [comment, setComment] = useState("");
   const [images, setImages] = useState([]);
   const [commentsList, setCommentsList] = useState([]); // 코멘트 목록을 저장하는 상태 추가
-  const isLoggedIn = false; // // 로그인 상태 확인용 변수 (예시로 true, false로 로그인 상태 가정) <-- 임시 방편
-
+  const isLoggedIn = true; // // 로그인 상태 확인용 변수 (예시로 true, false로 로그인 상태 가정) <-- 임시 방편
+  const commentList = useSelector((state) => state.words);
+  const dispatch = useDispatch();
   // 별점 변경 핸들러
   const handleRatingChange = (newRating) => {
     setRating(newRating);
@@ -69,6 +73,7 @@ const CommentForm = () => {
       comment: comment,
       images: images.map((image) => image.dataURL),
     };
+    dispatch(addComment(newComment));
     setCommentsList([...commentsList, newComment]);
 
     // 폼 데이터 초기화
@@ -79,6 +84,31 @@ const CommentForm = () => {
 
   return (
     <form className={styles.commentForm} onSubmit={handleSubmit}>
+      <div>
+        {commentsList.map((comment, index) => (
+          <div key={index} className={styles.commentItem}>
+            <div>별점: {comment.rating}</div>
+            <div>코멘트 내용: {comment.comment}</div>
+            {comment.images.length > 0 && (
+              <div>
+                <h4>업로드된 이미지:</h4>
+                <div className={styles.commentImagePreviewContainer}>
+                  {comment.images.map((image, imgIndex) => (
+                    <img
+                      key={imgIndex}
+                      className={styles.commentImagePreview}
+                      src={image}
+                      alt={`Image ${imgIndex}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <h3>코멘트 목록</h3>
       <div>
         <label className={styles.commentFormLabel}>별점:</label>
         <Rating
@@ -113,30 +143,6 @@ const CommentForm = () => {
       </button>
 
       {/* 코멘트 목록 출력 */}
-      <div>
-        <h3>코멘트 목록</h3>
-        {commentsList.map((comment, index) => (
-          <div key={index} className={styles.commentItem}>
-            <div>별점: {comment.rating}</div>
-            <div>코멘트 내용: {comment.comment}</div>
-            {comment.images.length > 0 && (
-              <div>
-                <h4>업로드된 이미지:</h4>
-                <div className={styles.commentImagePreviewContainer}>
-                  {comment.images.map((image, imgIndex) => (
-                    <img
-                      key={imgIndex}
-                      className={styles.commentImagePreview}
-                      src={image}
-                      alt={`Image ${imgIndex}`}
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
     </form>
   );
 };

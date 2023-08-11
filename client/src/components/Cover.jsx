@@ -44,65 +44,71 @@ function Cover() {
     };
   }, []);
   return (
-    <div className="container">
-      <Swiper
-        onSlideChangeTransitionEnd={handleSlideChange}
-        centeredSlides={true}
-        effect={"coverflow"}
-        grabCursor={true}
-        spaceBetween={-300}
-        loop={true}
-        mouseWheel={true}
-        slidesPerView={2}
-        coverflowEffect={{
-          rotate: 0,
-          stretch: 0,
-          depth: 100,
-          modifier: 2.5,
-        }}
-        pagination={{
-          el: ".swiper-pagination",
-          clickable: true,
-          mousewheel: true,
-        }}
-        navigation={{
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-          clickable: true,
-          mousewheel: true,
-        }}
-        onSlideChange={handleSlideChange}
-        modules={{ EffectCoverflow, Pagination, Navigation, Mousewheel }}
-        className="swiper_container"
-      >
-        {images.map((image, index) => (
-          <SwiperSlide key={index}>
-            <div
-              className={`slider__img ${
-                isHovered && index === currentSlide ? "expand-animation" : ""
-              }`}
-            >
-              <img
-                src={image}
-                alt=""
-                className={`swiper-slide-image ${
-                  index === currentSlide ? "hovered" : ""
-                }`}
-              />
-            </div>
-          </SwiperSlide>
-        ))}
+    <div>
+      <div>
+        <div className="container">
+          <Swiper
+            onSlideChangeTransitionEnd={handleSlideChange}
+            centeredSlides={true}
+            effect={"coverflow"}
+            grabCursor={true}
+            spaceBetween={-300}
+            loop={true}
+            mouseWheel={true}
+            slidesPerView={2}
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 0,
+              depth: 100,
+              modifier: 2.5,
+            }}
+            pagination={{
+              el: ".swiper-pagination",
+              clickable: true,
+              mousewheel: true,
+            }}
+            navigation={{
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+              clickable: true,
+              mousewheel: true,
+            }}
+            onSlideChange={handleSlideChange}
+            modules={{ EffectCoverflow, Pagination, Navigation, Mousewheel }}
+            className="swiper_container"
+          >
+            {images.map((image, index) => (
+              <SwiperSlide key={index}>
+                <div
+                  className={`slider__img ${
+                    isHovered && index === currentSlide
+                      ? "expand-animation"
+                      : ""
+                  }`}
+                >
+                  <img
+                    src={image}
+                    alt=""
+                    className={`swiper-slide-image ${
+                      index === currentSlide ? "hovered" : ""
+                    }`}
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
 
-        <div className="slider-controler">
-          <div className="swiper-button-prev slider-arrow blur">
-            <ion-icon name="arrow-back-outline"></ion-icon>
-          </div>
-          <div className="swiper-button-next slider-arrow blur">
-            <ion-icon name="arrow-forward-outline"></ion-icon>
-          </div>
-          <div className="swiper-pagination"></div>
+            <div className="slider-controler">
+              <div className="swiper-button-prev slider-arrow blur">
+                <ion-icon name="arrow-back-outline"></ion-icon>
+              </div>
+              <div className="swiper-button-next slider-arrow blur">
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </div>
+              <div className="swiper-pagination"></div>
+            </div>
+          </Swiper>
         </div>
-      </Swiper>
+      </div>
     </div>
   );
 }

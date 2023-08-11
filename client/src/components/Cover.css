@@ -15,15 +15,34 @@
   ::-webkit-scrollbar-track {
     background: #f9f9f9;
   }
-  
+  .layout{
+    position: relative;
+    min-width: 120rem;
+    height: 100%;
+    margin: 0   auto;
+  }
+  .document{
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 36rem);
+    margin: 0 20rem 0 20rem;
+
+  }
   body {
     font-size: 1.6rem;
     background: var(--bg);
     max-width: 100rem;
   }
-  
+  .swiper-slide{
+ 
+  }
+  .swiper .swiper_container .swiper_initialized .swiper_horizontal{
+    position:relative;
+
+  }
   .container {
-    position: absolute;
+    position: relative;
+    float: right;
     max-width: 100rem;
     padding: 4rem 1rem;
     margin: 0 auto;
@@ -137,8 +156,8 @@
     background: var(--primary);
   }
   .blur{
-    filter: blur(5px);
-    opacity: 0.7;
+    filter: blur(8px);
+    opacity: 0.5;
     /* animation: expand  0.5s ease-in-out;  */
   }
     
@@ -152,17 +171,18 @@
     width: 50rem;
     height: 42rem;
     position: relative;
-    right: 5rem;
-    
+
   }
   .swiper-slide.swiper-slide-prev{
     margin-left: 20rem;
-    filter: blur(5px); /* 블러 처리를 위한 스타일 추가 */
-    transition: filter 0.3s ease-in-out;
+    filter: blur(8px); /* 블러 처리를 위한 스타일 추가 */
+    transition: filter 0.5s ease-in-out;
+    opacity: 0.6;
   }
   .swiper-slide.swiper-slide-next{
-    filter: blur(5px); /* 블러 처리를 위한 스타일 추가 */
-    transition: filter 0.3s ease-in-out;
+    filter: blur(8px); /* 블러 처리를 위한 스타일 추가 */
+    transition: filter 0.5s ease-in-out;
+    opacity: 0.5;
   }
   @keyframes expand {
     0% {

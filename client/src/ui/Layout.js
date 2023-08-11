@@ -5,16 +5,17 @@ import Top from '../components/Top';
 import NavBar from '../components/NavBar';
 import RollingBanner from '../components/RollingBanner';
 import InnerLayout from "./InnnerLayout";
-
+import "../App.css";
 function LayoutBox() {
   return (
      
-    <Layout>
+    <Layout >
         <InnerLayout>
             <Top />
             <NavBar />
             <RollingBanner />
             <Document >
+                
             <Outlet />
             </Document>
         </InnerLayout>
