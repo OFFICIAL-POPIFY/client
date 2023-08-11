@@ -18,10 +18,15 @@ function Footer() {
 export default Footer;
 
 const Wrapper = styled.div`
-  width: 1920px;
+  width: 100%;
   height: 505px;
-  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  line-height: 50rem;
+  padding-top: 50px;
+
   background: #000;
+  flex-direction: column;
   span {
     display: flex;
     width: 61px;
@@ -36,6 +41,11 @@ const Wrapper = styled.div`
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+  }
+  img {
+    margin-top: 50px;
+    width: 350px;
+    height: 120px;
   }
 `;
 const Subscript = styled.div`
