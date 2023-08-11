@@ -33,6 +33,14 @@
     background: var(--bg);
     max-width: 100rem;
   }
+  .wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+  }
   .swiper-slide{
  
   }
@@ -40,8 +48,12 @@
     position:relative;
 
   }
+
   .container {
     position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     float: right;
     max-width: 100rem;
     padding: 4rem 1rem;
@@ -162,17 +174,18 @@
   }
     
   .swiper-slide img {
-    width:28rem;
-    height: 19rem;
-    border-radius: 2rem;
+    width:45rem;
+    height:40rem;
+    border-radius: 1rem;
     object-fit: cover;
   }
   .swiper-slide {
     width: 50rem;
     height: 42rem;
     position: relative;
-
+    margin: -4rem;
   }
+
   .swiper-slide.swiper-slide-prev{
     margin-left: 20rem;
     filter: blur(8px); /* 블러 처리를 위한 스타일 추가 */

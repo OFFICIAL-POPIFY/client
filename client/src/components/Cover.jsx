@@ -45,7 +45,7 @@ function Cover() {
   }, []);
   return (
     <div>
-      <div>
+      <div className="wrap">
         <div className="container">
           <Swiper
             onSlideChangeTransitionEnd={handleSlideChange}
