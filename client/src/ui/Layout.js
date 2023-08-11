@@ -15,9 +15,7 @@ function LayoutBox() {
             <NavBar />
             <RollingBanner />
             <Document >
-
             <Outlet />
-
             </Document>
         </InnerLayout>
     </Layout>);
@@ -31,12 +29,13 @@ const Layout = styled.div`
 position: relative;
 min-width: 120rem;
 height: 100%;
-margin: 0 auto;
+margin: 0   auto;
 `;
 
 const Document = styled.div`
 display: flex;
 flex-direction: column;
 min-height: calc(100vh - 36rem);
-margin: 0 25rem 0 25rem
+margin: 0 20rem 0 20rem;
+
 `;

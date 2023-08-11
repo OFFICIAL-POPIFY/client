@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
@@ -19,30 +19,38 @@ const images = [
   "images/6.jpg",
 ];
 function Cover() {
-  const [blur, setBlur] = useState("");
+  const [isHovered, setIsHovered] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const handleSlideChange = (swiper) => {
-    setCurrentSlide(swiper.realIndex); // Swiper의 realIndex는 현재 실제 슬라이드 인덱스를 나타냄
-    if (
-      swiper.realIndex === 0 ||
-      swiper.realIndex === images.length - 1 ||
-      (swiper.realIndex > 0 && swiper.realIndex < images.length - 1)
-    ) {
-      setBlur("blur");
-    } else {
-      setBlur("");
-    }
+    setCurrentSlide(swiper.realIndex);
   };
 
+  useEffect(() => {
+    const handleMouseEnter = () => {
+      setIsHovered(true);
+    };
+
+    const handleMouseLeave = () => {
+      setIsHovered(false);
+    };
+
+    document.addEventListener("mouseenter", handleMouseEnter);
+    document.addEventListener("mouseleave", handleMouseLeave);
+
+    return () => {
+      document.removeEventListener("mouseenter", handleMouseEnter);
+      document.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, []);
   return (
     <div className="container">
-      <h1 className="heading">팝업스토어 갤러리</h1>
       <Swiper
+        onSlideChangeTransitionEnd={handleSlideChange}
+        centeredSlides={true}
         effect={"coverflow"}
         grabCursor={true}
-        spaceBetween={30}
-        centeredSlides={true}
+        spaceBetween={-300}
         loop={true}
         mouseWheel={true}
         slidesPerView={2}
@@ -69,19 +77,27 @@ function Cover() {
       >
         {images.map((image, index) => (
           <SwiperSlide key={index}>
-            <img
-              src={image}
-              alt=""
-              className={index === currentSlide ? "" : blur}
-            />
+            <div
+              className={`slider__img ${
+                isHovered && index === currentSlide ? "expand-animation" : ""
+              }`}
+            >
+              <img
+                src={image}
+                alt=""
+                className={`swiper-slide-image ${
+                  index === currentSlide ? "hovered" : ""
+                }`}
+              />
+            </div>
           </SwiperSlide>
         ))}
 
         <div className="slider-controler">
-          <div className="swiper-button-prev slider-arrow">
+          <div className="swiper-button-prev slider-arrow blur">
             <ion-icon name="arrow-back-outline"></ion-icon>
           </div>
-          <div className="swiper-button-next slider-arrow">
+          <div className="swiper-button-next slider-arrow blur">
             <ion-icon name="arrow-forward-outline"></ion-icon>
           </div>
           <div className="swiper-pagination"></div>

@@ -23,6 +23,7 @@
   }
   
   .container {
+    position: absolute;
     max-width: 100rem;
     padding: 4rem 1rem;
     margin: 0 auto;
@@ -40,11 +41,7 @@
     position: relative;
   }
   
-  .swiper-slide {
-    width: 50rem;
-    height: 42rem;
-    position: relative;
-  }
+
   
   /* @media (max-width: 500px) {
     .swiper_container {
@@ -59,13 +56,7 @@
       height: 36rem !important;
     }
   } */
-  
-  .swiper-slide img {
-    width:55rem;
-    height: 30rem;
-    border-radius: 2rem;
-    object-fit: cover;
-  }
+
   
   .swiper-slide-shadow-left,
   .swiper-slide-shadow-right {
@@ -148,4 +139,56 @@
   .blur{
     filter: blur(5px);
     opacity: 0.7;
+    /* animation: expand  0.5s ease-in-out;  */
   }
+    
+  .swiper-slide img {
+    width:28rem;
+    height: 19rem;
+    border-radius: 2rem;
+    object-fit: cover;
+  }
+  .swiper-slide {
+    width: 50rem;
+    height: 42rem;
+    position: relative;
+    right: 5rem;
+    
+  }
+  .swiper-slide.swiper-slide-prev{
+    margin-left: 20rem;
+    filter: blur(5px); /* 블러 처리를 위한 스타일 추가 */
+    transition: filter 0.3s ease-in-out;
+  }
+  .swiper-slide.swiper-slide-next{
+    filter: blur(5px); /* 블러 처리를 위한 스타일 추가 */
+    transition: filter 0.3s ease-in-out;
+  }
+  @keyframes expand {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.2); /* 크게 확대됨 */
+    }
+  }
+  .expand-animation {
+    animation: expand ; /* 팽창 애니메이션 적용, 0.5초 동안 */
+  }
+  .swiper-slide-image {
+    width: 28rem;
+    height: 19rem;
+    border-radius: 2rem;
+    object-fit: cover;
+   
+  }
+  
+  .hovered {
+
+  }
+  
+  .expand-animation {
+    animation: expand 0.5s ease-in-out; /* 팽창 애니메이션 적용, 0.5초 동안 */
+    transform: scale(1.2); /* 초기 크기로 설정 */
+  }
+  

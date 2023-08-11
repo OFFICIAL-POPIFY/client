@@ -20,20 +20,14 @@ function App() {
     <Provider store={store}> 
       <AuthProvider>
         <Routes>
-          {/* Layout 컴포넌트에 Cover 컴포넌트 추가 */}
           <Route path="/" element={<Layout />}>
-            {/* 루트 페이지인 경우에만 Cover 컴포넌트 렌더링 */}
             <Route index element={<Cover />} />
-
-            {/* 기타 페이지들 */}
             <Route path="/mainpage" element={<MainPage />} />
             <Route path="/about" element={<About />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/contents" element={<Contents />} />
           </Route>
-
-          {/* 마이페이지 */}
           <Route path="/mypage" element={<PrivateRoute element={<Mypage />} />} />
         </Routes>
       </AuthProvider>
