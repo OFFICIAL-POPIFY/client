@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import Rating from "react-rating-stars-component";
 import ImageUpload from "react-image-upload";
 import styles from "./CommentForm.module.css";
-import { useSelector, useDispatch } from "react-redux";
-import { addComment } from "../store/comment";
 
 // import axios from 'axios';
 
@@ -13,8 +11,7 @@ const CommentForm = () => {
   const [images, setImages] = useState([]);
   const [commentsList, setCommentsList] = useState([]); // 코멘트 목록을 저장하는 상태 추가
   const isLoggedIn = true; // // 로그인 상태 확인용 변수 (예시로 true, false로 로그인 상태 가정) <-- 임시 방편
-  const commentList = useSelector((state) => state.words);
-  const dispatch = useDispatch();
+
   // 별점 변경 핸들러
   const handleRatingChange = (newRating) => {
     setRating(newRating);
@@ -73,7 +70,6 @@ const CommentForm = () => {
       comment: comment,
       images: images.map((image) => image.dataURL),
     };
-    dispatch(addComment(newComment));
     setCommentsList([...commentsList, newComment]);
 
     // 폼 데이터 초기화
