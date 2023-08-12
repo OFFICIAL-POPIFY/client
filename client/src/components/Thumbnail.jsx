@@ -89,7 +89,6 @@ function Thumbnail() {
                 responsive={responsive}
                 mouseTracking
                 autoPlay
-                autoHeight
                 disableDotsControls
                 disableButtonsControls
                 value={slide}
@@ -134,9 +133,6 @@ const CarouselBox = styled.div`
   position: relative;
   top: 0;
   left: 0;
-  li.alice-carousel__stage-item :not(.__cloned) {
-    width: 100%;
-  }
 `;
 
 const ItemsContain = styled.div`
