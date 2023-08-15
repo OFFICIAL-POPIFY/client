@@ -16,7 +16,7 @@ function NavBar() {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      // 서버에 로그아웃 요청 보내기
+      window.location.href = "/login";
       await axios.get("/users/logout"); // 실제 엔드포인트는 서버에 맞게 변경
 
       // 로그아웃 상태로 변경
@@ -24,7 +24,6 @@ function NavBar() {
     } catch (error) {
       console.error("로그아웃 오류:", error);
     }
-    window.location.href = "/login";
   };
 
   const handleScroll = () => {
