@@ -17,7 +17,7 @@ function NavBar() {
     e.preventDefault();
     try {
       // 서버에 로그아웃 요청 보내기
-      await axios.get("/logout"); // 실제 엔드포인트는 서버에 맞게 변경
+      await axios.get("/users/logout"); // 실제 엔드포인트는 서버에 맞게 변경
 
       // 로그아웃 상태로 변경
       setAuth(null);

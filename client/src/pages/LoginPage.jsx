@@ -2,9 +2,10 @@ import React from "react";
 import { useRef, useState, useEffect, useContext } from "react";
 import AuthContext from "../context/AuthProvider";
 import axios from "../api/axios";
-
+import Profile from "../components/Profile";
 import classes from "./LoginPage.module.css";
 import { Link } from "react-router-dom";
+
 const LOGIN_URL = "/users/login";
 
 function Login() {
@@ -61,7 +62,7 @@ function Login() {
   return (
     <div>
       LoginPage
-      {!succsess ? (
+      {succsess ? (
         <main className={classes.auth}>
           <section>
             <form onSubmit={handlerSubmit}>
@@ -102,7 +103,11 @@ function Login() {
           </section>
         </main>
       ) : (
-        <p>로그인 성공</p>
+        <>
+          <p>로그인 성공</p>
+          <Profile />
+          <p>비밀번호 변경</p>
+        </>
       )}
     </div>
   );
