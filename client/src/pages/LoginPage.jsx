@@ -5,7 +5,7 @@ import axios from "../api/axios";
 
 import classes from "./LoginPage.module.css";
 import { Link } from "react-router-dom";
-const LOGIN_URL = "/login";
+const LOGIN_URL = "/users/login";
 
 function Login() {
   const { setAuth } = useContext(AuthContext);
@@ -91,13 +91,12 @@ function Login() {
                   placeholder="비밀번호"
                   type="password"
                   id="password"
-                  autoComplete="off"
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
                   required
                 />
               </div>
-              <button>Login</button>
+              <button className={classes.login}>LOGIN</button>
             </form>
             <Link to="/signup">회원가입</Link>
           </section>
