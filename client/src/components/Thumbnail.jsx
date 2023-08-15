@@ -72,50 +72,55 @@ function Thumbnail() {
 
   return (
     <Wrapper>
-      <Contain>
-        <div className={classes.absolute}>
-          <button
-            className={classes.prevButton}
-            onClick={() => ref?.current?.slidePrev()}
-          >
-            이전
-          </button>
-          <CarouselBox>
-            <AliceCarousel
-              animationDuration={2000}
-              startIndex={1}
-              infinite={1000}
-              responsive={responsive}
-              mouseTracking
-              autoPlay
-              autoHeight
-              disableDotsControls
-              disableButtonsControls
-              value={slide}
-              onChange={onSlideChange}
-              ref={ref}
+      <div>
+        <Contain>
+          <div className={classes.absolute}>
+            <button
+              className={classes.prevButton}
+              onClick={() => ref?.current?.slidePrev()}
             >
-              {items}
-            </AliceCarousel>
-          </CarouselBox>
-          <button
-            className={classes.nextButton}
-            onClick={() => ref?.current?.slideNext()}
-          >
-            이후
-          </button>
-        </div>
-      </Contain>
-      <Information placeholder="해시태그를 입력하세요" data={PopupData} />
+              이전
+            </button>
+            <CarouselBox>
+              <AliceCarousel
+                animationDuration={2000}
+                startIndex={1}
+                infinite={1000}
+                responsive={responsive}
+                mouseTracking
+                autoPlay
+                disableDotsControls
+                disableButtonsControls
+                value={slide}
+                onChange={onSlideChange}
+                ref={ref}
+              >
+                {items}
+              </AliceCarousel>
+            </CarouselBox>
+            <button
+              className={classes.nextButton}
+              onClick={() => ref?.current?.slideNext()}
+            >
+              이후
+            </button>
+          </div>
+        </Contain>
+      </div>
+
+      <div>
+        <Information placeholder="해시태그를 입력하세요" data={PopupData} />
+      </div>
     </Wrapper>
   );
 }
 const Wrapper = styled.div`
   display: flex;
   margin: 2rem;
+  justify-content: space-between;
 `;
 const Contain = styled.div`
-  width: 60rem;
+  width: 50rem;
   height: 400px;
   margin: 0 auto;
   display: flex;
@@ -128,9 +133,6 @@ const CarouselBox = styled.div`
   position: relative;
   top: 0;
   left: 0;
-  li.alice-carousel__stage-item :not(.__cloned) {
-    width: 100%;
-  }
 `;
 
 const ItemsContain = styled.div`

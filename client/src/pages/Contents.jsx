@@ -8,6 +8,7 @@ function Contents() {
   return (
     <Container>
       <></>
+
       <div>
         <Thumbnail />
       </div>

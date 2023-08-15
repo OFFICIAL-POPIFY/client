@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@glidejs/glide": "^3.6.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -11,6 +12,7 @@
     "axios": "^1.4.0",
     "css-loader": "^6.8.1",
     "jwt-decode": "^3.1.2",
+    "pure-react-carousel": "^1.30.1",
     "react": "^18.2.0",
     "react-alice-carousel": "^2.7.1",
     "react-dom": "^18.2.0",
@@ -26,12 +28,11 @@
     "react-scripts": "5.0.1",
     "react-scroll-trigger": "^0.6.14",
     "react-simple-star-rating": "^5.1.7",
-    "react-slick": "^0.29.0",
     "redux": "^4.2.1",
     "redux-persist": "^6.0.0",
-    "slick-carousel": "^1.8.1",
     "style-loader": "^3.3.3",
     "styled-component": "^2.8.0",
+    "swiper": "^9.0.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

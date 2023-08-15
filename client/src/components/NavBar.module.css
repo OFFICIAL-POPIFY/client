@@ -1,5 +1,5 @@
 .header {
-    position: relative;
+
      display: flex;
      justify-content: space-around;
      border-bottom:1px solid lightgray;
@@ -36,6 +36,7 @@
   position: relative;
   display: block;
   float: right; 
+  z-index: 999;
  
 }
 
@@ -62,4 +63,52 @@
 }
 .dropdown:hover .dropdown_contents {
   display: block;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid lightgray;
+}
+
+.navigation {
+  /* 기본 스타일 */
+}
+
+/* 미디어 쿼리로 윈도우 창 크기에 따라 네비게이션 크기 조정 */
+@media (max-width: 1500px) {
+  .header {
+    width: 100%;
+  }
+  .navigation {
+  width: 1500px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .header {
+    width: 80%;
+  }
+  .navigation {
+   width: 1300px;
+  }
+}
+
+@media (max-width: 700px) {
+  .header {
+    width: 50%;
+  }
+  .navigation {
+   width: 700px;
+  }
+}
+
+
+.header.sticky {
+  position: fixed; /* 스티키 바 활성화 시 fixed 위치 설정 */
+  top: 0;
+  width: 100%; /* 전체 너비로 설정 */
+  background-color: rgba(255, 255, 255, 0.9); /* 배경색 또는 투명도 설정 */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }

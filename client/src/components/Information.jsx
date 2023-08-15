@@ -20,7 +20,10 @@ function Information({ placeholder, data }) {
     <div className={classes.wrapper}>
       <div className={classes.blink}>
         <h1>팝업스토어 정보</h1>
-        <p>해시태그를 입력해서 팝업스토어를 탐색해보세요!</p>
+        <p>
+          해시태그를 입력해서 팝업스토어를 <br />
+          탐색해보세요!
+        </p>
         <div className={classes.search}>
           <div className={classes.search_input}>
             <input
