@@ -1,10 +1,20 @@
 import React from "react";
 import styled from "styled-components";
-
+const imgaes = [
+  "./images/thumb/thumbnail1.png",
+  "./images/thumb/thumbnail2.png",
+  "./images/thumb/thumbnail3.png",
+  "./images/thumb/thumbnail4.png",
+  "./images/thumb/thumbnail5.png",
+  "./images/thumb/thumbnail6.png",
+  "./images/thumb/thumbnail7.png",
+  "./images/thumb/thumbnail8.png",
+  "./images/thumb/thumbnail9.png",
+];
 function StoreList({ data }) {
   const storeItems = data.map((store, index) => (
-    <div key={index} className="post">
-      <img src={store.placeurl} alt="" />
+    <div className="card">
+      <img src={imgaes[index]} alt="" />
       <p>{store.corporation}</p>
       <p>{store.location}</p>
     </div>
@@ -30,6 +40,7 @@ export default StoreList;
 
 const Wrapper = styled.div`
   display: inline-block;
+
   h1 {
     font-size: 25px;
     font-style: normal;
@@ -59,5 +70,11 @@ const Wrapper = styled.div`
     height: 400px;
     object-fit: cover;
     margin-bottom: 10px;
+  }
+  .card {
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
   }
 `;
