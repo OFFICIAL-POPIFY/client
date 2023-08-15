@@ -1,5 +1,5 @@
 .header {
-    position: relative;
+
      display: flex;
      justify-content: space-around;
      border-bottom:1px solid lightgray;
@@ -65,12 +65,24 @@
   display: block;
 }
 
+.header {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid lightgray;
+}
+
+.navigation {
+  /* 기본 스타일 */
+}
+
+/* 미디어 쿼리로 윈도우 창 크기에 따라 네비게이션 크기 조정 */
 @media (max-width: 1500px) {
   .header {
     width: 100%;
   }
   .navigation {
-    width: 100%; /* 화면 너비가 1500px 이하일 때 너비 조정 */
+  width: 1500px;
   }
 }
 
@@ -79,7 +91,7 @@
     width: 80%;
   }
   .navigation {
-    width: 80%; /* 화면 너비가 1300px 이하일 때 너비 조정 */
+   width: 1300px;
   }
 }
 
@@ -88,12 +100,15 @@
     width: 50%;
   }
   .navigation {
-    width: 50%; /* 화면 너비가 700px 이하일 때 너비 조정 */
+   width: 700px;
   }
 }
 
 
-
-
-
-
+.header.sticky {
+  position: fixed; /* 스티키 바 활성화 시 fixed 위치 설정 */
+  top: 0;
+  width: 100%; /* 전체 너비로 설정 */
+  background-color: rgba(255, 255, 255, 0.9); /* 배경색 또는 투명도 설정 */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}

@@ -1,5 +1,5 @@
 // NavBar.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import classes from "./NavBar.module.css";
 import { IoMdLogIn } from "react-icons/io";
@@ -10,15 +10,29 @@ import SearchBar from "./SearchBar";
 import PopupData from "./data.json";
 
 function NavBar() {
+  const [isSticky, setIsSticky] = useState(false);
   const logout = (e) => {
     e.preventDefault();
     localStorage.removeItem("token");
     window.location.href = "/login";
   };
+  const handleScroll = () => {
+    if (window.scrollY > 0) {
+      setIsSticky(true);
+    } else {
+      setIsSticky(false);
+    }
+  };
 
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <div>
-      <header className={classes.header}>
+      <header className={`${classes.header} ${isSticky ? classes.sticky : ""}`}>
         <Link to="/">
           <img src="./images/logo.png" alt="logo" className={classes.logo} />
         </Link>

@@ -10,6 +10,42 @@ const imgaes = [
   "./images/thumb/thumbnail7.png",
   "./images/thumb/thumbnail8.png",
   "./images/thumb/thumbnail9.png",
+  "./images/thumb/thumbnail1.png",
+  "./images/thumb/thumbnail2.png",
+  "./images/thumb/thumbnail3.png",
+  "./images/thumb/thumbnail4.png",
+  "./images/thumb/thumbnail5.png",
+  "./images/thumb/thumbnail6.png",
+  "./images/thumb/thumbnail7.png",
+  "./images/thumb/thumbnail8.png",
+  "./images/thumb/thumbnail9.png",
+  "./images/thumb/thumbnail1.png",
+  "./images/thumb/thumbnail2.png",
+  "./images/thumb/thumbnail3.png",
+  "./images/thumb/thumbnail4.png",
+  "./images/thumb/thumbnail5.png",
+  "./images/thumb/thumbnail6.png",
+  "./images/thumb/thumbnail7.png",
+  "./images/thumb/thumbnail8.png",
+  "./images/thumb/thumbnail9.png",
+  "./images/thumb/thumbnail1.png",
+  "./images/thumb/thumbnail2.png",
+  "./images/thumb/thumbnail3.png",
+  "./images/thumb/thumbnail4.png",
+  "./images/thumb/thumbnail5.png",
+  "./images/thumb/thumbnail6.png",
+  "./images/thumb/thumbnail7.png",
+  "./images/thumb/thumbnail8.png",
+  "./images/thumb/thumbnail9.png",
+  "./images/thumb/thumbnail1.png",
+  "./images/thumb/thumbnail2.png",
+  "./images/thumb/thumbnail3.png",
+  "./images/thumb/thumbnail4.png",
+  "./images/thumb/thumbnail5.png",
+  "./images/thumb/thumbnail6.png",
+  "./images/thumb/thumbnail7.png",
+  "./images/thumb/thumbnail8.png",
+  "./images/thumb/thumbnail9.png",
 ];
 function StoreList({ data }) {
   const storeItems = data.map((store, index) => (
@@ -40,7 +76,7 @@ export default StoreList;
 
 const Wrapper = styled.div`
   display: inline-block;
-
+  height: 10rem;
   h1 {
     font-size: 25px;
     font-style: normal;
