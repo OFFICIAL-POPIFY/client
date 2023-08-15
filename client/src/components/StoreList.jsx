@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+
 function StoreList({ data }) {
   const storeItems = data.map((store, index) => (
     <div key={index} className="post">
@@ -8,10 +9,12 @@ function StoreList({ data }) {
       <p>{store.location}</p>
     </div>
   ));
+
   const dividedStoreItems = [];
   for (let i = 0; i < storeItems.length; i += 3) {
     dividedStoreItems.push(storeItems.slice(i, i + 3));
   }
+
   return (
     <Wrapper>
       <h1>POP-UP STORE</h1>
@@ -38,21 +41,23 @@ const Wrapper = styled.div`
   }
   section {
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
+    margin-top: 20px; /* 각 그룹 사이의 간격 조절 */
   }
   .post {
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
     margin: 1rem;
     padding: 10px;
-    border-radius: 2px;
-    outline: none;
-
     border-radius: 5px;
     border: 1.5px solid #a19f9f;
     background-color: white;
     font-size: large;
+  }
+  img {
+    width: 400px; /* 이미지 크기 조절 */
+    height: 400px;
+    object-fit: cover;
+    margin-bottom: 10px;
   }
 `;
