@@ -29,14 +29,14 @@ function LayoutBox() {
 
 export default LayoutBox;
 
-const Layout = styled.div`
+export const Layout = styled.div`
 position: relative;
 min-width: 120rem;
 height: 100%;
 margin: 0   auto;
 `;
 
-const Document = styled.div`
+export const Document = styled.div`
 display: flex;
 flex-direction: column;
 min-height: calc(100vh - 36rem);

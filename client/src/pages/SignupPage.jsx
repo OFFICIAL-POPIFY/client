@@ -110,6 +110,7 @@ function Login() {
                   />
                   {!succsess && (
                     <button
+                      type="submit"
                       className={classes.duplicateButton}
                       onClick={handleCheckDuplicate}
                     >
@@ -143,7 +144,7 @@ function Login() {
                   required
                 ></input>
               </div>
-              <button type="button" className={classes.login}>
+              <button type="submit" className={classes.login}>
                 SIGN UP
               </button>
             </form>
