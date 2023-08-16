@@ -64,43 +64,57 @@ function GoodsCarousel() {
   const ref = useRef(null);
 
   return (
-    <Contain>
-      <div className={classes.absolute}>
-        <button
-          className={classes.prevButton}
-          onClick={() => ref?.current?.slidePrev()}
-        >
-          <BsChevronCompactLeft />
-        </button>
-        <CarouselBox>
-          <AliceCarousel
-            responsive={responsive}
-            mouseTracking
-            infinite={1000}
-            animationDuration={1000}
-            disableDotsControls
-            disableButtonsControls
-            autoPlay
-            paddingRight={300}
-            onChange={onSlideChange}
-            ref={ref}
-            value={slide}
-            items={items}
-          />
-        </CarouselBox>
-        <button
-          className={classes.nextButton}
-          onClick={() => ref?.current?.slideNext()}
-        >
-          <BsChevronCompactRight />
-        </button>
-      </div>
-    </Contain>
+    <Wrapper>
+      <h1>GOODS</h1>
+      <hr />
+      <Contain>
+        <div className={classes.absolute}>
+          <button
+            className={classes.prevButton}
+            onClick={() => ref?.current?.slidePrev()}
+          >
+            <BsChevronCompactLeft />
+          </button>
+          <CarouselBox>
+            <AliceCarousel
+              responsive={responsive}
+              mouseTracking
+              infinite={1000}
+              animationDuration={1000}
+              disableDotsControls
+              disableButtonsControls
+              autoPlay
+              paddingRight={300}
+              onChange={onSlideChange}
+              ref={ref}
+              value={slide}
+              items={items}
+            />
+          </CarouselBox>
+          <button
+            className={classes.nextButton}
+            onClick={() => ref?.current?.slideNext()}
+          >
+            <BsChevronCompactRight />
+          </button>
+        </div>
+      </Contain>
+    </Wrapper>
   );
 }
 
 export default GoodsCarousel;
-
+const Wrapper = styled.div`
+  h1 {
+    color: #000;
+    font-family: Pretendard;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    top: 10%;
+  }
+`;
 const Contain = styled.div`
   display: flex;
   height: 50rem;
@@ -193,7 +207,7 @@ width: 300px;
 `;
 const CarouselBox = styled.div`
   width: 1200px;
-  height: 600px;
+  height: 400px;
   position: relative;
   top: 0;
   left: 0;
