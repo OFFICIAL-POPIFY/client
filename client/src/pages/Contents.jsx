@@ -6,8 +6,7 @@ import GoodsCarousel2 from "../components/carousel/GoodsCarousel2";
 import styled from "styled-components";
 function Contents() {
   return (
-    <Container>
-      <></>
+    <div>
 
       <div>
         <Thumbnail />
@@ -19,7 +18,8 @@ function Contents() {
         <CommentForm />
       </div>
       <MapContainer />
-    </Container>
+      
+    </div>
   );
 }
 
