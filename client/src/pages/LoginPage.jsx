@@ -2,15 +2,16 @@ import React from "react";
 import { useRef, useState, useEffect, useContext } from "react";
 import AuthContext from "../context/AuthProvider";
 import axios from "../api/axios";
-
 import classes from "./LoginPage.module.css";
 import { Link } from "react-router-dom";
-const LOGIN_URL = "/login";
+
+const LOGIN_URL = "/users/login";
 
 function Login() {
   const { setAuth } = useContext(AuthContext);
   const userRef = useRef(null);
   const errRef = useRef();
+
   const [user, setUser] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [password, setPassword] = useState("");
@@ -73,37 +74,38 @@ function Login() {
                 {errMsg}
               </p>
               <div className={classes.control}>
-                <label htmlFor="id"></label>
+                <label htmlFor="id">아이디</label>
                 <input
-                  placeholder="아이디"
                   type="text"
                   id="id"
                   autoComplete="off"
                   onChange={(e) => setUser(e.target.value)}
                   value={user}
                   required
-                  ref={userRef} // Ref 객체에 DOM 요소를 참조하도록 설정
+                  ref={userRef}
                 />
               </div>
               <div className={classes.control}>
-                <label htmlFor="password"></label>
+                <label htmlFor="password">비밀번호</label>
                 <input
-                  placeholder="비밀번호"
                   type="password"
                   id="password"
-                  autoComplete="off"
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
                   required
                 />
               </div>
-              <button>Login</button>
+              <div className={classes.control}>
+                <input type="submit" value="LOGIN" className={classes.login} />
+              </div>
+              <Link to="/signup">회원가입</Link>
             </form>
-            <Link to="/signup">회원가입</Link>
           </section>
         </main>
       ) : (
-        <p>로그인 성공</p>
+        <>
+          <p>로그인 성공</p>
+        </>
       )}
     </div>
   );
