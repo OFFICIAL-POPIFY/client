@@ -4,7 +4,7 @@ const imgaes = [
   "./images/thumb/thumbnail1.png",
   "./images/thumb/thumbnail2.png",
   "./images/thumb/thumbnail3.png",
-  "./images/thumb/thumbnail4.png",
+  "https://place.map.kakao.com/1583676983#none",
   "./images/thumb/thumbnail5.png",
   "./images/thumb/thumbnail6.png",
   "./images/thumb/thumbnail7.png",
