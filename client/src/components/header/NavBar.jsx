@@ -42,14 +42,13 @@ function NavBar() {
   return (
     <div>
       <header className={`${classes.header} ${isSticky ? classes.sticky : ""}`}>
-        <Link to="/">
+        <div className={classes.logoContainer}>
+         <Link to="/">
           <img src="./images/logo.png" alt="logo" className={classes.logo} />
-        </Link>
+         </Link>
+        </div>
         <nav className={classes.navigation}>
           <ul>
-            <li></li>
-            <li></li>
-            <li></li>
             <SearchBar placeholder="검색어를 입력하세요" data={PopupData} />
             <div className={classes.dropdown}>
               <button className={classes.dropdown_button}>
