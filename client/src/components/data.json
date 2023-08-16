@@ -138,7 +138,7 @@
       "contents":"",
       "goods":[{}],
       "reviews":[{}],
-      "placeurl": "http://place.map.kakao.com/78103886"
+      "placeurl": "https://place.map.kakao.com/781038861"
   },
     {
       "corporation": "호텔도슨 가든인성수 팝업스토어",
@@ -320,7 +320,7 @@
       "contents":"",
       "goods":[{}],
       "reviews":[{}],
-      "placeurl": "http://place.map.kakao.com/10441862601"
+      "placeurl": "https://place.map.kakao.com/1044186260"
   },
    {
     "corporation": "경양식1985 팝업스토어",
@@ -348,7 +348,7 @@
       "contents":"",
       "goods":[{}],
       "reviews":[{}],
-      "placeurl":"http://place.map.kakao.com/1211361024"
+      "placeurl":"https://place.map.kakao.com/330559186"
   },
   {     
       "corporation": "누텍스처 신세계백화점 강남 팝업스토어",
@@ -522,7 +522,7 @@
 "placeurl":"http://place.map.kakao.com/1681442850"
       
   },
-  {"corporation": "프로젝트555",
+  {"corporation": "메타그라운드",
   "term": "2022.03.24 ~ 2023.12.17",
   "location": "서울 성동구 성수동1가 656-335",
   "reservation": "예약가능",
