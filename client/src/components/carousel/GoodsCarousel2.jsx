@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import "react-alice-carousel/lib/alice-carousel.css";
 import AliceCarousel from "react-alice-carousel";
 import styled from "styled-components";
+import classes from "./Thumbnail.module.css";
+import { BsChevronCompactLeft } from "react-icons/bs";
+import { BsChevronCompactRight } from "react-icons/bs";
 function GoodsCarousel() {
+  const [slide, setSlide] = useState("");
+  const onSlideChange = (e) => {
+    e.preventDefault();
+    setSlide(e.item);
+  };
+
   const responsive = {
     0: {
       items: 2,
@@ -52,19 +61,40 @@ function GoodsCarousel() {
       </ItemsContain>
     );
   });
+  const ref = useRef(null);
 
   return (
     <Contain>
-      <AliceCarousel
-        responsive={responsive}
-        mouseTracking
-        infinite={1000}
-        animationDuration={1000}
-        disableDotsControls
-        autoPlay
-        paddingRight={300}
-        items={items}
-      />
+      <div className={classes.absolute}>
+        <button
+          className={classes.prevButton}
+          onClick={() => ref?.current?.slidePrev()}
+        >
+          <BsChevronCompactLeft />
+        </button>
+        <CarouselBox>
+          <AliceCarousel
+            responsive={responsive}
+            mouseTracking
+            infinite={1000}
+            animationDuration={1000}
+            disableDotsControls
+            disableButtonsControls
+            autoPlay
+            paddingRight={300}
+            onChange={onSlideChange}
+            ref={ref}
+            value={slide}
+            items={items}
+          />
+        </CarouselBox>
+        <button
+          className={classes.nextButton}
+          onClick={() => ref?.current?.slideNext()}
+        >
+          <BsChevronCompactRight />
+        </button>
+      </div>
     </Contain>
   );
 }
@@ -73,6 +103,8 @@ export default GoodsCarousel;
 
 const Contain = styled.div`
   display: flex;
+  height: 50rem;
+  justify-content: space-between;
   align-items: center;
   margin: 0 auto;
   .alice-wrapper {
@@ -158,4 +190,11 @@ width: 300px;
     text-align: left;
     
   }
+`;
+const CarouselBox = styled.div`
+  width: 1200px;
+  height: 600px;
+  position: relative;
+  top: 0;
+  left: 0;
 `;
