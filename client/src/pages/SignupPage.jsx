@@ -5,7 +5,7 @@ import axios from "../api/axios";
 
 import classes from "./LoginPage.module.css";
 import { Link } from "react-router-dom";
-const SiGNUP_URL = "/signup";
+const SiGNUP_URL = "/users/signup";
 
 function Login() {
   const { setAuth } = useContext(AuthContext);
@@ -17,6 +17,28 @@ function Login() {
   const [succsess, setSuccsess] = useState(false);
   const [passwordConfrim, setPasswordConfrim] = useState("");
   const [email, setEmail] = useState("");
+  const handleCheckDuplicate = async () => {
+    try {
+      const response = await axios.post(
+        "/users/id/:user_id/exist", // 중복확인을 위한 API 엔드포인트
+        JSON.stringify({ user }),
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.data.isDuplicate) {
+        setErrMsg("이미 사용 중인 아이디입니다.");
+      } else {
+        setErrMsg("");
+        // 사용 가능한 아이디라면 메시지 표시 또는 상태 업데이트 등을 수행할 수 있습니다.
+      }
+    } catch (err) {
+      console.error("중복확인 오류:", err);
+    }
+  };
   useEffect(() => {
     if (userRef.current) {
       userRef.current.focus();
@@ -74,29 +96,41 @@ function Login() {
                 {errMsg}
               </p>
               <div className={classes.control}>
-                <label htmlFor="id"></label>
-                <input
-                  placeholder="아이디"
-                  type="text"
-                  id="id"
-                  autoComplete="off"
-                  onChange={(e) => setUser(e.target.value)}
-                  value={user}
-                  required
-                  ref={userRef} // Ref 객체에 DOM 요소를 참조하도록 설정
-                />
+                <label className={classes.labelContainer} htmlFor="id"></label>
+                <div className={classes.inputContainer}>
+                  <input
+                    placeholder="아이디"
+                    type="text"
+                    id="id"
+                    autoComplete="off"
+                    onChange={(e) => setUser(e.target.value)}
+                    value={user}
+                    required
+                    ref={userRef}
+                  />
+                  {!succsess && (
+                    <button
+                      type="submit"
+                      className={classes.duplicateButton}
+                      onClick={handleCheckDuplicate}
+                    >
+                      중복확인
+                    </button>
+                  )}
+                </div>
               </div>
               <div className={classes.control}>
-                <label htmlFor="password"></label>
-                <input
-                  placeholder="비밀번호"
-                  type="password"
-                  id="password"
-                  autoComplete="off"
-                  onChange={(e) => setPassword(e.target.value)}
-                  value={password}
-                  required
-                />
+                <label htmlFor="password">
+                  <input
+                    placeholder="비밀번호"
+                    type="password"
+                    id="password"
+                    autoComplete="off"
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                    required
+                  />
+                </label>
               </div>
               <div className={classes.control}>
                 <label htmlFor="passwordConfirm"></label>
@@ -108,21 +142,11 @@ function Login() {
                   onChange={(e) => setPasswordConfrim(e.target.value)}
                   value={passwordConfrim}
                   required
-                />
+                ></input>
               </div>
-              {/* <div className={classes.control}>
-                <label htmlFor="email"></label>
-                <input
-                  placeholder="이메일"
-                  type="email"
-                  id="email"
-                  autoComplete="off"
-                  onChange={(e) => setEmail(e.target.value)}
-                  value={email}
-                  required
-                />
-              </div> */}
-              <button>회원가입</button>
+              <button type="submit" className={classes.login}>
+                SIGN UP
+              </button>
             </form>
             <Link to="/login">로그인</Link>
           </section>

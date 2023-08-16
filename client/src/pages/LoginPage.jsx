@@ -2,15 +2,16 @@ import React from "react";
 import { useRef, useState, useEffect, useContext } from "react";
 import AuthContext from "../context/AuthProvider";
 import axios from "../api/axios";
-
 import classes from "./LoginPage.module.css";
 import { Link } from "react-router-dom";
-const LOGIN_URL = "/login";
+
+const LOGIN_URL = "/users/login";
 
 function Login() {
   const { setAuth } = useContext(AuthContext);
   const userRef = useRef(null);
   const errRef = useRef();
+
   const [user, setUser] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [password, setPassword] = useState("");
@@ -61,7 +62,7 @@ function Login() {
   return (
     <div>
       LoginPage
-      {!succsess ? (
+      {succsess ? (
         <main className={classes.auth}>
           <section>
             <form onSubmit={handlerSubmit}>
@@ -91,19 +92,22 @@ function Login() {
                   placeholder="비밀번호"
                   type="password"
                   id="password"
-                  autoComplete="off"
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
                   required
                 />
               </div>
-              <button>Login</button>
+              <button type="submit" className={classes.login}>
+                LOGIN
+              </button>
             </form>
             <Link to="/signup">회원가입</Link>
           </section>
         </main>
       ) : (
-        <p>로그인 성공</p>
+        <>
+          <Link to="/mypage">mypage</Link>
+        </>
       )}
     </div>
   );

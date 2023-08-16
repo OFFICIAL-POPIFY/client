@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { Outlet } from "react-router-dom";
-import Top from '../components/Top';
-import NavBar from '../components/NavBar';
-import RollingBanner from '../components/RollingBanner';
+import Top from '../components/header/Top';
+import NavBar from '../components/header/NavBar';
+import RollingBanner from '../components/header/RollingBanner';
 import InnerLayout from "./InnnerLayout";
 import Footer from "../components/Footer";
 import "../App.css";
@@ -29,14 +29,14 @@ function LayoutBox() {
 
 export default LayoutBox;
 
-const Layout = styled.div`
+export const Layout = styled.div`
 position: relative;
 min-width: 120rem;
 height: 100%;
 margin: 0   auto;
 `;
 
-const Document = styled.div`
+export const Document = styled.div`
 display: flex;
 flex-direction: column;
 min-height: calc(100vh - 36rem);

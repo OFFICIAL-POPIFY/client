@@ -1,5 +1,5 @@
 // NavBar.js
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import classes from "./NavBar.module.css";
 import { IoMdLogIn } from "react-icons/io";
@@ -7,15 +7,24 @@ import { IoMdLogOut } from "react-icons/io";
 import { BsInstagram } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import SearchBar from "./SearchBar";
-import PopupData from "./data.json";
-
+import PopupData from "../data.json";
+import axios from "../../api/axios";
+import AuthContext from "../../context/AuthProvider";
 function NavBar() {
   const [isSticky, setIsSticky] = useState(false);
-  const logout = (e) => {
+  const { setAuth } = useContext(AuthContext);
+  const handleLogout = async (e) => {
     e.preventDefault();
-    localStorage.removeItem("token");
-    window.location.href = "/login";
+    try {
+      window.location.href = "/login";
+      await axios.get("/users/logout");
+
+      setAuth(null);
+    } catch (error) {
+      console.error("로그아웃 오류:", error);
+    }
   };
+
   const handleScroll = () => {
     if (window.scrollY > 0) {
       setIsSticky(true);
@@ -52,7 +61,7 @@ function NavBar() {
                 <Link to="/login">
                   <IoMdLogIn />
                 </Link>
-                <Link onClick={logout}>
+                <Link onClick={handleLogout}>
                   <IoMdLogOut />
                 </Link>
                 <Link to="/mypage">Mypage</Link>
