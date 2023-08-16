@@ -96,30 +96,40 @@ function Login() {
                 {errMsg}
               </p>
               <div className={classes.control}>
-                <label htmlFor="id"></label>
-                <input
-                  placeholder="아이디"
-                  type="text"
-                  id="id"
-                  autoComplete="off"
-                  onChange={(e) => setUser(e.target.value)}
-                  value={user}
-                  required
-                  ref={userRef} // Ref 객체에 DOM 요소를 참조하도록 설정
-                />
-                <button onClick={handleCheckDuplicate}>중복확인</button>
+                <label className={classes.labelContainer} htmlFor="id"></label>
+                <div className={classes.inputContainer}>
+                  <input
+                    placeholder="아이디"
+                    type="text"
+                    id="id"
+                    autoComplete="off"
+                    onChange={(e) => setUser(e.target.value)}
+                    value={user}
+                    required
+                    ref={userRef}
+                  />
+                  {!succsess && (
+                    <button
+                      className={classes.duplicateButton}
+                      onClick={handleCheckDuplicate}
+                    >
+                      중복확인
+                    </button>
+                  )}
+                </div>
               </div>
               <div className={classes.control}>
-                <label htmlFor="password"></label>
-                <input
-                  placeholder="비밀번호"
-                  type="password"
-                  id="password"
-                  autoComplete="off"
-                  onChange={(e) => setPassword(e.target.value)}
-                  value={password}
-                  required
-                />
+                <label htmlFor="password">
+                  <input
+                    placeholder="비밀번호"
+                    type="password"
+                    id="password"
+                    autoComplete="off"
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                    required
+                  />
+                </label>
               </div>
               <div className={classes.control}>
                 <label htmlFor="passwordConfirm"></label>
@@ -131,21 +141,11 @@ function Login() {
                   onChange={(e) => setPasswordConfrim(e.target.value)}
                   value={passwordConfrim}
                   required
-                />
+                ></input>
               </div>
-              {/* <div className={classes.control}>
-                <label htmlFor="email"></label>
-                <input
-                  placeholder="이메일"
-                  type="email"
-                  id="email"
-                  autoComplete="off"
-                  onChange={(e) => setEmail(e.target.value)}
-                  value={email}
-                  required
-                />
-              </div> */}
-              <button className={classes.login}>SIGN UP</button>
+              <button type="button" className={classes.login}>
+                SIGN UP
+              </button>
             </form>
             <Link to="/login">로그인</Link>
           </section>
