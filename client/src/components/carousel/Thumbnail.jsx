@@ -4,8 +4,10 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import styled from "styled-components";
 import { useState } from "react";
 import classes from "./Thumbnail.module.css";
-import PopupData from "./data.json";
-import Information from "./Information";
+import PopupData from "../../../src/components/data.json";
+import Information from "../Information";
+import { BsChevronCompactLeft } from "react-icons/bs";
+import { BsChevronCompactRight } from "react-icons/bs";
 function Thumbnail() {
   const [slide, setSlide] = useState("");
   const onSlideChange = (e) => {
@@ -79,7 +81,7 @@ function Thumbnail() {
               className={classes.prevButton}
               onClick={() => ref?.current?.slidePrev()}
             >
-              이전
+              <BsChevronCompactLeft />
             </button>
             <CarouselBox>
               <AliceCarousel
@@ -102,7 +104,7 @@ function Thumbnail() {
               className={classes.nextButton}
               onClick={() => ref?.current?.slideNext()}
             >
-              이후
+              <BsChevronCompactRight />
             </button>
           </div>
         </Contain>

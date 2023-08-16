@@ -62,7 +62,7 @@ function Login() {
   return (
     <div>
       LoginPage
-      {!succsess ? (
+      {succsess ? (
         <main className={classes.auth}>
           <section>
             <form onSubmit={handlerSubmit}>
@@ -74,20 +74,22 @@ function Login() {
                 {errMsg}
               </p>
               <div className={classes.control}>
-                <label htmlFor="id">아이디</label>
+                <label htmlFor="id"></label>
                 <input
+                  placeholder="아이디"
                   type="text"
                   id="id"
                   autoComplete="off"
                   onChange={(e) => setUser(e.target.value)}
                   value={user}
                   required
-                  ref={userRef}
+                  ref={userRef} // Ref 객체에 DOM 요소를 참조하도록 설정
                 />
               </div>
               <div className={classes.control}>
-                <label htmlFor="password">비밀번호</label>
+                <label htmlFor="password"></label>
                 <input
+                  placeholder="비밀번호"
                   type="password"
                   id="password"
                   onChange={(e) => setPassword(e.target.value)}
@@ -95,16 +97,16 @@ function Login() {
                   required
                 />
               </div>
-              <div className={classes.control}>
-                <input type="submit" value="LOGIN" className={classes.login} />
-              </div>
-              <Link to="/signup">회원가입</Link>
+              <button type="submit" className={classes.login}>
+                LOGIN
+              </button>
             </form>
+            <Link to="/signup">회원가입</Link>
           </section>
         </main>
       ) : (
         <>
-          <p>로그인 성공</p>
+          <Link to="/mypage">mypage</Link>
         </>
       )}
     </div>

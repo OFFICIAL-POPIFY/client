@@ -1,41 +1,34 @@
 import React from "react";
+import {  Navigate } from "react-router-dom";
+import LayoutBox from "../src/ui/Layout";
+import LoginPage from "../src/pages/LoginPage";
+import SignupPage from "../src/pages/SignupPage";
+import InnerLayout from "./ui/InnnerLayout";
+import Top from "./components/header/Top";
+import Mypage from "./pages/Mypage";
+import NavBar from "./components/header/NavBar";
 import { Outlet } from "react-router-dom";
-import { Navigate } from "react-router-dom";
-import LoginPage from './pages/LoginPage';
-import SignupPage from './pages/SignupPage';
-function PrivateRoute({component:Component, ...rest}) {
-    const token = localStorage.getItem('accessToken');
-    if (!token && (Component === LoginPage || Component === SignupPage)) {
-      return <Component {...rest} />;
-    }
-  
-    if (!token) {
-      return <Navigate to="/login" />;
-    }
-  
-    return <Component {...rest} />;
+function PrivateRoute({ component: Component, ...rest }) {
+   const token = localStorage.getItem('accessToken');
+
+   if (token && (Component === LoginPage || Component === SignupPage)) {
+     return <Component {...rest} />;
+   }
+
+  if (!token) {
+    return <Navigate to="/mypage" />;
   }
-  
-  //   if (token) {
-  //     return component;
-  //   }
 
-  //   let target = "";
-
-  //   switch(component) {
-  //     case <Outlet/> : 
-  //       target = "/login";
-  //       break;
-  //       case <LoginPage/> : 
-  //       case <SignupPage/> : 
-  //       target = "/";
-  //       break;
-  //   }
-  //  if(!token){
-  //   return component;
-  //  }
-   
-  //   return <Navigate to={target} />;
-
+  return (
+    <LayoutBox>
+      <InnerLayout>
+        <Top />
+        <NavBar />
+        <Mypage />
+        <Outlet />
+      </InnerLayout>
+    </LayoutBox>
+  );
+}
 
 export default PrivateRoute;

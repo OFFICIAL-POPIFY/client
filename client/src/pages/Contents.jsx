@@ -1,8 +1,8 @@
 import React from "react";
-import Thumbnail from "../components/Thumbnail";
-import NewCarousel from "../components/NewCarousel";
+import Thumbnail from "../components/carousel/Thumbnail";
 import MapContainer from "../components/MapContainer";
 import CommentForm from "../components/CommentForm";
+import GoodsCarousel2 from "../components/carousel/GoodsCarousel2";
 import styled from "styled-components";
 function Contents() {
   return (
@@ -11,6 +11,9 @@ function Contents() {
 
       <div>
         <Thumbnail />
+      </div>
+      <div>
+        <GoodsCarousel2 />
       </div>
       <div>
         <CommentForm />

@@ -1,7 +1,7 @@
 import React from "react";
-import Cover from "../components/Cover";
-import StoreList from "../components/StoreList";
-import GoodsCarousel from "../components/GoodsCarousel";
+import Cover from "../components/carousel/Cover";
+import StoreList from "../components/carousel/StoreList";
+import GoodsCarousel from "../components/carousel/GoodsCarousel";
 import data from "../components/data.json";
 function MainPage() {
   return (
