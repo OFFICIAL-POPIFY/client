@@ -1,6 +1,5 @@
 import React from "react";
-import Thumbnail from "../components/Thumbnail";
-import NewCarousel from "../components/NewCarousel";
+import Thumbnail from "../components/carousel/Thumbnail";
 import MapContainer from "../components/MapContainer";
 import CommentForm from "../components/CommentForm";
 import styled from "styled-components";

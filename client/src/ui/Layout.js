@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { Outlet } from "react-router-dom";
-import Top from '../components/Top';
-import NavBar from '../components/NavBar';
-import RollingBanner from '../components/RollingBanner';
+import Top from '../components/header/Top';
+import NavBar from '../components/header/NavBar';
+import RollingBanner from '../components/header/RollingBanner';
 import InnerLayout from "./InnnerLayout";
 import Footer from "../components/Footer";
 import "../App.css";

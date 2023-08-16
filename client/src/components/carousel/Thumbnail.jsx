@@ -4,8 +4,8 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import styled from "styled-components";
 import { useState } from "react";
 import classes from "./Thumbnail.module.css";
-import PopupData from "./data.json";
-import Information from "./Information";
+import PopupData from "../../../src/components/data.json";
+import Information from "../Information";
 function Thumbnail() {
   const [slide, setSlide] = useState("");
   const onSlideChange = (e) => {

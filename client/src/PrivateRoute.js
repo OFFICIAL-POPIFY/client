@@ -1,21 +1,22 @@
 import React from "react";
-import { Outlet, Navigate } from "react-router-dom";
+import {  Navigate } from "react-router-dom";
 import LayoutBox from "../src/ui/Layout";
 import LoginPage from "../src/pages/LoginPage";
 import SignupPage from "../src/pages/SignupPage";
 import InnerLayout from "./ui/InnnerLayout";
-import Top from "./components/Top";
-import NavBar from "./components/NavBar";
-
+import Top from "./components/header/Top";
+import Mypage from "./pages/Mypage";
+import NavBar from "./components/header/NavBar";
+import { Outlet } from "react-router-dom";
 function PrivateRoute({ component: Component, ...rest }) {
-  const token = localStorage.getItem('accessToken');
+   const token = localStorage.getItem('accessToken');
 
-  if (!token && (Component === LoginPage || Component === SignupPage)) {
-    return <Component {...rest} />;
-  }
+   if (token && (Component === LoginPage || Component === SignupPage)) {
+     return <Component {...rest} />;
+   }
 
   if (!token) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/mypage" />;
   }
 
   return (
@@ -23,6 +24,7 @@ function PrivateRoute({ component: Component, ...rest }) {
       <InnerLayout>
         <Top />
         <NavBar />
+        <Mypage />
         <Outlet />
       </InnerLayout>
     </LayoutBox>

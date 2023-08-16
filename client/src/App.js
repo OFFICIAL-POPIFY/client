@@ -28,6 +28,7 @@ function App() {
             <Route path="/contents" element={<Contents />} />
           </Route>
           <Route path="/mypage" element={<PrivateRoute element={<Mypage />} />} />
+     
         </Routes>
       </AuthProvider>
 

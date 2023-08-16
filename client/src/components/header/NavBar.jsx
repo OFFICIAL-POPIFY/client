@@ -7,9 +7,9 @@ import { IoMdLogOut } from "react-icons/io";
 import { BsInstagram } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import SearchBar from "./SearchBar";
-import PopupData from "./data.json";
-import axios from "../api/axios";
-import AuthContext from "../context/AuthProvider";
+import PopupData from "../data.json";
+import axios from "../../api/axios";
+import AuthContext from "../../context/AuthProvider";
 function NavBar() {
   const [isSticky, setIsSticky] = useState(false);
   const { setAuth } = useContext(AuthContext);
@@ -17,9 +17,8 @@ function NavBar() {
     e.preventDefault();
     try {
       window.location.href = "/login";
-      await axios.get("/users/logout"); // 실제 엔드포인트는 서버에 맞게 변경
+      await axios.get("/users/logout");
 
-      // 로그아웃 상태로 변경
       setAuth(null);
     } catch (error) {
       console.error("로그아웃 오류:", error);

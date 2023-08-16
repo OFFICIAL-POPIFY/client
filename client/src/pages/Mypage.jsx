@@ -3,30 +3,19 @@ import Profile from "../components/Profile";
 import AuthContext from "../context/AuthProvider";
 import axios from "../api/axios";
 import styled from "styled-components";
-function Mypage({ password }) {
+
+function Mypage({ userPassword }) {
   const { setAuth } = useContext(AuthContext);
   const [passwordConfrim, setPasswordConfrim] = useState("");
-  const [succsess, setSuccsess] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const changeRef = useRef();
-  const handleCheckPassword = async (e) => {
+  console.log("확인");
+  const handleCheckPassword = (e) => {
     e.preventDefault();
-    if (passwordConfrim === password) {
-      // userPassword는 현재 로그인된 사용자의 비밀번호일 것으로 가정합니다.
-      try {
-        const response = await axios.patch(
-          "/users/profile",
-          JSON.stringify({ passwordConfrim }),
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        setSuccsess(true);
-      } catch (err) {
-        console.error("비밀번호 변경 오류:", err);
-      }
+    if (passwordConfrim === userPassword) {
+      setSuccess(true);
+      console.log("비밀번호 일치");
     } else {
       console.error("비밀번호가 일치하지 않습니다.");
     }
@@ -44,31 +33,43 @@ function Mypage({ password }) {
           },
         }
       );
-      setSuccsess(true);
+      setSuccess(true);
+      const roles = response?.data?.roles;
+      setAuth({ passwordConfrim, roles });
     } catch (err) {
       console.error("비밀번호 변경 오류:", err);
     }
   };
 
-  useEffect(() => {}, [passwordConfrim]);
   return (
     <div>
-      <Profile />
-      <Styledform onSubmit={formSubmit}>
-        <label htmlFor="change">비밀번호 변경</label>
-        <input
-          ref={changeRef}
-          value={passwordConfrim}
-          type="password"
-          placeholder="비밀번호 변경"
-          onChange={(e) => setPasswordConfrim(e.target.value)}
-        />
-        <button onClick={handleCheckPassword}>변경</button>
-      </Styledform>
+      {!success ? (
+        <>
+          <Profile />
+          <Styledform onSubmit={formSubmit}>
+            <label htmlFor="change">비밀번호 변경</label>
+            <input
+              ref={changeRef}
+              value={passwordConfrim}
+              type="password"
+              placeholder="비밀번호 변경"
+              onChange={(e) => setPasswordConfrim(e.target.value)}
+            />
+            <button onClick={handleCheckPassword}>변경</button>
+          </Styledform>
+        </>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
 
-export default Mypage;
+const Styledform = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+`;
 
-const Styledform = styled.form``;
+export default Mypage;
