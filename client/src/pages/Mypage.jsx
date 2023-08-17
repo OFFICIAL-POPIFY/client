@@ -4,16 +4,16 @@ import AuthContext from "../context/AuthProvider";
 import axios from "../api/axios";
 import styled from "styled-components";
 
-function Mypage({ userPassword }) {
-  const { setAuth } = useContext(AuthContext);
+function Mypage() {
+  const { setAuth, value } = useContext(AuthContext);
   const [passwordConfrim, setPasswordConfrim] = useState("");
   const [success, setSuccess] = useState(false);
-
+  const { userPassord } = value;
   const changeRef = useRef();
   console.log("확인");
   const handleCheckPassword = (e) => {
     e.preventDefault();
-    if (passwordConfrim === userPassword) {
+    if (passwordConfrim === userPassord) {
       setSuccess(true);
       console.log("비밀번호 일치");
     } else {

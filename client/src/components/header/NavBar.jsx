@@ -13,6 +13,7 @@ import AuthContext from "../../context/AuthProvider";
 function NavBar() {
   const [isSticky, setIsSticky] = useState(false);
   const { setAuth } = useContext(AuthContext);
+
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
