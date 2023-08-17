@@ -54,7 +54,6 @@ function Cover() {
             grabCursor={true}
             spaceBetween={-300}
             loop={true}
-            mouseWheel={true}
             slidesPerView={2}
             coverflowEffect={{
               rotate: 0,

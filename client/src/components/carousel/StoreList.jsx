@@ -49,7 +49,7 @@ const imgaes = [
 ];
 function StoreList({ data }) {
   const storeItems = data.map((store, index) => (
-    <div className="card">
+    <div key={index} className="card">
       <img src={imgaes[index]} alt="" />
       <p>{store.corporation}</p>
       <p>{store.location}</p>

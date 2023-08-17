@@ -51,7 +51,7 @@ function NavBar() {
         </div>
         <nav className={classes.navigation}>
           <ul>
-            <div class="container">
+            <div className={classes.container}>
               <SearchBar placeholder="Search..." data={PopupData} />
             </div>
             <div className={classes.dropdown}>

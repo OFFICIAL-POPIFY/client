@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useContext } from "react";
+import React, { useRef, useState, useContext } from "react";
 import Profile from "../components/Profile";
 import AuthContext from "../context/AuthProvider";
 import axios from "../api/axios";
@@ -8,12 +8,12 @@ function Mypage() {
   const { setAuth, value } = useContext(AuthContext);
   const [passwordConfrim, setPasswordConfrim] = useState("");
   const [success, setSuccess] = useState(false);
-  const { userPassord } = value;
+  const { userPassword } = value;
   const changeRef = useRef();
   console.log("확인");
   const handleCheckPassword = (e) => {
     e.preventDefault();
-    if (passwordConfrim === userPassord) {
+    if (passwordConfrim === userPassword) {
       setSuccess(true);
       console.log("비밀번호 일치");
     } else {

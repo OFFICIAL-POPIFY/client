@@ -3,7 +3,7 @@ import {  Navigate } from "react-router-dom";
 import LayoutBox from "../src/ui/Layout";
 import InnerLayout from "./ui/InnnerLayout";
 import Top from "./components/header/Top";
-import Mypage from "./pages/Mypage";
+
 import NavBar from "./components/header/NavBar";
 import { Outlet } from "react-router-dom";
 function PrivateRoute({ element: Element }) {
@@ -17,7 +17,7 @@ function PrivateRoute({ element: Element }) {
           <Top />
           <NavBar />
           <Element />
-          <Mypage/>
+
           <Outlet />
         </InnerLayout>
       </LayoutBox>
