@@ -1,5 +1,6 @@
 import React, { useRef, useState, useContext } from "react";
 import Profile from "../components/Profile";
+import { Navigate } from "react-router-dom";
 import AuthContext from "../context/AuthProvider";
 import axios from "../api/axios";
 import styled from "styled-components";
@@ -11,6 +12,9 @@ function Mypage() {
   const { userPassword } = value;
   const changeRef = useRef();
   console.log("확인");
+  const token = localStorage.getItem("token");
+
+  // 조건문 밖에서 함수 정의
   const handleCheckPassword = (e) => {
     e.preventDefault();
     if (passwordConfrim === userPassword) {
@@ -41,25 +45,32 @@ function Mypage() {
     }
   };
 
+  // 조건문 내에서 JSX 렌더링 결정
   return (
     <div>
-      {!success ? (
-        <>
-          <Profile />
-          <Styledform onSubmit={formSubmit}>
-            <label htmlFor="change">비밀번호 변경</label>
-            <input
-              ref={changeRef}
-              value={passwordConfrim}
-              type="password"
-              placeholder="비밀번호 변경"
-              onChange={(e) => setPasswordConfrim(e.target.value)}
-            />
-            <button onClick={handleCheckPassword}>변경</button>
-          </Styledform>
-        </>
+      {token ? (
+        <Navigate to="/login" />
       ) : (
-        ""
+        <>
+          {!success ? (
+            <>
+              <Profile />
+              <Styledform onSubmit={formSubmit}>
+                <label htmlFor="change">비밀번호 변경</label>
+                <input
+                  ref={changeRef}
+                  value={passwordConfrim}
+                  type="password"
+                  placeholder="비밀번호 변경"
+                  onChange={(e) => setPasswordConfrim(e.target.value)}
+                />
+                <button onClick={handleCheckPassword}>변경</button>
+              </Styledform>
+            </>
+          ) : (
+            ""
+          )}
+        </>
       )}
     </div>
   );

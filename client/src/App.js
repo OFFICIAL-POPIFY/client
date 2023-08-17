@@ -11,7 +11,7 @@ import Mypage from '../src/pages/Mypage';
 import LoginPage from '../src/pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import Layout from './ui/Layout';
-import PrivateRoute from './PrivateRoute';
+
 import MainPage from './pages/MainPage';
 
 function App() {
@@ -26,8 +26,10 @@ function App() {
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/contents" element={<Contents />} />
+            <Route path="/mypage" element={<Mypage />}/>
           </Route>
-          <Route path="/mypage" element={<PrivateRoute element={<Mypage />} />} />
+         
+
      
         </Routes>
       </AuthProvider>
