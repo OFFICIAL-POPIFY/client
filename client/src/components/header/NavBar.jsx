@@ -17,8 +17,9 @@ function NavBar() {
     e.preventDefault();
     try {
       window.location.href = "/login";
-      await axios.get("/users/logout");
+      await axios.get("/users/logout"); // 실제 엔드포인트는 서버에 맞게 변경
 
+      // 로그아웃 상태로 변경
       setAuth(null);
     } catch (error) {
       console.error("로그아웃 오류:", error);
@@ -43,13 +44,15 @@ function NavBar() {
     <div>
       <header className={`${classes.header} ${isSticky ? classes.sticky : ""}`}>
         <div className={classes.logoContainer}>
-         <Link to="/">
-          <img src="./images/logo.png" alt="logo" className={classes.logo} />
-         </Link>
+          <Link to="/">
+            <img src="./images/logo.png" alt="logo" className={classes.logo} />
+          </Link>
         </div>
         <nav className={classes.navigation}>
           <ul>
-            <SearchBar placeholder="검색어를 입력하세요" data={PopupData} />
+            <div class="container">
+              <SearchBar placeholder="Search..." data={PopupData} />
+            </div>
             <div className={classes.dropdown}>
               <button className={classes.dropdown_button}>
                 <GiHamburgerMenu />
