@@ -16,7 +16,7 @@ function PrivateRoute({ component: Component, ...rest }) {
    }
 
   if (!token) {
-    return <Navigate to="/mypage" />;
+    return <Navigate to="/login" />;
   }
 
   return (

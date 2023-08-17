@@ -15,8 +15,10 @@
   align-items: center;
  }
  .logoContainer img{
-  top:-50%;
-  right:42%
+  top:-8%;
+  right:42%;
+  width: 15rem;
+    height: 6rem;
  }
  .logo {
   position: absolute;
