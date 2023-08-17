@@ -28,9 +28,6 @@ function App() {
             <Route path="/contents" element={<Contents />} />
             <Route path="/mypage" element={<Mypage />}/>
           </Route>
-         
-
-     
         </Routes>
       </AuthProvider>
 
