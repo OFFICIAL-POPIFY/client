@@ -5,7 +5,7 @@ import axios from "../api/axios";
 import classes from "./LoginPage.module.css";
 import { Link } from "react-router-dom";
 
-const LOGIN_URL = "/users/login";
+const LOGIN_URL = `${process.env.REACT_APP_BASE_URL}/users/login`;
 
 function Login() {
   const { setAuth } = useContext(AuthContext);
@@ -21,8 +21,7 @@ function Login() {
     if (userRef.current) {
       userRef.current.focus();
     }
-  }, [succsess]); // 수행 조건 변경
-
+  }, [succsess]);
   useEffect(() => {
     setErrMsg("");
   }, [user, password]);
@@ -83,7 +82,7 @@ function Login() {
                   onChange={(e) => setUser(e.target.value)}
                   value={user}
                   required
-                  ref={userRef} // Ref 객체에 DOM 요소를 참조하도록 설정
+                  ref={userRef}
                 />
               </div>
               <div className={classes.control}>

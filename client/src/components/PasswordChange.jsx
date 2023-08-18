@@ -109,7 +109,6 @@ const Container = styled.div`
 `;
 const Top = styled.div`
   width: 28rem;
-
   height: 3.5rem;
 `;
 const Styledform = styled.form`
@@ -117,6 +116,7 @@ const Styledform = styled.form`
   flex-direction: column;
   align-items: center;
   width: 37rem;
+  padding-bottom: 1rem;
   border: 1px solid #e5e5e5;
   margin-top: 20px;
   button {

@@ -3,7 +3,7 @@ import Profile from "../components/Profile";
 import { Navigate } from "react-router-dom";
 import styled from "styled-components";
 import PasswordChange from "../components/PasswordChange";
-
+import MyReview from "../components/MyReview";
 function Mypage() {
   const [success, setSuccess] = useState(false);
   const token = localStorage.getItem("token");
@@ -18,6 +18,7 @@ function Mypage() {
             <>
               <Profile />
               <PasswordChange />
+              <MyReview />
             </>
           ) : (
             ""
