@@ -38,7 +38,10 @@ margin: 0   auto;
 export const Document = styled.div`
 display: flex;
 flex-direction: column;
-min-height: calc(100vh - 36rem);
-margin: 0 20rem 0 20rem;
+//화면이 위아래로 전부 보이게 하기 위해 추가
+min-height: 100vh;
+
+margin: 0 20rem ;
+flex: 1; 
 
 `;
