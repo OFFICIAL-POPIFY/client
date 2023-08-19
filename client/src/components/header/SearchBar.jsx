@@ -35,6 +35,7 @@ function SearchBar({ placeholder, data }) {
           <div onClick={searchHandler}>
             <BsSearchHeart />
           </div>
+          <div className={classes.menu}>MENU</div>
         </div>
         {filteredData.length !== 0 && (
           <div className={classes.data_result}>

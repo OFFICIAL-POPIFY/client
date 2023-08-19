@@ -18,9 +18,7 @@ function NavBar() {
     e.preventDefault();
     try {
       window.location.href = "/login";
-      await axios.get("/users/logout"); // 실제 엔드포인트는 서버에 맞게 변경
-
-      // 로그아웃 상태로 변경
+      await axios.get("/users/logout");
       setAuth(null);
     } catch (error) {
       console.error("로그아웃 오류:", error);
@@ -56,7 +54,7 @@ function NavBar() {
             </div>
             <div className={classes.dropdown}>
               <button className={classes.dropdown_button}>
-                <GiHamburgerMenu />
+                <GiHamburgerMenu style={{ width: "30px", height: "30px" }} />
               </button>
 
               <div className={classes.dropdown_contents}>
