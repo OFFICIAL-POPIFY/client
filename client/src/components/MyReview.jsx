@@ -3,25 +3,54 @@ import styled from "styled-components";
 import axios from "../api/axios";
 
 function MyReview() {
+  const [reviews, setReviews] = useState([]);
   useEffect(() => {
     callReview();
   }, []);
   const callReview = async () => {
-    const response = await axios.get(
-      `${process.env.REACT_APP_BASE_URL}/reviews`
-    );
-    console.log(response.data);
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_BASE_URL}/reviews`
+      );
+      setReviews(response.data);
+    } catch (error) {
+      console.error("리뷰 불러오기 오류:", error);
+    }
   };
   return (
     <Container>
       <h1>내가 쓴 리뷰</h1>
-      <Review></Review>
+      <Review>
+        <ul>
+          {reviews.map((review) => (
+            <li key={review.id}>{review.content}</li>
+          ))}
+        </ul>
+      </Review>
     </Container>
   );
 }
 
 export default MyReview;
 const Container = styled.div`
+  h1 {
+    color: #000;
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
   display: flex;
 `;
-const Review = styled.div``;
+const Review = styled.div`
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  li {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+`;

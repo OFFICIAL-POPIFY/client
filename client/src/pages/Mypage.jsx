@@ -15,11 +15,15 @@ function Mypage() {
       ) : (
         <>
           {!success ? (
-            <>
-              <Profile />
-              <PasswordChange />
-              <MyReview />
-            </>
+            <Wrap>
+              <div className="passwordChange">
+                <Profile />
+                <PasswordChange />
+              </div>
+              <div className="myReview">
+                <MyReview />
+              </div>
+            </Wrap>
           ) : (
             ""
           )}
@@ -29,11 +33,8 @@ function Mypage() {
   );
 }
 
-const Styledform = styled.form`
+const Wrap = styled.form`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
 `;
 
 export default Mypage;
