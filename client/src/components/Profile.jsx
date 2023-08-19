@@ -10,7 +10,13 @@ function Profile() {
     // 프로필 정보를 백엔드에서 가져오는 함수
     const fetchProfile = async () => {
       try {
-        const response = await axios.get("/users/profile");
+        const response = await axios.get("/users/profile", {
+          headers: {
+            "Content-Type": "application/json",
+            withCredentials: true,
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        });
         setProfile(response.data);
         setLoading(false);
       } catch (err) {

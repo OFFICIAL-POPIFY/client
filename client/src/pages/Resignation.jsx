@@ -4,14 +4,24 @@ import axios from "../api/axios";
 
 function Resignation() {
   const [errorMessage, setErrorMessage] = useState("");
+
   const resignHandler = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/users/profile`
+        `${process.env.REACT_APP_BASE_URL}/users/profile`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
       );
 
       const userId = response.data.id;
-      await axios.delete(`${process.env.REACT_APP_BASE_URL}/users/${userId}`);
+      await axios.delete(`${process.env.REACT_APP_BASE_URL}/users/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      });
 
       alert("회원 탈퇴가 완료되었습니다.");
     } catch (error) {
@@ -54,6 +64,6 @@ const Wrap = styled.div`
     font-weight: 400;
     line-height: normal;
   }
+};
 `;
-
 export default Resignation;
