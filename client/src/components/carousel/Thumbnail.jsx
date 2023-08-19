@@ -149,6 +149,10 @@ const ItemsContain = styled.div`
 `;
 
 const ItemsWrap = styled.div`
+  img {
+    width: 40rem;
+    height: 30rem;
+  }
   display: flex;
   width: fit-content;
   height: 300px;

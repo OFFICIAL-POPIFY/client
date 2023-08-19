@@ -52,7 +52,8 @@ const Wrapper = styled.div`
   border: 0.5px solid #959595;
   background: #fff;
   margin: 0 auto;
-
+  top:-6rem
+  position: relative;
   ul {
     display: flex;
     justify-content: space-around;
