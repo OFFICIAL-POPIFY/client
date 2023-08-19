@@ -4,6 +4,7 @@ import { Navigate } from "react-router-dom";
 import styled from "styled-components";
 import PasswordChange from "../components/PasswordChange";
 import MyReview from "../components/MyReview";
+import Resignation from "./Resignation";
 function Mypage() {
   const [success, setSuccess] = useState(false);
   const token = localStorage.getItem("token");
@@ -23,6 +24,9 @@ function Mypage() {
               <div className="myReview">
                 <MyReview />
               </div>
+              <div>
+                <Resignation />
+              </div>
             </Wrap>
           ) : (
             ""
@@ -35,6 +39,8 @@ function Mypage() {
 
 const Wrap = styled.form`
   display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export default Mypage;

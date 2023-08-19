@@ -30,6 +30,7 @@ display: flex;
     overflow-y: auto;
     position: absolute;
     top: 100%;
+    z-index: 10;
 }
 
 .data_result::-webkit-scrollbar{

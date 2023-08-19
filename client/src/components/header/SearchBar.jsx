@@ -5,6 +5,9 @@ import { BsSearchHeart } from "react-icons/bs";
 function SearchBar({ placeholder, data }) {
   const [filteredData, setFilteredData] = useState([]);
 
+  const searchHandler = () => {
+    setFilteredData([]);
+  };
   const handleFilter = (event) => {
     const searchWord = event.target.value;
 
@@ -29,9 +32,9 @@ function SearchBar({ placeholder, data }) {
             placeholder={placeholder}
             onChange={handleFilter}
           />
-          <button>
+          <div onClick={searchHandler}>
             <BsSearchHeart />
-          </button>
+          </div>
         </div>
         {filteredData.length !== 0 && (
           <div className={classes.data_result}>

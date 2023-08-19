@@ -33,6 +33,9 @@ function MyReview() {
 
 export default MyReview;
 const Container = styled.div`
+  width: 770px;
+  height: 400px;
+  flex-shrink: 0;
   h1 {
     color: #000;
     font-family: Pretendard;
