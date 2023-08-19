@@ -1,21 +1,42 @@
 import React from "react";
 import styled from "styled-components";
-
+import { Link } from "react-router-dom";
 function InnerNav() {
+  const mapHandler = () => {
+    const documentHeight = Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.offsetHeight,
+      document.body.clientHeight,
+      document.documentElement.clientHeight
+    );
+
+    window.scrollTo({ top: documentHeight, behavior: "smooth" });
+  };
+
   return (
     <Wrapper>
       <ul>
         <li>
-          <div>INFORMATION</div>
+          <div>
+            <Link to="/">INFORMATION</Link>
+          </div>
         </li>
         <li>
-          <div>INTRODUCTION</div>
+          <div>
+            <Link to="/about">INTRODUCTION</Link>
+          </div>
         </li>
         <li>
-          <div>REVIEW</div>
+          <div>
+            <Link to="/contents">REVIEW</Link>
+          </div>
         </li>
         <li>
-          <div>MAP</div>
+          <div>
+            <div onClick={mapHandler}>MAP</div>
+          </div>
         </li>
       </ul>
     </Wrapper>
@@ -59,5 +80,9 @@ const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
     background-color: black;
+  }
+
+  li > div > a:visited {
+    color: white;
   }
 `;

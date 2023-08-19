@@ -1,75 +1,46 @@
-import React, { useRef, useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 import Profile from "../components/Profile";
-import AuthContext from "../context/AuthProvider";
-import axios from "../api/axios";
+import { Navigate } from "react-router-dom";
 import styled from "styled-components";
-
-function Mypage({ userPassword }) {
-  const { setAuth } = useContext(AuthContext);
-  const [passwordConfrim, setPasswordConfrim] = useState("");
+import PasswordChange from "../components/PasswordChange";
+import MyReview from "../components/MyReview";
+import Resignation from "./Resignation";
+function Mypage() {
   const [success, setSuccess] = useState(false);
-
-  const changeRef = useRef();
-  console.log("확인");
-  const handleCheckPassword = (e) => {
-    e.preventDefault();
-    if (passwordConfrim === userPassword) {
-      setSuccess(true);
-      console.log("비밀번호 일치");
-    } else {
-      console.error("비밀번호가 일치하지 않습니다.");
-    }
-  };
-
-  const formSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.patch(
-        "/users/profile",
-        JSON.stringify({ passwordConfrim }),
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      setSuccess(true);
-      const roles = response?.data?.roles;
-      setAuth({ passwordConfrim, roles });
-    } catch (err) {
-      console.error("비밀번호 변경 오류:", err);
-    }
-  };
+  const token = localStorage.getItem("token");
 
   return (
     <div>
-      {!success ? (
-        <>
-          <Profile />
-          <Styledform onSubmit={formSubmit}>
-            <label htmlFor="change">비밀번호 변경</label>
-            <input
-              ref={changeRef}
-              value={passwordConfrim}
-              type="password"
-              placeholder="비밀번호 변경"
-              onChange={(e) => setPasswordConfrim(e.target.value)}
-            />
-            <button onClick={handleCheckPassword}>변경</button>
-          </Styledform>
-        </>
+      {token ? (
+        <Navigate to="/login" />
       ) : (
-        ""
+        <>
+          {!success ? (
+            <Wrap>
+              <div className="passwordChange">
+                <Profile />
+                <PasswordChange />
+              </div>
+              <div className="myReview">
+                <MyReview />
+              </div>
+              <div>
+                <Resignation />
+              </div>
+            </Wrap>
+          ) : (
+            ""
+          )}
+        </>
       )}
     </div>
   );
 }
 
-const Styledform = styled.form`
+const Wrap = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
 `;
 
 export default Mypage;

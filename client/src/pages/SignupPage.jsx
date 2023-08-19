@@ -20,7 +20,7 @@ function Login() {
   const handleCheckDuplicate = async () => {
     try {
       const response = await axios.post(
-        "/users/id/:user_id/exist", // 중복확인을 위한 API 엔드포인트
+        `${process.env.REACT_APP_BASE_URL}/users/id/:user_id/exist`, // 중복확인을 위한 API 엔드포인트
         JSON.stringify({ user }),
         {
           headers: {

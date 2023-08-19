@@ -13,6 +13,7 @@ import AuthContext from "../../context/AuthProvider";
 function NavBar() {
   const [isSticky, setIsSticky] = useState(false);
   const { setAuth } = useContext(AuthContext);
+
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
@@ -50,7 +51,7 @@ function NavBar() {
         </div>
         <nav className={classes.navigation}>
           <ul>
-            <div class="container">
+            <div className={classes.container}>
               <SearchBar placeholder="Search..." data={PopupData} />
             </div>
             <div className={classes.dropdown}>

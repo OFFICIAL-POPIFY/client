@@ -20,7 +20,6 @@ function LayoutBox() {
             <Outlet />
             </Document>
         </InnerLayout>
-
         <Footer />
     </Layout>);
  
