@@ -142,9 +142,9 @@ const Styledform = styled.form`
     border-bottom: 1px solid #e5e5e5;
   }
   .submit {
-    position: absolute;
-    right: 70rem;
-    top: 35rem;
+    position: relative;
+    // right: 70rem;
+    // top: 31.5rem;
     padding-right: 10px;
     background-color: #000000;
     color: white;

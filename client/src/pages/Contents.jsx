@@ -8,7 +8,6 @@ import styled from "styled-components";
 function Contents() {
   return (
     <div>
-
       <div>
         <Thumbnail />
       </div>
@@ -20,7 +19,6 @@ function Contents() {
         <CommentForm />
       </div>
       <MapContainer />
-      
     </div>
   );
 }
