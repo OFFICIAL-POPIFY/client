@@ -5,12 +5,12 @@ function Profile() {
   const [profile, setProfile] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const PROFILE_URL = `${process.env.REACT_APP_BASE_URL}/users/profile`;
 
   useEffect(() => {
-    // 프로필 정보를 백엔드에서 가져오는 함수
     const fetchProfile = async () => {
       try {
-        const response = await axios.get("/users/profile", {
+        const response = await axios.get(PROFILE_URL, {
           headers: {
             "Content-Type": "application/json",
             withCredentials: true,

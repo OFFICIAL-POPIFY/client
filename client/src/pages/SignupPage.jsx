@@ -5,9 +5,9 @@ import axios from "../api/axios";
 
 import classes from "./LoginPage.module.css";
 import { Link } from "react-router-dom";
-const SiGNUP_URL = "/users/signup";
-
-function Login() {
+const SiGNUP_URL = `${process.env.REACT_APP_BASE_URL}/users/signup`;
+const EXIST_URL = `${process.env.REACT_APP_BASE_URL}/users/id/:user_id/exist`;
+function Signup() {
   const { setAuth } = useContext(AuthContext);
   const userRef = useRef(null);
   const errRef = useRef();
@@ -19,21 +19,16 @@ function Login() {
   const [email, setEmail] = useState("");
   const handleCheckDuplicate = async () => {
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_BASE_URL}/users/id/:user_id/exist`, // 중복확인을 위한 API 엔드포인트
-        JSON.stringify({ user }),
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await axios.post(EXIST_URL, JSON.stringify({ user }), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       if (response.data.isDuplicate) {
         setErrMsg("이미 사용 중인 아이디입니다.");
       } else {
         setErrMsg("");
-        // 사용 가능한 아이디라면 메시지 표시 또는 상태 업데이트 등을 수행할 수 있습니다.
       }
     } catch (err) {
       console.error("중복확인 오류:", err);
@@ -43,7 +38,7 @@ function Login() {
     if (userRef.current) {
       userRef.current.focus();
     }
-  }, [succsess]); // 수행 조건 변경
+  }, [succsess]);
 
   useEffect(() => {
     setErrMsg("");
@@ -158,4 +153,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Signup;

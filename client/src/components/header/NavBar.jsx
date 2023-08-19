@@ -13,12 +13,12 @@ import AuthContext from "../../context/AuthProvider";
 function NavBar() {
   const [isSticky, setIsSticky] = useState(false);
   const { setAuth } = useContext(AuthContext);
-
+  const LOGOUT_URL = `${process.env.REACT_APP_BASE_URL}/users/logout`;
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
       window.location.href = "/login";
-      await axios.get("/users/logout");
+      await axios.get(LOGOUT_URL);
       setAuth(null);
     } catch (error) {
       console.error("로그아웃 오류:", error);
