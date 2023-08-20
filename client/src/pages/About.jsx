@@ -54,6 +54,7 @@ const H1 = styled.h1`
   letter-spacing: -2.5px;
 `;
 const Layout = styled.div`
+  margin-top: 100px;
   .div {
     width: 700px;
   }
