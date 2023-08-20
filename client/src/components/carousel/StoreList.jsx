@@ -51,7 +51,9 @@ function StoreList({ data }) {
   const storeItems = data.map((store, index) => (
     <div key={index} className="card">
       <img src={imgaes[index]} alt="" />
-      <p>{store.corporation}</p>
+      <a href={store.placeurl}>
+        <h3>{store.corporation}</h3>
+      </a>
       <p>{store.location}</p>
     </div>
   ));
@@ -76,6 +78,13 @@ export default StoreList;
 
 const Wrapper = styled.div`
   display: inline-block;
+  a:link {
+    color: black;
+  }
+  a:visited {
+    color: #000;
+  }
+
   height: 10rem;
   h1 {
     font-size: 25px;
