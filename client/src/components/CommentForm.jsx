@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Rating from "react-rating-stars-component";
 import ImageUpload from "react-image-upload";
-import styles from "./CommentForm.module.css";
+import classes from "./CommentForm.module.css";
 
 // import axios from 'axios';
 
@@ -79,20 +79,20 @@ const CommentForm = () => {
   };
 
   return (
-    <form className={styles.commentForm} onSubmit={handleSubmit}>
+    <form className={classes.commentForm} onSubmit={handleSubmit}>
       <div>
         {commentsList.map((comment, index) => (
-          <div key={index} className={styles.commentItem}>
+          <div key={index} className={classes.commentItem}>
             <div>별점: {comment.rating}</div>
             <div>코멘트 내용: {comment.comment}</div>
             {comment.images.length > 0 && (
               <div>
                 <h4>업로드된 이미지:</h4>
-                <div className={styles.commentImagePreviewContainer}>
+                <div className={classes.commentImagePreviewContainer}>
                   {comment.images.map((image, imgIndex) => (
                     <img
                       key={imgIndex}
-                      className={styles.commentImagePreview}
+                      className={classes.commentImagePreview}
                       src={image}
                       alt={`Image ${imgIndex}`}
                     />
@@ -106,7 +106,7 @@ const CommentForm = () => {
 
       <h3>코멘트 목록</h3>
       <div>
-        <label className={styles.commentFormLabel}>별점:</label>
+        <label className={classes.commentFormLabel}>별점:</label>
         <Rating
           value={rating}
           count={5}
@@ -116,15 +116,15 @@ const CommentForm = () => {
         />
       </div>
       <div>
-        <label className={styles.commentFormLabel}>코멘트:</label>
+        <label className={classes.commentFormLabel}>코멘트:</label>
         <textarea
-          className={styles.commentFormTextarea}
+          className={classes.commentFormTextarea}
           value={comment}
           onChange={handleCommentChange}
         />
       </div>
       <div>
-        <label className={styles.commentFormLabel}>사진 업로드:</label>
+        <label className={classes.commentFormLabel}>사진 업로드:</label>
         <ImageUpload
           withIcon={true}
           buttonText="이미지 선택"
@@ -134,7 +134,7 @@ const CommentForm = () => {
           withPreview={true}
         />
       </div>
-      <button type="submit" className={styles.commentFormButton}>
+      <button type="submit" className={classes.commentFormButton}>
         제출
       </button>
 
