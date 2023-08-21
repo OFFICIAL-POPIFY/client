@@ -3,15 +3,14 @@ import styled from "styled-components";
 import axios from "../api/axios";
 
 function MyReview() {
+  const REVIEW_URL = `${process.env.REACT_APP_BASE_URL}/reviews`;
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
     callReview();
   }, []);
   const callReview = async () => {
     try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/reviews`
-      );
+      const response = await axios.get(REVIEW_URL);
       setReviews(response.data);
     } catch (error) {
       console.error("리뷰 불러오기 오류:", error);

@@ -60,24 +60,38 @@ function GoodsCarousel() {
   });
 
   return (
-    <Contain>
-      <AliceCarousel
-        responsive={responsive}
-        mouseTracking
-        infinite={1000}
-        animationDuration={1000}
-        disableDotsControls
-        disableButtonsControls
-        autoPlay
-        items={items}
-        paddingRight={40}
-      />
-    </Contain>
+    <Wrap>
+      <h1>GOODS</h1>
+      <hr />
+      <Contain>
+        <AliceCarousel
+          responsive={responsive}
+          mouseTracking
+          infinite={1000}
+          animationDuration={1000}
+          disableDotsControls
+          disableButtonsControls
+          autoPlay
+          items={items}
+          paddingRight={40}
+        />
+      </Contain>
+    </Wrap>
   );
 }
 
 export default GoodsCarousel;
-
+const Wrap = styled.div`
+  margin-bottom: 100px;
+  h1 {
+    color: #000;
+    font-family: Pretendard;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+  }
+`;
 const Contain = styled.div`
   display: flex;
   align-items: center;

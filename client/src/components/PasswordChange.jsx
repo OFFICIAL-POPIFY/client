@@ -30,6 +30,8 @@ function PasswordChange() {
         {
           headers: {
             "Content-Type": "application/json",
+            withCredentials: true,
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
         }
       );
