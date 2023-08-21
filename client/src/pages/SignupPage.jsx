@@ -5,18 +5,19 @@ import axios from "../api/axios";
 
 import classes from "./LoginPage.module.css";
 import { Link } from "react-router-dom";
+const user_id = "user_id";
 const SIGNUP_URL = `${process.env.REACT_APP_BASE_URL}/users/signup`;
-const EXIST_URL = `${process.env.REACT_APP_BASE_URL}/users/id/:user_id/exist`;
+const EXIST_URL = `${process.env.REACT_APP_BASE_URL}/users/id/${user_id}/exist`;
 function Signup() {
   const { setAuth } = useContext(AuthContext);
   const userRef = useRef(null);
   const errRef = useRef();
-  const [user_id, setUser] = useState("");
+  const [user_id, setUser_id] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [password, setPassword] = useState("");
   const [succsess, setSuccsess] = useState(false);
-  // const [passwordConfrim, setPasswordConfrim] = useState("");
-  // const [email, setEmail] = useState("");
+  const [passwordConfrim, setPasswordConfrim] = useState("");
+
   const handleCheckDuplicate = async () => {
     try {
       const response = await axios.get(EXIST_URL, JSON.stringify({ user_id }), {
@@ -42,7 +43,7 @@ function Signup() {
 
   useEffect(() => {
     setErrMsg("");
-  }, [user_id, password]);
+  }, [user_id, password, passwordConfrim]);
 
   const handlerSubmit = async (event) => {
     event.preventDefault();
@@ -53,7 +54,6 @@ function Signup() {
         {
           headers: {
             "Content-Type": "application/json",
-            withCredentials: true,
           },
         }
       );
@@ -61,7 +61,7 @@ function Signup() {
       const accsessToken = response?.data?.accsessToken;
       const roles = response?.data?.roles;
       setAuth({ user_id, password, accsessToken, roles });
-      setUser("");
+      setUser_id("");
       setPassword("");
       setSuccsess(true);
     } catch (err) {
@@ -78,7 +78,6 @@ function Signup() {
 
   return (
     <div>
-      LoginPage
       {!succsess ? (
         <main className={classes.auth}>
           <section>
@@ -98,7 +97,7 @@ function Signup() {
                     type="text"
                     user_id="id"
                     autoComplete="off"
-                    onChange={(e) => setUser(e.target.value)}
+                    onChange={(e) => setUser_id(e.target.value)}
                     value={user_id}
                     required
                     ref={userRef}
@@ -137,7 +136,7 @@ function Signup() {
                   onChange={(e) => setPasswordConfrim(e.target.value)}
                   value={passwordConfrim}
                   required
-                ></input>
+                />
               </div> */}
               <button type="submit" className={classes.login}>
                 SIGN UP
@@ -147,7 +146,7 @@ function Signup() {
           </section>
         </main>
       ) : (
-        <p>로그인 성공</p>
+        <p>회원가입 성공</p>
       )}
     </div>
   );
