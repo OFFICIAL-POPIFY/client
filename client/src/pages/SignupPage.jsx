@@ -5,21 +5,21 @@ import axios from "../api/axios";
 
 import classes from "./LoginPage.module.css";
 import { Link } from "react-router-dom";
-const SiGNUP_URL = `${process.env.REACT_APP_BASE_URL}/users/signup`;
+const SIGNUP_URL = `${process.env.REACT_APP_BASE_URL}/users/signup`;
 const EXIST_URL = `${process.env.REACT_APP_BASE_URL}/users/id/:user_id/exist`;
 function Signup() {
   const { setAuth } = useContext(AuthContext);
   const userRef = useRef(null);
   const errRef = useRef();
-  const [user, setUser] = useState("");
+  const [user_id, setUser] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [password, setPassword] = useState("");
   const [succsess, setSuccsess] = useState(false);
-  const [passwordConfrim, setPasswordConfrim] = useState("");
-  const [email, setEmail] = useState("");
+  // const [passwordConfrim, setPasswordConfrim] = useState("");
+  // const [email, setEmail] = useState("");
   const handleCheckDuplicate = async () => {
     try {
-      const response = await axios.post(EXIST_URL, JSON.stringify({ user }), {
+      const response = await axios.get(EXIST_URL, JSON.stringify({ user_id }), {
         headers: {
           "Content-Type": "application/json",
         },
@@ -42,14 +42,14 @@ function Signup() {
 
   useEffect(() => {
     setErrMsg("");
-  }, [user, password, passwordConfrim, email]);
+  }, [user_id, password]);
 
   const handlerSubmit = async (event) => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        SiGNUP_URL,
-        JSON.stringify({ user, password, passwordConfrim, email }),
+        SIGNUP_URL,
+        JSON.stringify({ user_id, password }),
         {
           headers: {
             "Content-Type": "application/json",
@@ -60,7 +60,7 @@ function Signup() {
       console.log(JSON.stringify(response?.data));
       const accsessToken = response?.data?.accsessToken;
       const roles = response?.data?.roles;
-      setAuth({ user, password, passwordConfrim, email, accsessToken, roles });
+      setAuth({ user_id, password, accsessToken, roles });
       setUser("");
       setPassword("");
       setSuccsess(true);
@@ -96,10 +96,10 @@ function Signup() {
                   <input
                     placeholder="아이디"
                     type="text"
-                    id="id"
+                    user_id="id"
                     autoComplete="off"
                     onChange={(e) => setUser(e.target.value)}
-                    value={user}
+                    value={user_id}
                     required
                     ref={userRef}
                   />
@@ -127,7 +127,7 @@ function Signup() {
                   />
                 </label>
               </div>
-              <div className={classes.control}>
+              {/* <div className={classes.control}>
                 <label htmlFor="passwordConfirm"></label>
                 <input
                   placeholder="비밀번호 확인"
@@ -138,7 +138,7 @@ function Signup() {
                   value={passwordConfrim}
                   required
                 ></input>
-              </div>
+              </div> */}
               <button type="submit" className={classes.login}>
                 SIGN UP
               </button>

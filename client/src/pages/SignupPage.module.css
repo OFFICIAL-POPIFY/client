@@ -27,3 +27,7 @@
     border: 1px solid #ccc;
   }
   
+ .auth button:disabled{
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
