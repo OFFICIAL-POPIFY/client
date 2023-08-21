@@ -46,7 +46,7 @@ const H1 = styled.h1`
   height: 100px;
   width: 1200px;
   color: #000;
-  font-family: Pretendard;
+  font-family: Pretendared;
   font-size: 50px;
   font-style: normal;
   font-weight: 900;
