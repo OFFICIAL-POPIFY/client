@@ -42,3 +42,9 @@
     align-items: center;
   }
   
+
+  
+ .auth button:disabled{
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
