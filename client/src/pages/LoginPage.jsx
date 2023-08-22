@@ -2,6 +2,8 @@ import React from "react";
 import { useRef, useState, useEffect, useContext } from "react";
 import AuthContext from "../context/AuthProvider";
 import axios from "../api/axios";
+import { AiOutlineUser } from "react-icons/ai";
+import { HiOutlineKey } from "react-icons/hi2";
 import classes from "./LoginPage.module.css";
 import { Link } from "react-router-dom";
 
@@ -60,7 +62,7 @@ function Login() {
 
   return (
     <div>
-      LoginPage
+      <h3>LOGIN</h3>
       {!succsess ? (
         <main className={classes.auth}>
           <section>
@@ -74,6 +76,7 @@ function Login() {
               </p>
               <div className={classes.control}>
                 <label htmlFor="id"></label>
+                <AiOutlineUser/>
                 <input
                   placeholder="아이디"
                   type="text"
@@ -87,6 +90,7 @@ function Login() {
               </div>
               <div className={classes.control}>
                 <label htmlFor="password"></label>
+                <HiOutlineKey/>
                 <input
                   placeholder="비밀번호"
                   type="password"

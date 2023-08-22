@@ -9,6 +9,9 @@
   }
   .control {
     margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
 .control label {
@@ -25,5 +28,17 @@
     border-radius: 4px;
     padding: 0.25rem;
     border: 1px solid #ccc;
+  }
+
+  .inputContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .labelContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
