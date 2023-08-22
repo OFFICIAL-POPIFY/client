@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authSlice from "./auth";
+
 //새로고침 유지
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
@@ -22,6 +23,6 @@ const store = configureStore({
     middleware: [thunk],
     devTools: process.env.NODE_ENV !== 'production',
 })
-
+ 
 
 export default store

@@ -2,49 +2,67 @@ import React from "react";
 import { useRef, useState, useEffect, useContext } from "react";
 import AuthContext from "../context/AuthProvider";
 import axios from "../api/axios";
+import { AiOutlineUser } from "react-icons/ai";
+import { HiOutlineKey } from "react-icons/hi2";
 
 import classes from "./LoginPage.module.css";
 import { Link } from "react-router-dom";
-const SiGNUP_URL = "/signup";
-
-function Login() {
+const user_id = "user_id";
+const SIGNUP_URL = `${process.env.REACT_APP_BASE_URL}/users/signup`;
+const EXIST_URL = `${process.env.REACT_APP_BASE_URL}/users/id/${user_id}/exist`;
+function Signup() {
   const { setAuth } = useContext(AuthContext);
   const userRef = useRef(null);
   const errRef = useRef();
-  const [user, setUser] = useState("");
+  const [user_id, setUser_id] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [password, setPassword] = useState("");
   const [succsess, setSuccsess] = useState(false);
-  const [passwordConfrim, setPasswordConfrim] = useState("");
-  const [email, setEmail] = useState("");
+
+  const handleCheckDuplicate = async () => {
+    try {
+      const response = await axios.get(EXIST_URL, JSON.stringify({ user_id }), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.data.isDuplicate) {
+        setErrMsg("이미 사용 중인 아이디입니다.");
+      } else {
+        setErrMsg("");
+      }
+    } catch (err) {
+      console.error("중복확인 오류:", err);
+    }
+  };
   useEffect(() => {
     if (userRef.current) {
       userRef.current.focus();
     }
-  }, [succsess]); // 수행 조건 변경
+  }, [succsess]);
 
   useEffect(() => {
     setErrMsg("");
-  }, [user, password, passwordConfrim, email]);
+  }, [user_id, password]);
 
   const handlerSubmit = async (event) => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        SiGNUP_URL,
-        JSON.stringify({ user, password, passwordConfrim, email }),
+        SIGNUP_URL,
+        JSON.stringify({ user_id, password }),
         {
           headers: {
             "Content-Type": "application/json",
-            withCredentials: true,
           },
         }
       );
       console.log(JSON.stringify(response?.data));
       const accsessToken = response?.data?.accsessToken;
       const roles = response?.data?.roles;
-      setAuth({ user, password, passwordConfrim, email, accsessToken, roles });
-      setUser("");
+      setAuth({ user_id, password, accsessToken, roles });
+      setUser_id("");
       setPassword("");
       setSuccsess(true);
     } catch (err) {
@@ -61,7 +79,7 @@ function Login() {
 
   return (
     <div>
-      LoginPage
+
       {!succsess ? (
         <main className={classes.auth}>
           <section>
@@ -74,64 +92,69 @@ function Login() {
                 {errMsg}
               </p>
               <div className={classes.control}>
-                <label htmlFor="id"></label>
-                <input
-                  placeholder="아이디"
-                  type="text"
-                  id="id"
-                  autoComplete="off"
-                  onChange={(e) => setUser(e.target.value)}
-                  value={user}
-                  required
-                  ref={userRef} // Ref 객체에 DOM 요소를 참조하도록 설정
-                />
+                <label className={classes.labelContainer} htmlFor="id"></label>
+                <AiOutlineUser/>
+                <div className={classes.inputContainer}>
+                <AiOutlineUser/>
+                  <input
+                    placeholder="아이디"
+                    type="text"
+                    user_id="id"
+                    autoComplete="off"
+                    onChange={(e) => setUser_id(e.target.value)}
+                    value={user_id}
+                    required
+                    ref={userRef}
+                  />
+                  {!succsess && (
+                    <button
+                      type="button"
+                      className={classes.duplicateButton}
+                      onClick={handleCheckDuplicate}
+                    >
+                      중복확인
+                    </button>
+                  )}
+                </div>
               </div>
               <div className={classes.control}>
                 <label htmlFor="password"></label>
-                <input
-                  placeholder="비밀번호"
-                  type="password"
-                  id="password"
-                  autoComplete="off"
-                  onChange={(e) => setPasswordConfrim(e.target.value)}
-                  value={password}
-                  required
-                />
+                  <HiOutlineKey/>
+                  <input
+                    placeholder="비밀번호"
+                    type="password"
+                    id="password"
+                    autoComplete="off"
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                    required
+                  />
               </div>
-              <div className={classes.control}>
+              {/* <div className={classes.control}>
                 <label htmlFor="passwordConfirm"></label>
+                <HiOutlineKey/>
                 <input
-                  placeholder="비밀번호확인"
+                  placeholder="비밀번호 확인"
                   type="password"
                   id="passwordConfirm"
                   autoComplete="off"
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => setPasswordConfrim(e.target.value)}
                   value={passwordConfrim}
                   required
                 />
-              </div>
-              <div className={classes.control}>
-                <label htmlFor="email"></label>
-                <input
-                  placeholder="이매알"
-                  type="email"
-                  id="email"
-                  autoComplete="off"
-                  onChange={(e) => setEmail(e.target.value)}
-                  value={email}
-                  required
-                />
-              </div>
-              <button>Login</button>
+              </div> */}
+              <button type="submit" className={classes.login}>
+                SIGN UP
+              </button>
             </form>
-            <Link to="/signup">회원가입</Link>
+            <Link to="/login">로그인</Link>
           </section>
         </main>
       ) : (
-        <p>로그인 성공</p>
+        <p>회원가입 성공</p>
       )}
     </div>
   );
 }
 
-export default Login;
+export default Signup;

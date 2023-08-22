@@ -2,16 +2,19 @@ import React from "react";
 import { useRef, useState, useEffect, useContext } from "react";
 import AuthContext from "../context/AuthProvider";
 import axios from "../api/axios";
-
+import { AiOutlineUser } from "react-icons/ai";
+import { HiOutlineKey } from "react-icons/hi2";
 import classes from "./LoginPage.module.css";
 import { Link } from "react-router-dom";
-const LOGIN_URL = "/login";
+
+const LOGIN_URL = `${process.env.REACT_APP_BASE_URL}/users/login`;
 
 function Login() {
   const { setAuth } = useContext(AuthContext);
   const userRef = useRef(null);
   const errRef = useRef();
-  const [user, setUser] = useState("");
+
+  const [user_id, setUser_id] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [password, setPassword] = useState("");
   const [succsess, setSuccsess] = useState(false);
@@ -20,30 +23,28 @@ function Login() {
     if (userRef.current) {
       userRef.current.focus();
     }
-  }, [succsess]); // 수행 조건 변경
-
+  }, [succsess]);
   useEffect(() => {
     setErrMsg("");
-  }, [user, password]);
+  }, [user_id, password]);
 
   const handlerSubmit = async (event) => {
     event.preventDefault();
     try {
       const response = await axios.post(
         LOGIN_URL,
-        JSON.stringify({ user, password }),
+        JSON.stringify({ user_id, password }),
         {
           headers: {
             "Content-Type": "application/json",
-            withCredentials: true,
           },
         }
       );
       console.log(JSON.stringify(response?.data));
       const accsessToken = response?.data?.accsessToken;
       const roles = response?.data?.roles;
-      setAuth({ user, password, accsessToken, roles });
-      setUser("");
+      setAuth({ user_id, password, accsessToken, roles });
+      setUser_id("");
       setPassword("");
       setSuccsess(true);
     } catch (err) {
@@ -60,7 +61,7 @@ function Login() {
 
   return (
     <div>
-      LoginPage
+
       {!succsess ? (
         <main className={classes.auth}>
           <section>
@@ -74,36 +75,41 @@ function Login() {
               </p>
               <div className={classes.control}>
                 <label htmlFor="id"></label>
+                <AiOutlineUser/>
                 <input
                   placeholder="아이디"
                   type="text"
-                  id="id"
+                  user_id="id"
                   autoComplete="off"
-                  onChange={(e) => setUser(e.target.value)}
-                  value={user}
+                  onChange={(e) => setUser_id(e.target.value)}
+                  value={user_id}
                   required
-                  ref={userRef} // Ref 객체에 DOM 요소를 참조하도록 설정
+                  ref={userRef}
                 />
               </div>
               <div className={classes.control}>
                 <label htmlFor="password"></label>
+                <HiOutlineKey/>
                 <input
                   placeholder="비밀번호"
                   type="password"
                   id="password"
-                  autoComplete="off"
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
                   required
                 />
               </div>
-              <button>Login</button>
+              <button type="submit" className={classes.login}>
+                LOGIN
+              </button>
             </form>
             <Link to="/signup">회원가입</Link>
           </section>
         </main>
       ) : (
-        <p>로그인 성공</p>
+        <>
+          <Link to="/mypage">mypage</Link>
+        </>
       )}
     </div>
   );

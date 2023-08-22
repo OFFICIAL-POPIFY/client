@@ -9,6 +9,9 @@
   }
   .control {
     margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
 .control label {
@@ -26,4 +29,22 @@
     padding: 0.25rem;
     border: 1px solid #ccc;
   }
+
+  .inputContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .labelContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   
+
+  
+ .auth button:disabled{
+    background-color: #ccc;
+    cursor: not-allowed;
+  }

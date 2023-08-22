@@ -1,16 +1,27 @@
 .auth {
+    display: flex;
+    flex-direction: column;
     margin: 5rem auto;
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
-    width: 25rem;
+    width: 46rem;
+    min-height: 24rem;
     border-radius: 8px;
-    padding: 1rem;
+    padding: 20px;
     text-align: center;
-    background-color: #f4f0fa;
+    background-color: white;
+
   }
   .control {
     margin-bottom: 0.5rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
+  .control input[id="passworedConfirm"]{
+    position: absolute;
+  }
 .control label {
     display: block;
     color: #616161;
@@ -20,10 +31,44 @@
   
   .control input {
     display: block;
-    width: 20rem;
+    width: 40rem;
+    
+    height: 5rem;
+    background: #F5F5F5;
+    font-size: 13px;
+    font-weight: 400;
     margin: auto;
     border-radius: 4px;
     padding: 0.25rem;
     border: 1px solid #ccc;
   }
-  
+  .login{
+    width: 40rem;
+    margin-top: 2rem;
+    height: 5rem;
+    background:#000000;
+    color: white;
+    font-size: 20px;
+    font-size: 20px;
+  }
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+}
+
+.duplicateButton {
+  position: absolute;
+  top: 40px;
+  right: 30px;
+  padding: 8px 12px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.duplicateButton:hover {
+  background-color: #0056b3;
+}
