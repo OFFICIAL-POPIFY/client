@@ -16,7 +16,6 @@ function LayoutBox() {
             <NavBar />
             <RollingBanner />
             <Document >
-                
             <Outlet />
             </Document>
         </InnerLayout>

@@ -40,8 +40,9 @@ function Login() {
           },
         }
       );
-      console.log(JSON.stringify(response?.data));
-      const accsessToken = response?.data?.accsessToken;
+      console.log(response);
+      const accsessToken = response?.data?.token?.access_token;
+      localStorage.setItem("accessToken", accsessToken);
       const roles = response?.data?.roles;
       setAuth({ user_id, password, accsessToken, roles });
       setUser_id("");
