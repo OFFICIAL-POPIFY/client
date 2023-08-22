@@ -16,7 +16,6 @@ function Signup() {
   const [errMsg, setErrMsg] = useState("");
   const [password, setPassword] = useState("");
   const [succsess, setSuccsess] = useState(false);
-  const [passwordConfrim, setPasswordConfrim] = useState("");
 
   const handleCheckDuplicate = async () => {
     try {
@@ -43,7 +42,7 @@ function Signup() {
 
   useEffect(() => {
     setErrMsg("");
-  }, [user_id, password, passwordConfrim]);
+  }, [user_id, password]);
 
   const handlerSubmit = async (event) => {
     event.preventDefault();
@@ -104,7 +103,7 @@ function Signup() {
                   />
                   {!succsess && (
                     <button
-                      type="submit"
+                      type="button"
                       className={classes.duplicateButton}
                       onClick={handleCheckDuplicate}
                     >

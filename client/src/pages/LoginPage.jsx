@@ -12,7 +12,7 @@ function Login() {
   const userRef = useRef(null);
   const errRef = useRef();
 
-  const [user, setUser] = useState("");
+  const [user_id, setUser_id] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [password, setPassword] = useState("");
   const [succsess, setSuccsess] = useState(false);
@@ -24,26 +24,25 @@ function Login() {
   }, [succsess]);
   useEffect(() => {
     setErrMsg("");
-  }, [user, password]);
+  }, [user_id, password]);
 
   const handlerSubmit = async (event) => {
     event.preventDefault();
     try {
       const response = await axios.post(
         LOGIN_URL,
-        JSON.stringify({ user, password }),
+        JSON.stringify({ user_id, password }),
         {
           headers: {
             "Content-Type": "application/json",
-            withCredentials: true,
           },
         }
       );
       console.log(JSON.stringify(response?.data));
       const accsessToken = response?.data?.accsessToken;
       const roles = response?.data?.roles;
-      setAuth({ user, password, accsessToken, roles });
-      setUser("");
+      setAuth({ user_id, password, accsessToken, roles });
+      setUser_id("");
       setPassword("");
       setSuccsess(true);
     } catch (err) {
@@ -60,7 +59,6 @@ function Login() {
 
   return (
     <div>
-      LoginPage
       {!succsess ? (
         <main className={classes.auth}>
           <section>
@@ -77,10 +75,10 @@ function Login() {
                 <input
                   placeholder="아이디"
                   type="text"
-                  id="id"
+                  user_id="id"
                   autoComplete="off"
-                  onChange={(e) => setUser(e.target.value)}
-                  value={user}
+                  onChange={(e) => setUser_id(e.target.value)}
+                  value={user_id}
                   required
                   ref={userRef}
                 />
