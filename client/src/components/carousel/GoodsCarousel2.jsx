@@ -24,22 +24,22 @@ function GoodsCarousel() {
   const images = [
     {
       name: "플레이 에디션",
-      img: "./images/goods2/goods1.png",
+      img: "../images/goods2/goods1.png",
       price: "125,000원",
     },
     {
       name: "실리콘 네임택",
-      img: "./images/goods2/goods2.png",
+      img: "../images/goods2/goods2.png",
       price: "4,000원",
     },
     {
       name: "실리콘 나눔톡",
-      img: "./images/goods2/goods3.png",
+      img: "../images/goods2/goods3.png",
       price: "6,000원",
     },
     {
       name: "스티커",
-      img: "./images/goods2/goods4.png",
+      img: "../images/goods2/goods4.png",
       price: "2,500원",
     },
   ];

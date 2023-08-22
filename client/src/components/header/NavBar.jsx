@@ -69,7 +69,7 @@ function NavBar() {
                 <Link to="https://www.instagram.com/popify.official/">
                   <BsInstagram />
                 </Link>
-                <Link to="/contents">Contents</Link>
+                {/* <Link to="/contents">Contents</Link> */}
               </div>
             </div>
           </ul>

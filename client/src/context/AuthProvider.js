@@ -7,7 +7,7 @@ export const AuthProvider = ({ children }) => {
     const [userPassword, setUserPassword] = useState("");
     const value = {
         userName: auth.userName,
-        userPassword,
+        userPassword:auth.userPassword,
     };
     return (
         <AuthContext.Provider value={{ auth, setAuth, value }}>
