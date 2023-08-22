@@ -52,7 +52,7 @@ function StoreList({ data }) {
   const storeItems = data.map((store, index) => (
     <div key={index} className="card">
       <img src={imgaes[index]} alt="" />
-      <Link to={`/contents/${store.corporation}`}>
+      <Link to={`/contents/:${store.corporation}`}>
         <h3>{store.corporation}</h3>
       </Link>
       <p>{store.location}</p>
