@@ -8,16 +8,16 @@ function PasswordChange() {
   const [passwordConfirm, setPasswordConfrim] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newPasswordConfirm, setNewPasswordConfirm] = useState("");
-  const { userPassword } = value;
+  const { password } = value;
   const changeRef = useRef();
   const newRef = useRef();
 
   const handleCheckPassword = (e) => {
     e.preventDefault();
-    if (passwordConfirm !== "" && passwordConfirm == userPassword) {
+    if (passwordConfirm !== "" && passwordConfirm == password) {
       alert("비밀번호가 일치합니다.");
     } else {
-      console.log("컨펌", passwordConfirm, "유저", userPassword);
+      console.log("컨펌:", passwordConfirm, " 유저:", password);
       alert("비밀번호가 일치하지 않습니다.");
     }
   };
