@@ -25,14 +25,14 @@ function About() {
             파기
             <hr />
             개인정보 수집동의를 거부할 수 있으며, 거부하는 경우 문의 신청이
-            제한됩니다
+            제한됩니다.
           </p>
         </div>
         <div>
           <p>
             Email : rmsoft@gmail.com <hr />
             Tel(Fax) : 02-1234-5678 <hr />
-            서울 서초구서초중앙로 63-6 <hr />* 문의 후 24시간 내에 답변드리도록
+            서울 서초구 서초중앙로 63-6 <hr />* 문의 후 24시간 내에 답변드리도록
             하겠습니다.
           </p>
         </div>
@@ -56,13 +56,13 @@ const H1 = styled.h1`
 const Layout = styled.div`
   margin-top: 100px;
   .div {
-    width: 700px;
+    width: 1050px;
   }
   p {
     color: #000;
     text-align: center;
     font-family: Pretendard;
-    font-size: 30px;
+    font-size: 25px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -91,7 +91,7 @@ const Bottom = styled.div`
   }
   p {
     display: flex;
-    width: 440px;
+    width: 500px;
     height: 120px;
     flex-direction: column;
     justify-content: center;
