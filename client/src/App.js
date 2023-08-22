@@ -11,7 +11,7 @@ import Mypage from '../src/pages/Mypage';
 import LoginPage from '../src/pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import Layout from './ui/Layout';
-
+import data from '../src/components/data.json';
 import MainPage from './pages/MainPage';
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/contents" element={<Contents />} />
+            <Route path={`/contents/:${data.location}`} element={<Contents />} />
             <Route path="/mypage" element={<Mypage />}/>
           </Route>
         </Routes>

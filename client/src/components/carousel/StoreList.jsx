@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 const imgaes = [
   "./images/thumb/thumbnail1.png",
@@ -51,9 +52,9 @@ function StoreList({ data }) {
   const storeItems = data.map((store, index) => (
     <div key={index} className="card">
       <img src={imgaes[index]} alt="" />
-      <a href={store.placeurl}>
+      <Link to={`/contents/:${store.corporation}`}>
         <h3>{store.corporation}</h3>
-      </a>
+      </Link>
       <p>{store.location}</p>
     </div>
   ));

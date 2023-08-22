@@ -1,11 +1,12 @@
 import React from "react";
 import { useRef, useState, useEffect, useContext } from "react";
 import AuthContext from "../context/AuthProvider";
+
 import axios from "../api/axios";
 import { AiOutlineUser } from "react-icons/ai";
 import { HiOutlineKey } from "react-icons/hi2";
 import classes from "./LoginPage.module.css";
-import { Link } from "react-router-dom";
+import { Link, useRouteLoaderData } from "react-router-dom";
 
 const LOGIN_URL = `${process.env.REACT_APP_BASE_URL}/users/login`;
 
@@ -40,12 +41,11 @@ function Login() {
           },
         }
       );
-      console.log(JSON.stringify(response?.data));
-      const accsessToken = response?.data?.accsessToken;
+      console.log(response);
+      const accsessToken = response?.data?.token?.access_token;
+      localStorage.setItem("accessToken", accsessToken);
       const roles = response?.data?.roles;
       setAuth({ user_id, password, accsessToken, roles });
-      setUser_id("");
-      setPassword("");
       setSuccsess(true);
     } catch (err) {
       if (!err?.response) {
@@ -61,7 +61,6 @@ function Login() {
 
   return (
     <div>
-
       {!succsess ? (
         <main className={classes.auth}>
           <section>
@@ -75,7 +74,7 @@ function Login() {
               </p>
               <div className={classes.control}>
                 <label htmlFor="id"></label>
-                <AiOutlineUser/>
+                <AiOutlineUser />
                 <input
                   placeholder="아이디"
                   type="text"
@@ -89,7 +88,7 @@ function Login() {
               </div>
               <div className={classes.control}>
                 <label htmlFor="password"></label>
-                <HiOutlineKey/>
+                <HiOutlineKey />
                 <input
                   placeholder="비밀번호"
                   type="password"
