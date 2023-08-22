@@ -2,6 +2,7 @@ import React from "react";
 import "react-alice-carousel/lib/alice-carousel.css";
 import AliceCarousel from "react-alice-carousel";
 import styled from "styled-components";
+
 function GoodsCarousel() {
   const responsive = {
     0: {
@@ -95,15 +96,12 @@ const Wrap = styled.div`
 const Contain = styled.div`
   display: flex;
   align-items: center;
-  margin: 0 auto;
+  justify-content: center; 
+  margin: 2rem auto; 
   .alice-wrapper {
     width: 100%;
   }
   alice-carousel > div {
-    width: 427px;
-    height: 525px;
-  }
-  li.alice-carousel__stage-item>*: (.__active) {
     width: 427px;
     height: 525px;
   }
@@ -112,7 +110,6 @@ const Contain = styled.div`
     height: 525px;
   }
 `;
-
 const ItemsContain = styled.div`
   width: 100%;
   height: 530px;
@@ -131,6 +128,10 @@ const ItemsWrap = styled.div`
     height: 100%;
     object-fit: cover;
   }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f8f8;
 `;
 const Card = styled.div`
 width: 427px;
@@ -165,6 +166,7 @@ width: 427px;
     width: 363px;
     height: 353px;
     align-items: center;
+    border-radius: 10px;
   }
   .sm {
     width: 48px;

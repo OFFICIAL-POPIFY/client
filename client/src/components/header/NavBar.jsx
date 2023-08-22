@@ -54,7 +54,7 @@ function NavBar() {
             </div>
             <div className={classes.dropdown}>
               <button className={classes.dropdown_button}>
-                <GiHamburgerMenu style={{ width: "30px", height: "30px" }} />
+                <GiHamburgerMenu style={{ width: "50px", height: "50px" }} />
               </button>
 
               <div className={classes.dropdown_contents}>
