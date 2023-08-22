@@ -2,7 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { BsInstagram } from "react-icons/bs";
+import classes from "./Footer.module.css";
 import "../App.css";
+import Layout from '../ui/Layout';
+
 function Footer() {
   return (
     <Wrapper>
@@ -10,9 +13,11 @@ function Footer() {
         <div>INFINITE MOMENTS FLOW FROM PLACES THAT ARE NOT FOREVER</div>
         <p>영원하지 않은 공간으로부터의 무한한 순간들</p>
       </Subscript>
-      <img src="./images/logo2.png" alt="logo2" />
+      <Link to="/">
+      <img src="./images/logo2.png" alt="logo2" className={classes.logo2} />
+      </Link>
       <div className="div1">FOLLOW</div>
-      <Link to="https://www.instagram.com/popify.official/">
+     <Link to="https://www.instagram.com/popify.official/">
         <div className="div2">
           <BsInstagram />
         </div>
@@ -34,6 +39,7 @@ const Wrapper = styled.div`
   position: relative;
   background: #000;
   flex-direction: column;
+
   .div1 {
     position:absolute;
     top:54%;
