@@ -43,13 +43,13 @@ function NavBar() {
     <div>
       <header className={`${classes.header} ${isSticky ? classes.sticky : ""}`}>
         <div className={classes.logoContainer}>
-         <Link to="/">
-          <img src="./images/logo.png" alt="logo" className={classes.logo} />
-         </Link>
+          <Link to="/">
+            <img src="./images/logo.png" alt="logo" className={classes.logo} />
+          </Link>
         </div>
         <nav className={classes.navigation}>
           <ul>
-            <SearchBar placeholder="검색어를 입력하세요" data={PopupData} />
+            <SearchBar placeholder="Search..." data={PopupData} />
             <div className={classes.dropdown}>
               <button className={classes.dropdown_button}>
                 <GiHamburgerMenu />
@@ -73,7 +73,7 @@ function NavBar() {
           </ul>
         </nav>
       </header>
-    </div>
+    </div >
   );
 }
 
