@@ -25,7 +25,8 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/popups/search/:storeID" element={<StoreContainer />} />
+            <Route path="/popups" element={<MainPage />} />
+            <Route path="/popups/search/:storeId" element={<StoreContainer />} />
             <Route path="/mypage" element={<Mypage />}/>
             <Route path="/review/:id" element={<Mypage />} />
           </Route>

@@ -47,7 +47,13 @@ function Login() {
       const accsessToken = response?.data?.token?.access_token;
       localStorage.setItem("accessToken", accsessToken);
       const roles = response?.data?.roles;
-      setAuth({ user_id, password, accsessToken, roles });
+      setAuth({
+        user_id,
+        password,
+        accsessToken,
+        roles,
+        id: response?.data?.user?._id,
+      });
       setSuccsess(true);
       navigate("/");
       alert("로그인 되었습니다.");

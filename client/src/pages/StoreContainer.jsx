@@ -2,9 +2,10 @@ import React from "react";
 import Thumbnail from "../components/carousel/Thumbnail";
 import MapContainer from "../components/MapContainer";
 import CommentForm from "../components/CommentForm";
-import InnerNav from "../components/InnerNav";
+
 import GoodsCarousel2 from "../components/carousel/GoodsCarousel2";
 import styled from "styled-components";
+import Corporation from "../components/Corporation";
 function StoreContainer() {
   return (
     <div>
@@ -13,7 +14,9 @@ function StoreContainer() {
       </div>
       <div>
         <GoodsCarousel2 />
-        <InnerNav />
+      </div>
+      <div>
+        <Corporation />
       </div>
       <div>
         <CommentForm />

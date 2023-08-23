@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "../api/axios";
 
 function Corporation() {
-  const id = window.location.pathname.split("/")[3];
-  const CORPORATION_URL = `${process.env.REACT_APP_BASE_URL}/popups/search/${id}`;
+  const { storeId } = useParams();
+  const CORPORATION_URL = `${process.env.REACT_APP_BASE_URL}/popups/search/${storeId}`;
   const [corporationData, setCorporationData] = useState([]);
+  console.log("스토어아이디", storeId);
 
   useEffect(() => {
     axios
       .get(CORPORATION_URL)
       .then((response) => {
-        console.log(response.data);
+        console.log("기업", response.data);
         setCorporationData(response.data);
       })
       .catch((error) => {
