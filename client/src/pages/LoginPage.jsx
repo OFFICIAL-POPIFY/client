@@ -5,6 +5,7 @@ import AuthContext from "../context/AuthProvider";
 import axios from "../api/axios";
 import { AiOutlineUser } from "react-icons/ai";
 import { HiOutlineKey } from "react-icons/hi2";
+import { TiDelete } from "react-icons/ti";
 import classes from "./LoginPage.module.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -71,6 +72,70 @@ function Login() {
 
   return (
     <div>
+
+     <p className={classes.title}>LOGIN</p>
+     <hr />
+      {!succsess ? (
+        <main className={classes.auth}>
+          <section>
+            <form onSubmit={handlerSubmit}>
+              <p
+                ref={errRef}
+                className={errMsg ? classes.errMsg : "offscreen"}
+                aria-live="assertive"
+              >
+                {errMsg}
+              </p>
+              <div className={classes.control}>
+                <label htmlFor="id"></label>
+                <div className={classes.icon}>
+                <AiOutlineUser />
+                </div>
+                <input
+                  placeholder="아이디"
+                  type="text"
+                  user_id="id"
+                  autoComplete="off"
+                  onChange={(e) => setUser_id(e.target.value)}
+                  value={user_id}
+                  required
+                  ref={userRef}
+                />
+                <div className={classes.icon2}>
+                <TiDelete />
+                </div>
+              </div>
+              <div className={classes.control}>
+                <label htmlFor="password"></label>
+                <div className={classes.icon}>
+                <HiOutlineKey />
+                </div>
+                <input
+                  placeholder="비밀번호"
+                  type="password"
+                  id="password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  value={password}
+                  required
+                />
+                <div className={classes.icon2}>
+                  <TiDelete />
+                </div>
+              </div>
+              <button type="submit" className={classes.login}>
+                <p className={classes.button}>LOGIN</p>
+              </button>
+            </form>
+          </section>
+        </main>
+      ) : (
+        <>
+        </>
+      )}
+            <div className={classes.linktos}>
+            <Link to="/signup">회원가입</Link>
+            </div>
+=======
       <main className={classes.auth}>
         <section>
           <form onSubmit={handlerSubmit}>
@@ -114,6 +179,7 @@ function Login() {
           <Link to="/signup">회원가입</Link>
         </section>
       </main>
+
     </div>
   );
 }
