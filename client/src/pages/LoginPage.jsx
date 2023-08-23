@@ -50,6 +50,7 @@ function Login() {
       setAuth({ user_id, password, accsessToken, roles });
       setSuccsess(true);
       navigate("/");
+      alert("로그인 되었습니다.");
     } catch (err) {
       if (!err?.response) {
         setErrMsg("서버와 연결할 수 없습니다.");
