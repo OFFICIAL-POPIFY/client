@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import AuthContext from "../context/AuthProvider";
 import styled from "styled-components";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function InnerNav() {
-  const params = useParams().id;
+  // const id = window.location.pathname.split("/")[3];
+  const { setAuth, value } = useContext(AuthContext);
+
+  const id = value?.auth?.id;
+  console.log("id:", id);
   const mapHandler = () => {
     const documentHeight = Math.max(
       document.body.scrollHeight,
@@ -32,7 +37,7 @@ function InnerNav() {
         </li>
         <li>
           <div>
-            <Link to={`/contents/${params}`}>REVIEW</Link>
+            <Link to={`/review/${id}`}>REVIEW</Link>
           </div>
         </li>
         <li>

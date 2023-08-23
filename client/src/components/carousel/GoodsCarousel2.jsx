@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "react-alice-carousel/lib/alice-carousel.css";
 import AliceCarousel from "react-alice-carousel";
 import styled from "styled-components";
@@ -6,6 +6,7 @@ import classes from "./Thumbnail.module.css";
 import { BsChevronCompactLeft } from "react-icons/bs";
 import { BsChevronCompactRight } from "react-icons/bs";
 function GoodsCarousel() {
+  const GOODS_URL = `${process.env.REACT_APP_BASE_URL}/goods/:id`;
   const [slide, setSlide] = useState("");
   const onSlideChange = (e) => {
     e.preventDefault();

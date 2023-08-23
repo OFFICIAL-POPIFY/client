@@ -14,7 +14,7 @@ function Footer() {
         <p>영원하지 않은 공간으로부터의 무한한 순간들</p>
       </Subscript>
       <Link to="/">
-        <img src="../images/logo2.png" alt="logo2" className={classes.logo2} />
+        <img src="./images/logo2.png" alt="logo2" className={classes.logo2} />
       </Link>
       <div className="div1">FOLLOW</div>
       <Link to="https://www.instagram.com/popify.official/">

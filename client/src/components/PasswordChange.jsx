@@ -8,7 +8,7 @@ function PasswordChange() {
   const [passwordConfirm, setPasswordConfrim] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newPasswordConfirm, setNewPasswordConfirm] = useState("");
-  const { password } = value;
+  const password = { value };
   const changeRef = useRef();
   const newRef = useRef();
 
