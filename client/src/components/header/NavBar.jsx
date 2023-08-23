@@ -18,6 +18,7 @@ function NavBar() {
     e.preventDefault();
     try {
       window.location.href = "/login";
+      alert("로그아웃 되었습니다.");
       await axios.get(LOGOUT_URL);
       setAuth(null);
     } catch (error) {
@@ -54,7 +55,7 @@ function NavBar() {
             </div>
             <div className={classes.dropdown}>
               <button className={classes.dropdown_button}>
-                <GiHamburgerMenu style={{ width: "30px", height: "30px" }} />
+                <GiHamburgerMenu style={{ width: "50px", height: "50px" }} />
               </button>
 
               <div className={classes.dropdown_contents}>
@@ -69,7 +70,7 @@ function NavBar() {
                 <Link to="https://www.instagram.com/popify.official/">
                   <BsInstagram />
                 </Link>
-                <Link to="/contents">Contents</Link>
+                {/* <Link to="/contents">Contents</Link> */}
               </div>
             </div>
           </ul>

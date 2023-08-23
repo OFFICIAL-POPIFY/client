@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "react-alice-carousel/lib/alice-carousel.css";
 import AliceCarousel from "react-alice-carousel";
 import styled from "styled-components";
@@ -6,6 +6,7 @@ import classes from "./GoodsCarousel2.module.css";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 function GoodsCarousel() {
+  const GOODS_URL = `${process.env.REACT_APP_BASE_URL}/goods/:id`;
   const [slide, setSlide] = useState("");
   const onSlideChange = (e) => {
     e.preventDefault();
@@ -24,22 +25,22 @@ function GoodsCarousel() {
   const images = [
     {
       name: "플레이 에디션",
-      img: "./images/goods2/goods1.png",
+      img: "../images/goods2/goods1.png",
       price: "125,000원",
     },
     {
       name: "실리콘 네임택",
-      img: "./images/goods2/goods2.png",
+      img: "../images/goods2/goods2.png",
       price: "4,000원",
     },
     {
       name: "실리콘 나눔톡",
-      img: "./images/goods2/goods3.png",
+      img: "../images/goods2/goods3.png",
       price: "6,000원",
     },
     {
       name: "스티커",
-      img: "./images/goods2/goods4.png",
+      img: "../images/goods2/goods4.png",
       price: "2,500원",
     },
   ];

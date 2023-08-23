@@ -8,6 +8,11 @@ import PopupData from "../../../src/components/data.json";
 import Information from "../Information";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
+
+import Corporation from "../Corporation";
+import { BsChevronCompactLeft } from "react-icons/bs";
+import { BsChevronCompactRight } from "react-icons/bs";
+
 function Thumbnail() {
   const [slide, setSlide] = useState("");
   const onSlideChange = (e) => {
@@ -55,6 +60,9 @@ function Thumbnail() {
             <h2 className={classes.text}>{image.text}</h2>
           </a>
         </div>
+        <div>
+          <Corporation />
+        </div>
       </ItemsContain>
     );
   });
@@ -98,9 +106,7 @@ function Thumbnail() {
         </Contain>
       </div>
 
-      <div>
-        <Information placeholder="해시태그를 입력하세요" data={PopupData} />
-      </div>
+      <div></div>
     </Wrapper>
   );
 }

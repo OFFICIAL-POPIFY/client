@@ -2,6 +2,7 @@ import React from "react";
 import "react-alice-carousel/lib/alice-carousel.css";
 import AliceCarousel from "react-alice-carousel";
 import styled from "styled-components";
+
 function GoodsCarousel() {
   const responsive = {
     0: {
@@ -14,27 +15,27 @@ function GoodsCarousel() {
 
   const images = [
     {
-      icon: "./images/goods/brandIcon1.png",
+      icon: "./goods/brandIcon1.png",
       name: "빵빵이 팝업스토어",
       img: "./images/goods/goods1.png",
       goodsName: "빵빵이 인형",
     },
     {
-      icon: "./images/goods/brandIcon2.png",
+      icon: "../images/goods/brandIcon2.png",
       name: "흰디 팝업스토어",
-      img: "./images/goods/goods2.png",
+      img: "../images/goods/goods2.png",
       goodsName: "인형,피규어,무드등,가방 등",
     },
     {
-      icon: "./images/goods/brandIcon3.png",
+      icon: "../images/goods/brandIcon3.png",
       name: "카카오프렌즈 팝업스토어",
-      img: "./images/goods/goods3.png",
+      img: "../images/goods/goods3.png",
       goodsName: "앙몬드 & 스카피 굿즈",
     },
     {
-      icon: "./images/goods/brandIcon4.png",
+      icon: "../images/goods/brandIcon4.png",
       name: "다나카 프렌즈 팝업스토어",
-      img: "./images/goods/goods4.png",
+      img: "../images/goods/goods4.png",
       goodsName: "폰케이스,그립톡,키링 등",
     },
   ];
@@ -95,15 +96,12 @@ const Wrap = styled.div`
 const Contain = styled.div`
   display: flex;
   align-items: center;
-  margin: 0 auto;
+  justify-content: center;
+  margin: 2rem auto;
   .alice-wrapper {
     width: 100%;
   }
   alice-carousel > div {
-    width: 427px;
-    height: 525px;
-  }
-  li.alice-carousel__stage-item>*: (.__active) {
     width: 427px;
     height: 525px;
   }
@@ -112,7 +110,6 @@ const Contain = styled.div`
     height: 525px;
   }
 `;
-
 const ItemsContain = styled.div`
   width: 100%;
   height: 530px;
@@ -131,6 +128,10 @@ const ItemsWrap = styled.div`
     height: 100%;
     object-fit: cover;
   }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f8f8;
 `;
 const Card = styled.div`
 width: 427px;
@@ -165,6 +166,7 @@ width: 427px;
     width: 363px;
     height: 353px;
     align-items: center;
+    border-radius: 10px;
   }
   .sm {
     width: 48px;

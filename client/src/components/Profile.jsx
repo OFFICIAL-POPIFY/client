@@ -17,6 +17,7 @@ function Profile() {
             Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
         });
+
         setProfile(response.data);
         setLoading(false);
       } catch (err) {
@@ -36,10 +37,13 @@ function Profile() {
     return <p>Error: {error.message}</p>;
   }
 
+  // id를 상위 범위에서 가져와서 사용
+  const id = profile?.user_id;
+
   return (
     <div>
       <h2>프로필 정보</h2>
-      <p>이름: {profile.name}</p>
+      <p>이름: {id}</p>
       <p>이메일: {profile.email}</p>
       {/* 추가적인 프로필 정보 표시 */}
     </div>
