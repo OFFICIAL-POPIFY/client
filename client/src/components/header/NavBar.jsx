@@ -18,9 +18,9 @@ function NavBar() {
     e.preventDefault();
     try {
       window.location.href = "/login";
+      alert("로그아웃 되었습니다.");
       await axios.get(LOGOUT_URL);
       setAuth(null);
-      alert("로그아웃 되었습니다.");
     } catch (error) {
       console.error("로그아웃 오류:", error);
     }
