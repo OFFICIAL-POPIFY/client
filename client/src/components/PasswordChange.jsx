@@ -5,18 +5,19 @@ import styled from "styled-components";
 
 function PasswordChange() {
   const { setAuth, value } = useContext(AuthContext);
-  const [passwordConfrim, setPasswordConfrim] = useState("");
+  const [passwordConfirm, setPasswordConfrim] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newPasswordConfirm, setNewPasswordConfirm] = useState("");
-  const { userPassword } = value;
+  const password = { value };
   const changeRef = useRef();
   const newRef = useRef();
 
   const handleCheckPassword = (e) => {
     e.preventDefault();
-    if (!passwordConfrim === "" && passwordConfrim === userPassword) {
+    if (passwordConfirm !== "" && passwordConfirm == password) {
       alert("비밀번호가 일치합니다.");
     } else {
+      console.log("컨펌:", passwordConfirm, " 유저:", password);
       alert("비밀번호가 일치하지 않습니다.");
     }
   };
@@ -26,7 +27,7 @@ function PasswordChange() {
     try {
       const response = await axios.patch(
         "/users/profile",
-        JSON.stringify({ passwordConfrim }),
+        JSON.stringify({ passwordConfirm }),
         {
           headers: {
             "Content-Type": "application/json",
@@ -36,7 +37,10 @@ function PasswordChange() {
         }
       );
       const roles = response?.data?.roles;
-      setAuth({ passwordConfrim, roles });
+      setAuth({ ...value, userPassword: newPassword, roles });
+      console.log("비밀번호가 변경되었습니다.");
+      setNewPassword("");
+      setNewPasswordConfirm("");
     } catch (err) {
       console.error("비밀번호 변경 오류:", err);
     }
@@ -70,7 +74,7 @@ function PasswordChange() {
           <input
             id="1"
             ref={changeRef}
-            value={passwordConfrim}
+            value={passwordConfirm}
             type="password"
             placeholder="현재 비밀번호"
             onChange={(e) => setPasswordConfrim(e.target.value)}

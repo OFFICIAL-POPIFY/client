@@ -4,8 +4,7 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import styled from "styled-components";
 import { useState } from "react";
 import classes from "./Thumbnail.module.css";
-import PopupData from "../../../src/components/data.json";
-import Information from "../Information";
+import Corporation from "../Corporation";
 import { BsChevronCompactLeft } from "react-icons/bs";
 import { BsChevronCompactRight } from "react-icons/bs";
 function Thumbnail() {
@@ -67,6 +66,9 @@ function Thumbnail() {
             <h2 className={classes.text}>{image.text}</h2>
           </a>
         </div>
+        <div>
+          <Corporation />
+        </div>
       </ItemsContain>
     );
   });
@@ -110,9 +112,7 @@ function Thumbnail() {
         </Contain>
       </div>
 
-      <div>
-        <Information placeholder="해시태그를 입력하세요" data={PopupData} />
-      </div>
+      <div></div>
     </Wrapper>
   );
 }
