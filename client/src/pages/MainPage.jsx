@@ -1,6 +1,6 @@
 import React from "react";
 import Cover from "../components/carousel/Cover";
-import StoreList from "../components/carousel/StoreList";
+import StoreList2 from "../components/carousel/StoreList2";
 import GoodsCarousel from "../components/carousel/GoodsCarousel";
 import data from "../components/data.json";
 function MainPage() {
@@ -8,7 +8,7 @@ function MainPage() {
     <div>
       <Cover />
       <GoodsCarousel />
-      <StoreList data={data} />
+      <StoreList2 />
     </div>
   );
 }

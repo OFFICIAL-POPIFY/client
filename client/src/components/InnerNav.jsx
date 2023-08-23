@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function InnerNav() {
-  const params = useParams().id;
+  // const params = useParams().id;
+  const id = window.location.pathname.split("/")[3];
   const mapHandler = () => {
     const documentHeight = Math.max(
       document.body.scrollHeight,
@@ -32,7 +33,7 @@ function InnerNav() {
         </li>
         <li>
           <div>
-            <Link to={`/contents/${params}`}>REVIEW</Link>
+            <Link to={`/review/${id}`}>REVIEW</Link>
           </div>
         </li>
         <li>

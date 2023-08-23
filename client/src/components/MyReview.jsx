@@ -4,7 +4,8 @@ import axios from "../api/axios";
 import AuthContext from "../context/AuthProvider";
 
 function MyReview() {
-  const REVIEW_URL = `${process.env.REACT_APP_BASE_URL}/reviews/id`;
+  const id = window.location.pathname.split("/")[3];
+  const REVIEW_URL = `${process.env.REACT_APP_BASE_URL}/reviews/${id}`;
   const { user } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
