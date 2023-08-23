@@ -1,14 +1,45 @@
 .wrapper{
-    padding: 1rem;
-    height: 400px;
+    width: 380px;
+    height: 380px;
+    flex-shrink: 0;
     display: flex;
     position: relative;
-    float:right;
+    float: right;
    
 }
+
 .wrapper p{
-    width: 20rem;
+    display: flex;
+    width: 380px;
+    height: 45px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+
+    color: #000;
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
+
+.wrapper h1{
+    display: flex;
+    width: 380px;
+    height: 60px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+
+    color: #000;
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 30px; /* 150% */
+}
+
 .search_input{
 
     display: flex;

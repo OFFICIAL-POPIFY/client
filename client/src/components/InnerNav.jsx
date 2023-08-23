@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import classes from "./InnerNav.module.css";
+
 function InnerNav() {
   const mapHandler = () => {
     const documentHeight = Math.max(
@@ -16,7 +18,7 @@ function InnerNav() {
   };
 
   return (
-    <Wrapper>
+    <Wrapper className={classes.wrapper}>
       <ul>
         <li>
           <div>
@@ -52,8 +54,9 @@ const Wrapper = styled.div`
   border: 0.5px solid #959595;
   background: #fff;
   margin: 0 auto;
-  top:-6rem
+  top:-390px;
   position: relative;
+  
   ul {
     display: flex;
     justify-content: space-around;

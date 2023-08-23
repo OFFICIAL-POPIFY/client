@@ -6,8 +6,8 @@ import { useState } from "react";
 import classes from "./Thumbnail.module.css";
 import PopupData from "../../../src/components/data.json";
 import Information from "../Information";
-import { BsChevronCompactLeft } from "react-icons/bs";
-import { BsChevronCompactRight } from "react-icons/bs";
+import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa";
 function Thumbnail() {
   const [slide, setSlide] = useState("");
   const onSlideChange = (e) => {
@@ -26,34 +26,22 @@ function Thumbnail() {
 
   const images = [
     {
-      img: "https://img1.kakaocdn.net/cthumb/local/R0x420/?fname=http%3A%2F%2Ft1.kakaocdn.net%2Fmystore%2F47E49C69BC6F44F2B12EB84CF56471AA",
-      text: "포르쉐 나우 성수",
-      link: "https://place.map.kakao.com/1409154620",
+      img: "./images/test.png"
     },
     {
       img: "https://img1.kakaocdn.net/cthumb/local/R0x420/?fname=http%3A%2F%2Ft1.kakaocdn.net%2Fmystore%2F23B7F6778DF24338A60A959F49A7C117",
-      text: "카스 레몬스퀴즈 팝업스토어",
-      link: "https://place.map.kakao.com/1496327178",
     },
     {
       img: "https://img1.kakaocdn.net/cthumb/local/R0x420/?fname=http%3A%2F%2Ft1.kakaocdn.net%2Ffiy_reboot%2Fplace%2FD2502AAEB7B24861B813B3515FB9C198",
-      text: "메종프란시스커정 팝업스토어 갤러리아 타임월드점",
-      link: "https://place.map.kakao.com/149300544",
     },
     {
       img: "https://img1.kakaocdn.net/cthumb/local/R0x420/?fname=http%3A%2F%2Ft1.kakaocdn.net%2Fmystore%2F05C70613570148958BF42507BA77BAF4",
-      text: "스펙타클타운",
-      link: "https://place.map.kakao.com/351722316",
     },
     {
       img: "https://img1.kakaocdn.net/cthumb/local/R0x420/?fname=http%3A%2F%2Ft1.kakaocdn.net%2Fmystore%2FFFA62748275A49B28C48287C7326D403",
-      text: "메타그라운드 성수점",
-      link: "https://place.map.kakao.com/98681541",
     },
     {
       img: "https://img1.kakaocdn.net/cthumb/local/R0x420/?fname=http%3A%2F%2Ft1.kakaocdn.net%2Fmystore%2F2875A7FD61F84B22B7E44AF1D5468AF8",
-      text: "그랜드부다페스트 홍대",
-      link: "https://place.map.kakao.com/347988278",
     },
   ];
   const items = images.map((image, index) => {
@@ -81,7 +69,7 @@ function Thumbnail() {
               className={classes.prevButton}
               onClick={() => ref?.current?.slidePrev()}
             >
-              <BsChevronCompactLeft />
+              <FaChevronLeft size="15"/>
             </button>
             <CarouselBox>
               <AliceCarousel
@@ -104,7 +92,7 @@ function Thumbnail() {
               className={classes.nextButton}
               onClick={() => ref?.current?.slideNext()}
             >
-              <BsChevronCompactRight />
+              <FaChevronRight size="15"/>
             </button>
           </div>
         </Contain>
@@ -117,48 +105,40 @@ function Thumbnail() {
   );
 }
 const Wrapper = styled.div`
+  width: 75rem;
+  height: 23.75rem;
   display: flex;
-  margin: 2rem;
+  margin: 40px 0px 35px 0px;
   justify-content: space-between;
 `;
 const Contain = styled.div`
-  width: 50rem;
-  height: 400px;
-  margin: 0 auto;
-  display: flex;
+  width: 49.375rem;
+  height: 23.75rem;
   justify-content: space-between;
 `;
 
 const CarouselBox = styled.div`
-  width: 700px;
-  height: 600px;
-  position: relative;
-  top: 0;
-  left: 0;
+  width: 49.375rem;
+  height: 23.75rem;
+  flex-shrink: 0;
 `;
 
 const ItemsContain = styled.div`
   flex-direction: column;
   width: fit-content;
-  height: 400px;
   display: flex;
-  padding: 0 10px;
-  div {
-    margin: 0 40px;
-  }
 `;
 
 const ItemsWrap = styled.div`
   img {
-    width: 40rem;
-    height: 30rem;
+    width: 49.375rem;
+    height: 23.75rem;
   }
   display: flex;
+  flex-shrink: 0;
   width: fit-content;
-  height: 300px;
-  border-radius: 20px;
-  overflow: hidden;
-  margin: 0 20px;
+  overflow: visible;
+
 `;
 
 export default Thumbnail;
