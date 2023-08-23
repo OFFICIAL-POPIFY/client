@@ -2,9 +2,9 @@ import React, { useState, useRef, useEffect } from "react";
 import "react-alice-carousel/lib/alice-carousel.css";
 import AliceCarousel from "react-alice-carousel";
 import styled from "styled-components";
-import classes from "./Thumbnail.module.css";
-import { BsChevronCompactLeft } from "react-icons/bs";
-import { BsChevronCompactRight } from "react-icons/bs";
+import classes from "./GoodsCarousel2.module.css";
+import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa";
 function GoodsCarousel() {
   const GOODS_URL = `${process.env.REACT_APP_BASE_URL}/goods/:id`;
   const [slide, setSlide] = useState("");
@@ -67,14 +67,14 @@ function GoodsCarousel() {
   return (
     <Wrapper>
       <h1>GOODS</h1>
-      <hr />
+      <hr/>
       <Contain>
         <div className={classes.absolute}>
           <button
             className={classes.prevButton}
             onClick={() => ref?.current?.slidePrev()}
           >
-            <BsChevronCompactLeft />
+            <FaChevronLeft size="30"/>
           </button>
           <CarouselBox>
             <AliceCarousel
@@ -96,7 +96,7 @@ function GoodsCarousel() {
             className={classes.nextButton}
             onClick={() => ref?.current?.slideNext()}
           >
-            <BsChevronCompactRight />
+            <FaChevronRight size="30"/>
           </button>
         </div>
       </Contain>
@@ -105,44 +105,57 @@ function GoodsCarousel() {
 }
 
 export default GoodsCarousel;
+
 const Wrapper = styled.div`
+  hr {
+    width: 1198px;
+    align-items: center;
+    margin: 0;
+  }
+
   h1 {
+    width: 92px;
+    height: 30px;
     color: #000;
     font-family: Pretendard;
     font-size: 25px;
     font-style: normal;
     font-weight: 900;
     line-height: normal;
-    top: 10%;
   }
 `;
+
 const Contain = styled.div`
   display: flex;
-  height: 50rem;
+  height: 760px;
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
+
   .alice-wrapper {
     width: 100%;
   }
+
   alice-carousel > div {
-    width: 427px;
-    height: 525px;
+    width: 300px;
+    height: 350px;
   }
+
   li.alice-carousel__stage-item>*: (.__active) {
-    width: 427px;
-    height: 525px;
+    width: 300px;
+    height: 350px;
   }
+
   li.alice-carousel__stage-item > *:not(.__active .__target) {
-    width: 427px;
-    height: 525px;
+    width: 300px;
+    height: 350px;
   }
 `;
 
 const ItemsContain = styled.div`
   width: 100%;
   height: 530px;
-  padding: 0 10px;
+  padding: 0px;
 `;
 
 const ItemsWrap = styled.div`
@@ -159,23 +172,21 @@ const ItemsWrap = styled.div`
   }
 `;
 const Card = styled.div`
-width: 300px;
+  width: 300px;
   height: 350px;
   
-  }
   .outter{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-   
-
   }
+
   .inner{
     display: flex; /* 추가: 내부 컨테이너를 가로로 배치 */
     align-items: center; /* 추가: 수직 가운데 정렬 */
-    
   }
+
   p {
     display: flex;
     width: 250px;
@@ -183,32 +194,44 @@ width: 300px;
     flex-direction: column;
     justify-content: center;
     flex-shrink: 0;
+    margin: 10px 0px 5px;
+
+    color: #000;
     text-align: center;
+    font-family: Pretendard;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
   }
+
   img {
-    width: 250px;
-    height: 250px;
+    width: 260px;
+    height: 260px;
     align-items: center;
   }
-  .sm {
-    width: 48px;
-    height: 48px;
-    ;
-  }
+
  .name {
-    margin-top: 10px;
-    
-    font-size: 18px;
+    display: flex;
+    width: 250px;
+    height: 20px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+
+    color: #000;
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 13px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 400;
     line-height: normal;
-    text-align: left;
-    
   }
 `;
+
 const CarouselBox = styled.div`
   width: 1200px;
-  height: 400px;
+  height: 715px;
   position: relative;
   top: 0;
   left: 0;

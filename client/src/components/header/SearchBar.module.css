@@ -127,7 +127,12 @@
     align-items: center;
     color: black;
   }
+
+  
+.data_result{
+
 .container .data_result{
+
     margin-top: 5px;
     width: 300px;
     height: 200px;
@@ -137,7 +142,6 @@
     overflow-y: auto;
     position: absolute;
     top: 100%;
-    z-index: 10;
 }
 
 .container.data_result::-webkit-scrollbar{
