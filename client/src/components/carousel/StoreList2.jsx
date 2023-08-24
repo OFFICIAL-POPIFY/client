@@ -10,7 +10,7 @@ function StoreList() {
     axios
       .get(STORE_URL)
       .then((response) => {
-        console.log(response.data);
+        console.log("표시", response.data);
         setStoreData(response.data);
       })
       .catch((error) => {
@@ -21,7 +21,7 @@ function StoreList() {
   const storeItems = storeData.map((store, index) => (
     <div key={index} className="card">
       <img src={store.popup_imgs[index]} alt="" />
-      <Link to={`/popups/search/:${store._id}`}>
+      <Link to={`/popups/search/${store._id}`}>
         <h3>{store.corporation}</h3>
       </Link>
       <p>{store.location}</p>

@@ -6,7 +6,7 @@ import classes from "./GoodsCarousel2.module.css";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 function GoodsCarousel() {
-  const GOODS_URL = `${process.env.REACT_APP_BASE_URL}/goods/:id`;
+  const GOODS_URL = `${process.env.REACT_APP_BASE_URL}/goods`;
   const [slide, setSlide] = useState("");
   const onSlideChange = (e) => {
     e.preventDefault();
@@ -67,14 +67,14 @@ function GoodsCarousel() {
   return (
     <Wrapper>
       <h1>GOODS</h1>
-      <hr/>
+      <hr />
       <Contain>
         <div className={classes.absolute}>
           <button
             className={classes.prevButton}
             onClick={() => ref?.current?.slidePrev()}
           >
-            <FaChevronLeft size="30"/>
+            <FaChevronLeft size="30" />
           </button>
           <CarouselBox>
             <AliceCarousel
@@ -96,7 +96,7 @@ function GoodsCarousel() {
             className={classes.nextButton}
             onClick={() => ref?.current?.slideNext()}
           >
-            <FaChevronRight size="30"/>
+            <FaChevronRight size="30" />
           </button>
         </div>
       </Contain>
@@ -174,15 +174,15 @@ const ItemsWrap = styled.div`
 const Card = styled.div`
   width: 300px;
   height: 350px;
-  
-  .outter{
+
+  .outter {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
 
-  .inner{
+  .inner {
     display: flex; /* 추가: 내부 컨테이너를 가로로 배치 */
     align-items: center; /* 추가: 수직 가운데 정렬 */
   }
@@ -211,7 +211,7 @@ const Card = styled.div`
     align-items: center;
   }
 
- .name {
+  .name {
     display: flex;
     width: 250px;
     height: 20px;
