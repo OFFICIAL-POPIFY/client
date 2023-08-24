@@ -1,10 +1,16 @@
+.auth {
+  display: flex;
+  flex-direction: column;
+  margin: 4.69rem auto;
+}
+
 .title {
   color: #000;
   font-family: "PretendardB";
   font-size: 25px;
   line-height: normal;
   margin-top: 4.375rem;
-  margin-bottom: 0.063rem;
+  margin-bottom: 0.75rem;
 }
 
 .control {
@@ -17,6 +23,7 @@
 .control input[id="passworedConfirm"]{
   position: absolute;
 }
+
 .control label {
   display: block;
   color: #616161;
@@ -39,20 +46,25 @@
 
 .icon{
   position: absolute;
-  left: 1rem;
+  left: 26.5rem;
   color: #959595;
 }
 
 .duplicateButton {
-  position: absolute;
-  top: 40px;
-  right: 30px;
-  padding: 8px 12px;
+  width: 5rem;
+  height: 1.875rem;
+  flex-shrink: 0;
   background-color: #000000;
-  color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 0.3125rem;
   cursor: pointer;
+  color: #FFF;
+  text-align: center;
+  font-family: "PretendardR";
+  font-size: 0.8125rem;
+  line-height: normal;
+  position: absolute;
+  right: 26.5rem;
 }
 
 .duplicateButton:hover {
@@ -60,19 +72,15 @@
 }
 
 .signup{
-  display: flex;
-  width: 27.813rem;
-  height: 3.75rem;
+  display: block;
+  width: 25rem;
+  height: 3.125rem;
   flex-shrink: 0;
   margin: 2.81rem auto;
   background:#000000;
   border-radius: 5px;
   align-items:center;
   text-align: center;
-}
-
-.button{
-  display: flex;
   color: #FFF;
   font-family: "PretendardB";
   text-align: center;

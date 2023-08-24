@@ -72,7 +72,6 @@ function Login() {
 
   return (
     <div>
-
      <p className={classes.title}>LOGIN</p>
      <hr />
       {!succsess ? (
@@ -122,8 +121,8 @@ function Login() {
                   <TiDelete />
                 </div>
               </div>
-              <button type="submit" className={classes.login}>
-                <p className={classes.button}>LOGIN</p>
+              <button type="submit" className={classes.login}>      
+              LOGIN
               </button>
             </form>
           </section>
@@ -135,51 +134,6 @@ function Login() {
             <div className={classes.linktos}>
             <Link to="/signup">회원가입</Link>
             </div>
-=======
-      <main className={classes.auth}>
-        <section>
-          <form onSubmit={handlerSubmit}>
-            <p
-              ref={errRef}
-              className={errMsg ? classes.errMsg : "offscreen"}
-              aria-live="assertive"
-            >
-              {errMsg}
-            </p>
-            <div className={classes.control}>
-              <label htmlFor="id"></label>
-              <AiOutlineUser />
-              <input
-                placeholder="아이디"
-                type="text"
-                user_id="id"
-                autoComplete="off"
-                onChange={(e) => setUser_id(e.target.value)}
-                value={user_id}
-                required
-                ref={userRef}
-              />
-            </div>
-            <div className={classes.control}>
-              <label htmlFor="password"></label>
-              <HiOutlineKey />
-              <input
-                placeholder="비밀번호"
-                type="password"
-                id="password"
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
-                required
-              />
-            </div>
-            <button type="submit" className={classes.login}>
-              LOGIN
-            </button>
-          </form>
-          <Link to="/signup">회원가입</Link>
-        </section>
-      </main>
-
     </div>
   );
 }

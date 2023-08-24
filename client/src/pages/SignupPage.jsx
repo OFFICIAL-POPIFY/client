@@ -83,6 +83,7 @@ function Signup() {
       <p className={classes.title}>SIGN UP</p>
      <hr />
       {!succsess ? (
+        <main className={classes.auth}>
           <section>
             <form onSubmit={handlerSubmit}>
               <p
@@ -93,7 +94,7 @@ function Signup() {
                 {errMsg}
               </p>
               <div className={classes.control}>
-                <label className={classes.labelContainer} htmlFor="id"></label>
+                <label htmlFor="id"></label>
                 <div className={classes.icon}>
                 <AiOutlineUser />
                 </div>
@@ -132,7 +133,7 @@ function Signup() {
                     required
                   />
               </div>
-              { <div className={classes.control}>
+               <div className={classes.control}>
                 <label htmlFor="passwordConfirm"></label>
                 <div className={classes.icon}>
                 <HiOutlineKey />
@@ -146,12 +147,13 @@ function Signup() {
                   value={passwordConfrim}
                   required
                 />
-              </div> }
+              </div> 
               <button type="submit" className={classes.signup}>
-              <p className={classes.button}>SIGN UP</p>
+              SIGN UP
               </button>
             </form>
           </section>
+        </main>
       ) : (
         <p>회원가입 성공</p>
       )}
