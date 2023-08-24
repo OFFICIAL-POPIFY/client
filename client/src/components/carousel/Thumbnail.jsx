@@ -9,7 +9,6 @@ import Information from "../Information";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 
-import Corporation from "../Corporation";
 import { BsChevronCompactLeft } from "react-icons/bs";
 import { BsChevronCompactRight } from "react-icons/bs";
 
@@ -31,7 +30,7 @@ function Thumbnail() {
 
   const images = [
     {
-      img: "./images/test.png"
+      img: "./images/test.png",
     },
     {
       img: "https://img1.kakaocdn.net/cthumb/local/R0x420/?fname=http%3A%2F%2Ft1.kakaocdn.net%2Fmystore%2F23B7F6778DF24338A60A959F49A7C117",
@@ -60,9 +59,6 @@ function Thumbnail() {
             <h2 className={classes.text}>{image.text}</h2>
           </a>
         </div>
-        <div>
-          <Corporation />
-        </div>
       </ItemsContain>
     );
   });
@@ -77,7 +73,7 @@ function Thumbnail() {
               className={classes.prevButton}
               onClick={() => ref?.current?.slidePrev()}
             >
-              <FaChevronLeft size="15"/>
+              <FaChevronLeft size="15" />
             </button>
             <CarouselBox>
               <AliceCarousel
@@ -100,7 +96,7 @@ function Thumbnail() {
               className={classes.nextButton}
               onClick={() => ref?.current?.slideNext()}
             >
-              <FaChevronRight size="15"/>
+              <FaChevronRight size="15" />
             </button>
           </div>
         </Contain>
@@ -144,7 +140,6 @@ const ItemsWrap = styled.div`
   flex-shrink: 0;
   width: fit-content;
   overflow: visible;
-
 `;
 
 export default Thumbnail;
