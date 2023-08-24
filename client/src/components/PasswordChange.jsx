@@ -28,16 +28,16 @@ function PasswordChange() {
     try {
       const response = await axios.put(
         PASSWORD_URL,
-        JSON.stringify({ passwordConfirm }),
+        JSON.stringify({ password: newPassword }),
         {
           headers: {
             "Content-Type": "application/json",
-            withCredentials: true,
             Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
         }
       );
       const roles = response?.data?.roles;
+      console.log("비밀번호 변경:", value, password);
       setAuth({ ...value, password: newPassword, roles });
       console.log("비밀번호가 변경되었습니다.");
       setNewPassword("");
