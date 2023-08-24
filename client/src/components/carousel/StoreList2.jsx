@@ -20,7 +20,7 @@ function StoreList() {
 
   const storeItems = storeData.map((store, index) => (
     <div key={index} className="card">
-      <img src={store.popup_imgs[index]} alt="" />
+      <img src={store.popup_imgs[0]} alt="" />
       <Link to={`/popups/search/${store._id}`}>
         <h3>{store.corporation}</h3>
       </Link>
