@@ -6,7 +6,7 @@
     height: 15rem;
     border: 0.031rem solid #959595;
     border-radius: 5px;
-    padding-top: 0;
+    padding-top: 1.56rem;
     padding-bottom: 1.25rem;
     padding-left: 1.875rem;
     padding-right: 1.875rem;
@@ -21,9 +21,9 @@
     font-size: 25px;
     line-height: normal;
     margin-top: 4.375rem;
-    margin-bottom: 0.063rem;
+    margin-bottom: 0.75rem;
   }
-
+  
   .control {
     position: relative;
     display: flex;
@@ -67,19 +67,14 @@
   }
 
   .login{
-    display: flex;
-    width: 27.813rem;
-    height: 3.75rem;
+    width: 25rem;
+    height: 3.125rem;
     flex-shrink: 0;
     margin: 2.81rem auto;
     background:#000000;
     border-radius: 5px;
     align-items:center;
     text-align: center;
-  }
-  
-  .button{
-    display: flex;
     color: #FFF;
     font-family: "PretendardB";
     text-align: center;
@@ -108,6 +103,4 @@ input::placeholder {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-
 }
-
