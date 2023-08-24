@@ -104,23 +104,23 @@ const CommentForm = () => {
         ))}
       </div>
 
-      <h3>코멘트 목록</h3>
+      <h3></h3>
       <div>
-        <label className={classes.commentFormLabel}>별점:</label>
+        <label className={classes.commentFormLabel}></label>
+        <textarea
+          className={classes.commentFormTextarea}
+          value={comment}
+          onChange={handleCommentChange}
+        />
+      </div>
+      <div>
+        <label className={classes.commentFormLabel}></label>
         <Rating
           value={rating}
           count={5}
           onChange={handleRatingChange}
           size={24}
           activeColor="#ffd700"
-        />
-      </div>
-      <div>
-        <label className={classes.commentFormLabel}>코멘트:</label>
-        <textarea
-          className={classes.commentFormTextarea}
-          value={comment}
-          onChange={handleCommentChange}
         />
       </div>
       <div>
