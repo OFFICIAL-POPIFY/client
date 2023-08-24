@@ -4,7 +4,7 @@ import axios from "../api/axios";
 import AuthContext from "../context/AuthProvider";
 
 function MyReview() {
-  const REVIEW_URL = `${process.env.REACT_APP_BASE_URL}/reviews/user`;
+  const REVIEW_URL = `${process.env.REACT_APP_BASE_URL}/reviews/popupID`;
   const { user } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
@@ -16,9 +16,9 @@ function MyReview() {
       const response = await axios.get(REVIEW_URL, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
-          id: user?.id,
         },
       });
+      console.log(localStorage.getItem("id"));
       console.log("Response Data:", response.data);
       setReviews(response?.data);
     } catch (error) {

@@ -36,7 +36,7 @@ const Wrap = styled.div`
   position: absolute;
   float: left;
   top: 300px;
-  right: 230px
+  right: 250px
   display: flex;
   width: 500px;
 `;
