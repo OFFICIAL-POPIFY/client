@@ -4,13 +4,8 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import styled from "styled-components";
 import { useState } from "react";
 import classes from "./Thumbnail.module.css";
-import PopupData from "../../../src/components/data.json";
-import Information from "../Information";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
-
-import { BsChevronCompactLeft } from "react-icons/bs";
-import { BsChevronCompactRight } from "react-icons/bs";
 
 function Thumbnail() {
   const [slide, setSlide] = useState("");

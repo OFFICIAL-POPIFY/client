@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import axios from "../api/axios";
-import AuthContext from "../context/AuthProvider";
 
 function MyReview() {
-  const REVIEW_URL = `${process.env.REACT_APP_BASE_URL}/reviews/popupID`;
-  const { user } = useContext(AuthContext);
+  const id = localStorage.getItem("id");
+  const REVIEW_URL = `${process.env.REACT_APP_BASE_URL}/reviews/user`;
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
     callReview();
@@ -17,6 +16,7 @@ function MyReview() {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
+        body: { id: id },
       });
       console.log(localStorage.getItem("id"));
       console.log("Response Data:", response.data);
@@ -30,9 +30,9 @@ function MyReview() {
       <h1>내가 쓴 리뷰</h1>
       <Review>
         <ul>
-          {/* {reviews?.map((review) => (
+          {reviews?.map((review) => (
             <li key={review?.id}>{review?.content}</li>
-          ))} */}
+          ))}
         </ul>
       </Review>
     </Container>
