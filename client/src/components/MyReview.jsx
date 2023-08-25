@@ -6,7 +6,7 @@ function MyReview() {
   const id = localStorage.getItem("id");
   const REVIEW_URL = `${process.env.REACT_APP_BASE_URL}/reviews/user`;
   const [reviews, setReviews] = useState([]);
-  console.log(reviews);
+
   useEffect(() => {
     callReview();
   }, []);
@@ -34,7 +34,7 @@ function MyReview() {
           {reviews.map((review) => (
             <li>
               <div>
-                <h3>{review.corporation}</h3>
+                <div>스토어: {review.popup}</div>
                 <div>내용 : {review.contents} </div>
 
                 <div>평점 : {review.rate}</div>
