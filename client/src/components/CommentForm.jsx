@@ -80,6 +80,32 @@ const CommentForm = () => {
   const handleImageUpload = (imageList) => {
     setImages(imageList);
   };
+  const accessToken = localStorage.getItem("accessToken");
+  const response = axios.get(REVIEW_URL, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+  const reviewID = response?.data?.id;
+  // rewiew.popup 과 reviewID를 일치시켜서 해당 리뷰를 삭제 할 수 있도록 함
+  const deleteReview = async (reviewID) => {
+    try {
+      const DELETE_URL = `${process.env.REACT_APP_BASE_URL}/reviews/${reviewID}`;
+      const response = await axios.delete(DELETE_URL, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      console.log("Response Data:", response.data);
+
+      // Update the commentsList state after successful deletion
+      setCommentsList(
+        commentsList.filter((comment) => comment._id !== reviewID)
+      );
+    } catch (error) {
+      console.error("리뷰 삭제 오류:", error);
+    }
+  };
 
   return (
     <>
@@ -90,6 +116,9 @@ const CommentForm = () => {
             <li key={index} className={classes.commentItem}>
               <div>별점: {commentItem.rate}</div>
               <div>코멘트 내용: {commentItem.contents}</div>
+              <button onClick={() => deleteReview(commentItem._id)}>
+                삭제
+              </button>
               {commentItem.review_img && commentItem.review_img.length > 0 && (
                 <div>
                   <h4>업로드된 이미지:</h4>
