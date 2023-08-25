@@ -1,15 +1,17 @@
 import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import axios from "../api/axios";
-import AuthContext from "../context/AuthProvider";
 
 function MyReview() {
-  const REVIEW_URL = `${process.env.REACT_APP_BASE_URL}/reviews/popupID`;
-  const { user } = useContext(AuthContext);
+  const id = localStorage.getItem("id");
+
+  const REVIEW_URL = `${process.env.REACT_APP_BASE_URL}/reviews/user`;
   const [reviews, setReviews] = useState([]);
+
   useEffect(() => {
     callReview();
   }, []);
+
   const callReview = async () => {
     try {
       const accessToken = localStorage.getItem("accessToken");
@@ -17,22 +19,29 @@ function MyReview() {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
+        body: { id: id },
       });
-      console.log(localStorage.getItem("id"));
-      console.log("Response Data:", response.data);
+
       setReviews(response?.data);
     } catch (error) {
       console.error("리뷰 불러오기 오류:", error);
     }
   };
+
   return (
     <Container>
       <h1>내가 쓴 리뷰</h1>
       <Review>
         <ul>
-          {/* {reviews?.map((review) => (
-            <li key={review?.id}>{review?.content}</li>
-          ))} */}
+          {reviews.map((review) => (
+            <li key={review.id}>
+              <div>
+                <div>스토어: {review.popup}</div>
+                <div>내용 : {review.contents} </div>
+                <div>평점 : {review.rate}</div>
+              </div>
+            </li>
+          ))}
         </ul>
       </Review>
     </Container>
@@ -40,6 +49,7 @@ function MyReview() {
 }
 
 export default MyReview;
+
 const Container = styled.div`
   width: 770px;
   height: 400px;
@@ -54,6 +64,7 @@ const Container = styled.div`
   }
   display: flex;
 `;
+
 const Review = styled.div`
   ul {
     list-style: none;

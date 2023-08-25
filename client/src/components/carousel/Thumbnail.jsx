@@ -1,18 +1,16 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import AliceCarousel, { slidePrev } from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import styled from "styled-components";
-import { useState } from "react";
+
 import classes from "./Thumbnail.module.css";
-import PopupData from "../../../src/components/data.json";
-import Information from "../Information";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
-
-import { BsChevronCompactLeft } from "react-icons/bs";
-import { BsChevronCompactRight } from "react-icons/bs";
-
+import axios from "../../api/axios";
 function Thumbnail() {
+  const storeId = window.location.pathname.split("/")[3];
+  const CORPORATION_URL = `${process.env.REACT_APP_BASE_URL}/popups/search/${storeId}`;
+  const [corporationData, setCorporationData] = useState([]);
   const [slide, setSlide] = useState("");
   const onSlideChange = (e) => {
     e.preventDefault();
@@ -27,38 +25,26 @@ function Thumbnail() {
       items: 1,
     },
   };
+  useEffect(() => {
+    axios
+      .get(CORPORATION_URL)
+      .then((response) => {
+        console.log("API 응답:", response.data);
+        setCorporationData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
-  const images = [
-    {
-      img: "./images/test.png",
-    },
-    {
-      img: "https://img1.kakaocdn.net/cthumb/local/R0x420/?fname=http%3A%2F%2Ft1.kakaocdn.net%2Fmystore%2F23B7F6778DF24338A60A959F49A7C117",
-    },
-    {
-      img: "https://img1.kakaocdn.net/cthumb/local/R0x420/?fname=http%3A%2F%2Ft1.kakaocdn.net%2Ffiy_reboot%2Fplace%2FD2502AAEB7B24861B813B3515FB9C198",
-    },
-    {
-      img: "https://img1.kakaocdn.net/cthumb/local/R0x420/?fname=http%3A%2F%2Ft1.kakaocdn.net%2Fmystore%2F05C70613570148958BF42507BA77BAF4",
-    },
-    {
-      img: "https://img1.kakaocdn.net/cthumb/local/R0x420/?fname=http%3A%2F%2Ft1.kakaocdn.net%2Fmystore%2FFFA62748275A49B28C48287C7326D403",
-    },
-    {
-      img: "https://img1.kakaocdn.net/cthumb/local/R0x420/?fname=http%3A%2F%2Ft1.kakaocdn.net%2Fmystore%2F2875A7FD61F84B22B7E44AF1D5468AF8",
-    },
-  ];
-  const items = images.map((image, index) => {
+  const popupImages = corporationData.popup_imgs || []; // 기본값으로 빈 배열 사용
+  const items = popupImages.map((image, index) => {
     return (
       <ItemsContain key={index}>
         <ItemsWrap>
-          <img src={image.img} alt="" />
+          <img src={image} alt="" />
         </ItemsWrap>
-        <div>
-          <a className={classes.link} href={image.link}>
-            <h2 className={classes.text}>{image.text}</h2>
-          </a>
-        </div>
+        <div>{/* 다른 정보 표시 */}</div>
       </ItemsContain>
     );
   });
