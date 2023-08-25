@@ -5,8 +5,12 @@ import styled from "styled-components";
 import classes from "./GoodsCarousel2.module.css";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
+import axios from "../../api/axios";
+
 function GoodsCarousel() {
-  const GOODS_URL = `${process.env.REACT_APP_BASE_URL}/goods`;
+  const popupID = window.location.pathname.split("/")[3];
+  const GOODS_URL = `${process.env.REACT_APP_BASE_URL}/goods/popups/${popupID}`;
+  const [goodsData, setGoodsData] = useState([]);
   const [slide, setSlide] = useState("");
   const onSlideChange = (e) => {
     e.preventDefault();
@@ -22,28 +26,23 @@ function GoodsCarousel() {
     },
   };
 
-  const images = [
-    {
-      name: "플레이 에디션",
-      img: "../images/goods2/goods1.png",
-      price: "125,000원",
-    },
-    {
-      name: "실리콘 네임택",
-      img: "../images/goods2/goods2.png",
-      price: "4,000원",
-    },
-    {
-      name: "실리콘 나눔톡",
-      img: "../images/goods2/goods3.png",
-      price: "6,000원",
-    },
-    {
-      name: "스티커",
-      img: "../images/goods2/goods4.png",
-      price: "2,500원",
-    },
-  ];
+  const images = goodsData.map((goods) => {
+    return {
+      img: goods.goods_img,
+      name: goods.goods_name,
+      price: goods.goods_price,
+    };
+  });
+  useEffect(() => {
+    axios
+      .get(GOODS_URL)
+      .then((response) => {
+        setGoodsData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   const items = images.map((image) => {
     return (
       <ItemsContain>
