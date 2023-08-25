@@ -12,6 +12,7 @@ function PasswordChange() {
   const password = value?.auth?.password;
   const changeRef = useRef();
   const newRef = useRef();
+
   const PASSWORD_URL = `${process.env.REACT_APP_BASE_URL}/users/profile`;
   const handleCheckPassword = (e) => {
     e.preventDefault();
@@ -100,8 +101,10 @@ function PasswordChange() {
             placeholder="새 비밀번호 확인"
             onChange={(e) => setNewPasswordConfirm(e.target.value)}
           />
+
           <button className="submit" onClick={handleCheckPassword}>
             변경하기
+
           </button>
           </div>
         </Styledform>
