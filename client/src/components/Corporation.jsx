@@ -16,15 +16,17 @@ function Corporation() {
         console.log(error);
       });
   }, [CORPORATION_URL]);
-
+  console.log(corporationData);
   const corporationItems = (
     <div className="card">
       <h2>팝업스토어 정보</h2>
       <hr />
-      <h3>{corporationData.corporation}</h3>
-      <p>{corporationData.location}</p>
+      <a href={corporationData.placeurl}>
+        <h3>{corporationData.corporation}</h3>
+      </a>
+      <p>주소 : {corporationData.location}</p>
       <p>{corporationData.date}</p>
-      <p>{corporationData.time}</p>
+      <p>기간 : {corporationData.term}</p>
     </div>
   );
   return <Wrap>{corporationItems}</Wrap>;
