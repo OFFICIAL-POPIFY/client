@@ -8,35 +8,42 @@ import axios from "../api/axios";
 const CommentForm = () => {
   const { value } = useContext(AuthContext);
   const [rate, setRating] = useState(0);
-  const [comment, setComment] = useState("");
+  const [contents, setComment] = useState("");
   const [images, setImages] = useState([]);
   const [commentsList, setCommentsList] = useState([]); // 코멘트 목록을 저장하는 상태 추가
   const isLoggedIn = true; // // 로그인 상태 확인용 변수 (예시로 true, false로 로그인 상태 가정) <-- 임시 방편
   const popupID = window.location.pathname.split("/")[3];
-
+  const COMMENT_URL = `${process.env.REACT_APP_BASE_URL}/reviews/${popupID}`;
   const REVIEW_URL = `${process.env.REACT_APP_BASE_URL}/reviews/popups/${popupID}`;
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     console.log("handleSubmit");
     event.preventDefault();
     // 여기서 서버로 평점, 코멘트 내용, 이미지를 보내는 로직을 추가해야 함
     // 서버로 데이터를 보내는 방법은 axios, fetch 등을 사용
     {
-      /*axios 통신// try {
-      // 서버로 보낼 데이터
-       body: {
+      try {
+        //서버로 보낼 데이터
+
+        //서버로 데이터를 보내는 POST 요청
+
+        const accessToken = localStorage.getItem("accessToken");
+        const response = await axios.post(COMMENT_URL, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+          data: {
             rate: rate,
-            comments: comment,
+            contents: contents,
             review_img: images.map((image) => image.dataURL),
           },
-      // 서버로 데이터를 보내는 POST 요청
-      const response = await axios.post('http://your-server-url/api/comments', data);
-  
-      // 서버 응답 처리 (예: 성공 메시지 출력)
-      console.log('서버 응답:', response.data);
-    } catch (error) {
-      // 에러 처리 (예: 에러 메시지 출력)
-      console.error('에러 발생:', error);
-    } */
+        });
+
+        //서버 응답 처리 (예: 성공 메시지 출력)
+        console.log("서버 응답:", response.data);
+      } catch (error) {
+        //에러 처리 (예: 에러 메시지 출력)
+        console.error("에러 발생:", error);
+      }
     }
 
     // 로그인 상태 확인 <-- 임시 방편
@@ -53,7 +60,7 @@ const CommentForm = () => {
     // 폼 데이터를 코멘트 목록에 추가
     const newComment = {
       rating: rate,
-      comments: comment,
+      comments: contents,
       review_img: images.map((image) => image.dataURL),
     };
     setCommentsList([...commentsList, newComment]);
@@ -140,7 +147,7 @@ const CommentForm = () => {
         <label className={classes.commentFormLabel}>코멘트:</label>
         <textarea
           className={classes.commentFormTextarea}
-          value={comment}
+          value={contents}
           onChange={handleCommentChange}
         />
       </div>
