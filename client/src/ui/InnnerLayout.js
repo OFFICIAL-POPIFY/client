@@ -9,5 +9,4 @@ export default InnerLayout;
 
 const Layout = styled.div`
   width: 120rem;
-
 `;
