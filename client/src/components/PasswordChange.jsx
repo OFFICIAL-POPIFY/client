@@ -8,10 +8,11 @@ function PasswordChange() {
   const [passwordConfirm, setPasswordConfrim] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newPasswordConfirm, setNewPasswordConfirm] = useState("");
-  const password = { value };
+  const password = value?.auth?.password;
   const changeRef = useRef();
   const newRef = useRef();
 
+  const PASSWORD_URL = `${process.env.REACT_APP_BASE_URL}/users/profile`;
   const handleCheckPassword = (e) => {
     e.preventDefault();
     if (passwordConfirm !== "" && passwordConfirm == password) {
@@ -25,19 +26,19 @@ function PasswordChange() {
   const formSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.patch(
-        "/users/profile",
-        JSON.stringify({ passwordConfirm }),
+      const response = await axios.put(
+        PASSWORD_URL,
+        JSON.stringify({ password: newPassword }),
         {
           headers: {
             "Content-Type": "application/json",
-            withCredentials: true,
             Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
         }
       );
       const roles = response?.data?.roles;
-      setAuth({ ...value, userPassword: newPassword, roles });
+      console.log("비밀번호 변경:", value, password);
+      setAuth({ ...value, password: newPassword, roles });
       console.log("비밀번호가 변경되었습니다.");
       setNewPassword("");
       setNewPasswordConfirm("");
@@ -96,7 +97,10 @@ function PasswordChange() {
             placeholder="새 비밀번호 확인"
             onChange={(e) => setNewPasswordConfirm(e.target.value)}
           />
-          <button className="submit" onClick={handleCheckPassword}>
+          <button
+            className="submit"
+            onClick={handleCheckPassword && formSubmit}
+          >
             변경
           </button>
         </Styledform>
