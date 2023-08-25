@@ -33,7 +33,7 @@ function Resignation() {
 
   return (
     <Wrap>
-      <h1>회원탈퇴</h1>
+      <h1>회원 탈퇴</h1>
       <p>
         * 탈퇴 후에도 게시판형 서비스에 등록한 게시물은 그대로 남아 있습니다.
       </p>
@@ -46,23 +46,29 @@ function Resignation() {
 const Wrap = styled.div`
   h1 {
     color: #000;
-    font-family: Pretendard;
+    font-family: "PretendardEB";
     font-size: 18px;
-    font-style: normal;
-    font-weight: 700;
     line-height: normal;
   }
+
+  P{
+    color: #000;
+    font-family: "PretendardM";
+    font-size: 15px;
+    line-height: normal;
+  }
+
   button {
-    width: 80px;
-    height: 30px;
+    width: 5rem;
+    height: 1.875rem;
     background-color: #000000;
     flex-shrink: 0;
+    border-radius: 0.3125rem;
+    border: none;
     color: #fff;
     text-align: center;
-    font-family: Pretendard;
+    font-family: "PretendardR";
     font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
     line-height: normal;
   }
 };
