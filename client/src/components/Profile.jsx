@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import classes from "./Profile.module.css";
 
 function Profile() {
   const [profile, setProfile] = useState({});
@@ -42,10 +43,15 @@ function Profile() {
 
   return (
     <div>
-      <h2>프로필 정보</h2>
-      <p>이름: {id}</p>
-      <p>이메일: {profile.email}</p>
-      {/* 추가적인 프로필 정보 표시 */}
+          <p className={classes.subtitle}>기본 정보</p>
+       <svg
+              width="60"
+              height="60"
+              viewBox="0 0 60 60"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            ></svg>
+      <p>{id}</p>
     </div>
   );
 }
