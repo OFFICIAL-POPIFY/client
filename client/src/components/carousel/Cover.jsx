@@ -59,6 +59,8 @@ function Cover() {
               effect={"coverflow"}
               grabCursor={true}
               spaceBetween={-300}
+              height={700}
+              autoPlay
               loop={true}
               slidesPerView={2}
               coverflowEffect={{
