@@ -6,7 +6,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import axios from "../../api/axios";
 
 function GoodsCarousel() {
-  const popupID = localStorage.getItem("id");
+  const popupID = window.location.pathname.split("/")[3];
   const STORE_URL = `${process.env.REACT_APP_BASE_URL}/popups/search/${popupID}`;
   const [goodsData, setGoodsData] = useState([]);
   const [slide, setSlide] = useState("");

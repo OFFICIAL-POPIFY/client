@@ -1,20 +1,21 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import Rating from "react-rating-stars-component";
 import ImageUpload from "react-image-upload";
 import classes from "./CommentForm.module.css";
-import AuthContext from "../context/AuthProvider";
 import axios from "../api/axios";
 
 const CommentForm = () => {
-  const { value } = useContext(AuthContext);
   const [rate, setRating] = useState(0);
   const [contents, setComment] = useState("");
   const [images, setImages] = useState([]);
-  const [commentsList, setCommentsList] = useState([]);
+  const accessToken = localStorage.getItem("accessToken");
   const popupID = window.location.pathname.split("/")[3];
+  const STORE_URL = `${process.env.REACT_APP_BASE_URL}/popups/search/${popupID}`;
   const COMMENT_URL = `${process.env.REACT_APP_BASE_URL}/reviews/${popupID}`;
-  const REVIEW_URL = `${process.env.REACT_APP_BASE_URL}/reviews/popups/${popupID}`;
 
+  const [commentsList, setCommentsList] = useState([]);
+  const [popupImages, setPopupImages] = useState([]);
+  console.log("commentsList", commentsList);
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -33,9 +34,7 @@ const CommentForm = () => {
           },
         }
       );
-
-      console.log("서버 응답:", response.data);
-
+      console.log("Response Data:", response.data);
       setRating(0);
       setComment("");
       setImages([]);
@@ -52,23 +51,24 @@ const CommentForm = () => {
   };
 
   useEffect(() => {
-    const callReview = async () => {
+    const fetchData = async () => {
       try {
-        const accessToken = localStorage.getItem("accessToken");
-        const response = await axios.get(REVIEW_URL, {
+        const response = await axios.get(STORE_URL, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
         });
-        console.log("Response Data:", response.data);
-        setCommentsList(response?.data);
+        const popupData = response.data; // response에서 받은 데이터
+        const popupImages = popupData.popup_imgs; // popup_imgs 배열
+
+        setPopupImages(popupImages);
+        setCommentsList(popupData.reviews);
       } catch (error) {
         console.error("리뷰 불러오기 오류:", error);
       }
     };
-    callReview();
+    fetchData();
   }, []);
-
   const handleRatingChange = (newRating) => {
     setRating(newRating);
   };
@@ -80,16 +80,16 @@ const CommentForm = () => {
   const handleImageUpload = (imageList) => {
     setImages(imageList);
   };
-  const accessToken = localStorage.getItem("accessToken");
-  const response = axios.get(REVIEW_URL, {
+
+  const response = axios.get(STORE_URL, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
   });
-  const reviewID = response?.data?.id;
   // rewiew.popup 과 reviewID를 일치시켜서 해당 리뷰를 삭제 할 수 있도록 함
   const deleteReview = async (reviewID) => {
     try {
+      const reviewID = response?.data?.id;
       const DELETE_URL = `${process.env.REACT_APP_BASE_URL}/reviews/${reviewID}`;
       const response = await axios.delete(DELETE_URL, {
         headers: {
@@ -137,6 +137,9 @@ const CommentForm = () => {
             </li>
           ))}
         </ul>
+        위 코드에서는 commentsList 배열을 사용하여 코멘트 목록을 출력하도록
+        수정했습니다. 이렇게 수정하면 주어진 코멘트 데이터를 제대로 출력할 수
+        있을 것입니다.
       </div>
       <form className={classes.commentForm} onSubmit={handleSubmit}>
         <div>
