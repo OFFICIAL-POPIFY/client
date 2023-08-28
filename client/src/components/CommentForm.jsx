@@ -137,9 +137,6 @@ const CommentForm = () => {
             </li>
           ))}
         </ul>
-        위 코드에서는 commentsList 배열을 사용하여 코멘트 목록을 출력하도록
-        수정했습니다. 이렇게 수정하면 주어진 코멘트 데이터를 제대로 출력할 수
-        있을 것입니다.
       </div>
       <form className={classes.commentForm} onSubmit={handleSubmit}>
         <div>
