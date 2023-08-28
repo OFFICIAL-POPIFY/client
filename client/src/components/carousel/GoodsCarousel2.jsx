@@ -1,17 +1,16 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "react-alice-carousel/lib/alice-carousel.css";
 import AliceCarousel from "react-alice-carousel";
 import styled from "styled-components";
-import classes from "./GoodsCarousel2.module.css";
-import { FaChevronLeft } from "react-icons/fa";
-import { FaChevronRight } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import axios from "../../api/axios";
 
 function GoodsCarousel() {
   const popupID = window.location.pathname.split("/")[3];
-  const GOODS_URL = `${process.env.REACT_APP_BASE_URL}/goods/popups/${popupID}`;
+  const STORE_URL = `${process.env.REACT_APP_BASE_URL}/popups/search/${popupID}`;
   const [goodsData, setGoodsData] = useState([]);
   const [slide, setSlide] = useState("");
+
   const onSlideChange = (e) => {
     e.preventDefault();
     setSlide(e.item);
@@ -19,59 +18,54 @@ function GoodsCarousel() {
 
   const responsive = {
     0: {
-      items: 2,
+      items: 1,
     },
     512: {
       items: 3,
     },
   };
 
-  const images = goodsData.map((goods) => {
-    return {
-      img: goods.goods_img,
-      name: goods.goods_name,
-      price: goods.goods_price,
-    };
-  });
   useEffect(() => {
     axios
-      .get(GOODS_URL)
+      .get(STORE_URL)
       .then((response) => {
-        setGoodsData(response.data);
+        setGoodsData(response.data.goods);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
-  const items = images.map((image) => {
+
+  const items = goodsData.map((goods) => {
     return (
-      <ItemsContain>
+      <ItemsContain key={goods._id}>
         <ItemsWrap>
           <Card>
             <div className="outter">
               <div className="inner"></div>
               <div>
-                <img src={image.img} alt="" />
+                <img src={goods.goods_img} alt="" />
               </div>
-              <p>{image.name}</p>
-              <span className="name">{image.price}</span>
+              <p>{goods.goods_name}</p>
+              <span className="name">{goods.price}원</span>
             </div>
           </Card>
         </ItemsWrap>
       </ItemsContain>
     );
   });
-  const ref = useRef(null);
+
+  const ref = React.createRef();
 
   return (
     <Wrapper>
       <h1>GOODS</h1>
       <hr />
       <Contain>
-        <div className={classes.absolute}>
+        <div className="absolute">
           <button
-            className={classes.prevButton}
-            onClick={() => ref?.current?.slidePrev()}
+            className="prevButton"
+            onClick={() => ref.current.slidePrev()}
           >
             <FaChevronLeft size="30" />
           </button>
@@ -92,8 +86,8 @@ function GoodsCarousel() {
             />
           </CarouselBox>
           <button
-            className={classes.nextButton}
-            onClick={() => ref?.current?.slideNext()}
+            className="nextButton"
+            onClick={() => ref.current.slideNext()}
           >
             <FaChevronRight size="30" />
           </button>

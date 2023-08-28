@@ -89,65 +89,6 @@ function Cover() {
                 </SwiperSlide>
               ))}
             </Swiper>
-            // <Swiper
-            //   // onSlideChangeTransitionEnd={handleSlideChange}
-            //   centeredSlides={true}
-            //   effect={"coverflow"}
-            //   grabCursor={true}
-            //   height={700}
-            //   loop={true}
-            //   // spaceBetween={50}
-            //   slidesPerView={2}
-            //   coverflowEffect={{
-            //     rotate: 0,
-            //     stretch: 0,
-            //     depth: 100,
-            //     modifier: 2.5,
-            //   }}
-            //   pagination={{
-            //     el: ".swiper-pagination",
-            //     clickable: true,
-            //     mousewheel: true,
-            //   }}
-            //   navigation={{
-            //     nextEl: ".swiper-button-next",
-            //     prevEl: ".swiper-button-prev",
-            //     clickable: true,
-            //     mousewheel: true,
-            //   }}
-            //   onSlideChange={handleSlideChange}
-            //   className="swiper_container"
-            // >
-            //   {latestData.map((latest, index) => (
-            //     <SwiperSlide key={index}>
-            //       <div
-            //         className={`slider__img ${
-            //           isHovered && index === currentSlide
-            //             ? "expand-animation"
-            //             : ""
-            //         }`}
-            //       >
-            //         <img
-            //           src={latest.popup_imgs[0]} // 이미지 URL이 배열로 들어있으므로 첫 번째 이미지만 사용
-            //           alt=""
-            //           className={`swiper-slide-image ${
-            //             index === currentSlide ? "" : "hovered"
-            //           }`}
-            //         />
-            //       </div>
-            //     </SwiperSlide>
-            //   ))}
-
-            //   <div className="slider-controler">
-            //     <div className="swiper-button-prev slider-arrow blur">
-            //       <ion-icon name="arrow-back-outline"></ion-icon>
-            //     </div>
-            //     <div className="swiper-button-next slider-arrow blur">
-            //       <ion-icon name="arrow-forward-outline"></ion-icon>
-            //     </div>
-            //     <div className="swiper-pagination"></div>
-            //   </div>
-            // </Swiper>
           )}
         </div>
       </div>

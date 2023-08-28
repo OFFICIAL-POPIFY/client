@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import axios from "../api/axios";
-import {TiDocumentText} from "react-icons/ti";
+import { TiDocumentText } from "react-icons/ti";
 import classes from "./MyReview.module.css";
 
 function MyReview() {
@@ -23,7 +23,7 @@ function MyReview() {
         },
         body: { id: id },
       });
-
+      console.log("리뷰 불러오기 성공:", response?.data);
       setReviews(response?.data);
     } catch (error) {
       console.error("리뷰 불러오기 오류:", error);
@@ -35,17 +35,22 @@ function MyReview() {
       <p className={classes.subtitle}>내가 쓴 리뷰</p>
       <Review>
         <ul>
-          {reviews.map((review) => (
-            <li key={review.id}>
-              <div className={classes.review}>
-                <div className={classes.icon}>
-              <TiDocumentText size="25" />
-              </div>
-                <div className={classes.popup}> [{review.popup}]</div>
-                <div className={classes.contents}> {review.contents} </div>
-              </div>
-            </li>
-          ))}
+          <ul>
+            {reviews.map((review) => (
+              <li key={review._id}>
+                <div>
+                  <div className={classes.icon}>
+                    <TiDocumentText />
+                  </div>
+                  <div className={classes.popup}>
+                    {" "}
+                    [{review.popup.corporation}]
+                  </div>
+                  <div className={classes.contents}> {review.contents} </div>
+                </div>
+              </li>
+            ))}
+          </ul>
         </ul>
       </Review>
     </Container>
