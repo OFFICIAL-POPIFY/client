@@ -23,7 +23,7 @@ function MyReview() {
         },
         body: { id: id },
       });
-
+      console.log("리뷰 불러오기 성공:", response?.data);
       setReviews(response?.data);
     } catch (error) {
       console.error("리뷰 불러오기 오류:", error);
@@ -35,18 +35,22 @@ function MyReview() {
       <p className={classes.subtitle}>내가 쓴 리뷰</p>
       <Review>
         <ul>
-          {reviews.map((review) => (
-            <li key={review.id}>
-              <div>
-                <div className={classes.icon}>
-                  <TiDocumentText />
+          <ul>
+            {reviews.map((review) => (
+              <li key={review._id}>
+                <div>
+                  <div className={classes.icon}>
+                    <TiDocumentText />
+                  </div>
+                  <div className={classes.popup}>
+                    {" "}
+                    [{review.popup.corporation}]
+                  </div>
+                  <div className={classes.contents}> {review.contents} </div>
                 </div>
-                {/* <div className={classes.corporation}> {review.corporation} </div> */}
-                <div className={classes.popup}> [{review.popup}]</div>
-                <div className={classes.contents}> {review.contents} </div>
-              </div>
-            </li>
-          ))}
+              </li>
+            ))}
+          </ul>
         </ul>
       </Review>
     </Container>
