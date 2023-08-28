@@ -19,7 +19,7 @@ function Mypage() {
       ) : (
         <>
           {!success ? (
-            <Wrap>
+            <div className={classes.mypage}>
               <div className="passwordChange">
                 <Profile />
                 <PasswordChange />
@@ -27,10 +27,10 @@ function Mypage() {
               <div className="myReview">
                 <MyReview />
               </div>
-              <div>
+              <div className={classes.resignation}>
                 <Resignation />
               </div>
-            </Wrap>
+            </div>
           ) : (
             ""
           )}
@@ -39,11 +39,5 @@ function Mypage() {
     </div>
   );
 }
-
-const Wrap = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
 
 export default Mypage;

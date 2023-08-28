@@ -7,4 +7,11 @@
     margin-bottom: 0.75rem;
   }
 
-  
+  .mypage{
+    display: flex;
+  }
+
+  .resignation{
+    display: flex;
+    flex-direction: column;
+  }

@@ -5,3 +5,22 @@
     line-height: normal;
     margin-top: 3.44rem;
   }
+
+  .account{
+    margin-top: 0.31rem;
+    width: 23.125rem;
+    height: 5.3125rem;
+    flex-shrink: 0;
+    border-radius: 4px;
+    border: 0.5px solid #959595;
+    display: flex;
+    align-items: center;
+  }
+
+  .id{
+    color: #000;
+    font-family: "PretendardM";
+    font-size: 15px;
+    line-height: normal;
+    padding-left: 0.5rem;
+  }
