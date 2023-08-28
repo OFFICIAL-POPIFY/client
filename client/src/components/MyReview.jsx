@@ -69,9 +69,10 @@ const Review = styled.div`
   ul {
     list-style: none;
     padding: 0;
+  
   }
   li {
-    border: 1px solid #ccc;
+    border: 0.5px solid #ccc;
     border-radius: 0.3125rem;
     padding: 10px;
   }

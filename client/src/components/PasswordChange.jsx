@@ -52,7 +52,7 @@ function PasswordChange() {
           <div className={classes.control}>
           <label htmlFor="change"></label>
             <div className={classes.icon}>
-              <HiOutlineKey />
+              <HiOutlineKey size="20"/>
             </div>
           <input
             id="1"
@@ -66,7 +66,7 @@ function PasswordChange() {
           <div className={classes.control}>
           <label htmlFor="newPassword"></label>
             <div className={classes.icon}>
-              <HiOutlineKey />
+              <HiOutlineKey size="20"/>
             </div>
           <input
             id="2"
@@ -79,7 +79,7 @@ function PasswordChange() {
           </div>
           <div className={classes.control}>
           <div className={classes.icon}>
-              <HiOutlineKey />
+              <HiOutlineKey size="20" />
             </div>
           <input
             id="3"
