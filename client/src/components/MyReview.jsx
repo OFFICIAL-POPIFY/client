@@ -37,9 +37,9 @@ function MyReview() {
         <ul>
           {reviews.map((review) => (
             <li key={review.id}>
-              <div>
+              <div className={classes.review}>
                 <div className={classes.icon}>
-              <TiDocumentText />
+              <TiDocumentText size="25" />
               </div>
                 <div className={classes.popup}> [{review.popup}]</div>
                 <div className={classes.contents}> {review.contents} </div>
@@ -64,9 +64,10 @@ const Review = styled.div`
   ul {
     list-style: none;
     padding: 0;
+  
   }
   li {
-    border: 1px solid #ccc;
+    border: 0.5px solid #ccc;
     border-radius: 0.3125rem;
     padding: 10px;
   }
