@@ -10,8 +10,6 @@ import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 
 import Corporation from "../Corporation";
-import { BsChevronCompactLeft } from "react-icons/bs";
-import { BsChevronCompactRight } from "react-icons/bs";
 
 function Thumbnail() {
   const [slide, setSlide] = useState("");
@@ -31,7 +29,7 @@ function Thumbnail() {
 
   const images = [
     {
-      img: "./images/test.png"
+      img: "/images/test.png"
     },
     {
       img: "https://img1.kakaocdn.net/cthumb/local/R0x420/?fname=http%3A%2F%2Ft1.kakaocdn.net%2Fmystore%2F23B7F6778DF24338A60A959F49A7C117",
@@ -111,7 +109,7 @@ function Thumbnail() {
   );
 }
 const Wrapper = styled.div`
-  width: 75rem;
+  width: 49.375rem;
   height: 23.75rem;
   display: flex;
   margin: 40px 0px 35px 0px;
@@ -144,7 +142,6 @@ const ItemsWrap = styled.div`
   flex-shrink: 0;
   width: fit-content;
   overflow: visible;
-
 `;
 
 export default Thumbnail;

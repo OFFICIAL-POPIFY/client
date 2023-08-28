@@ -33,8 +33,6 @@ function Corporation() {
 
   return (
     <div>
-      <h1>POP-UP STORE</h1>
-      <hr />
       {corporationItems}
     </div>
   );

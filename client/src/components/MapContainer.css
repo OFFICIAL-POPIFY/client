@@ -1,7 +1,7 @@
 .map_wrap, .map_wrap * {
     margin: 0;
     padding: 0;
-    font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+    font-family: Pretendard;
     font-size: 12px;
 }
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active {
@@ -9,17 +9,20 @@
     text-decoration: none;
 }
 .map_wrap {
+
     position: relative;
-    width: 100%;
+    width: 1200px;
     height: 500px;
     margin-bottom: 3rem;
 }
 #menu_wrap {
     position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 250px;
+    top: 57%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    width: 235px;
+    height: 470px;
+    flex-shrink: 0;
     margin: 10px 0 30px 10px;
     padding: 5px;
     overflow-y: auto;
@@ -144,4 +147,21 @@
     font-weight: bold;
     cursor: default;
     color: #777;
+}
+
+.map_wrap h1{
+    width: 92px;
+    height: 30px;
+    color: #000;
+    font-family: Pretendard;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+}
+
+.map_wrap hr{
+    width: 1198px;
+    align-items: center;
+    margin: 10px 0px 15px 0px;
 }

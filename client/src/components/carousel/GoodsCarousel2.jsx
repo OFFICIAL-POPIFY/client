@@ -25,22 +25,22 @@ function GoodsCarousel() {
   const images = [
     {
       name: "플레이 에디션",
-      img: "../images/goods2/goods1.png",
+      img: "/images/goods2/goods1.png",
       price: "125,000원",
     },
     {
       name: "실리콘 네임택",
-      img: "../images/goods2/goods2.png",
+      img: "/images/goods2/goods2.png",
       price: "4,000원",
     },
     {
       name: "실리콘 나눔톡",
-      img: "../images/goods2/goods3.png",
+      img: "/images/goods2/goods3.png",
       price: "6,000원",
     },
     {
       name: "스티커",
-      img: "../images/goods2/goods4.png",
+      img: "/images/goods2/goods4.png",
       price: "2,500원",
     },
   ];
@@ -110,7 +110,7 @@ const Wrapper = styled.div`
   hr {
     width: 1198px;
     align-items: center;
-    margin: 0;
+    margin: 10px 0px 15px 0px;
   }
 
   h1 {
@@ -155,15 +155,12 @@ const Contain = styled.div`
 const ItemsContain = styled.div`
   width: 100%;
   height: 530px;
-  padding: 0px;
 `;
 
 const ItemsWrap = styled.div`
   width: 100%;
   height: 525px;
-  border-radius: 20px;
   overflow: hidden;
-  margin: 0 20px;
 
   img {
     width: 100%;
@@ -208,7 +205,7 @@ const Card = styled.div`
   img {
     width: 260px;
     height: 260px;
-    align-items: center;
+    align-items: center;;
   }
 
  .name {

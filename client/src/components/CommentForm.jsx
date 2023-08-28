@@ -124,7 +124,7 @@ const CommentForm = () => {
         />
       </div>
       <div>
-        <label className={classes.commentFormLabel}>사진 업로드:</label>
+        <label className={classes.commentFormLabel}></label>
         <ImageUpload
           withIcon={true}
           buttonText="이미지 선택"
