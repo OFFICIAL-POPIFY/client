@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "react-alice-carousel/lib/alice-carousel.css";
 import AliceCarousel from "react-alice-carousel";
 import styled from "styled-components";
+import axios from "../../api/axios";
 
 function GoodsCarousel() {
+  const GOODS_URL = `${process.env.REACT_APP_BASE_URL}/goods`;
+  const [goodsData, setGoodsData] = useState([]);
   const responsive = {
     0: {
       items: 2,
@@ -13,32 +16,25 @@ function GoodsCarousel() {
     },
   };
 
-  const images = [
-    {
-      icon: "/goods/brandIcon1.png",
-      name: "빵빵이 팝업스토어",
-      img: "/images/goods/goods1.png",
-      goodsName: "빵빵이 인형",
-    },
-    {
-      icon: "/images/goods/brandIcon2.png",
-      name: "흰디 팝업스토어",
-      img: "/images/goods/goods2.png",
-      goodsName: "인형,피규어,무드등,가방 등",
-    },
-    {
-      icon: "/images/goods/brandIcon3.png",
-      name: "카카오프렌즈 팝업스토어",
-      img: "/images/goods/goods3.png",
-      goodsName: "앙몬드 & 스카피 굿즈",
-    },
-    {
-      icon: "/images/goods/brandIcon4.png",
-      name: "다나카 프렌즈 팝업스토어",
-      img: "/images/goods/goods4.png",
-      goodsName: "폰케이스,그립톡,키링 등",
-    },
-  ];
+  const images = goodsData.map((goods) => {
+    return {
+      icon: goods.goods_img,
+      img: goods.goods_img,
+      name: goods.corporation,
+      goodsName: goods.goods_name,
+    };
+  });
+
+  useEffect(() => {
+    axios
+      .get(GOODS_URL)
+      .then((response) => {
+        setGoodsData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   const items = images.map((image) => {
     return (
       <ItemsContain>
@@ -175,7 +171,7 @@ width: 427px;
   }
  .name {
     margin-top: 10px;
-    
+
     font-size: 18px;
     font-style: normal;
     font-weight: 500;

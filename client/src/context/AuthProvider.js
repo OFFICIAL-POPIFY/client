@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
   console.log("password: ", auth.password);
   console.log("accessToken: ", auth.accsessToken);
   console.log("roles: ", auth.roles);
-
+  console.log("id: ", auth.id);
     return (
       <AuthContext.Provider value={{ auth, setAuth, value }}>
         {children}

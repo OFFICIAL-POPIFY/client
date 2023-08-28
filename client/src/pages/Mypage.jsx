@@ -5,18 +5,21 @@ import styled from "styled-components";
 import PasswordChange from "../components/PasswordChange";
 import MyReview from "../components/MyReview";
 import Resignation from "./Resignation";
+import classes from "./Mypage.module.css";
 function Mypage() {
   const [success, setSuccess] = useState(false);
   const token = localStorage.getItem("token");
 
   return (
     <div>
+      <p className={classes.title}>MY PAGE</p>
+      <hr />
       {token ? (
         <Navigate to="/login" />
       ) : (
         <>
           {!success ? (
-            <Wrap>
+            <div className={classes.mypage}>
               <div className="passwordChange">
                 <Profile />
                 <PasswordChange />
@@ -24,10 +27,10 @@ function Mypage() {
               <div className="myReview">
                 <MyReview />
               </div>
-              <div>
+              <div className={classes.resignation}>
                 <Resignation />
               </div>
-            </Wrap>
+            </div>
           ) : (
             ""
           )}
@@ -36,11 +39,5 @@ function Mypage() {
     </div>
   );
 }
-
-const Wrap = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
 
 export default Mypage;

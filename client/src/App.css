@@ -22,6 +22,18 @@
   src: url("./fonts/Pretendard-Black.woff"); 
 } 
 @font-face {
+  font-family: "PretendardEB";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./fonts/Pretendard-ExtraBold.woff"); 
+} 
+@font-face {
+  font-family: "PretendardM";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./fonts/Pretendard-Medium.woff"); 
+} 
+@font-face {
   font-family: "PretendardR";
   font-style: normal;
   font-weight: 400;

@@ -4,7 +4,7 @@
     margin: 4.69rem auto;
     width: 28.75rem;
     height: 15rem;
-    border: 0.031rem solid #959595;
+    border: 0.5px solid #ccc;
     border-radius: 5px;
     padding-top: 1.56rem;
     padding-bottom: 1.25rem;
@@ -12,7 +12,7 @@
     padding-right: 1.875rem;
     text-align: center;
     background-color: white;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.25rem;
   }
 
   .title {
@@ -23,7 +23,12 @@
     margin-top: 4.375rem;
     margin-bottom: 0.75rem;
   }
-  
+
+  hr{
+    stroke-width: 1px;
+    border: 1px solid #ccc
+  }
+
   .control {
     position: relative;
     display: flex;
@@ -46,12 +51,14 @@
     width: 25rem;
     height: 3.125rem;
     background: #F5F5F5;
+    font-family: "PretendardR";
     font-size: 13px;
-    font-weight: 400;
+    line-height: normal;
+    color: #959595;
     border-radius: 4px;
     padding: 0.25rem;
     padding-left: 3rem;
-    border: 1px solid #ccc;
+    border: 0.5px solid #ccc;
   }
 
   .icon{
@@ -73,6 +80,7 @@
     margin: 2.81rem auto;
     background:#000000;
     border-radius: 5px;
+    border: 0;
     align-items:center;
     text-align: center;
     color: #FFF;
@@ -88,19 +96,10 @@
   align-items: center;
 }
 
-input::placeholder {
-  color: #959595;
-  font-family: PretendardR;
-  font-size: 13px;
-  line-height: normal;
-}
-
 .linktos{
   text-align: center;
   color: #666;
   font-family: "PretendardR";
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
+  font-size: 14px;
   line-height: normal;
 }

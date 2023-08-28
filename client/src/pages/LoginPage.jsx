@@ -72,8 +72,8 @@ function Login() {
 
   return (
     <div>
-     <p className={classes.title}>LOGIN</p>
-     <hr />
+      <p className={classes.title}>LOGIN</p>
+      <hr />
       {!succsess ? (
         <main className={classes.auth}>
           <section>
@@ -88,7 +88,7 @@ function Login() {
               <div className={classes.control}>
                 <label htmlFor="id"></label>
                 <div className={classes.icon}>
-                <AiOutlineUser />
+                  <AiOutlineUser size="20"/>
                 </div>
                 <input
                   placeholder="아이디"
@@ -101,13 +101,13 @@ function Login() {
                   ref={userRef}
                 />
                 <div className={classes.icon2}>
-                <TiDelete />
+                  <TiDelete size="20"/>
                 </div>
               </div>
               <div className={classes.control}>
                 <label htmlFor="password"></label>
                 <div className={classes.icon}>
-                <HiOutlineKey />
+                  <HiOutlineKey size="20"/>
                 </div>
                 <input
                   placeholder="비밀번호"
@@ -118,22 +118,21 @@ function Login() {
                   required
                 />
                 <div className={classes.icon2}>
-                  <TiDelete />
+                  <TiDelete size="20" />
                 </div>
               </div>
-              <button type="submit" className={classes.login}>      
-              LOGIN
+              <button type="submit" className={classes.login}>
+                <p className={classes.button}>LOGIN</p>
               </button>
             </form>
           </section>
         </main>
       ) : (
-        <>
-        </>
+        <></>
       )}
-            <div className={classes.linktos}>
-            <Link to="/signup">회원가입</Link>
-            </div>
+      <div className={classes.linktos}>
+        <Link to="/signup">회원가입</Link>
+      </div>
     </div>
   );
 }

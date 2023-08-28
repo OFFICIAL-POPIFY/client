@@ -5,12 +5,37 @@ import axios from "../../api/axios";
 
 function StoreList() {
   const STORE_URL = `${process.env.REACT_APP_BASE_URL}/popups`;
+  const LATEST_URL = `${process.env.REACT_APP_BASE_URL}/popups/latest`;
+  const POPULAR_URL = `${process.env.REACT_APP_BASE_URL}/popups/sort/reviewCount`;
+  const [popularData, setPopularData] = useState([]);
+  const [latestData, setLatestData] = useState([]);
   const [storeData, setStoreData] = useState([]);
+  useEffect(() => {
+    axios
+      .get(POPULAR_URL)
+      .then((response) => {
+        setPopularData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+  useEffect(() => {
+    axios
+      .get(LATEST_URL)
+      .then((response) => {
+        setLatestData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   useEffect(() => {
     axios
       .get(STORE_URL)
       .then((response) => {
-        console.log(response.data);
+        console.log("표시", response.data);
         setStoreData(response.data);
       })
       .catch((error) => {
@@ -18,10 +43,16 @@ function StoreList() {
       });
   }, []);
 
+  const latestHandler = () => {
+    setStoreData(latestData);
+  };
+  const popularHandler = () => {
+    setStoreData(popularData);
+  };
   const storeItems = storeData.map((store, index) => (
     <div key={index} className="card">
-      <img src={store.popup_imgs[index]} alt="" />
-      <Link to={`/popups/search/:${store._id}`}>
+      <img src={store.popup_imgs[0]} alt="" />
+      <Link to={`/popups/search/${store._id}`}>
         <h3>{store.corporation}</h3>
       </Link>
       <p>{store.location}</p>
@@ -35,6 +66,8 @@ function StoreList() {
   return (
     <Wrapper>
       <h1>POP-UP STORE</h1>
+      <button onClick={latestHandler}>최신순</button>
+      <button onClick={popularHandler}>인기순</button>
       <hr />
       {dividedStoreItems.map((group, index) => (
         <section key={index}>{group}</section>

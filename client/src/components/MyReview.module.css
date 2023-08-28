@@ -1,0 +1,36 @@
+.subtitle {
+  color: #000;
+  font-family: "PretendardEB";
+  font-size: 18px;
+  line-height: normal;
+  margin-top: 3.44rem;
+  margin-bottom: 0.31rem;
+}
+
+.icon{
+  color: #959595;
+}
+
+.popup {
+  font-family: "PretendardEB";
+  font-size: 15px;
+  line-height: normal;
+  position: absolute;
+  position: absolute;
+  left: 45.5rem;
+}
+
+.contents{
+  color: #000;
+  font-family: "PretendardR";
+  font-size: 15px;
+  line-height: normal;
+  position: absolute;
+  left: 62rem;
+}
+
+.review{
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
