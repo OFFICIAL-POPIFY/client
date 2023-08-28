@@ -96,7 +96,7 @@ function Signup() {
               <div className={classes.control}>
                 <label htmlFor="id"></label>
                 <div className={classes.icon}>
-                <AiOutlineUser />
+                <AiOutlineUser size="20"/>
                 </div>
                   <input
                     placeholder="아이디"
@@ -121,7 +121,7 @@ function Signup() {
               <div className={classes.control}>
                 <label htmlFor="password"></label>
                 <div className={classes.icon}>
-                <HiOutlineKey />
+                <HiOutlineKey size="20"/>
                 </div>
                   <input
                     placeholder="비밀번호"
@@ -136,7 +136,7 @@ function Signup() {
                <div className={classes.control}>
                 <label htmlFor="passwordConfirm"></label>
                 <div className={classes.icon}>
-                <HiOutlineKey />
+                <HiOutlineKey size="20"/>
                 </div>
                 <input
                   placeholder="비밀번호 확인"

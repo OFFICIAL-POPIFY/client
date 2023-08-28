@@ -39,7 +39,7 @@ function MyReview() {
             <li key={review.id}>
               <div>
                 <div className={classes.icon}>
-              <TiDocumentText />
+              <TiDocumentText size="25" />
               </div>
                 <div className={classes.popup}> [{review.popup}]</div>
                 <div className={classes.contents}> {review.contents} </div>
