@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import axios from "../api/axios";
-import {TiDocumentText} from "react-icons/ti";
+import { TiDocumentText } from "react-icons/ti";
 import classes from "./MyReview.module.css";
 
 function MyReview() {
@@ -39,8 +39,9 @@ function MyReview() {
             <li key={review.id}>
               <div>
                 <div className={classes.icon}>
-              <TiDocumentText />
-              </div>
+                  <TiDocumentText />
+                </div>
+                {/* <div className={classes.corporation}> {review.corporation} </div> */}
                 <div className={classes.popup}> [{review.popup}]</div>
                 <div className={classes.contents}> {review.contents} </div>
               </div>
