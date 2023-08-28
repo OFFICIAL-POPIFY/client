@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import axios from "../api/axios";
+import {TiDocumentText} from "react-icons/ti";
+import classes from "./MyReview.module.css";
 
 function MyReview() {
   const id = localStorage.getItem("id");
@@ -30,15 +32,17 @@ function MyReview() {
 
   return (
     <Container>
-      <h1>내가 쓴 리뷰</h1>
+      <p className={classes.subtitle}>내가 쓴 리뷰</p>
       <Review>
         <ul>
           {reviews.map((review) => (
             <li key={review.id}>
               <div>
-                <div>스토어: {review.popup}</div>
-                <div>내용 : {review.contents} </div>
-                <div>평점 : {review.rate}</div>
+                <div className={classes.icon}>
+              <TiDocumentText />
+              </div>
+                <div className={classes.popup}> [{review.popup}]</div>
+                <div className={classes.contents}> {review.contents} </div>
               </div>
             </li>
           ))}
@@ -51,18 +55,9 @@ function MyReview() {
 export default MyReview;
 
 const Container = styled.div`
-  width: 770px;
-  height: 400px;
   flex-shrink: 0;
-  h1 {
-    color: #000;
-    font-family: Pretendard;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-  }
-  display: flex;
+  display: block;
+  width: 48.125rem;
 `;
 
 const Review = styled.div`
@@ -71,8 +66,8 @@ const Review = styled.div`
     padding: 0;
   }
   li {
-    margin-bottom: 10px;
     border: 1px solid #ccc;
+    border-radius: 0.3125rem;
     padding: 10px;
   }
 `;
