@@ -63,11 +63,8 @@ function GoodsCarousel() {
       <hr />
       <Contain>
         <div className="absolute">
-          <button
-            className="prevButton"
-            onClick={() => ref.current.slidePrev()}
-          >
-            <FaChevronLeft size="30" />
+          <button onClick={() => ref.current.slidePrev()}>
+            <FaChevronLeft className="prevButton" size="30" />
           </button>
           <CarouselBox>
             <AliceCarousel
@@ -85,11 +82,8 @@ function GoodsCarousel() {
               items={items}
             />
           </CarouselBox>
-          <button
-            className="nextButton"
-            onClick={() => ref.current.slideNext()}
-          >
-            <FaChevronRight size="30" />
+          <button onClick={() => ref.current.slideNext()}>
+            <FaChevronRight className="nextButton" size="30" />
           </button>
         </div>
       </Contain>
@@ -124,7 +118,41 @@ const Contain = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
+  .prevButton {
+    position: absolute;
+    top: 50%;
+    left: 280px;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background: #ffffff;
+    opacity: 0.6;
+    border-radius: 30px;
 
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    z-index: 1;
+  }
+
+  .nextButton {
+    position: absolute;
+    top: 50%;
+    right: 440px;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background: #ffffff;
+    opacity: 0.6;
+    border-radius: 30px;
+
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    z-index: 1;
+  }
   .alice-wrapper {
     width: 100%;
   }
