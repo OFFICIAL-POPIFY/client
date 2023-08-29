@@ -45,7 +45,7 @@ function NavBar() {
       <header className={`${classes.header} ${isSticky ? classes.sticky : ""}`}>
         <div className={classes.logoContainer}>
           <Link to="/">
-            <img src="./images/logo.png" alt="logo" className={classes.logo} />
+            <img src="/images/logo.png" alt="logo" className={classes.logo} />
           </Link>
         </div>
         <nav className={classes.navigation}>

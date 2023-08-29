@@ -63,18 +63,15 @@ function GoodsCarousel() {
       <hr />
       <Contain>
         <div className="absolute">
-          <button
-            className="prevButton"
-            onClick={() => ref.current.slidePrev()}
-          >
-            <FaChevronLeft size="30" />
+          <button onClick={() => ref.current.slidePrev()}>
+            <FaChevronLeft className="prevButton" size="30" />
           </button>
           <CarouselBox>
             <AliceCarousel
               responsive={responsive}
               mouseTracking
-              infinite={1000}
-              animationDuration={1000}
+              infinite={2000}
+              animationDuration={2000}
               disableDotsControls
               disableButtonsControls
               autoPlay
@@ -85,11 +82,8 @@ function GoodsCarousel() {
               items={items}
             />
           </CarouselBox>
-          <button
-            className="nextButton"
-            onClick={() => ref.current.slideNext()}
-          >
-            <FaChevronRight size="30" />
+          <button onClick={() => ref.current.slideNext()}>
+            <FaChevronRight className="nextButton" size="30" />
           </button>
         </div>
       </Contain>
@@ -103,7 +97,7 @@ const Wrapper = styled.div`
   hr {
     width: 1198px;
     align-items: center;
-    margin: 0;
+    margin: 10px 0;
   }
 
   h1 {
@@ -116,6 +110,46 @@ const Wrapper = styled.div`
     font-weight: 900;
     line-height: normal;
   }
+
+  .prevButton {
+    position: absolute;
+    top: 20%;
+    left: 30px;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background: #ffffff;
+    opacity: 0.6;
+    border-radius: 30px;
+
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    z-index: 1;
+  }
+
+  .nextButton {
+    position: absolute;
+    top: 20%;
+    right: 30px;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background: #ffffff;
+    opacity: 0.6;
+    border-radius: 30px;
+
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    z-index: 1;
+  }
+
+  .absolute {
+    position: absolute;
+  }
 `;
 
 const Contain = styled.div`
@@ -124,7 +158,41 @@ const Contain = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
+  .prevButton {
+    position: absolute;
+    top: 50%;
+    left: 280px;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background: #ffffff;
+    opacity: 0.6;
+    border-radius: 30px;
 
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    z-index: 1;
+  }
+
+  .nextButton {
+    position: absolute;
+    top: 50%;
+    right: 440px;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background: #ffffff;
+    opacity: 0.6;
+    border-radius: 30px;
+
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    z-index: 1;
+  }
   .alice-wrapper {
     width: 100%;
   }

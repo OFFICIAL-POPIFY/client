@@ -1,8 +1,20 @@
 .wrapper {
     color: #FFF;
-font-family: Pretendard;
-font-size: 18px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.wrapper button{
+    color: #FFF;
+    background-color: transparent;
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border: none;
+    cursor: pointer;
 }
