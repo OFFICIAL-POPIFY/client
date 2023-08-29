@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-const imgaes = [
+const images = [
   "./images/thumb/thumbnail1.png",
   "./images/thumb/thumbnail2.png",
   "./images/thumb/thumbnail3.png",
@@ -49,13 +49,13 @@ const imgaes = [
 ];
 function StoreList({ data }) {
   const storeItems = data.map((store, index) => (
-    <div key={index} className="card">
-      <img src={imgaes[index]} alt="" />
-      <a href={store.placeurl}>
-        <h3>{store.corporation}</h3>
-      </a>
-      <p>{store.location}</p>
-    </div>
+    <Card key={index}>
+      <Image src={images[index]} alt="" />
+      <StoreLink href={store.placeurl}>
+        <StoreName>{store.corporation}</StoreName>
+      </StoreLink>
+      <Location>{store.location}</Location>
+    </Card>
   ));
 
   const dividedStoreItems = [];
@@ -65,10 +65,10 @@ function StoreList({ data }) {
 
   return (
     <Wrapper>
-      <h1>POP-UP STORE</h1>
-      <hr />
+      <Title>POP-UP STORE</Title>
+      <Separator />
       {dividedStoreItems.map((group, index) => (
-        <section key={index}>{group}</section>
+        <Section key={index}>{group}</Section>
       ))}
     </Wrapper>
   );
@@ -77,49 +77,73 @@ function StoreList({ data }) {
 export default StoreList;
 
 const Wrapper = styled.div`
-  display: inline-block;
-  a:link {
-    color: black;
-  }
-  a:visited {
-    color: #000;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
-  height: 10rem;
-  h1 {
-    font-size: 25px;
-    font-style: normal;
-    font-weight: 900;
-    line-height: normal;
+const Title = styled.h1`
+  font-size: 32px;
+  font-weight: 900;
+  margin-bottom: 16px;
+`;
+
+const Separator = styled.hr`
+  width: 100%;
+  margin: 16px 0;
+  border: none;
+  border-top: 1px solid #ddd;
+`;
+
+const Section = styled.section`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+`;
+
+const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #a19f9f;
+  border-radius: 10px;
+  padding: 16px;
+  margin: 16px;
+  background-color: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  height: 500px;
+  width: 400px;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.15);
   }
-  .wrapper {
-    flex-grow: 1;
+`;
+
+const Image = styled.img`
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  margin-bottom: 12px;
+`;
+
+const StoreLink = styled.a`
+  color: black;
+  text-decoration: none;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #e74c3c;
   }
-  section {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px; /* 각 그룹 사이의 간격 조절 */
-  }
-  .post {
-    display: flex;
-    flex-direction: column;
-    margin: 1rem;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1.5px solid #a19f9f;
-    background-color: white;
-    font-size: large;
-  }
-  img {
-    width: 400px; /* 이미지 크기 조절 */
-    height: 400px;
-    object-fit: cover;
-    margin-bottom: 10px;
-  }
-  .card {
-    border: 1px solid #000;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px;
-  }
+`;
+
+const StoreName = styled.h3`
+  font-size: 20px;
+  margin: 8px 0;
+`;
+
+const Location = styled.p`
+  font-size: 16px;
+  color: #888;
 `;
