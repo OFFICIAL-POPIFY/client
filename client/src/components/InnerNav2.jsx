@@ -8,7 +8,7 @@ function ScrollToTopButton() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
   const scrollToTop2 = () => {
-    window.scrollTo({ top: 900, behavior: "smooth" });
+    window.scrollTo({ top: 700, behavior: "smooth" });
   };
   const scrollToTop3 = () => {
     window.scrollTo({ top: 1100, behavior: "smooth" });
@@ -37,7 +37,7 @@ return (
         </li>
         <li>
           <div>
-          <button onClick={scrollToTop4}>MAPW</button>
+          <button onClick={scrollToTop4}>MAP</button>
           </div>
         </li>
       </ul>
@@ -56,6 +56,7 @@ const Wrapper = styled.div`
   margin: 0 auto;
   top:-390px;
   position: relative;
+  transform: translateX(-3.5%);
   
   ul {
     display: flex;

@@ -4,6 +4,9 @@
   margin: 4rem 0;
   padding: 15px 30px;
   border: 1px solid #ccc;
+  width: 1200px;
+  margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 .commentFormLabel {
@@ -55,6 +58,17 @@
   margin: 5px;
 }
 
+h1 {
+  width: 92px;
+  height: 30px;
+  color: #000;
+  font-family: Pretendard;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
 /* 코멘트 목록 출력 스타일 */
 .commentItem {
   font-size: 18px;
@@ -62,10 +76,23 @@
   line-height: normal;
   padding: 15px 0px;
   font-family: Pretendard;
+  margin-bottom: 80px;
 }
 
 .commentItem div {
   margin-bottom: 5px;
+}
+
+.commentFormButton2 {
+  padding: 5px 10px;
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+  border-radius: 5px;
+  font-family: Pretendard;
+  font-size: 13px;
 }
 
 .commentImagePreviewContainer {
