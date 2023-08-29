@@ -17,8 +17,8 @@ function Resignation() {
       );
       alert("정말 회원 탈퇴를 진행하시겠습니까?");
 
-      const userId = response.data.id;
-      await axios.delete(`${process.env.REACT_APP_BASE_URL}/users/${userId}`, {
+      const userId = localStorage.getItem("id");
+      await axios.delete(`${process.env.REACT_APP_BASE_URL}/users/delete`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
