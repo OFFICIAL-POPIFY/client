@@ -1,12 +1,16 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import "react-alice-carousel/lib/alice-carousel.css";
 import AliceCarousel from "react-alice-carousel";
 import styled from "styled-components";
-import classes from "./Thumbnail.module.css";
-import { BsChevronCompactLeft } from "react-icons/bs";
-import { BsChevronCompactRight } from "react-icons/bs";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import axios from "../../api/axios";
+
 function GoodsCarousel() {
+  const popupID = window.location.pathname.split("/")[3];
+  const STORE_URL = `${process.env.REACT_APP_BASE_URL}/popups/search/${popupID}`;
+  const [goodsData, setGoodsData] = useState([]);
   const [slide, setSlide] = useState("");
+
   const onSlideChange = (e) => {
     e.preventDefault();
     setSlide(e.item);
@@ -14,66 +18,56 @@ function GoodsCarousel() {
 
   const responsive = {
     0: {
-      items: 2,
+      items: 1,
     },
     512: {
       items: 3,
     },
   };
 
-  const images = [
-    {
-      name: "플레이 에디션",
-      img: "./images/goods2/goods1.png",
-      price: "125,000원",
-    },
-    {
-      name: "실리콘 네임택",
-      img: "./images/goods2/goods2.png",
-      price: "4,000원",
-    },
-    {
-      name: "실리콘 나눔톡",
-      img: "./images/goods2/goods3.png",
-      price: "6,000원",
-    },
-    {
-      name: "스티커",
-      img: "./images/goods2/goods4.png",
-      price: "2,500원",
-    },
-  ];
-  const items = images.map((image) => {
+  useEffect(() => {
+    axios
+      .get(STORE_URL)
+      .then((response) => {
+        setGoodsData(response.data.goods);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  const items = goodsData.map((goods) => {
     return (
-      <ItemsContain>
+      <ItemsContain key={goods._id}>
         <ItemsWrap>
           <Card>
             <div className="outter">
               <div className="inner"></div>
               <div>
-                <img src={image.img} alt="" />
+                <img src={goods.goods_img} alt="" />
               </div>
-              <p>{image.name}</p>
-              <span className="name">{image.price}</span>
+              <p>{goods.goods_name}</p>
+              <span className="name">{goods.price}원</span>
             </div>
           </Card>
         </ItemsWrap>
       </ItemsContain>
     );
   });
-  const ref = useRef(null);
+
+  const ref = React.createRef();
 
   return (
     <Wrapper>
       <h1>GOODS</h1>
       <hr />
       <Contain>
-        <div className={classes.absolute}>
+        <div className="absolute">
           <button
-            className={classes.prevButton}
-            onClick={() => ref?.current?.slidePrev()}
+            className="prevButton"
+            onClick={() => ref.current.slidePrev()}
           >
-            <BsChevronCompactLeft />
+            <FaChevronLeft size="30" />
           </button>
           <CarouselBox>
             <AliceCarousel
@@ -92,10 +86,10 @@ function GoodsCarousel() {
             />
           </CarouselBox>
           <button
-            className={classes.nextButton}
-            onClick={() => ref?.current?.slideNext()}
+            className="nextButton"
+            onClick={() => ref.current.slideNext()}
           >
-            <BsChevronCompactRight />
+            <FaChevronRight size="30" />
           </button>
         </div>
       </Contain>
@@ -104,44 +98,57 @@ function GoodsCarousel() {
 }
 
 export default GoodsCarousel;
+
 const Wrapper = styled.div`
+  hr {
+    width: 1198px;
+    align-items: center;
+    margin: 0;
+  }
+
   h1 {
+    width: 92px;
+    height: 30px;
     color: #000;
     font-family: Pretendard;
     font-size: 25px;
     font-style: normal;
     font-weight: 900;
     line-height: normal;
-    top: 10%;
   }
 `;
+
 const Contain = styled.div`
   display: flex;
-  height: 50rem;
+  height: 760px;
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
+
   .alice-wrapper {
     width: 100%;
   }
+
   alice-carousel > div {
-    width: 427px;
-    height: 525px;
+    width: 300px;
+    height: 350px;
   }
+
   li.alice-carousel__stage-item>*: (.__active) {
-    width: 427px;
-    height: 525px;
+    width: 300px;
+    height: 350px;
   }
+
   li.alice-carousel__stage-item > *:not(.__active .__target) {
-    width: 427px;
-    height: 525px;
+    width: 300px;
+    height: 350px;
   }
 `;
 
 const ItemsContain = styled.div`
   width: 100%;
   height: 530px;
-  padding: 0 10px;
+  padding: 0px;
 `;
 
 const ItemsWrap = styled.div`
@@ -158,23 +165,21 @@ const ItemsWrap = styled.div`
   }
 `;
 const Card = styled.div`
-width: 300px;
+  width: 300px;
   height: 350px;
-  
-  }
-  .outter{
+
+  .outter {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-   
-
   }
-  .inner{
+
+  .inner {
     display: flex; /* 추가: 내부 컨테이너를 가로로 배치 */
     align-items: center; /* 추가: 수직 가운데 정렬 */
-    
   }
+
   p {
     display: flex;
     width: 250px;
@@ -182,32 +187,44 @@ width: 300px;
     flex-direction: column;
     justify-content: center;
     flex-shrink: 0;
+    margin: 10px 0px 5px;
+
+    color: #000;
     text-align: center;
+    font-family: Pretendard;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
   }
+
   img {
-    width: 250px;
-    height: 250px;
+    width: 260px;
+    height: 260px;
     align-items: center;
   }
-  .sm {
-    width: 48px;
-    height: 48px;
-    ;
-  }
- .name {
-    margin-top: 10px;
-    
-    font-size: 18px;
+
+  .name {
+    display: flex;
+    width: 250px;
+    height: 20px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+
+    color: #000;
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 13px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 400;
     line-height: normal;
-    text-align: left;
-    
   }
 `;
+
 const CarouselBox = styled.div`
   width: 1200px;
-  height: 400px;
+  height: 715px;
   position: relative;
   top: 0;
   left: 0;

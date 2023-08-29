@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { BsInstagram } from "react-icons/bs";
 import classes from "./Footer.module.css";
 import "../App.css";
-import Layout from '../ui/Layout';
+import Layout from "../ui/Layout";
 
 function Footer() {
   return (
@@ -14,15 +14,17 @@ function Footer() {
         <p>영원하지 않은 공간으로부터의 무한한 순간들</p>
       </Subscript>
       <Link to="/">
-      <img src="./images/logo2.png" alt="logo2" className={classes.logo2} />
+        <img src="./images/logo2.png" alt="logo2" className={classes.logo2} />
       </Link>
       <div className="div1">FOLLOW</div>
-     <Link to="https://www.instagram.com/popify.official/">
+      <Link to="https://www.instagram.com/popify.official/">
         <div className="div2">
           <BsInstagram />
         </div>
       </Link>
-      <span id="copy">Copyright &copy; ESG Project All rights reserved. Website by. POPIFY</span>
+      <span id="copy">
+        Copyright &copy; ESG Project All rights reserved. Website by. POPIFY
+      </span>
     </Wrapper>
   );
 }
@@ -30,7 +32,7 @@ function Footer() {
 export default Footer;
 
 const Wrapper = styled.div`
-  width: 100%;
+  width: 100vw;
   height: 505px;
   display: flex;
   align-items: center;
@@ -41,8 +43,8 @@ const Wrapper = styled.div`
   flex-direction: column;
 
   .div1 {
-    position:absolute;
-    top:54%;
+    position: absolute;
+    top: 54%;
     display: flex;
     width: 61px;
     height: 20px;
@@ -50,7 +52,7 @@ const Wrapper = styled.div`
 
     flex-shrink: 0;
     color: #fff;
-    padding-right:4rem;
+    padding-right: 4rem;
     text-align: center;
     font-family: Pretendard;
     font-size: 15px;
@@ -59,9 +61,9 @@ const Wrapper = styled.div`
     line-height: normal;
   }
   .div2 {
-    position:absolute;
-    top:54%;
-    padding-left:2rem;
+    position: absolute;
+    top: 54%;
+    padding-left: 2rem;
     display: flex;
     color: #fff;
     width: 20px;
@@ -74,9 +76,9 @@ const Wrapper = styled.div`
     height: 120px;
   }
 
-  #copy{
-    position:absolute;
-    top:70%;
+  #copy {
+    position: absolute;
+    top: 70%;
     display: flex;
     width: 100%;
     height: 20px;
@@ -119,11 +121,11 @@ const Subscript = styled.div`
 `;
 
 const copy = styled.div`
-color: #959595;
-text-align: center;
-font-family: Pretendard;
-font-size: 15px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+  color: #959595;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 `;

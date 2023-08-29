@@ -5,7 +5,7 @@ import axios from "../api/axios";
 import { AiOutlineUser } from "react-icons/ai";
 import { HiOutlineKey } from "react-icons/hi2";
 
-import classes from "./LoginPage.module.css";
+import classes from "./SignupPage.module.css";
 import { Link } from "react-router-dom";
 const user_id = "user_id";
 const SIGNUP_URL = `${process.env.REACT_APP_BASE_URL}/users/signup`;
@@ -18,6 +18,7 @@ function Signup() {
   const [errMsg, setErrMsg] = useState("");
   const [password, setPassword] = useState("");
   const [succsess, setSuccsess] = useState(false);
+  const [passwordConfrim, setPasswordConfrim] = useState("");
 
   const handleCheckDuplicate = async () => {
     try {
@@ -79,7 +80,8 @@ function Signup() {
 
   return (
     <div>
-
+      <p className={classes.title}>SIGN UP</p>
+     <hr />
       {!succsess ? (
         <main className={classes.auth}>
           <section>
@@ -92,10 +94,10 @@ function Signup() {
                 {errMsg}
               </p>
               <div className={classes.control}>
-                <label className={classes.labelContainer} htmlFor="id"></label>
-                <AiOutlineUser/>
-                <div className={classes.inputContainer}>
-                <AiOutlineUser/>
+                <label htmlFor="id"></label>
+                <div className={classes.icon}>
+                <AiOutlineUser size="20"/>
+                </div>
                   <input
                     placeholder="아이디"
                     type="text"
@@ -112,14 +114,15 @@ function Signup() {
                       className={classes.duplicateButton}
                       onClick={handleCheckDuplicate}
                     >
-                      중복확인
+                      중복 확인
                     </button>
                   )}
                 </div>
-              </div>
               <div className={classes.control}>
                 <label htmlFor="password"></label>
-                  <HiOutlineKey/>
+                <div className={classes.icon}>
+                <HiOutlineKey size="20"/>
+                </div>
                   <input
                     placeholder="비밀번호"
                     type="password"
@@ -130,9 +133,11 @@ function Signup() {
                     required
                   />
               </div>
-              {/* <div className={classes.control}>
+               <div className={classes.control}>
                 <label htmlFor="passwordConfirm"></label>
-                <HiOutlineKey/>
+                <div className={classes.icon}>
+                <HiOutlineKey size="20"/>
+                </div>
                 <input
                   placeholder="비밀번호 확인"
                   type="password"
@@ -142,17 +147,17 @@ function Signup() {
                   value={passwordConfrim}
                   required
                 />
-              </div> */}
-              <button type="submit" className={classes.login}>
-                SIGN UP
+              </div> 
+              <button type="submit" className={classes.signup}>
+              SIGN UP
               </button>
             </form>
-            <Link to="/login">로그인</Link>
           </section>
         </main>
       ) : (
         <p>회원가입 성공</p>
       )}
+
     </div>
   );
 }

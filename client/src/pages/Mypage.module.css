@@ -1,0 +1,17 @@
+.title {
+    color: #000;
+    font-family: "PretendardB";
+    font-size: 25px;
+    line-height: normal;
+    margin-top: 4.375rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .mypage{
+    display: flex;
+  }
+
+  .resignation{
+    display: flex;
+    flex-direction: column;
+  }

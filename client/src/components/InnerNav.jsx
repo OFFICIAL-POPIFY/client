@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import AuthContext from "../context/AuthProvider";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import classes from "./InnerNav.module.css";
+
 function InnerNav() {
+  // const id = window.location.pathname.split("/")[3];
+  const { setAuth, value } = useContext(AuthContext);
+
+  const id = value?.auth?.id;
+  console.log("id:", id);
   const mapHandler = () => {
     const documentHeight = Math.max(
       document.body.scrollHeight,
@@ -16,7 +24,7 @@ function InnerNav() {
   };
 
   return (
-    <Wrapper>
+    <Wrapper className={classes.wrapper}>
       <ul>
         <li>
           <div>
@@ -30,7 +38,7 @@ function InnerNav() {
         </li>
         <li>
           <div>
-            <Link to="/contents">REVIEW</Link>
+            <Link to={`/review/${id}`}>REVIEW</Link>
           </div>
         </li>
         <li>
@@ -52,8 +60,9 @@ const Wrapper = styled.div`
   border: 0.5px solid #959595;
   background: #fff;
   margin: 0 auto;
-  top:-6rem
+  top:-390px;
   position: relative;
+  
   ul {
     display: flex;
     justify-content: space-around;

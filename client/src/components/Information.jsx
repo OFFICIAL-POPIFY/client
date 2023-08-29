@@ -19,11 +19,11 @@ function Information({ placeholder, data }) {
   return (
     <div className={classes.wrapper}>
       <div className={classes.blink}>
-        <h1>팝업스토어 정보</h1>
-        <p>
-          해시태그를 입력해서 팝업스토어를 <br />
-          탐색해보세요!
-        </p>
+        <h1>“왕크니까 왕귀여워” 더현대-흰디 팝업 스토어</h1>
+        <p>기   간 : 2023년 7월 28일 ~ 9월 1일</p>
+        <p>위   치 : 서울 영등포구 여의대로 108 더현대 서울</p>
+        <p>운영시간 : 09시 ~ 18시</p>
+        <p>입장요금 : 무료</p>
         <div className={classes.search}>
           <div className={classes.search_input}>
             <input

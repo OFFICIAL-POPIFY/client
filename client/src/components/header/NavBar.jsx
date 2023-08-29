@@ -18,6 +18,7 @@ function NavBar() {
     e.preventDefault();
     try {
       window.location.href = "/login";
+      alert("로그아웃 되었습니다.");
       await axios.get(LOGOUT_URL);
       setAuth(null);
     } catch (error) {
@@ -70,6 +71,10 @@ function NavBar() {
                 <Link to="https://www.instagram.com/popify.official/">
                   <BsInstagram />
                 </Link>
+<<<<<<< HEAD
+=======
+                {/* <Link to="/contents">Contents</Link> */}
+>>>>>>> bc1fcce5df4a446883f9f8506221dfeccc2f36c1
               </div>
             </div>
           </ul>

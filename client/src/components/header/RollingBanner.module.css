@@ -1,5 +1,5 @@
 .container {
-  width: 100%;
+  width: 100vw;
   height: 40px;
   flex-shrink: 0;
   border-top: 2px solid #000;
@@ -18,8 +18,23 @@
   -webkit-animation: my-animation 15s linear infinite;
   animation: my-animation 15s linear infinite;
 
+  display: flex;
+  width: 1800px;
+  height: 40px;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+
+  color: #000;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
   color: rgb(255, 255, 255);
   font-size: 24px;
+
 }
 
 /* for Firefox */

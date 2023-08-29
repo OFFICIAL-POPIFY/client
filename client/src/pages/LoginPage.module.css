@@ -1,18 +1,35 @@
 .auth {
     display: flex;
     flex-direction: column;
-    margin: 5rem auto;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
-    width: 46rem;
-    min-height: 24rem;
-    border-radius: 8px;
-    padding: 20px;
+    margin: 4.69rem auto;
+    width: 28.75rem;
+    height: 15rem;
+    border: 0.5px solid #ccc;
+    border-radius: 5px;
+    padding-top: 1.56rem;
+    padding-bottom: 1.25rem;
+    padding-left: 1.875rem;
+    padding-right: 1.875rem;
     text-align: center;
     background-color: white;
-
+    margin-bottom: 1.25rem;
   }
+
+  .title {
+    color: #000;
+    font-family: "PretendardB";
+    font-size: 25px;
+    line-height: normal;
+    margin-top: 4.375rem;
+    margin-bottom: 0.75rem;
+  }
+
+  hr{
+    stroke-width: 1px;
+    border: 1px solid #ccc
+  }
+
   .control {
-    margin-bottom: 0.5rem;
     position: relative;
     display: flex;
     justify-content: center;
@@ -22,7 +39,7 @@
   .control input[id="passworedConfirm"]{
     position: absolute;
   }
-.control label {
+  .control label {
     display: block;
     color: #616161;
     text-transform: uppercase;
@@ -31,25 +48,47 @@
   
   .control input {
     display: block;
-    width: 40rem;
-    
-    height: 5rem;
+    width: 25rem;
+    height: 3.125rem;
     background: #F5F5F5;
+    font-family: "PretendardR";
     font-size: 13px;
-    font-weight: 400;
-    margin: auto;
+    line-height: normal;
+    color: #959595;
     border-radius: 4px;
     padding: 0.25rem;
-    border: 1px solid #ccc;
+    padding-left: 3rem;
+    border: 0.5px solid #ccc;
   }
+
+  .icon{
+    position: absolute;
+    left: 1rem;
+    color: #959595;
+  }
+
+  .icon2{
+    position: absolute;
+    right: 1rem;
+    color: #959595;
+  }
+
   .login{
-    width: 40rem;
-    margin-top: 2rem;
-    height: 5rem;
+    width: 25rem;
+    height: 3.125rem;
+    flex-shrink: 0;
+    margin: 2.81rem auto;
     background:#000000;
-    color: white;
+    border-radius: 5px;
+    border: 0;
+    align-items:center;
+    text-align: center;
+    color: #FFF;
+    font-family: "PretendardB";
+    text-align: center;
+    align-items: center;
     font-size: 20px;
-    font-size: 20px;
+    line-height: normal;
   }
 
 .inputContainer {
@@ -57,18 +96,10 @@
   align-items: center;
 }
 
-.duplicateButton {
-  position: absolute;
-  top: 40px;
-  right: 30px;
-  padding: 8px 12px;
-  background-color: #000000;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.duplicateButton:hover {
-  background-color: #0056b3;
+.linktos{
+  text-align: center;
+  color: #666;
+  font-family: "PretendardR";
+  font-size: 14px;
+  line-height: normal;
 }
