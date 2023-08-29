@@ -4,6 +4,7 @@ import ImageUpload from "react-image-upload";
 import classes from "./CommentForm.module.css";
 import axios from "../api/axios";
 import AuthContext from "../context/AuthProvider";
+// Random Query Parameter
 
 const CommentForm = () => {
   const [rate, setRating] = useState(0);
@@ -13,18 +14,37 @@ const CommentForm = () => {
   const popupID = window.location.pathname.split("/")[3];
   const { value } = useContext(AuthContext);
   const id = value?.auth?.user_id;
-  console.log(id);
   const STORE_URL = `${process.env.REACT_APP_BASE_URL}/popups/search/${popupID}`;
   const COMMENT_URL = `${process.env.REACT_APP_BASE_URL}/reviews/${popupID}`;
 
   const [commentsList, setCommentsList] = useState([]);
   const [popupImages, setPopupImages] = useState([]);
-  console.log("commentsList", commentsList);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(STORE_URL, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      const popupData = response.data;
+      const popupImages = popupData.popup_imgs;
+
+      setPopupImages(popupImages);
+      setCommentsList(popupData.reviews);
+    } catch (error) {
+      console.error("리뷰 불러오기 오류:", error);
+    }
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   const handleSubmit = async (event) => {
+    window.location.reload();
     event.preventDefault();
 
     try {
-      const accessToken = localStorage.getItem("accessToken");
       const response = await axios.post(
         COMMENT_URL,
         {
@@ -48,31 +68,29 @@ const CommentForm = () => {
         comments: contents,
         review_img: images.dataURL,
       };
-      setCommentsList([...commentsList, newComment]);
+      setCommentsList((prevComments) => [...prevComments, newComment]);
     } catch (error) {
       console.error("에러 발생:", error);
     }
   };
+  const deleteReview = async (reviewID) => {
+    try {
+      const DELETE_URL = `${process.env.REACT_APP_BASE_URL}/reviews/${reviewID}`;
+      const response = await axios.delete(DELETE_URL, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      console.log("Response Data:", response.data);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(STORE_URL, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        });
-        const popupData = response.data; // response에서 받은 데이터
-        const popupImages = popupData.popup_imgs; // popup_imgs 배열
+      setCommentsList(
+        commentsList.filter((comment) => comment._id !== reviewID)
+      );
+    } catch (error) {
+      console.error("리뷰 삭제 오류:", error);
+    }
+  };
 
-        setPopupImages(popupImages);
-        setCommentsList(popupData.reviews);
-      } catch (error) {
-        console.error("리뷰 불러오기 오류:", error);
-      }
-    };
-    fetchData();
-  }, []);
   const handleRatingChange = (newRating) => {
     setRating(newRating);
   };
@@ -83,32 +101,6 @@ const CommentForm = () => {
 
   const handleImageUpload = (imageList) => {
     setImages(imageList);
-  };
-
-  const response = axios.get(STORE_URL, {
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  });
-  // rewiew.popup 과 reviewID를 일치시켜서 해당 리뷰를 삭제 할 수 있도록 함
-  const deleteReview = async (reviewID) => {
-    try {
-      const reviewID = response?.data?.id;
-      const DELETE_URL = `${process.env.REACT_APP_BASE_URL}/reviews/${reviewID}`;
-      const response = await axios.delete(DELETE_URL, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
-      console.log("Response Data:", response.data);
-
-      // Update the commentsList state after successful deletion
-      setCommentsList(
-        commentsList.filter((comment) => comment._id !== reviewID)
-      );
-    } catch (error) {
-      console.error("리뷰 삭제 오류:", error);
-    }
   };
 
   return (
