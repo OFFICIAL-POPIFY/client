@@ -25,7 +25,14 @@ function Corporation() {
       <hr />
       <p>주소 :</p><span>{corporationData.location}</span>
       <p>{corporationData.date}</p>
+
+      <p>기간 : {corporationData.term}</p>
+      <p>해시태그:{corporationData.tags}</p>
+      <p>reservation:{corporationData.reservation}</p>
+      <p>{corporationData.contents}</p>
+
       <p>기간 :</p><span>{corporationData.term}</span>
+
     </div>
   );
   return <Wrap>{corporationItems}</Wrap>;
