@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "../api/axios";
 import { TiDocumentText } from "react-icons/ti";
@@ -30,6 +30,14 @@ function MyReview() {
     }
   };
 
+  function truncateText(text, maxLength) {
+    if (text.length <= maxLength) {
+      return text;
+    } else {
+      return text.slice(0, maxLength) + "…";
+    }
+  };
+
   return (
     <Container>
       <p className={classes.subtitle}>내가 쓴 리뷰</p>
@@ -42,10 +50,11 @@ function MyReview() {
                     <TiDocumentText size="20"/>
                   </div>
                   <div className={classes.popup}>
-                    {" "}
-                    [{review.popup.corporation}]
+                    {"["}
+                    {truncateText(review.popup.corporation, 17)}
+                    {"]"}
                   </div>
-                  <div className={classes.contents}> {review.contents} </div>
+                  <div className={classes.contents}>{truncateText(review.contents, 43)}</div>
               </li>
             ))}
           </ul>
