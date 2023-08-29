@@ -16,8 +16,8 @@
   font-size: 15px;
   line-height: normal;
   position: absolute;
-  position: absolute;
-  left: 45.5rem;
+  left: 54rem;
+  margin-top: -1.15%;
 }
 
 .contents{
@@ -26,11 +26,6 @@
   font-size: 15px;
   line-height: normal;
   position: absolute;
-  left: 62rem;
-}
-
-.review{
-  display: flex;
-  align-items: center;
-  text-align: center;
+  left: 70rem;
+  margin-top: -1.15%;
 }

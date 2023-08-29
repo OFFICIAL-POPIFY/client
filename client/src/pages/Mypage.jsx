@@ -24,7 +24,7 @@ function Mypage() {
                 <Profile />
                 <PasswordChange />
               </div>
-              <div className="myReview">
+              <div className={classes.myReview}>
                 <MyReview />
               </div>
               <div className={classes.resignation}>
