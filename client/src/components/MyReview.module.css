@@ -15,6 +15,9 @@
   font-family: "PretendardEB";
   font-size: 15px;
   line-height: normal;
+  position: absolute;
+  left: 54rem;
+  margin-top: -1.15%;
 }
 
 .contents{
@@ -22,4 +25,7 @@
   font-family: "PretendardR";
   font-size: 15px;
   line-height: normal;
+  position: absolute;
+  left: 70rem;
+  margin-top: -1.15%;
 }

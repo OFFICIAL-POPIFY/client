@@ -105,15 +105,49 @@ const CommentForm = () => {
 
   return (
     <>
+    <h1>REVIEW</h1>
+      <form className={classes.commentForm} onSubmit={handleSubmit}>
+        <div>
+          <label className={classes.commentFormLabel}></label>
+          <textarea
+            className={classes.commentFormTextarea}
+            value={contents}
+            onChange={handleCommentChange}
+          />
+        </div>
+        <div>
+          <label className={classes.commentFormLabel}></label>
+          <Rating
+            value={rate}
+            count={5}
+            onChange={handleRatingChange}
+            size={24}
+            activeColor="#ffd700"
+          />
+        </div>
+        <div>
+          <label className={classes.commentFormLabel}></label>
+          <ImageUpload
+            withIcon={true}
+            buttonText="이미지 선택"
+            onChange={handleImageUpload}
+            imgExtension={[".jpg", ".png", ".gif"]}
+            maxFileSize={5242880}
+            withPreview={true}
+          />
+        </div>
+        <button type="submit" className={classes.commentFormButton}>
+          제출
+        </button>
+      </form>
       <div>
-        <h3>코멘트 목록</h3>
         <ul>
           {commentsList.map((commentItem, index) => (
             <li key={index} className={classes.commentItem}>
               <div>아이디:{id}</div>
               <div>별점: {commentItem.rate}</div>
               <div>코멘트 내용: {commentItem.contents}</div>
-              <button onClick={() => deleteReview(commentItem._id)}>
+              <button onClick={() => deleteReview(commentItem._id)} className={classes.commentFormButton2}>
                 삭제
               </button>
               {commentItem.review_img && commentItem.review_img.length > 0 && (
@@ -135,40 +169,6 @@ const CommentForm = () => {
           ))}
         </ul>
       </div>
-      <form className={classes.commentForm} onSubmit={handleSubmit}>
-        <div>
-          <label className={classes.commentFormLabel}>별점:</label>
-          <Rating
-            value={rate}
-            count={5}
-            onChange={handleRatingChange}
-            size={24}
-            activeColor="#ffd700"
-          />
-        </div>
-        <div>
-          <label className={classes.commentFormLabel}>코멘트:</label>
-          <textarea
-            className={classes.commentFormTextarea}
-            value={contents}
-            onChange={handleCommentChange}
-          />
-        </div>
-        <div>
-          <label className={classes.commentFormLabel}>사진 업로드:</label>
-          <ImageUpload
-            withIcon={true}
-            buttonText="이미지 선택"
-            onChange={handleImageUpload}
-            imgExtension={[".jpg", ".png", ".gif"]}
-            maxFileSize={5242880}
-            withPreview={true}
-          />
-        </div>
-        <button type="submit" className={classes.commentFormButton}>
-          제출
-        </button>
-      </form>
     </>
   );
 };
