@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Rating from "react-rating-stars-component";
 import ImageUpload from "react-image-upload";
 import classes from "./CommentForm.module.css";
 import axios from "../api/axios";
+import AuthContext from "../context/AuthProvider";
 
 const CommentForm = () => {
   const [rate, setRating] = useState(0);
@@ -10,6 +11,9 @@ const CommentForm = () => {
   const [images, setImages] = useState([]);
   const accessToken = localStorage.getItem("accessToken");
   const popupID = window.location.pathname.split("/")[3];
+  const { value } = useContext(AuthContext);
+  const id = value?.auth?.user_id;
+  console.log(id);
   const STORE_URL = `${process.env.REACT_APP_BASE_URL}/popups/search/${popupID}`;
   const COMMENT_URL = `${process.env.REACT_APP_BASE_URL}/reviews/${popupID}`;
 
@@ -114,6 +118,7 @@ const CommentForm = () => {
         <ul>
           {commentsList.map((commentItem, index) => (
             <li key={index} className={classes.commentItem}>
+              <div>아이디:{id}</div>
               <div>별점: {commentItem.rate}</div>
               <div>코멘트 내용: {commentItem.contents}</div>
               <button onClick={() => deleteReview(commentItem._id)}>
