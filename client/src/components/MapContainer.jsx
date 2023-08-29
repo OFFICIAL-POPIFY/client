@@ -193,6 +193,8 @@ const KakaoMap = () => {
 
   return (
     <div className="map_wrap">
+      <h1>MAP</h1>
+      <hr />
       <div
         id="map"
         style={{
@@ -206,13 +208,13 @@ const KakaoMap = () => {
         <div className="option">
           <div>
             <form onSubmit={handleSubmit}>
-              키워드 :{" "}
+              {" "}
               <input
                 type="text"
                 value={formData}
                 onChange={handleChange}
                 id="keyword"
-                size={15}
+                size={21}
               />
               <button type="submit">검색하기</button>
             </form>
@@ -225,5 +227,6 @@ const KakaoMap = () => {
     </div>
   );
 };
+
 
 export default KakaoMap;

@@ -19,14 +19,13 @@ function Corporation() {
   console.log(corporationData);
   const corporationItems = (
     <div className="card">
-      <h2>팝업스토어 정보</h2>
-      <hr />
       <a href={corporationData.placeurl}>
         <h3>{corporationData.corporation}</h3>
       </a>
-      <p>주소 : {corporationData.location}</p>
+      <hr />
+      <p>주소 :</p><span>{corporationData.location}</span>
       <p>{corporationData.date}</p>
-      <p>기간 : {corporationData.term}</p>
+      <p>기간 :</p><span>{corporationData.term}</span>
     </div>
   );
   return <Wrap>{corporationItems}</Wrap>;
@@ -41,4 +40,67 @@ const Wrap = styled.div`
   right: 250px
   display: flex;
   width: 500px;
+
+  hr {
+    width: 350px;
+    align-items: center;
+    margin: 10px 0px 30px 0px;
+  }
+
+  h3 {
+    display: flex;
+    width: 380px;
+    height: 60px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+
+    color: #000;
+    font-family: Pretendard;
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 30px; /* 150% */
+  }
+
+  a {
+    display: flex;
+    width: 380px;
+    height: 60px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+
+    color: #000;
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 30px; /* 150% */
+  }
+
+  p {
+    display: flex;
+    width: 380px;
+    height: 45px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+
+    color: #000;
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+  }
+
+  span {
+    color: #000;
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
 `;
