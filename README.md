@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Emma
 # 원격저장소의 브랜치를 생성하는 방법
 ### 작업 설명
@@ -37,3 +38,6 @@
 브랜치를 생성했으니 이제 작업 후 원격 저장소에 반영하는 작업은 아래 링크를 따라 진행한다.
 
 - [GitBash 명령어 사용 방법](https://github.com/TheCopiens/algorithm-study#gitbash-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%82%AC%EC%9A%A9-%EB%B0%A9%EB%B2%95)
+=======
+# Emma 
+>>>>>>> b22d7f210fe5f9a76d1e8bb52af4c25538887c35
