@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import axios from "../api/axios";
+import classes from "./Resignation.module.css";
+
 
 function Resignation() {
   const [errorMessage, setErrorMessage] = useState("");
@@ -35,20 +37,24 @@ function Resignation() {
     <Wrap>
       <h1>회원 탈퇴</h1>
       <p>
-        * 탈퇴 후에도 게시판형 서비스에 등록한 게시물은 그대로 남아 있습니다.
+        * 탈퇴 후에도 게시판형 서비스에 등록한 게시물은 그대로 남아있습니다.
       </p>
+      <div className={classes.rbutton}>
       <button onClick={resignHandler}>탈퇴하기</button>
       {errorMessage && <p>{errorMessage}</p>}
+      </div>
     </Wrap>
   );
 }
 
 const Wrap = styled.div`
+
   h1 {
     color: #000;
     font-family: "PretendardEB";
     font-size: 18px;
     line-height: normal;
+    margin-bottom: 0.63rem;
   }
 
   P{
@@ -56,6 +62,7 @@ const Wrap = styled.div`
     font-family: "PretendardM";
     font-size: 15px;
     line-height: normal;
+    margin-bottom: 0.94rem;
   }
 
   button {
@@ -73,4 +80,6 @@ const Wrap = styled.div`
   }
 };
 `;
+
+
 export default Resignation;

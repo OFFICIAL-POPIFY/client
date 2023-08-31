@@ -45,7 +45,7 @@ function NavBar() {
       <header className={`${classes.header} ${isSticky ? classes.sticky : ""}`}>
         <div className={classes.logoContainer}>
           <Link to="/">
-            <img src="./images/logo.png" alt="logo" className={classes.logo} />
+            <img src="/images/logo.png" alt="logo" className={classes.logo} />
           </Link>
         </div>
         <nav className={classes.navigation}>
@@ -67,9 +67,11 @@ function NavBar() {
                   <IoMdLogOut />
                 </Link>
                 <Link to="/mypage">Mypage</Link>
+                <Link to="/contents">Contents</Link>
                 <Link to="https://www.instagram.com/popify.official/">
                   <BsInstagram />
                 </Link>
+
                 {/* <Link to="/contents">Contents</Link> */}
               </div>
             </div>

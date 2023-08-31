@@ -4,7 +4,7 @@
     margin: 4.69rem auto;
     width: 28.75rem;
     height: 15rem;
-    border: 0.031rem solid #959595;
+    border: 0.5px solid #ccc;
     border-radius: 5px;
     padding-top: 1.56rem;
     padding-bottom: 1.25rem;
@@ -22,6 +22,11 @@
     line-height: normal;
     margin-top: 4.375rem;
     margin-bottom: 0.75rem;
+  }
+
+  hr{
+    stroke-width: 1px;
+    border: 1px solid #ccc
   }
 
   .control {
@@ -53,7 +58,7 @@
     border-radius: 4px;
     padding: 0.25rem;
     padding-left: 3rem;
-    border: 1px solid #ccc;
+    border: 0.5px solid #ccc;
   }
 
   .icon{
@@ -75,6 +80,7 @@
     margin: 2.81rem auto;
     background:#000000;
     border-radius: 5px;
+    border: 0;
     align-items:center;
     text-align: center;
     color: #FFF;

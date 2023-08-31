@@ -4,27 +4,36 @@ import MapContainer from "../components/MapContainer";
 import CommentForm from "../components/CommentForm";
 import Corporation from "../components/Corporation";
 import GoodsCarousel2 from "../components/carousel/GoodsCarousel2";
+import InnerNav2 from "../components/InnerNav2";
+//import Board from "../components/Board";
 import styled from "styled-components";
 
 function StoreContainer() {
   return (
     <div>
-      <Div>
-        <div>
-          <Thumbnail />
-        </div>
-        <div>
-          <Corporation />
-        </div>
-      </Div>
+      <div>
+      <Thumbnail />
+      </div>
 
       <div>
-        <GoodsCarousel2 />
+      <Corporation />
       </div>
+
       <div>
-        <CommentForm />
+      <GoodsCarousel2 />
       </div>
+
+      <div>
+      <InnerNav2 />
+      </div>
+
+      <div>
+      <CommentForm />
+      </div>
+
+      <div>
       <MapContainer />
+      </div>
     </div>
   );
 }
