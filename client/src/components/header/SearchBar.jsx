@@ -38,7 +38,7 @@ function SearchBar({ placeholder, data }) {
           ))}
         </div>
       )}
-    </div >
+    </div>
   );
 }
 
