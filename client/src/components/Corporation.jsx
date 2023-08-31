@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "../api/axios";
 import styled from "styled-components";
+
 function Corporation() {
   const storeId = window.location.pathname.split("/")[3];
   const CORPORATION_URL = `${process.env.REACT_APP_BASE_URL}/popups/search/${storeId}`;
@@ -17,6 +18,7 @@ function Corporation() {
       });
   }, [CORPORATION_URL]);
   console.log(corporationData);
+  
   const corporationItems = (
     <div className="card">
       <a href={corporationData.placeurl}>
@@ -47,6 +49,7 @@ const Wrap = styled.div`
   right: 250px
   display: flex;
   width: 500px;
+  
 
   hr {
     width: 350px;

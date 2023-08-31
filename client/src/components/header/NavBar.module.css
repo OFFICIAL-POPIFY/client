@@ -1,5 +1,6 @@
 .header {
     width: 100vw;
+    height: 150px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -20,10 +21,13 @@
    }
    
    .logoContainer img{
-    top:10%;
-    right:44%;
-    width: 15rem;
-    height: 6rem;
+    position: absolute;
+    top: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 21.875rem;
+    height: 7.5rem;
+    flex-shrink: 0;
    }
 
    .logo {
