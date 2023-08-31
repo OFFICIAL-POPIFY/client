@@ -2,4 +2,8 @@
     position: relative;
     text-align: center;
     display: flex;
+    top: 100%;
+    width: 350px;
+    height: 120px;
 }
+
