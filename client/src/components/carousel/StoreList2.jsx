@@ -10,6 +10,7 @@ function StoreList() {
   const [popularData, setPopularData] = useState([]);
   const [latestData, setLatestData] = useState([]);
   const [storeData, setStoreData] = useState([]);
+
   useEffect(() => {
     axios
       .get(POPULAR_URL)
@@ -20,6 +21,7 @@ function StoreList() {
         console.log(error);
       });
   }, []);
+
   useEffect(() => {
     axios
       .get(LATEST_URL)
@@ -35,7 +37,6 @@ function StoreList() {
     axios
       .get(STORE_URL)
       .then((response) => {
-        console.log("표시", response.data);
         setStoreData(response.data);
       })
       .catch((error) => {
@@ -46,82 +47,122 @@ function StoreList() {
   const latestHandler = () => {
     setStoreData(latestData);
   };
+
   const popularHandler = () => {
     setStoreData(popularData);
   };
-  const storeItems = storeData.map((store, index) => (
-    <div key={index} className="card">
-      <img src={store.popup_imgs[0]} alt="" />
-      <Link to={`/popups/search/${store._id}`}>
-        <h3>{store.corporation}</h3>
-      </Link>
-      <p>{store.location}</p>
-    </div>
+
+  const renderStoreItems = storeData.map((store, index) => (
+    <Card key={index}>
+      <CardImage src={store.popup_imgs[0]} alt="" />
+      <StyledLink to={`/popups/search/${store._id}`}>
+        <CardTitle>{store.corporation}</CardTitle>
+      </StyledLink>
+      <CardSubtitle>{store.location}</CardSubtitle>
+    </Card>
   ));
 
   const dividedStoreItems = [];
-  for (let i = 0; i < storeItems.length; i += 3) {
-    dividedStoreItems.push(storeItems.slice(i, i + 3));
+  for (let i = 0; i < renderStoreItems.length; i += 3) {
+    dividedStoreItems.push(renderStoreItems.slice(i, i + 3));
   }
+
   return (
-    <Wrapper>
-      <h1>POP-UP STORE</h1>
-      <button onClick={latestHandler}>최신순</button>
-      <button onClick={popularHandler}>인기순</button>
-      <hr />
+    <Container>
+      <Heading>POP-UP STORE</Heading>
+      <ButtonRow>
+        <Button onClick={latestHandler}>최신순</Button>
+        <Button onClick={popularHandler}>인기순</Button>
+      </ButtonRow>
+      <Separator />
       {dividedStoreItems.map((group, index) => (
-        <section key={index}>{group}</section>
+        <CardSection key={index}>{group}</CardSection>
       ))}
-    </Wrapper>
+    </Container>
   );
 }
 
-export default StoreList;
+const ButtonRow = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+`;
 
-const Wrapper = styled.div`
-  display: inline-block;
-  a:link {
-    color: black;
-  }
-  a:visited {
-    color: #000;
-  }
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+`;
 
-  height: 10rem;
-  h1 {
-    font-size: 25px;
-    font-style: normal;
-    font-weight: 900;
-    line-height: normal;
-  }
-  .wrapper {
-    flex-grow: 1;
-  }
-  section {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px; /* 각 그룹 사이의 간격 조절 */
-  }
-  .post {
-    display: flex;
-    flex-direction: column;
-    margin: 1rem;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1.5px solid #a19f9f;
-    background-color: white;
-    font-size: large;
-  }
-  img {
-    width: 400px; /* 이미지 크기 조절 */
-    height: 400px;
-    object-fit: cover;
-    margin-bottom: 10px;
-  }
-  .card {
-    border: 1px solid #000;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px;
+const Heading = styled.h1`
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+`;
+
+const Button = styled.button`
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+`;
+
+const Separator = styled.hr`
+  width: 100%;
+  margin: 2rem 0;
+  border: none;
+  border-top: 1px solid #ccc;
+`;
+
+const CardSection = styled.section`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+`;
+
+const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 450px;
+  height: 550px;
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  margin: 1rem;
+
+  &:hover {
+    transform: scale(1.05);
   }
 `;
+
+const CardImage = styled.img`
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
+
+const CardTitle = styled.h3`
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: black;
+`;
+
+const CardSubtitle = styled.p`
+  font-size: 1.2rem;
+  color: #555;
+`;
+
+export default StoreList;
