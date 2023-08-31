@@ -137,8 +137,8 @@
   
   
   .header.sticky {
-  position: fixed; /* 스티키 바 활성화 시 fixed 위치 설정 */
-  top: 5%;
+  position: relative; /* 스티키 바 활성화 시 fixed 위치 설정 */
+  top: 40px;
   width: 100%; /* 전체 너비로 설정 */
   background-color: rgba(255, 255, 255, 0.9); /* 배경색 또는 투명도 설정 */
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);

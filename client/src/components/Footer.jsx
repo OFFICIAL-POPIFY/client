@@ -129,6 +129,10 @@ const Subscript = styled.div`
     font-weight: 400;
     line-height: normal;
     margin-top: 25px;
+
+    transform: translateX(50%);
+    justify-content: center;
+    align-items: center;
   }
 `;
 

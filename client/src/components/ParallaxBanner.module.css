@@ -1,0 +1,28 @@
+.ParallaxBanner {
+    margin-left: 50%;
+    height: 200vh;
+    width: 120rem;
+    transform: translateX(-50%);
+    justify-content: center;
+}
+
+.parallax-container {
+    position: relative;
+    height: 120vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.parallax-container .parallax-title {
+    color: white;
+    font-weight: bold;
+    width: 80%;
+    text-align: center;
+    font-size: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Pretendard;
+}

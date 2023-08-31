@@ -1,6 +1,5 @@
-import React from "react";
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { Provider } from 'react-redux'
 import store from '../src/store/index';
 import { AuthProvider } from '../src/context/AuthProvider';
@@ -14,11 +13,25 @@ import Layout from './ui/Layout';
 import data from '../src/components/data.json';
 import MainPage from './pages/MainPage';
 import StoreContainer from './pages/StoreContainer';
+import React, { useEffect } from 'react';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
+
 function App() {
   return (
     <Provider store={store}> 
 
       <AuthProvider >
+      <ScrollToTop />
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<MainPage />} />

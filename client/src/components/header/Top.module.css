@@ -18,6 +18,12 @@
 
   width: 50px;
   height: 30px;
+
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
 }
 
 /* 스티키 스타일 */
@@ -28,5 +34,5 @@
   right: 0;
   background-color: #fff; /* 변경 가능 */
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* 변경 가능 */
-  z-index: 1000;
+  z-index: 9999999;
 }
