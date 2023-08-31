@@ -81,13 +81,6 @@ function StoreList() {
     </Container>
   );
 }
-
-const ButtonRow = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
-`;
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -98,6 +91,14 @@ const Container = styled.div`
 const Heading = styled.h1`
   font-size: 2rem;
   font-weight: 900;
+  margin-bottom: 1rem;
+  white-space: nowrap;
+  margin-left: -9rem;
+`;
+
+const ButtonRow = styled.div`
+  display: flex;
+  justify-content: center;
   margin-bottom: 1rem;
 `;
 
