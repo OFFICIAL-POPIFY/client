@@ -176,23 +176,7 @@ const CommentForm = () => {
               >
                 삭제
               </button>
-              {/* {commentItem.hasOwnProperty("review_img") ? (
-                <div>
-                  <h4>업로드된 이미지:</h4>
-                  <div className={classes.commentImagePreviewContainer}>
-                    {commentItem.review_img.map((image, imgIndex) => (
-                      <img
-                        key={imgIndex}
-                        className={classes.commentImagePreview}
-                        src={image}
-                        alt={`Image ${imgIndex}`}
-                      />
-                    ))}
-                  </div>
-                </div>
-              ) : (
-                <p>asdf</p>
-              )} */}
+
               {commentItem.review_img && commentItem.review_img.length > 0 && (
                 <div>
                   <h4>업로드된 이미지:</h4>
