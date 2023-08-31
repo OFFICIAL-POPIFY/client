@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import Rating from "react-rating-stars-component";
-
 import classes from "./CommentForm.module.css";
 import axios from "../api/axios";
 import AuthContext from "../context/AuthProvider";
@@ -10,13 +9,14 @@ const CommentForm = () => {
   const [rate, setRating] = useState(0);
   const [contents, setComment] = useState("");
   const [images, setImages] = useState([]);
+  const [previewImage, setPreviewImage] = useState(null);
   const accessToken = localStorage.getItem("accessToken");
   const popupID = window.location.pathname.split("/")[3];
   const { value } = useContext(AuthContext);
   const id = value?.auth?.user_id;
   const STORE_URL = `${process.env.REACT_APP_BASE_URL}/popups/search/${popupID}`;
   const COMMENT_URL = `${process.env.REACT_APP_BASE_URL}/reviews/${popupID}`;
-
+  const S3_URL = `${process.env.REACT_APP_BASE_URL}/s3/upload/images?directory=review`;
   const [commentsList, setCommentsList] = useState([]);
 
   const fetchData = async () => {
@@ -50,7 +50,7 @@ const CommentForm = () => {
       });
       formData.append("rate", rate);
       formData.append("contents", contents);
-
+      console.log("before Comment url");
       const response = await axios.post(
         COMMENT_URL,
         formData,
@@ -104,14 +104,82 @@ const CommentForm = () => {
     setComment(event.target.value);
   };
 
-  const handleImageUpload = (imageList) => {
-    setImages(imageList);
+  const handleImageChange = (e) => {
+    const image = e.target.files[0];
+    console.log("imagesList", image);
+    setImages(image);
+    setPreviewImage(URL.createObjectURL(image));
+  };
+  const onSubmitReview = (event) => {
+    console.log("onSubmitReview");
+    event.preventDefault();
+    // 1. 이미지 url 받아야함
+    console.log("이미지 업로드");
+    const imageUrl = S3imageUpload();
+    // 2. 받은 url 을 review에 넣어야함
+    const newComment = async () => {
+      try {
+        // const img = event.target.files[0];
+        const formData = new FormData();
+        Array.from(imageUrl).forEach((image) => {
+          formData.append("images", image); // 이미지 데이터 추가
+        });
+        formData.append("rate", rate);
+        formData.append("contents", contents);
+        console.log("before Comment url");
+        const response = await axios.post(
+          COMMENT_URL,
+          formData,
+
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+
+        console.log("Response Data:", response.data);
+        setRating(0);
+        setComment("");
+        setImages([]);
+        fetchData();
+        const newComment = {
+          rating: rate,
+          comments: contents,
+          review_img: images.dataURL,
+        };
+        setCommentsList((prevComments) => [...prevComments, newComment]);
+      } catch (error) {
+        console.error("에러 발생:", error);
+      }
+    };
+    newComment();
+  };
+
+  const S3imageUpload = async () => {
+    console.log("images =", images);
+    console.log("image.name =", images.name);
+    try {
+      const formData = new FormData();
+      formData.append("images", images);
+
+      const response = await axios.post(S3_URL, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log("Response Data:", response.data);
+      return response.data.url;
+    } catch (error) {
+      console.error("에러 발생:", error);
+    }
   };
 
   return (
     <>
       <h1>REVIEW</h1>
-      <form className={classes.commentForm} onSubmit={handleSubmit}>
+      <form className={classes.commentForm} onSubmit={onSubmitReview}>
         <div>
           <label className={classes.commentFormLabel}></label>
           <textarea
@@ -132,17 +200,10 @@ const CommentForm = () => {
         </div>
         <div>
           <label className={classes.commentFormLabel}></label>
-          <img
-            id="img-preview"
-            src={images.length > 0 ? URL.createObjectURL(images[0]) : ""}
-          />
-
-          <input
-            type="file"
-            accept="image/*"
-            id="img"
-            onChange={handleImageUpload}
-          ></input>
+          <div>
+            <input type="file" accept="image/*" onChange={handleImageChange} />
+            {previewImage && <img src={previewImage} alt="Preview" />}
+          </div>
         </div>
         <button type="submit" className={classes.commentFormButton}>
           제출
