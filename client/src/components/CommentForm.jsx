@@ -27,9 +27,7 @@ const CommentForm = () => {
         },
       });
       const popupData = response.data;
-
       setCommentsList(popupData.reviews);
-      console.log("리뷰", popupData.reviews);
     } catch (error) {
       console.error("리뷰 불러오기 오류:", error);
     }
@@ -38,30 +36,39 @@ const CommentForm = () => {
     fetchData();
   }, []);
 
-  const handleSubmit = async (event) => {
+  const S3imageUpload = async () => {
+    try {
+      const formData = new FormData();
+      formData.append("images", images);
+
+      const response = await axios.post(S3_URL, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log("Response Data:", response.data);
+      return response.data.images[0].url;
+    } catch (error) {
+      console.error("에러 발생:", error);
+    }
+  };
+
+  const onSubmitReview = async (event) => {
     // window.location.reload();
     event.preventDefault();
-
+    const imageUrl = await S3imageUpload();
     try {
       // const img = event.target.files[0];
-      const formData = new FormData();
-      Array.from(images).forEach((image) => {
-        formData.append("images", image); // 이미지 데이터 추가
+      const requestData = {
+        rate: rate,
+        contents: contents,
+        review_img: imageUrl,
+      };
+      const response = await axios.post(COMMENT_URL, requestData, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
       });
-      formData.append("rate", rate);
-      formData.append("contents", contents);
-      console.log("before Comment url");
-      const response = await axios.post(
-        COMMENT_URL,
-        formData,
-
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
 
       console.log("Response Data:", response.data);
       setRating(0);
@@ -71,7 +78,7 @@ const CommentForm = () => {
       const newComment = {
         rating: rate,
         comments: contents,
-        review_img: images.dataURL,
+        review_img: imageUrl,
       };
       setCommentsList((prevComments) => [...prevComments, newComment]);
     } catch (error) {
@@ -110,71 +117,14 @@ const CommentForm = () => {
     setImages(image);
     setPreviewImage(URL.createObjectURL(image));
   };
-  const onSubmitReview = (event) => {
-    console.log("onSubmitReview");
-    event.preventDefault();
-    // 1. 이미지 url 받아야함
-    console.log("이미지 업로드");
-    const imageUrl = S3imageUpload();
-    // 2. 받은 url 을 review에 넣어야함
-    const newComment = async () => {
-      try {
-        // const img = event.target.files[0];
-        const formData = new FormData();
-        Array.from(imageUrl).forEach((image) => {
-          formData.append("images", image); // 이미지 데이터 추가
-        });
-        formData.append("rate", rate);
-        formData.append("contents", contents);
-        console.log("before Comment url");
-        const response = await axios.post(
-          COMMENT_URL,
-          formData,
-
-          {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
-
-        console.log("Response Data:", response.data);
-        setRating(0);
-        setComment("");
-        setImages([]);
-        fetchData();
-        const newComment = {
-          rating: rate,
-          comments: contents,
-          review_img: images.dataURL,
-        };
-        setCommentsList((prevComments) => [...prevComments, newComment]);
-      } catch (error) {
-        console.error("에러 발생:", error);
-      }
-    };
-    newComment();
-  };
-
-  const S3imageUpload = async () => {
-    console.log("images =", images);
-    console.log("image.name =", images.name);
-    try {
-      const formData = new FormData();
-      formData.append("images", images);
-
-      const response = await axios.post(S3_URL, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      console.log("Response Data:", response.data);
-      return response.data.url;
-    } catch (error) {
-      console.error("에러 발생:", error);
-    }
-  };
+  // const onSubmitReview = (event) => {
+  //   console.log("onSubmitReview");
+  //   event.preventDefault();
+  //   // 1. 이미지 url 받아야함
+  //   console.log("이미지 업로드");
+  //   const imageUrl = S3imageUpload();
+  //   // 2. 받은 url 을 review에 넣어야함
+  // };
 
   return (
     <>
@@ -205,7 +155,11 @@ const CommentForm = () => {
             {previewImage && <img src={previewImage} alt="Preview" />}
           </div>
         </div>
-        <button type="submit" className={classes.commentFormButton}>
+        <button
+          type="submit"
+          onClick={onSubmitReview}
+          className={classes.commentFormButton}
+        >
           제출
         </button>
       </form>
@@ -222,7 +176,7 @@ const CommentForm = () => {
               >
                 삭제
               </button>
-              {commentItem.review_img && commentItem.review_img.length > 0 && (
+              {/* {commentItem.hasOwnProperty("review_img") ? (
                 <div>
                   <h4>업로드된 이미지:</h4>
                   <div className={classes.commentImagePreviewContainer}>
@@ -234,6 +188,20 @@ const CommentForm = () => {
                         alt={`Image ${imgIndex}`}
                       />
                     ))}
+                  </div>
+                </div>
+              ) : (
+                <p>asdf</p>
+              )} */}
+              {commentItem.review_img && commentItem.review_img.length > 0 && (
+                <div>
+                  <h4>업로드된 이미지:</h4>
+                  <div className={classes.commentImagePreviewContainer}>
+                    <img
+                      className={classes.commentImagePreview}
+                      src={commentItem.review_img}
+                      alt={`Image ${commentItem.rewview_img}`}
+                    />
                   </div>
                 </div>
               )}
