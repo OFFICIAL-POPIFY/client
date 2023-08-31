@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Rating from "react-rating-stars-component";
 import axios from "axios";
 import classes from "./CommentForm.module.css";
+import ImageUpload from "react-image-upload";
 
 const CommentForm = () => {
   const [rate, setRating] = useState(0);
@@ -80,6 +81,10 @@ const CommentForm = () => {
 
   const handleCommentChange = (event) => {
     setContent(event.target.value);
+  };
+
+  const handleImageUpload = (imageList) => {
+    setImages(imageList);
   };
 
   return (

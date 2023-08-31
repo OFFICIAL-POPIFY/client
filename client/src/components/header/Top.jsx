@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import classes from "./Top.module.css";
+import { FaAngleUp } from "react-icons/fa";
 
 function Top() {
   const [isSticky, setIsSticky] = useState(false);
@@ -24,7 +25,10 @@ function Top() {
       <div className={classes.wrap}>
         <div></div>
         <button className={classes.top} onClick={topBtnhandler}>
-          Top
+        <span style={{ marginTop: "5px" }}>
+            <FaAngleUp size="15" />
+          </span>
+          TOP
         </button>
         <div></div>
       </div>
