@@ -3,33 +3,36 @@ import styled from "styled-components";
 import axios from "../api/axios";
 import classes from "./Resignation.module.css";
 
-
 function Resignation() {
   const [errorMessage, setErrorMessage] = useState("");
 
   const resignHandler = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/users/profile`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        }
-      );
-      alert("정말 회원 탈퇴를 진행하시겠습니까?");
+    if (window.confirm("정말로 탈퇴하시겠습니까?")) {
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_BASE_URL}/users/profile`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+          }
+        );
 
-      const userId = localStorage.getItem("id");
-      await axios.delete(`${process.env.REACT_APP_BASE_URL}/users/delete`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      });
+        const userId = response.data.id;
+        await axios.delete(
+          `${process.env.REACT_APP_BASE_URL}/users/${userId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+          }
+        );
 
-      alert("회원 탈퇴가 완료되었습니다.");
-    } catch (error) {
-      setErrorMessage("회원 탈퇴를 처리하는 동안 오류가 발생했습니다.");
-      console.error("회원 탈퇴 오류:", error);
+        alert("회원 탈퇴가 완료되었습니다.");
+      } catch (error) {
+        setErrorMessage("회원 탈퇴를 처리하는 동안 오류가 발생했습니다.");
+        console.error("회원 탈퇴 오류:", error);
+      }
     }
   };
 
@@ -40,8 +43,8 @@ function Resignation() {
         * 탈퇴 후에도 게시판형 서비스에 등록한 게시물은 그대로 남아있습니다.
       </p>
       <div className={classes.rbutton}>
-      <button onClick={resignHandler}>탈퇴하기</button>
-      {errorMessage && <p>{errorMessage}</p>}
+        <button onClick={resignHandler}>탈퇴하기</button>
+        {errorMessage && <p>{errorMessage}</p>}
       </div>
     </Wrap>
   );
@@ -80,6 +83,5 @@ const Wrap = styled.div`
   }
 };
 `;
-
 
 export default Resignation;
