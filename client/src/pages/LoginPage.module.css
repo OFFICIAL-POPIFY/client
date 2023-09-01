@@ -74,6 +74,7 @@
   }
 
   .login{
+    display: block;
     width: 25rem;
     height: 3.125rem;
     flex-shrink: 0;
