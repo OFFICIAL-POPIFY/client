@@ -19,7 +19,8 @@ function Login() {
   const [errMsg, setErrMsg] = useState("");
   const [password, setPassword] = useState("");
   const [succsess, setSuccsess] = useState(false);
-
+  const [validateUserText, setValidateUserText] = useState("");
+  const [validatePasswordText, setvalidatePasswordText] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,8 +32,36 @@ function Login() {
     setErrMsg("");
   }, [user_id, password]);
 
+  const validateUserName = (user_id) => {
+    return String(user_id)
+      .toLowerCase()
+      .match(/^(?=.*[A-Za-z0-9]).{2,30}$/);
+  };
+  const validatePassword = (password) => {
+    return String(password)
+      .toLowerCase()
+      .match(/^(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*()_+]).{6,20}$/);
+  };
+
   const handlerSubmit = async (event) => {
     event.preventDefault();
+    if (!validateUserName(user_id)) {
+      setValidateUserText(
+        "아이디는 6자 이상의 영문, 숫자, _ 조합이어야 합니다."
+      );
+      return;
+    } else {
+      setValidateUserText("");
+    }
+    if (!validatePassword(password)) {
+      setvalidatePasswordText(
+        "비밀번호는 6자 이상 16자 이하의 영문, 숫자, 특수문자 조합이어야 합니다."
+      );
+      return;
+    } else {
+      setvalidatePasswordText("");
+    }
+
     try {
       const response = await axios.post(
         LOGIN_URL,
@@ -101,6 +130,8 @@ function Login() {
                   required
                   ref={userRef}
                 />
+                <p className="validate">{validateUserText}</p>
+
                 <div className={classes.icon2}>
                   <TiDelete size="20" />
                 </div>
@@ -118,6 +149,7 @@ function Login() {
                   value={password}
                   required
                 />
+                <p className="validate">{validatePasswordText}</p>
                 <div className={classes.icon2}>
                   <TiDelete size="20" />
                 </div>
