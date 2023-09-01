@@ -49,12 +49,16 @@ function MyReview() {
                   <div className={classes.icon}>
                     <TiDocumentText size="20"/>
                   </div>
+                  <Link to={`/popups/search/${review.popup._id}`}>
                   <div className={classes.popup}>
                     {"["}
                     {truncateText(review.popup.corporation, 17)}
                     {"]"}
-                  </div>
-                  <div className={classes.contents}>{truncateText(review.contents, 35)}</div>
+                    </div>
+                    </Link>
+                <div className={classes.contents}>
+                  {truncateText(review.contents, 35)}
+                </div>
               </li>
             ))}
           </ul>
