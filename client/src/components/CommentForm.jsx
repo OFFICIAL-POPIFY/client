@@ -168,7 +168,7 @@ const CommentForm = () => {
               console.log("commentItem", commentItem),
               (
                 <li key={index} className={classes.commentItem}>
-                  <div>유저 : {commentItem.user}</div>
+                  <div>유저 : {commentItem.user.user_id}</div>
                   <div>별점: {commentItem.rate}</div>
                   <div>코멘트 내용: {commentItem.contents}</div>
                   <button
