@@ -168,15 +168,22 @@ const CommentForm = () => {
               console.log("commentItem", commentItem),
               (
                 <li key={index} className={classes.commentItem}>
-                  <div>유저 : {commentItem.user}</div>
-                  <div>별점: {commentItem.rate}</div>
-                  <div>코멘트 내용: {commentItem.contents}</div>
+                  <hr />
                   <button
                     onClick={() => deleteReview(commentItem._id)}
                     className={classes.commentFormButton2}
                   >
                     삭제
                   </button>
+                  <div>
+                    {" "}
+                    <strong>유저</strong> : {commentItem.user?.user_id}
+                  </div>
+                  <div>
+                    <strong>별점:</strong> {commentItem.rate}
+                  </div>
+
+                  <div id="comment">{commentItem.contents}</div>
 
                   {commentItem.review_img &&
                     commentItem.review_img.length > 0 && (
@@ -189,6 +196,7 @@ const CommentForm = () => {
                             alt={`Image ${commentItem.rewview_img}`}
                           />
                         </div>
+                        <hr />
                       </div>
                     )}
                 </li>
