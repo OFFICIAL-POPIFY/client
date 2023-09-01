@@ -101,6 +101,6 @@ h1 {
 }
 
 .commentImagePreview {
-  max-width: 100px;
+  max-width: fit-content;
   margin: 5px;
 }
