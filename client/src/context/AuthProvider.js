@@ -1,29 +1,34 @@
-import { createContext, useContext, useState } from "react";
+// context/AuthProvider.js
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState({});
-    const value = {
-      auth,
-      setAuth,
-  };
-
-  console.log("userid: ", auth.user_id);
+ console.log("userid: ", auth.user_id);
   console.log("password: ", auth.password);
   console.log("accessToken: ", auth.accsessToken);
   console.log("roles: ", auth.roles);
   console.log("id: ", auth.id);
-    return (
-      <AuthContext.Provider value={{ auth, setAuth, value }}>
-        {children}
-      </AuthContext.Provider>
-    );
-  }
+  useEffect(() => {
+    //로그인이 되면 다시 로그인 하지 않도록
+    const auth = localStorage.getItem("auth");
+    if (auth) {
+      setAuth(JSON.parse(auth));  
+    }
 
-  export function useAuth() {
-    return useContext(AuthContext);
-  }
-  
-  
+  }, []);
+
+  const value = {
+    auth,
+    setAuth,
+  };
+
+  return <AuthContext.Provider value={{ auth, setAuth, value }}>{children}</AuthContext.Provider>;
+};
+
+export function useAuth() {
+  return useContext(AuthContext);
+}
+
 export default AuthContext;

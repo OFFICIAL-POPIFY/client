@@ -1,7 +1,5 @@
-import React from "react";
-import { useRef, useState, useEffect, useContext } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import AuthContext from "../context/AuthProvider";
-
 import axios from "../api/axios";
 import { AiOutlineUser } from "react-icons/ai";
 import { HiOutlineKey } from "react-icons/hi2";
@@ -9,6 +7,7 @@ import { TiDelete } from "react-icons/ti";
 import classes from "./LoginPage.module.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+
 const LOGIN_URL = `${process.env.REACT_APP_BASE_URL}/users/login`;
 
 function Login() {
@@ -48,6 +47,8 @@ function Login() {
       const accsessToken = response?.data?.token?.access_token;
       localStorage.setItem("accessToken", accsessToken);
       const roles = response?.data?.roles;
+
+      // 로그인 성공 후 로그인 정보 저장
       setAuth({
         user_id,
         password,
@@ -88,7 +89,7 @@ function Login() {
               <div className={classes.control}>
                 <label htmlFor="id"></label>
                 <div className={classes.icon}>
-                  <AiOutlineUser size="20"/>
+                  <AiOutlineUser size="20" />
                 </div>
                 <input
                   placeholder="아이디"
@@ -101,13 +102,13 @@ function Login() {
                   ref={userRef}
                 />
                 <div className={classes.icon2}>
-                  <TiDelete size="20"/>
+                  <TiDelete size="20" />
                 </div>
               </div>
               <div className={classes.control}>
                 <label htmlFor="password"></label>
                 <div className={classes.icon}>
-                  <HiOutlineKey size="20"/>
+                  <HiOutlineKey size="20" />
                 </div>
                 <input
                   placeholder="비밀번호"
