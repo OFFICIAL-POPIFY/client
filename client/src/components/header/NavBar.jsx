@@ -6,6 +6,8 @@ import { IoMdLogIn } from "react-icons/io";
 import { IoMdLogOut } from "react-icons/io";
 import { BsInstagram } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { IoPersonCircleOutline } from "react-icons/io5";
+import { AiOutlineInfoCircle } from "react-icons/ai";
 import SearchBar from "./SearchBar";
 import PopupData from "../data.json";
 import axios from "../../api/axios";
@@ -59,10 +61,10 @@ function NavBar() {
               </button>
 
               <div className={classes.dropdown_contents}>
-                <Link to="/about">About</Link>
+                <Link to="/about"><AiOutlineInfoCircle />About</Link>
                 {auth ? (
                   <>
-                    <Link to="/mypage">Mypage</Link>
+                    <Link to="/mypage"><IoPersonCircleOutline />Mypage</Link>
                     <Link onClick={handleLogout}>
                       <IoMdLogOut />
                     </Link>
