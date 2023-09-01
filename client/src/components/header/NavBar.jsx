@@ -14,7 +14,7 @@ import axios from "../../api/axios";
 import AuthContext from "../../context/AuthProvider";
 function NavBar() {
   const [isSticky, setIsSticky] = useState(false);
-  const { setAuth } = useContext(AuthContext);
+  const { auth, setAuth } = useContext(AuthContext);
   const LOGOUT_URL = `${process.env.REACT_APP_BASE_URL}/users/logout`;
   const handleLogout = async (e) => {
     e.preventDefault();
@@ -61,14 +61,19 @@ function NavBar() {
               </button>
 
               <div className={classes.dropdown_contents}>
-                <Link to="/about"> <AiOutlineInfoCircle />About</Link>
-                <Link to="/login">
-                  <IoMdLogIn />Login
-                </Link>
-                <Link onClick={handleLogout}>
-                  <IoMdLogOut />Logout
-                </Link>
-                <Link to="/mypage"><IoPersonCircleOutline />Mypage</Link>
+                <Link to="/about"><AiOutlineInfoCircle />About</Link>
+                {auth ? (
+                  <>
+                    <Link to="/mypage"><IoPersonCircleOutline />Mypage</Link>
+                    <Link onClick={handleLogout}>
+                      <IoMdLogOut />
+                    </Link>
+                  </>
+                ) : (
+                  <Link to="/login">
+                    <IoMdLogIn />
+                  </Link>
+                )}
                 <Link to="https://www.instagram.com/popify.official/">
                   <BsInstagram />
                 </Link>

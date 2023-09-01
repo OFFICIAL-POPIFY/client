@@ -8,13 +8,13 @@ function ScrollToTopButton() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
   const scrollToTop2 = () => {
-    window.scrollTo({ top: 700, behavior: "smooth" });
+    window.scrollTo({ top: 850, behavior: "smooth" });
   };
   const scrollToTop3 = () => {
-    window.scrollTo({ top: 1100, behavior: "smooth" });
+    window.scrollTo({ top: 1200, behavior: "smooth" });
   };
   const scrollToTop4 = () => {
-    window.scrollTo({ top: 1700, behavior: "smooth" });
+    window.scrollTo({ top: 2500, behavior: "smooth" });
   };
 
 return (

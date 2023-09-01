@@ -1,18 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import ParallaxBanner from "../components/ParallaxBanner";
 
 function About() {
   return (
     <div>
+      <ParallaxBanner />
       <Layout>
         <div></div>
-        <div className="div">
-          <p>
-            POP YOURSELF, INFINITE MOMENTS FLOW FROM PLACES THAT ARE NOT FOREVER
-            <hr />
-            영원하지 않은 공간으로부터의 무한한 순간들
-          </p>
-        </div>
       </Layout>
       <H1>CONTACT US</H1>
       <Bottom>
@@ -42,61 +37,66 @@ function About() {
 }
 
 export default About;
+
 const H1 = styled.h1`
-  height: 100px;
-  width: 1200px;
-  color: #000;
-  font-family: Pretendared;
+  display: flex;
+  width: 333px;
+  height: 50px;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  transform: translateX(30%);
+  align-items: center;
+
+  color: white;
+  font-family: Pretendard;
   font-size: 50px;
   font-style: normal;
   font-weight: 900;
   line-height: normal;
   letter-spacing: -2.5px;
+
+  margin-top: 400px;
 `;
+
 const Layout = styled.div`
-  margin-top: 100px;
-  .div {
-    width: 1050px;
-  }
-  p {
-    color: #000;
-    text-align: center;
-    font-family: Pretendard;
-    font-size: 25px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    display: flex;
-    justify-content: center;
-  }
   width: 1200px;
   height: 670px;
-  flex-shrink: 0;
-  background: #d9d9d9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
+
 const Bottom = styled.div`
   width: 1200px;
   display: flex;
   justify-content: space-between;
+  margin: 60px 0px 0px 0px;
+  transform: translateX(10%);
+  align-items: center;
+
   h2 {
-    color: #000;
+    display: flex;
+    width: 440px;
+    height: 20px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+
+    color: white;
     font-family: SansSerif;
     font-size: 13px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
   }
+
   p {
     display: flex;
-    width: 500px;
+    width: 440px;
     height: 120px;
     flex-direction: column;
     justify-content: center;
     flex-shrink: 0;
-    color: #000;
+
+    color: white;
     font-family: Pretendard;
     font-size: 13px;
     font-style: normal;
@@ -106,5 +106,6 @@ const Bottom = styled.div`
 
   hr {
     border: none;
+    height: 10px;
   }
 `;

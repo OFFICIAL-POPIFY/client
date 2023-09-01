@@ -63,11 +63,8 @@ function GoodsCarousel() {
       <hr />
       <Contain>
         <div className="absolute">
-          <button
-            className="prevButton"
-            onClick={() => ref.current.slidePrev()}
-          >
-            <FaChevronLeft size="30" />
+          <button onClick={() => ref.current.slidePrev()}>
+            <FaChevronLeft className="prevButton" size="30" />
           </button>
           <CarouselBox>
             <AliceCarousel
@@ -85,11 +82,8 @@ function GoodsCarousel() {
               items={items}
             />
           </CarouselBox>
-          <button
-            className="nextButton"
-            onClick={() => ref.current.slideNext()}
-          >
-            <FaChevronRight size="30" />
+          <button onClick={() => ref.current.slideNext()}>
+            <FaChevronRight className="nextButton" size="30" />
           </button>
         </div>
       </Contain>
@@ -100,6 +94,8 @@ function GoodsCarousel() {
 export default GoodsCarousel;
 
 const Wrapper = styled.div`
+  margin-top: -30%;
+  
   hr {
     width: 1198px;
     align-items: center;
@@ -117,42 +113,6 @@ const Wrapper = styled.div`
     line-height: normal;
   }
 
-  .prevButton {
-    position: absolute;
-    top: 20%;
-    left: 30px;
-    transform: translateY(-50%);
-    width: 30px;
-    height: 30px;
-    background: #ffffff;
-    opacity: 0.6;
-    border-radius: 30px;
-
-    border: none;
-    outline: none;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    z-index: 1;
-  }
-
-  .nextButton {
-    position: absolute;
-    top: 20%;
-    right: 30px;
-    transform: translateY(-50%);
-    width: 30px;
-    height: 30px;
-    background: #ffffff;
-    opacity: 0.6;
-    border-radius: 30px;
-
-    border: none;
-    outline: none;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    z-index: 1;
-  }
-
   .absolute {
     position: absolute;
   }
@@ -165,6 +125,39 @@ const Contain = styled.div`
   align-items: center;
   margin: 0 auto;
 
+  .prevButton {
+    position: absolute;
+    top: 15%;
+    left: -50px;
+    transform: translateY(50%);
+    width: 30px;
+    height: 30px;
+    background: #ffffff;
+    opacity: 0.6;
+
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    z-index: 1;
+  }
+
+  .nextButton {
+    position: absolute;
+    top: 15%;
+    right: -50px;
+    transform: translateY(50%);
+    width: 30px;
+    height: 30px;
+    background: #ffffff;
+    opacity: 0.6;
+
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    z-index: 1;
+  }
   .alice-wrapper {
     width: 100%;
   }
@@ -194,7 +187,6 @@ const ItemsContain = styled.div`
 const ItemsWrap = styled.div`
   width: 100%;
   height: 525px;
-  border-radius: 20px;
   overflow: hidden;
   margin: 0 20px;
 
@@ -242,6 +234,7 @@ const Card = styled.div`
     width: 260px;
     height: 260px;
     align-items: center;
+    border-radius: 0px;
   }
 
   .name {
