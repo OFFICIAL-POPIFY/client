@@ -47,18 +47,18 @@ function MyReview() {
           <ul>
             {reviews.map((review) => (
               <li key={review._id}>
-                <div className={classes.icon}>
-                  <TiDocumentText size="20" />
-                </div>
-                <Link to={`/popups/search/${review.popup._id}`}>
+                  <div className={classes.icon}>
+                    <TiDocumentText size="20"/>
+                  </div>
+                  <Link to={`/popups/search/${review.popup._id}`}>
                   <div className={classes.popup}>
                     {"["}
                     {truncateText(review.popup.corporation, 17)}
                     {"]"}
-                  </div>
-                </Link>
+                    </div>
+                    </Link>
                 <div className={classes.contents}>
-                  {truncateText(review.contents, 43)}
+                  {truncateText(review.contents, 35)}
                 </div>
               </li>
             ))}
@@ -73,12 +73,11 @@ export default MyReview;
 
 const Container = styled.div`
   flex-shrink: 0;
-  display: block;
-  width: 48.125rem;
+  width: 44rem;
   height: 3.12rem;
   align-items: center;
   justify-content: center;
-  margin-left: 8.5rem;
+  margin-left: 7.5rem;
 `;
 
 const Review = styled.div`
