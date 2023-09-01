@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import axios from "../api/axios";
 import { TiDocumentText } from "react-icons/ti";
@@ -36,8 +37,8 @@ function MyReview() {
     } else {
       return text.slice(0, maxLength) + "…";
     }
-  };
-
+  }
+  console.log(reviews);
   return (
     <Container>
       <p className={classes.subtitle}>내가 쓴 리뷰</p>
@@ -83,7 +84,6 @@ const Review = styled.div`
   ul {
     list-style: none;
     padding: 0;
-  
   }
   li {
     border: 0.5px solid #ccc;

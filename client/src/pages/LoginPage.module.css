@@ -94,13 +94,107 @@
 
 .inputContainer {
   display: flex;
+  flex-direction: column;
+  margin: 4.69rem auto;
+  width: 28.75rem;
+  height: 15rem;
+  border: 0.5px solid #ccc;
+  border-radius: 5px;
+  padding-top: 1.56rem;
+  padding-bottom: 1.25rem;
+  padding-left: 1.875rem;
+  padding-right: 1.875rem;
+  text-align: center;
+  background-color: white;
+  margin-bottom: 1.25rem;
+}
+
+.title {
+  
+  color: #000;
+  font-family: "PretendardB";
+  font-size: 25px;
+  line-height: normal;
+  margin-top: 4.375rem;
+  margin-bottom: 0.75rem;
+}
+
+hr{
+  stroke-width: 1px;
+  border: 1px solid #ccc
+}
+
+.control {
+  position: relative;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
-.linktos{
-  text-align: center;
-  color: #666;
+.control input[id="passworedConfirm"]{
+  position: absolute;
+}
+.control label {
+  display: block;
+  color: #616161;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.control input {
+  display: block;
+  width: 25rem;
+  height: 3.125rem;
+  background: #F5F5F5;
   font-family: "PretendardR";
-  font-size: 14px;
+  font-size: 13px;
   line-height: normal;
+  color: #959595;
+  border-radius: 4px;
+  padding: 0.25rem;
+  padding-left: 3rem;
+  border: 0.5px solid #ccc;
+}
+
+.icon{
+  position: absolute;
+  left: 1rem;
+  color: #959595;
+}
+
+.icon2{
+  position: absolute;
+  right: 1rem;
+  color: #959595;
+}
+
+.login{
+  width: 25rem;
+  height: 3.125rem;
+  flex-shrink: 0;
+  margin: 2.81rem auto;
+  background:#000000;
+  border-radius: 5px;
+  border: 0;
+  align-items:center;
+  text-align: center;
+  color: #FFF;
+  font-family: "PretendardB";
+  text-align: center;
+  align-items: center;
+  font-size: 20px;
+  line-height: normal;
+}
+
+.inputContainer {
+display: flex;
+align-items: center;
+}
+
+.linktos{
+text-align: center;
+color: #666;
+font-family: "PretendardR";
+font-size: 14px;
+line-height: normal;
 }
