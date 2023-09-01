@@ -5,7 +5,7 @@ import CommentForm from "../components/CommentForm";
 import Corporation from "../components/Corporation";
 import GoodsCarousel2 from "../components/carousel/GoodsCarousel2";
 import InnerNav2 from "../components/InnerNav2";
-//import Board from "../components/Board";
+import Board from "../components/Board";
 import styled from "styled-components";
 
 function StoreContainer() {
@@ -25,6 +25,10 @@ function StoreContainer() {
 
       <div>
       <InnerNav2 />
+      </div>
+
+      <div>
+      <Board />
       </div>
 
       <div>

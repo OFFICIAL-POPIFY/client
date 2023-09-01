@@ -130,7 +130,7 @@ const Subscript = styled.div`
     line-height: normal;
     margin-top: 25px;
 
-    transform: translateX(50%);
+    transform: translateX(47%);
     justify-content: center;
     align-items: center;
   }
