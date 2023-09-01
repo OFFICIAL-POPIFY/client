@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import axios from "../api/axios";
 import { TiDocumentText } from "react-icons/ti";
@@ -36,8 +37,8 @@ function MyReview() {
     } else {
       return text.slice(0, maxLength) + "…";
     }
-  };
-
+  }
+  console.log(reviews);
   return (
     <Container>
       <p className={classes.subtitle}>내가 쓴 리뷰</p>
@@ -46,15 +47,19 @@ function MyReview() {
           <ul>
             {reviews.map((review) => (
               <li key={review._id}>
-                  <div className={classes.icon}>
-                    <TiDocumentText size="20"/>
-                  </div>
+                <div className={classes.icon}>
+                  <TiDocumentText size="20" />
+                </div>
+                <Link to={`/popups/search/${review.popup._id}`}>
                   <div className={classes.popup}>
                     {"["}
                     {truncateText(review.popup.corporation, 17)}
                     {"]"}
                   </div>
-                  <div className={classes.contents}>{truncateText(review.contents, 43)}</div>
+                </Link>
+                <div className={classes.contents}>
+                  {truncateText(review.contents, 43)}
+                </div>
               </li>
             ))}
           </ul>
@@ -80,7 +85,6 @@ const Review = styled.div`
   ul {
     list-style: none;
     padding: 0;
-  
   }
   li {
     border: 0.5px solid #ccc;
