@@ -66,11 +66,11 @@ function NavBar() {
                   <>
                     <Link to="/mypage"><IoPersonCircleOutline />Mypage</Link>
                     <Link onClick={handleLogout}>
-                      <IoMdLogOut />
+                      <IoMdLogOut />Logout
                     </Link>
                   </>
                 ) : (
-                  <Link to="/login">
+                  <Link to="/login">Login
                     <IoMdLogIn />
                   </Link>
                 )}
