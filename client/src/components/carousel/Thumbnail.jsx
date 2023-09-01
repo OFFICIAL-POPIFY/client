@@ -93,7 +93,7 @@ function Thumbnail() {
   );
 }
 const Wrapper = styled.div`
-  width: 75rem;
+  width: 49.375rem;
   height: 23.75rem;
   display: flex;
   margin: 40px 0px 35px 0px;
