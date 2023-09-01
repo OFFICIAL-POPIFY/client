@@ -38,7 +38,6 @@ function MyReview() {
       return text.slice(0, maxLength) + "…";
     }
   }
-  console.log(reviews);
   return (
     <Container>
       <p className={classes.subtitle}>내가 쓴 리뷰</p>
