@@ -155,10 +155,7 @@ hr{
   padding-left: 3rem;
   border: 0.5px solid #ccc;
 }
-.validate {
-  color: red;
-  padding: 0.5rem;
-}
+
 .icon{
   position: absolute;
   left: 1rem;
@@ -200,4 +197,8 @@ color: #666;
 font-family: "PretendardR";
 font-size: 14px;
 line-height: normal;
+}
+.validate {
+  color: red;
+  padding: 0.5rem;
 }
