@@ -96,20 +96,20 @@
 // const Wrapper = styled.div`
 //   margin-top: -30%;
 
-const Wrapper = styled.div`
-  margin-top: -30%;
+// const Wrapper = styled.div`
+//   margin-top: -30%;
 
-  hr {
-    width: 1198px;
-    align-items: center;
-    margin: 10px 0;
-  }
+//   hr {
+//     width: 1198px;
+//     align-items: center;
+//     margin: 10px 0;
+//   }
 
-  //   .absolute {
-  //     position: absolute;
-  //   }
-  //
-`;
+//   //   .absolute {
+//   //     position: absolute;
+//   //   }
+//   //
+// `;
 
 // const Contain = styled.div`
 //   display: flex;
@@ -256,10 +256,10 @@ const Wrapper = styled.div`
 //   left: 0;
 // `;
 
-const CarouselBox = styled.div`
-  width: 1200px;
-  height: 715px;
-  position: relative;
-  top: 0;
-  left: 0;
-`;
+// const CarouselBox = styled.div`
+//   width: 1200px;
+//   height: 715px;
+//   position: relative;
+//   top: 0;
+//   left: 0;
+// `;
