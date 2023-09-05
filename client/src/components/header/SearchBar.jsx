@@ -4,51 +4,55 @@ import axios from "../../api/axios";
 import { Link } from "react-router-dom";
 
 function SearchBar({ placeholder, data }) {
-  const corporation = { placeholder };
-  const FILTER_URL = `${process.env.REACT_APP_BASE_URL}/popups/search?corporation=${corporation}`;
   const [filteredData, setFilteredData] = useState([]);
-  const [resData, setResData] = useState([]);
   const [selectedId, setSelectedId] = useState("");
+  const [searchWord, setSearchWord] = useState("");
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(FILTER_URL);
-        setResData(res.data);
-        console.log("response", res.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchData();
-  }, [FILTER_URL]);
-
-  const handleFilter = (event) => {
-    const searchWord = event.target.value;
-
     if (!searchWord) {
       setFilteredData([]);
       setSelectedId("");
       return;
     }
 
-    const newFilter = data.filter((value) => {
-      return value.corporation.includes(searchWord);
-    });
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(
+          `${process.env.REACT_APP_BASE_URL}/popups/search?corporation=${searchWord}`
+        );
+        const resData = res.data;
+        console.log("response", resData);
 
-    setFilteredData(newFilter);
+        const matchingData = resData.find((item) =>
+          item.corporation.includes(searchWord)
+        );
 
-    const matchingData = resData.find((item) =>
-      item.corporation.includes(searchWord)
-    );
+        setSelectedId(matchingData ? matchingData._id : "");
+        setFilteredData(resData);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-    setSelectedId(matchingData?._id);
+    fetchData();
+  }, [searchWord]);
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      // Enter 키를 누르면 URL 업데이트
+      window.location.href = `/popups/search/${selectedId}`;
+    }
   };
 
   return (
     <div className={classes.container}>
-      <input type="text" placeholder={placeholder} onChange={handleFilter} />
+      <input
+        type="text"
+        placeholder={placeholder}
+        value={searchWord}
+        onChange={(e) => setSearchWord(e.target.value)}
+        onKeyPress={handleKeyPress} // Enter 키 이벤트 처리
+      />
       <div className={classes.search}></div>
       {filteredData.length !== 0 && (
         <div className={classes.data_result}>
