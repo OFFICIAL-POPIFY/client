@@ -1,4 +1,4 @@
-import { TiChevronLeftOutline, TiChevronRightOutline } from 'https://cdn.skypack.dev/react-icons/ti';
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 import React, { useState, useEffect } from 'react';
 import "./Carousel.css"
 import axios from "../../api/axios";
@@ -34,7 +34,7 @@ const Carousel = ({ children }) => {
 
     return (
         <div className='carousel'>
-            {active > 0 && <button className='nav left' onClick={() => setActive(i => i - 1)}><TiChevronLeftOutline /></button>}
+            {active > 0 && <button className='nav left' onClick={() => setActive(i => i - 1)}><FaAngleLeft /></button>}
             {latestData.map((imageUrl, i) => (
                 <div className='card-container' style={{
                     '--active': i === active ? 1 : 0,
@@ -55,7 +55,7 @@ const Carousel = ({ children }) => {
                     </div>
                 </div>
             ))}
-            {active < count - 1 && <button className='nav right' onClick={() => setActive(i => i + 1)}><TiChevronRightOutline /></button>}
+            {active < count - 1 && <button className='nav right' onClick={() => setActive(i => i + 1)}><FaAngleRight /></button>}
         </div >
     );
 };
