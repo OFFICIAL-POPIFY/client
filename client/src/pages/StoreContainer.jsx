@@ -1,4 +1,3 @@
-import React from "react";
 import Thumbnail from "../components/carousel/Thumbnail";
 import MapContainer from "../components/MapContainer";
 import CommentForm from "../components/CommentForm";
@@ -12,31 +11,31 @@ function StoreContainer() {
   return (
     <div>
       <div>
-      <Thumbnail />
+        <Thumbnail />
       </div>
 
       <div>
-      <Corporation />
+        <Corporation />
       </div>
 
       <div>
-      <GoodsCarousel2 />
+        <GoodsCarousel2 />
       </div>
 
       <div>
-      <InnerNav2 />
+        <InnerNav2 />
       </div>
 
       <div>
-      <Board />
+        <Board />
       </div>
 
       <div>
-      <CommentForm />
+        <CommentForm />
       </div>
 
       <div>
-      <MapContainer />
+        <MapContainer />
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import mapcontainer from "./MapContainer.css";
 
 const KakaoMap = () => {
@@ -227,6 +227,5 @@ const KakaoMap = () => {
     </div>
   );
 };
-
 
 export default KakaoMap;

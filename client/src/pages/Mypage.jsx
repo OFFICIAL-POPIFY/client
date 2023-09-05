@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Profile from "../components/Profile";
 import { Navigate } from "react-router-dom";
 import styled from "styled-components";
