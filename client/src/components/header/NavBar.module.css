@@ -81,22 +81,25 @@
   }
   
   .dropdown_contents {
-  position: absolute;
-  top: 100%;
-  width: 300px;
-  height: 45vh;
-  right: 0; 
+  position: fixed;
+  top: 14.7%;
+  width: 480px;
+  height: 100vh;
+  right: 0;
+  left: auto;
   padding: 1rem;
   display: none;
   background-color: white;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10%); /* 아래로 내려오도록 설정 */
+  z-index: 99999;
   }
   .dropdown_contents a{
   display: block;
   padding: 0.8rem;
   font-size: 1.8rem;
   }
-  .dropdown:hover .dropdown_contents {
+  .dropdown.active .dropdown_contents {
   display: block;
   }
   

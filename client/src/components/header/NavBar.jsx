@@ -1,5 +1,5 @@
 // NavBar.js
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { Link } from "react-router-dom";
 import classes from "./NavBar.module.css";
 import { IoMdLogIn } from "react-icons/io";
@@ -12,8 +12,12 @@ import axios from "../../api/axios";
 import AuthContext from "../../context/AuthProvider";
 function NavBar() {
   const [isSticky, setIsSticky] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { setAuth } = useContext(AuthContext);
   const LOGOUT_URL = `${process.env.REACT_APP_BASE_URL}/users/logout`;
+
+  const dropdownRef = useRef(null);
+
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
@@ -24,6 +28,14 @@ function NavBar() {
     } catch (error) {
       console.error("로그아웃 오류:", error);
     }
+  };
+
+  const handleDropdownToggle = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const closeDropdown = () => {
+    setIsDropdownOpen(false);
   };
 
   const handleScroll = () => {
@@ -37,9 +49,28 @@ function NavBar() {
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
+      if (isDropdownOpen) {
       window.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, [isDropdownOpen]);
+
+  useEffect(() => {
+    // Add event listener for document click
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        closeDropdown();
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    
+    // Clean up the event listener when the component unmounts
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
+
   return (
     <div>
       <header className={`${classes.header} ${isSticky ? classes.sticky : ""}`}>
@@ -53,8 +84,18 @@ function NavBar() {
             <div className={classes.container}>
               <SearchBar placeholder="Search..." data={PopupData} />
             </div>
-            <div className={classes.dropdown}>
-              <button className={classes.dropdown_button}>
+            <div
+              className={`${classes.dropdown} ${isDropdownOpen ? classes.active : ""
+              }`}
+              ref={dropdownRef} // Assign the ref to the dropdown element
+            >
+              <button
+                className={`${classes.dropdown_button}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleDropdownToggle();
+                }}
+              >
                 <GiHamburgerMenu style={{ width: "50px", height: "50px" }} />
               </button>
 
@@ -71,8 +112,6 @@ function NavBar() {
                 <Link to="https://www.instagram.com/popify.official/">
                   <BsInstagram />
                 </Link>
-
-                {/* <Link to="/contents">Contents</Link> */}
               </div>
             </div>
           </ul>
