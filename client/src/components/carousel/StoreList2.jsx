@@ -53,13 +53,13 @@ function StoreList() {
   };
 
   const renderStoreItems = storeData.map((store, index) => (
-    <Card key={index}>
-      <CardImage src={store.popup_imgs[0]} alt="" />
-      <StyledLink to={`/popups/search/${store._id}`}>
+    <StyledLink to={`/popups/search/${store._id}`} key={index}>
+      <Card>
+        <CardImage src={store.popup_imgs[0]} alt="" />
         <CardTitle>{store.corporation}</CardTitle>
-      </StyledLink>
-      <CardSubtitle>{store.location}</CardSubtitle>
-    </Card>
+        <CardSubtitle>{store.location}</CardSubtitle>
+      </Card>
+    </StyledLink>
   ));
 
   const dividedStoreItems = [];
@@ -81,13 +81,6 @@ function StoreList() {
     </Container>
   );
 }
-
-const ButtonRow = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
-`;
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -98,6 +91,14 @@ const Container = styled.div`
 const Heading = styled.h1`
   font-size: 2rem;
   font-weight: 900;
+  margin-bottom: 1rem;
+  white-space: nowrap;
+  margin-left: -9rem;
+`;
+
+const ButtonRow = styled.div`
+  display: flex;
+  justify-content: center;
   margin-bottom: 1rem;
 `;
 

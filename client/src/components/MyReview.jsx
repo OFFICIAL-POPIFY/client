@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import axios from "../api/axios";
 import { TiDocumentText } from "react-icons/ti";
@@ -30,6 +31,13 @@ function MyReview() {
     }
   };
 
+  function truncateText(text, maxLength) {
+    if (text.length <= maxLength) {
+      return text;
+    } else {
+      return text.slice(0, maxLength) + "…";
+    }
+  }
   return (
     <Container>
       <p className={classes.subtitle}>내가 쓴 리뷰</p>
@@ -41,11 +49,16 @@ function MyReview() {
                   <div className={classes.icon}>
                     <TiDocumentText size="20"/>
                   </div>
+                  <Link to={`/popups/search/${review.popup._id}`}>
                   <div className={classes.popup}>
-                    {" "}
-                    [{review.popup.corporation}]
-                  </div>
-                  <div className={classes.contents}> {review.contents} </div>
+                    {"["}
+                    {truncateText(review.popup.corporation, 17)}
+                    {"]"}
+                    </div>
+                    </Link>
+                <div className={classes.contents}>
+                  {truncateText(review.contents, 35)}
+                </div>
               </li>
             ))}
           </ul>
@@ -59,19 +72,17 @@ export default MyReview;
 
 const Container = styled.div`
   flex-shrink: 0;
-  display: block;
-  width: 48.125rem;
+  width: 44rem;
   height: 3.12rem;
   align-items: center;
   justify-content: center;
-  margin-left: 8.5rem;
+  margin-left: 7.5rem;
 `;
 
 const Review = styled.div`
   ul {
     list-style: none;
     padding: 0;
-  
   }
   li {
     border: 0.5px solid #ccc;

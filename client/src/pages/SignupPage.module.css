@@ -55,6 +55,7 @@
 }
 
 .duplicateButton {
+  display: block;
   width: 5rem;
   height: 1.875rem;
   flex-shrink: 0;

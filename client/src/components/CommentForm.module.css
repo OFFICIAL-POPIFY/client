@@ -8,7 +8,9 @@
   margin-bottom: 20px;
   margin-top: 10px;
 }
-
+li{
+  list-style: none;
+}
 .commentFormLabel {
   color: #000;
   text-align: center;
@@ -77,8 +79,21 @@ h1 {
   padding: 15px 0px;
   font-family: Pretendard;
   margin-bottom: 80px;
+  width: 1200px;
+ 
 }
-
+#comment{
+  color: #3d3d3d;
+}
+hr{
+  width: 1200px;
+  color:#ccc;
+  margin-bottom: 10px;
+}
+button{
+  display: flex;
+  justify-content: space-between;
+}
 .commentItem div {
   margin-bottom: 5px;
 }
@@ -101,7 +116,7 @@ h1 {
 }
 
 .commentImagePreview {
-  max-width: 400px;
-  border-radius: 10px;
+  max-width: 100vh;
+  max-height: 100vh;
   margin: 5px;
 }

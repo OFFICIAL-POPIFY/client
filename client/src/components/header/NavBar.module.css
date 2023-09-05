@@ -7,11 +7,7 @@
     border-bottom:1px solid lightgray;
     padding: 1rem;
     position: relative;
-
-
     z-index: 999999;
-
-  
    }
   
    .logoContainer {
@@ -109,7 +105,7 @@
   justify-content: space-around;
   border-bottom: 1px solid lightgray;
   }
-  
+
   /* 미디어 쿼리로 윈도우 창 크기에 따라 네비게이션 크기 조정 */
   @media (max-width: 1500px) {
   .header {
@@ -140,6 +136,9 @@
   
   
   .header.sticky {
+  position: fixed
+  ; /* 스티키 바 활성화 시 fixed 위치 설정 */
+  top: 5%;
   position: relative; /* 스티키 바 활성화 시 fixed 위치 설정 */
   top: 40px;
   width: 100%; /* 전체 너비로 설정 */

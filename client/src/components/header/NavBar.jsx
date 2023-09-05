@@ -1,4 +1,3 @@
-// NavBar.js
 import React, { useState, useEffect, useContext, useRef } from "react";
 import { Link } from "react-router-dom";
 import classes from "./NavBar.module.css";
@@ -6,16 +5,18 @@ import { IoMdLogIn } from "react-icons/io";
 import { IoMdLogOut } from "react-icons/io";
 import { BsInstagram } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { IoPersonCircleOutline } from "react-icons/io5";
+import { AiOutlineInfoCircle } from "react-icons/ai";
 import SearchBar from "./SearchBar";
 import PopupData from "../data.json";
 import axios from "../../api/axios";
 import AuthContext from "../../context/AuthProvider";
 function NavBar() {
   const [isSticky, setIsSticky] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { setAuth } = useContext(AuthContext);
+  const [auth] = useState(null);
   const LOGOUT_URL = `${process.env.REACT_APP_BASE_URL}/users/logout`;
-
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   const handleLogout = async (e) => {
@@ -56,7 +57,6 @@ function NavBar() {
   }, [isDropdownOpen]);
 
   useEffect(() => {
-    // Add event listener for document click
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         closeDropdown();
@@ -65,7 +65,6 @@ function NavBar() {
 
     document.addEventListener("click", handleClickOutside);
     
-    // Clean up the event listener when the component unmounts
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
@@ -87,7 +86,7 @@ function NavBar() {
             <div
               className={`${classes.dropdown} ${isDropdownOpen ? classes.active : ""
               }`}
-              ref={dropdownRef} // Assign the ref to the dropdown element
+              ref={dropdownRef}
             >
               <button
                 className={`${classes.dropdown_button}`}
@@ -100,19 +99,26 @@ function NavBar() {
               </button>
 
               <div className={classes.dropdown_contents}>
-                <Link to="/about">About</Link>
-                <Link to="/login">
-                  <IoMdLogIn />
-                </Link>
-                <Link onClick={handleLogout}>
-                  <IoMdLogOut />
-                </Link>
-                <Link to="/mypage">Mypage</Link>
-
-                <Link to="https://www.instagram.com/popify.official/">
+                <Link to="/about"><AiOutlineInfoCircle />About</Link>
+                {auth ? (
+                  <>
+                    <Link to="/mypage"><IoPersonCircleOutline />Mypage</Link>
+                    <Link onClick={handleLogout}>
+                      <IoMdLogOut />Logout
+                    </Link>
+                  </>
+                ) : (
+                  <Link to="/login">Login
+                    <IoMdLogIn />
+                  </Link>
+                )}
+                 <Link to="https://www.instagram.com/popify.official/">
                   <BsInstagram />
                 </Link>
+
+                {/* <Link to="/contents">Contents</Link> */}
               </div>
+              
             </div>
           </ul>
         </nav>

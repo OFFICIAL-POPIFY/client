@@ -103,14 +103,9 @@ const Styledform = styled.form`
   flex-direction: column;
   align-items: center;
   
-  input {
-    width: 28rem;
-    border: none;
-    height: 3.5rem;
-    border-bottom: 1px solid #e5e5e5;
-  }
   .submit {
     position: absolute;
+    display: block;
     width: 5rem;
     height: 1.875rem;
     background-color: #000000;

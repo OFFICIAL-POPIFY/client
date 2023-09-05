@@ -1,7 +1,5 @@
-import React from "react";
-import { useRef, useState, useEffect, useContext } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import AuthContext from "../context/AuthProvider";
-
 import axios from "../api/axios";
 import { AiOutlineUser } from "react-icons/ai";
 import { HiOutlineKey } from "react-icons/hi2";
@@ -9,6 +7,7 @@ import { TiDelete } from "react-icons/ti";
 import classes from "./LoginPage.module.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+
 const LOGIN_URL = `${process.env.REACT_APP_BASE_URL}/users/login`;
 
 function Login() {
@@ -20,7 +19,8 @@ function Login() {
   const [errMsg, setErrMsg] = useState("");
   const [password, setPassword] = useState("");
   const [succsess, setSuccsess] = useState(false);
-
+  const [validateUserText, setValidateUserText] = useState("");
+  const [validatePasswordText, setvalidatePasswordText] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,8 +32,36 @@ function Login() {
     setErrMsg("");
   }, [user_id, password]);
 
+  const validateUserName = (user_id) => {
+    return String(user_id)
+      .toLowerCase()
+      .match(/^(?=.*[A-Za-z0-9]).{2,30}$/);
+  };
+  const validatePassword = (password) => {
+    return String(password)
+      .toLowerCase()
+      .match(/^(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*()_+]).{6,20}$/);
+  };
+
   const handlerSubmit = async (event) => {
     event.preventDefault();
+    if (!validateUserName(user_id)) {
+      setValidateUserText(
+        "아이디는 6자 이상의 영문, 숫자, _ 조합이어야 합니다."
+      );
+      return;
+    } else {
+      setValidateUserText("");
+    }
+    if (!validatePassword(password)) {
+      setvalidatePasswordText(
+        "비밀번호는 6자 이상 16자 이하의 영문, 숫자, 특수문자 조합이어야 합니다."
+      );
+      return;
+    } else {
+      setvalidatePasswordText("");
+    }
+
     try {
       const response = await axios.post(
         LOGIN_URL,
@@ -48,6 +76,8 @@ function Login() {
       const accsessToken = response?.data?.token?.access_token;
       localStorage.setItem("accessToken", accsessToken);
       const roles = response?.data?.roles;
+
+      // 로그인 성공 후 로그인 정보 저장
       setAuth({
         user_id,
         password,
@@ -88,7 +118,7 @@ function Login() {
               <div className={classes.control}>
                 <label htmlFor="id"></label>
                 <div className={classes.icon}>
-                  <AiOutlineUser size="20"/>
+                  <AiOutlineUser size="20" />
                 </div>
                 <input
                   placeholder="아이디"
@@ -100,14 +130,16 @@ function Login() {
                   required
                   ref={userRef}
                 />
+                <p className="validate">{validateUserText}</p>
+
                 <div className={classes.icon2}>
-                  <TiDelete size="20"/>
+                  <TiDelete size="20" />
                 </div>
               </div>
               <div className={classes.control}>
                 <label htmlFor="password"></label>
                 <div className={classes.icon}>
-                  <HiOutlineKey size="20"/>
+                  <HiOutlineKey size="20" />
                 </div>
                 <input
                   placeholder="비밀번호"
@@ -117,6 +149,7 @@ function Login() {
                   value={password}
                   required
                 />
+                <p className="validate">{validatePasswordText}</p>
                 <div className={classes.icon2}>
                   <TiDelete size="20" />
                 </div>

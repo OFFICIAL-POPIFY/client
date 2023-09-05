@@ -13,8 +13,7 @@ const CommentForm = () => {
   const [previewImage, setPreviewImage] = useState(null);
   const accessToken = localStorage.getItem("accessToken");
   const popupID = window.location.pathname.split("/")[3];
-  const { value } = useContext(AuthContext);
-  const id = value?.auth?.user_id;
+
   const STORE_URL = `${process.env.REACT_APP_BASE_URL}/popups/search/${popupID}`;
   const COMMENT_URL = `${process.env.REACT_APP_BASE_URL}/reviews/${popupID}`;
   const S3_URL = `${process.env.REACT_APP_BASE_URL}/s3/upload/images?directory=review`;
@@ -167,32 +166,46 @@ const CommentForm = () => {
       </form>
       <div>
         <ul>
-          {commentsList.map((commentItem, index) => (
-            <li key={index} className={classes.commentItem}>
-              <div>아이디:{id}</div>
-              <div>별점: {commentItem.rate}</div>
-              <div>코멘트 내용: {commentItem.contents}</div>
-              <button
-                onClick={() => deleteReview(commentItem._id)}
-                className={classes.commentFormButton2}
-              >
-                삭제
-              </button>
-
-              {commentItem.review_img && commentItem.review_img.length > 0 && (
-                <div>
-                  <h4>업로드된 이미지:</h4>
-                  <div className={classes.commentImagePreviewContainer}>
-                    <img
-                      className={classes.commentImagePreview}
-                      src={commentItem.review_img}
-                      alt={`Image ${commentItem.rewview_img}`}
-                    />
+          {commentsList.map(
+            (commentItem, index) => (
+              console.log("commentItem", commentItem),
+              (
+                <li key={index} className={classes.commentItem}>
+                  <hr />
+                  <button
+                    onClick={() => deleteReview(commentItem._id)}
+                    className={classes.commentFormButton2}
+                  >
+                    삭제
+                  </button>
+                  <div>
+                    {" "}
+                    <strong>유저</strong> : {commentItem.user?.user_id}
                   </div>
-                </div>
-              )}
-            </li>
-          ))}
+                  <div>
+                    <strong>별점:</strong> {commentItem.rate}
+                  </div>
+
+                  <div id="comment">{commentItem.contents}</div>
+
+                  {commentItem.review_img &&
+                    commentItem.review_img.length > 0 && (
+                      <div>
+                        <h4>업로드된 이미지:</h4>
+                        <div className={classes.commentImagePreviewContainer}>
+                          <img
+                            className={classes.commentImagePreview}
+                            src={commentItem.review_img}
+                            alt={`Image ${commentItem.rewview_img}`}
+                          />
+                        </div>
+                        <hr />
+                      </div>
+                    )}
+                </li>
+              )
+            )
+          )}
         </ul>
       </div>
     </>
