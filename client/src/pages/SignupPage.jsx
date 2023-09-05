@@ -1,4 +1,3 @@
-import React from "react";
 import { useRef, useState, useEffect, useContext } from "react";
 import AuthContext from "../context/AuthProvider";
 import axios from "../api/axios";
@@ -81,7 +80,7 @@ function Signup() {
   return (
     <div>
       <p className={classes.title}>SIGN UP</p>
-     <hr />
+      <hr />
       {!succsess ? (
         <main className={classes.auth}>
           <section>
@@ -96,47 +95,47 @@ function Signup() {
               <div className={classes.control}>
                 <label htmlFor="id"></label>
                 <div className={classes.icon}>
-                <AiOutlineUser size="20"/>
+                  <AiOutlineUser size="20" />
                 </div>
-                  <input
-                    placeholder="아이디"
-                    type="text"
-                    user_id="id"
-                    autoComplete="off"
-                    onChange={(e) => setUser_id(e.target.value)}
-                    value={user_id}
-                    required
-                    ref={userRef}
-                  />
-                  {!succsess && (
-                    <button
-                      type="button"
-                      className={classes.duplicateButton}
-                      onClick={handleCheckDuplicate}
-                    >
-                      중복 확인
-                    </button>
-                  )}
-                </div>
+                <input
+                  placeholder="아이디"
+                  type="text"
+                  user_id="id"
+                  autoComplete="off"
+                  onChange={(e) => setUser_id(e.target.value)}
+                  value={user_id}
+                  required
+                  ref={userRef}
+                />
+                {!succsess && (
+                  <button
+                    type="button"
+                    className={classes.duplicateButton}
+                    onClick={handleCheckDuplicate}
+                  >
+                    중복 확인
+                  </button>
+                )}
+              </div>
               <div className={classes.control}>
                 <label htmlFor="password"></label>
                 <div className={classes.icon}>
-                <HiOutlineKey size="20"/>
+                  <HiOutlineKey size="20" />
                 </div>
-                  <input
-                    placeholder="비밀번호"
-                    type="password"
-                    id="password"
-                    autoComplete="off"
-                    onChange={(e) => setPassword(e.target.value)}
-                    value={password}
-                    required
-                  />
+                <input
+                  placeholder="비밀번호"
+                  type="password"
+                  id="password"
+                  autoComplete="off"
+                  onChange={(e) => setPassword(e.target.value)}
+                  value={password}
+                  required
+                />
               </div>
-               <div className={classes.control}>
+              <div className={classes.control}>
                 <label htmlFor="passwordConfirm"></label>
                 <div className={classes.icon}>
-                <HiOutlineKey size="20"/>
+                  <HiOutlineKey size="20" />
                 </div>
                 <input
                   placeholder="비밀번호 확인"
@@ -147,9 +146,9 @@ function Signup() {
                   value={passwordConfrim}
                   required
                 />
-              </div> 
+              </div>
               <button type="submit" className={classes.signup}>
-              SIGN UP
+                SIGN UP
               </button>
             </form>
           </section>
@@ -157,7 +156,6 @@ function Signup() {
       ) : (
         <p>회원가입 성공</p>
       )}
-
     </div>
   );
 }

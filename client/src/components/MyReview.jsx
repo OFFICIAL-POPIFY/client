@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import axios from "../api/axios";
@@ -46,16 +46,16 @@ function MyReview() {
           <ul>
             {reviews.map((review) => (
               <li key={review._id}>
-                  <div className={classes.icon}>
-                    <TiDocumentText size="20"/>
-                  </div>
-                  <Link to={`/popups/search/${review.popup._id}`}>
+                <div className={classes.icon}>
+                  <TiDocumentText size="20" />
+                </div>
+                <Link to={`/popups/search/${review.popup._id}`}>
                   <div className={classes.popup}>
                     {"["}
                     {truncateText(review.popup.corporation, 17)}
                     {"]"}
-                    </div>
-                    </Link>
+                  </div>
+                </Link>
                 <div className={classes.contents}>
                   {truncateText(review.contents, 35)}
                 </div>

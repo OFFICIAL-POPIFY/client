@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 const images = [
   "./images/thumb/thumbnail1.png",

@@ -1,5 +1,5 @@
 // NavBar.js
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import classes from "./NavBar.module.css";
 import { IoMdLogIn } from "react-icons/io";
@@ -82,12 +82,11 @@ function NavBar() {
                     <IoMdLogIn />
                   </Link>
                 )}
-                 <Link to="https://www.instagram.com/popify.official/">
+                <Link to="https://www.instagram.com/popify.official/">
                   <BsInstagram />
                 </Link>
                 {/* <Link to="/contents">Contents</Link> */}
               </div>
-              
             </div>
           </ul>
         </nav>
