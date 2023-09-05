@@ -1,57 +1,70 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./SearchBar.module.css";
 import axios from "../../api/axios";
 import { Link } from "react-router-dom";
 
 function SearchBar({ placeholder, data }) {
-  const corporation = { placeholder };
-  const FILTER_URL = `${process.env.REACT_APP_BASE_URL}/popups/search?corporation=${corporation}`;
   const [filteredData, setFilteredData] = useState([]);
-  const [resData, setResData] = useState(null); // 추가
+  const [selectedId, setSelectedId] = useState("");
+  const [searchWord, setSearchWord] = useState("");
 
-  // FILTER_URL에 대한 axios 요청
-  const handleFilter = async (event) => {
-    const searchWord = event.target.value;
-    try {
-      const res = await axios.get(FILTER_URL);
-      setFilteredData(res.data);
-      setResData(res.data); // res 값을 상태로 저장
-      console.log("response", res.data);
-    } catch (error) {
-      console.log(error);
-    }
-
+  useEffect(() => {
     if (!searchWord) {
       setFilteredData([]);
+      setSelectedId("");
       return;
     }
 
-    const newFilter = data.filter((value) => {
-      return value.corporation.includes(searchWord);
-    });
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(
+          `${process.env.REACT_APP_BASE_URL}/popups/search?corporation=${searchWord}`
+        );
+        const resData = res.data;
+        console.log("response", resData);
 
-    setFilteredData(newFilter);
+        const matchingData = resData.find((item) =>
+          item.corporation.includes(searchWord)
+        );
+
+        setSelectedId(matchingData ? matchingData._id : "");
+        setFilteredData(resData);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, [searchWord]);
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      // Enter 키를 누르면 URL 업데이트
+      window.location.href = `/popups/search/${selectedId}`;
+    }
   };
-  console.log("resData1", resData[0]._id);
 
   return (
     <div className={classes.container}>
-      <input type="text" placeholder={placeholder} onChange={handleFilter} />
+      <input
+        type="text"
+        placeholder={placeholder}
+        value={searchWord}
+        onChange={(e) => setSearchWord(e.target.value)}
+        onKeyPress={handleKeyPress} // Enter 키 이벤트 처리
+      />
       <div className={classes.search}></div>
-      {filteredData.length !== 0 &&
-        (console.log("filteredData", filteredData),
-        (
-          <div className={classes.data_result}>
-            {filteredData.map((value, key) => (
-              <div key={key}>
-                <Link to={`/popups/search/${resData[0]._id}`}>
-                  {/* resData를 사용 */}
-                  <p>{value.corporation}</p>
-                </Link>
-              </div>
-            ))}
-          </div>
-        ))}
+      {filteredData.length !== 0 && (
+        <div className={classes.data_result}>
+          {filteredData.map((value, key) => (
+            <div key={key}>
+              <Link to={`/popups/search/${selectedId}`}>
+                <p>{value.corporation}</p>
+              </Link>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
