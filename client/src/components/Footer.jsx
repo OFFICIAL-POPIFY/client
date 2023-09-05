@@ -11,7 +11,7 @@ function Footer() {
     <Wrapper>
       <Subscript>
         <div>INFINITE MOMENTS FLOW FROM PLACES THAT ARE NOT FOREVER</div>
-        <p>영원하지 않은 공간으로부터의 무한한 순간들</p>
+        <p className="centered-text">영원하지 않은 공간으로부터의 무한한 순간들</p>
       </Subscript>
       <Link to="/">
         <img src="/images/logo2.png" alt="logo2" className={classes.logo2} />
@@ -19,7 +19,7 @@ function Footer() {
       <Link to="https://www.instagram.com/popify.official/">
         <div className="follow">FOLLOW</div>
         <div className="icon">
-          <FaInstagram/>
+          <FaInstagram />
         </div>
       </Link>
       <span id="copyright">

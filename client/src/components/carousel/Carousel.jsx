@@ -1,9 +1,13 @@
+
 // import {
 //   TiChevronLeftOutline,
 //   TiChevronRightOutline,
 // } from "https://cdn.skypack.dev/react-icons/ti";
 import React, { useState, useEffect } from "react";
 import "./Carousel.css";
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import "./Carousel.css"
 import axios from "../../api/axios";
 
 const CARDS = 30;
@@ -20,6 +24,7 @@ const Carousel = ({ children }) => {
   const [active, setActive] = useState(2);
   const count = CARDS;
   const [latestData, setLatestData] = useState([]);
+
 
   useEffect(() => {
     axios
@@ -70,6 +75,7 @@ const Carousel = ({ children }) => {
       )}
     </div>
   );
+
 };
 
 export default () => {

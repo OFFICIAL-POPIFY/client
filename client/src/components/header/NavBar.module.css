@@ -102,7 +102,7 @@
   justify-content: space-around;
   border-bottom: 1px solid lightgray;
   }
-  
+
   /* 미디어 쿼리로 윈도우 창 크기에 따라 네비게이션 크기 조정 */
   @media (max-width: 1500px) {
   .header {
