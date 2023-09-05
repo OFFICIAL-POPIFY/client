@@ -18,9 +18,12 @@ function Board() {
       });
   }, [CORPORATION_URL]);
   console.log(corporationData);
-  
+
   const corporationItems = (
+    <>
+      <img src={corporationItems.image} alt="corporation" />
       <span>{corporationData.contents}</span>
+    </>
   );
   return <Wrap>{corporationItems}</Wrap>;
 }
@@ -28,7 +31,6 @@ function Board() {
 export default Board;
 
 const Wrap = styled.div`
-
   position: absolute;
   display: flex;
   width: 600px;
@@ -50,5 +52,4 @@ const Wrap = styled.div`
   transform: translate(-50%);
   top: 120%;
   margin: 40px 0px;
-
 `;
