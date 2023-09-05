@@ -53,13 +53,13 @@ function StoreList() {
   };
 
   const renderStoreItems = storeData.map((store, index) => (
-    <Card key={index}>
-      <CardImage src={store.popup_imgs[0]} alt="" />
-      <StyledLink to={`/popups/search/${store._id}`}>
+    <StyledLink to={`/popups/search/${store._id}`} key={index}>
+      <Card>
+        <CardImage src={store.popup_imgs[0]} alt="" />
         <CardTitle>{store.corporation}</CardTitle>
-      </StyledLink>
-      <CardSubtitle>{store.location}</CardSubtitle>
-    </Card>
+        <CardSubtitle>{store.location}</CardSubtitle>
+      </Card>
+    </StyledLink>
   ));
 
   const dividedStoreItems = [];

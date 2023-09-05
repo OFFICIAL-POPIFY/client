@@ -3,11 +3,11 @@ import React, { useState, useEffect } from 'react';
 import "./Carousel.css"
 import axios from "../../api/axios";
 
-const CARDS = 10;
+const CARDS = 30;
 const MAX_VISIBILITY = 3;
 const LATEST_URL = `${process.env.REACT_APP_BASE_URL}/popups/latest`;
 
-const Card = (imageUrl) => (
+const Card = ({ imageUrl }) => (
     <div className='card'>
         <img src={imageUrl} alt="Card Image" />
     </div>
@@ -24,6 +24,7 @@ const Carousel = ({ children }) => {
             .then((response) => {
                 const imageUrls = response.data.map(data => data.popup_imgs[0]);
                 setLatestData(imageUrls);
+                console.log("Latest Data:", imageUrls);
             })
             .catch((error) => {
                 console.log(error);
@@ -44,7 +45,14 @@ const Carousel = ({ children }) => {
                     'opacity': Math.abs(active - i) >= MAX_VISIBILITY ? '0' : '1',
                     'display': Math.abs(active - i) > MAX_VISIBILITY ? 'none' : 'block',
                 }}>
-                    <Card imageUrl={imageUrl} />
+
+                    <div className='card'>
+                        <img
+                            src={imageUrl}
+                            alt={`Card ${i + 1}`}
+                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        />
+                    </div>
                 </div>
             ))}
             {active < count - 1 && <button className='nav right' onClick={() => setActive(i => i + 1)}><TiChevronRightOutline /></button>}
