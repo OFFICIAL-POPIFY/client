@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "../api/axios";
 import styled from "styled-components";
 
@@ -18,16 +18,20 @@ function Corporation() {
       });
   }, [CORPORATION_URL]);
   console.log(corporationData);
-  
+
   const corporationItems = (
     <div className="card">
       <a href={corporationData.placeurl}>
         <h3>{corporationData.corporation}</h3>
       </a>
-      <span className="bold">주소 :</span><span>{corporationData.location}</span>
-      <span className="bold">기간 :</span><span>{corporationData.term}</span>
+      <span className="bold">주소 :</span>
+      <span>{corporationData.location}</span>
+      <span className="bold">기간 :</span>
+      <span>{corporationData.term}</span>
       {/*<p>{corporationData.date}</p>*/}
-      <span className="bold">예약 여부 :</span><span>{corporationData.reservation}</span><br />
+      <span className="bold">예약 여부 :</span>
+      <span>{corporationData.reservation}</span>
+      <br />
       <p>{corporationData.tags}</p>
     </div>
   );
@@ -37,7 +41,6 @@ function Corporation() {
 export default Corporation;
 
 const Wrap = styled.div`
-
   position: relative;
   top: -245px;
   right: -50rem;

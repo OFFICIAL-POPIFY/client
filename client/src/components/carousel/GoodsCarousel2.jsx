@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "react-alice-carousel/lib/alice-carousel.css";
 import AliceCarousel from "react-alice-carousel";
 import styled from "styled-components";
@@ -95,7 +95,7 @@ export default GoodsCarousel;
 
 const Wrapper = styled.div`
   margin-top: -30%;
-  
+
   hr {
     width: 1198px;
     align-items: center;
