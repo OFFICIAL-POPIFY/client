@@ -133,6 +133,9 @@
   
   
   .header.sticky {
+  position: fixed
+  ; /* 스티키 바 활성화 시 fixed 위치 설정 */
+  top: 5%;
   position: relative; /* 스티키 바 활성화 시 fixed 위치 설정 */
   top: 40px;
   width: 100%; /* 전체 너비로 설정 */
