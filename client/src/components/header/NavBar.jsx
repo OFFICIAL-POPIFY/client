@@ -74,11 +74,9 @@ function NavBar() {
                     <IoMdLogIn />
                   </Link>
                 )}
-               <div className={classes.linktoinsta}>
-               <Link to="https://www.instagram.com/popify.official/">
-                  <BsInstagram size="40" className={classes.insta}/>
+                 <Link to="https://www.instagram.com/popify.official/">
+                  <BsInstagram />
                 </Link>
-                </div>
                 {/* <Link to="/contents">Contents</Link> */}
               </div>
               
