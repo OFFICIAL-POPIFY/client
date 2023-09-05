@@ -74,12 +74,12 @@ function NavBar() {
                     <IoMdLogIn />
                   </Link>
                 )}
-                <Link to="https://www.instagram.com/popify.official/">
+                 <Link to="https://www.instagram.com/popify.official/">
                   <BsInstagram />
                 </Link>
-
                 {/* <Link to="/contents">Contents</Link> */}
               </div>
+              
             </div>
           </ul>
         </nav>
