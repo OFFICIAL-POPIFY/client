@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.js",
+  entry: "./client/src/index.js",
   output: {
     filename: "App.js",
     path: path.resolve(__dirname, "dist"),
@@ -29,7 +29,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "public/index.html"), // 경로 수정
+      template: path.resolve(__dirname, "./client/public/index.html"), // 경로 수정
     }),
   ],
   
