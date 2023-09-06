@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Virtual } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import axios from "../../api/axios";
@@ -69,19 +69,21 @@ function Cover() {
                   key={slideContent}
                   virtualIndex={index}
                   onClick={() => OnClickSwiperSlide(slideContent.id)}
-                // onSlideChange={handleSlideChange}
+                  // onSlideChange={handleSlideChange}
                 >
                   <div
-                    className={`slider__img ${index} ${isHovered && slideContent.id === currentImgId
-                      ? "expand-animation"
-                      : ""
-                      }`}
+                    className={`slider__img ${index} ${
+                      isHovered && slideContent.id === currentImgId
+                        ? "expand-animation"
+                        : ""
+                    }`}
                   >
                     <img
                       src={slideContent.popup_imgs[0]} // 이미지 URL이 배열로 들어있으므로 첫 번째 이미지만 사용
                       alt=""
-                      className={`swiper-slide-image ${index} ${slideContent.id === currentImgId ? "" : "hovered"
-                        }`}
+                      className={`swiper-slide-image ${index} ${
+                        slideContent.id === currentImgId ? "" : "hovered"
+                      }`}
                     />
                   </div>
                 </SwiperSlide>

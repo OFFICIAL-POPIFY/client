@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import ParallaxBanner from "../components/ParallaxBanner";
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import Rating from "react-rating-stars-component";
 import classes from "./CommentForm.module.css";
 import axios from "../api/axios";

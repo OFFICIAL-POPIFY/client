@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "../api/axios";
 import styled from "styled-components";
 
@@ -19,8 +19,7 @@ function Board() {
         console.log(error);
       });
   }, [CORPORATION_URL]);
-  
-  
+
   const corporationItems = (
     <>
     <img src={corporationContents} alt="corporation" />

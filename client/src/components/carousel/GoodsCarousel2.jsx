@@ -97,13 +97,10 @@ const Wrapper = styled.div`
   margin-top: -30%;
   
   hr {
-    width: 1200px;
+    width: 1198px;
     align-items: center;
     margin: 10px 0;
-    border: none;
-    border-top: 1px solid #ccc;
   }
-
   h1 {
     width: 92px;
     height: 30px;
@@ -114,7 +111,6 @@ const Wrapper = styled.div`
     font-weight: 900;
     line-height: normal;
   }
-
   .absolute {
     position: absolute;
   }
@@ -126,7 +122,6 @@ const Contain = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
-
   .prevButton {
     position: absolute;
     top: 15%;
@@ -136,14 +131,12 @@ const Contain = styled.div`
     height: 30px;
     background: #ffffff;
     opacity: 0.6;
-
     border: none;
     outline: none;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     z-index: 1;
   }
-
   .nextButton {
     position: absolute;
     top: 15%;
@@ -153,7 +146,6 @@ const Contain = styled.div`
     height: 30px;
     background: #ffffff;
     opacity: 0.6;
-
     border: none;
     outline: none;
     cursor: pointer;
@@ -163,17 +155,14 @@ const Contain = styled.div`
   .alice-wrapper {
     width: 100%;
   }
-
   alice-carousel > div {
     width: 300px;
     height: 350px;
   }
-
   li.alice-carousel__stage-item>*: (.__active) {
     width: 300px;
     height: 350px;
   }
-
   li.alice-carousel__stage-item > *:not(.__active .__target) {
     width: 300px;
     height: 350px;
@@ -191,7 +180,6 @@ const ItemsWrap = styled.div`
   height: 525px;
   overflow: hidden;
   margin: 0 20px;
-
   img {
     width: 100%;
     height: 100%;
@@ -201,19 +189,16 @@ const ItemsWrap = styled.div`
 const Card = styled.div`
   width: 300px;
   height: 350px;
-
   .outter {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-
   .inner {
     display: flex; /* 추가: 내부 컨테이너를 가로로 배치 */
     align-items: center; /* 추가: 수직 가운데 정렬 */
   }
-
   p {
     display: flex;
     width: 250px;
@@ -222,7 +207,6 @@ const Card = styled.div`
     justify-content: center;
     flex-shrink: 0;
     margin: 10px 0px 5px;
-
     color: #000;
     text-align: center;
     font-family: Pretendard;
@@ -231,14 +215,12 @@ const Card = styled.div`
     font-weight: 700;
     line-height: normal;
   }
-
   img {
     width: 260px;
     height: 260px;
     align-items: center;
     border-radius: 0px;
   }
-
   .name {
     display: flex;
     width: 250px;
@@ -246,7 +228,6 @@ const Card = styled.div`
     flex-direction: column;
     justify-content: center;
     flex-shrink: 0;
-
     color: #000;
     text-align: center;
     font-family: Pretendard;
