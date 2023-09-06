@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "../api/axios";
 import styled from "styled-components";
 
@@ -13,7 +13,7 @@ function Board() {
       .then((response) => {
         setCorporationData(response.data);
         setCorporationContents(response.data.contents);
-        console.log("resData", response.data.contents);
+        console.log("resData",response.data.contents)
       })
       .catch((error) => {
         console.log(error);
@@ -22,12 +22,12 @@ function Board() {
 
   const corporationItems = (
     <>
-      <img src={corporationContents} alt="corporation" />
+    <img src={corporationContents} alt="corporation" />
       {/*<span>{corporationData.contents}</span>*/}
-    </>
+      </>
   );
 
-  console.log("item", corporationItems);
+  console.log('item',corporationItems);
   return <Wrap>{corporationItems}</Wrap>;
 }
 
