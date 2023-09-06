@@ -18,9 +18,9 @@ function GoodsCarousel() {
 
   const images = goodsData.map((goods) => {
     return {
-      icon: goods.goods_img,
       img: goods.goods_img,
-      name: goods.corporation,
+      icon: goods.popup.popup_imgs[0],
+      name: goods.popup.corporation,
       goodsName: goods.goods_name,
     };
   });
@@ -119,11 +119,6 @@ const ItemsWrap = styled.div`
   overflow: hidden;
   margin: 0 20px;
   border-bottom: 2px solid #000;
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
   display: flex;
   justify-content: center;
   align-items: center;
