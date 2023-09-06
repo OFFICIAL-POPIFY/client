@@ -42,13 +42,13 @@ function GoodsCarousel() {
           <Card>
             <div className="outter">
               <div className="inner">
-                <img className="sm" src={image.icon} alt="" />
+                <img src={image.icon} alt="" />
                 <p>{image.name}</p>
               </div>
               <div>
                 <img src={image.img} alt="" />
               </div>
-              <span className="name">{image.goodsName}</span>
+              <span>{image.goodsName}</span>
             </div>
           </Card>
         </ItemsWrap>
@@ -70,7 +70,7 @@ function GoodsCarousel() {
           disableButtonsControls
           autoPlay
           items={items}
-          paddingRight={40}
+          paddingRight={20}
         />
       </Contain>
     </Wrap>
@@ -79,7 +79,17 @@ function GoodsCarousel() {
 
 export default GoodsCarousel;
 const Wrap = styled.div`
-  margin-bottom: 100px;
+
+margin-bottom: 150px;
+margin-top: 190px;
+
+hr {
+  width: 1280px;
+  margin-top: 10px;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
   h1 {
     color: #000;
     font-family: Pretendard;
@@ -98,27 +108,27 @@ const Contain = styled.div`
     width: 100%;
   }
   alice-carousel > div {
-    width: 427px;
-    height: 525px;
+    width: 400px;
+    height: 400px;
   }
   li.alice-carousel__stage-item > *:not(.__active .__target) {
-    width: 427px;
-    height: 525px;
+    width: 400px;
+    height: 400px;
   }
 `;
 const ItemsContain = styled.div`
-  width: 100%;
-  height: 530px;
-  padding: 0 10px;
+  width: 400px;
+  height: 400px;
+  padding: 0px 10px;
 `;
 
 const ItemsWrap = styled.div`
   width: 100%;
-  height: 525px;
-  border-radius: 20px;
+  height: 400px;
   overflow: hidden;
   margin: 0 20px;
-  border-bottom: 2px solid #000;
+  border-bottom: 1px solid #000;
+  
   img {
     width: 100%;
     height: 100%;
@@ -127,14 +137,13 @@ const ItemsWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f8f8f8;
 `;
 const Card = styled.div`
-width: 427px;
-  height: 525px;
-  border: 2px solid #000;
-
+  width: 400px;
+  height: 400px;
+  border: 1px solid #000;
   }
+
   .outter{
     display: flex;
     flex-direction: column;
@@ -145,37 +154,10 @@ width: 427px;
     display: flex; /* 추가: 내부 컨테이너를 가로로 배치 */
     align-items: center; /* 추가: 수직 가운데 정렬 */
   }
-  p {
-    display: flex;
-    width: 305px;
-    height: 48px;
-    flex-direction: column;
-    justify-content: center;
-    font-family: Pretendard;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    margin-left: 10px;
-  }
+ 
   img {
-    width: 363px;
-    height: 353px;
+    width: 400px;
+    height: 400px;
     align-items: center;
-    border-radius: 10px;
-  }
-  .sm {
-    width: 48px;
-    height: 48px;
-    ;
-  }
- .name {
-    margin-top: 10px;
-
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    text-align: left;
   }
 `;

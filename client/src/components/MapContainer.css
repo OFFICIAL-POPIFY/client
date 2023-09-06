@@ -160,7 +160,10 @@
 }
 
 .map_wrap hr{
-    width: 1198px;
+    width: 1200px;
     align-items: center;
+    margin: 10px 0;
+    border: none;
+    border-top: 1px solid #ccc;
     margin: 10px 0px 15px 0px;
 }

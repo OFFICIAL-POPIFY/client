@@ -97,9 +97,11 @@ const Wrapper = styled.div`
   margin-top: -30%;
   
   hr {
-    width: 1198px;
+    width: 1200px;
     align-items: center;
     margin: 10px 0;
+    border: none;
+    border-top: 1px solid #ccc;
   }
 
   h1 {

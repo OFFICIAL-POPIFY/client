@@ -27,7 +27,7 @@ function Corporation() {
       <span className="bold">주소 :</span><span>{corporationData.location}</span>
       <span className="bold">기간 :</span><span>{corporationData.term}</span>
       {/*<p>{corporationData.date}</p>*/}
-      <span className="bold">예약 여부 :</span><span>{corporationData.reservation}</span><br />
+      <span className="bold">예약 여부 :</span><span>{corporationData.reservation}</span>
       <p>{corporationData.tags}</p>
     </div>
   );
@@ -79,7 +79,7 @@ const Wrap = styled.div`
     font-style: normal;
     font-weight: 900;
     line-height: 30px; /* 150% */
-    //text-decoration-line: none;
+    text-decoration-line: none;
   }
 
   p {
@@ -113,7 +113,7 @@ const Wrap = styled.div`
     font-style: normal;
     font-weight: 900;
     line-height: normal;
-    margin: 5px 0px;
+    margin: 0px 0px;
   }
 
   span {

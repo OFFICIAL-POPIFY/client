@@ -89,17 +89,22 @@ const Container = styled.div`
 `;
 
 const Heading = styled.h1`
-  font-size: 2rem;
+  color: #000;
+  font-family: Pretendard;
+  font-size: 25px;
+  font-style: normal;
   font-weight: 900;
-  margin-bottom: 1rem;
+  line-height: normal;
   white-space: nowrap;
-  margin-left: -9rem;
+  margin-bottom: -2.5rem;
+  margin-left: -74.5rem;
 `;
 
 const ButtonRow = styled.div`
+  margin-right: -70rem;
   display: flex;
   justify-content: center;
-  margin-bottom: 1rem;
+  margin-bottom: -1.5rem;
 `;
 
 const Button = styled.button`
@@ -110,10 +115,12 @@ const Button = styled.button`
   margin: 0.5rem;
   border-radius: 5px;
   cursor: pointer;
+  font-family: Pretendard;
+  font-size: 13px;
 `;
 
 const Separator = styled.hr`
-  width: 100%;
+  width: 1280px;
   margin: 2rem 0;
   border: none;
   border-top: 1px solid #ccc;
@@ -129,8 +136,8 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 450px;
-  height: 550px;
+  width: 405px;
+  height: 530px;
   padding: 2rem;
   border-radius: 10px;
   background-color: white;
@@ -156,13 +163,24 @@ const StyledLink = styled(Link)`
 `;
 
 const CardTitle = styled.h3`
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: black;
+  margin-top: 15px;
+  text-align: center;
+  color: #000;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 `;
 
 const CardSubtitle = styled.p`
-  font-size: 1.2rem;
+margin-top: 10px;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
   color: #555;
 `;
 
