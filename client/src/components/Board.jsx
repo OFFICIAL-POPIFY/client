@@ -6,22 +6,29 @@ function Board() {
   const storeId = window.location.pathname.split("/")[3];
   const CORPORATION_URL = `${process.env.REACT_APP_BASE_URL}/popups/search/${storeId}`;
   const [corporationData, setCorporationData] = useState([]);
-
+  const [corporationContents, setCorporationContents] = useState("");
   useEffect(() => {
     axios
       .get(CORPORATION_URL)
       .then((response) => {
         setCorporationData(response.data);
+        setCorporationContents(response.data.contents);
+        console.log("resData",response.data.contents)
       })
       .catch((error) => {
         console.log(error);
       });
   }, [CORPORATION_URL]);
-  console.log(corporationData);
+  
   
   const corporationItems = (
-      <span>{corporationData.contents}</span>
+    <>
+    <img src={corporationContents} alt="corporation" />
+      {/*<span>{corporationData.contents}</span>*/}
+      </>
   );
+
+  console.log('item',corporationItems);
   return <Wrap>{corporationItems}</Wrap>;
 }
 
