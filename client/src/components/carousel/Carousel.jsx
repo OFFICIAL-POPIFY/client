@@ -2,7 +2,7 @@
 //   TiChevronLeftOutline,
 //   TiChevronRightOutline,
 // } from "https://cdn.skypack.dev/react-icons/ti";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./Carousel.css";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 

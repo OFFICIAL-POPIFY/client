@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./SearchBar.module.css";
 import axios from "../../api/axios";
 import { Link } from "react-router-dom";

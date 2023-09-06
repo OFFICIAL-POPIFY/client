@@ -11,7 +11,7 @@ function Footer() {
       <Subscript>
         <div>INFINITE MOMENTS FLOW FROM PLACES THAT ARE NOT FOREVER</div>
         <p className="centered-text">
-          영원하지 않은 공간으로부터의 무한한 순간들
+          영원하지 않은 공간으로부터의 무한한 순간
         </p>
       </Subscript>
       <Link to="/">
