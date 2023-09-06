@@ -22,12 +22,12 @@ function Corporation() {
   const corporationItems = (
     <div className="card">
       <a href={corporationData.placeurl}>
-        <h3>{corporationData.corporation}</h3>
+        <h3>{corporationData.corporation}</h3><hr />
       </a>
       <span className="bold">주소 :</span>
-      <span>{corporationData.location}</span>
+      <span>{corporationData.location}</span><hr />
       <span className="bold">기간 :</span>
-      <span>{corporationData.term}</span>
+      <span>{corporationData.term}</span><hr />
       {/*<p>{corporationData.date}</p>*/}
 
       <span className="bold">예약 여부 :</span><span>{corporationData.reservation}</span>
@@ -40,8 +40,9 @@ function Corporation() {
 export default Corporation;
 
 const Wrap = styled.div`
+
   position: relative;
-  top: -245px;
+  top: -225px;
   right: -50rem;
   transform: translateY(-50%);
   display: flex;
@@ -50,6 +51,10 @@ const Wrap = styled.div`
   height: 23.75rem;
 
   z-index: 1;
+
+  hr {
+    width: 0px;
+  }
 
   h3 {
     display: flex;
@@ -104,7 +109,7 @@ const Wrap = styled.div`
   .bold {
     display: flex;
     width: 380px;
-    height: 45px;
+    height: 30px;
     flex-direction: column;
     justify-content: center;
     flex-shrink: 0;
@@ -115,7 +120,7 @@ const Wrap = styled.div`
     font-style: normal;
     font-weight: 900;
     line-height: normal;
-    margin: 0px 0px;
+    margin-top: 20px 0px;
   }
 
   span {
