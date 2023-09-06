@@ -18,9 +18,9 @@ function GoodsCarousel() {
 
   const images = goodsData.map((goods) => {
     return {
-      icon: goods.goods_img,
       img: goods.goods_img,
-      name: goods.corporation,
+      icon: goods.popup.popup_imgs[0],
+      name: goods.popup.corporation,
       goodsName: goods.goods_name,
     };
   });
@@ -45,7 +45,7 @@ function GoodsCarousel() {
                 <img className="sm" src={image.icon} alt="" />
                 <p>{image.name}</p>
               </div>
-              <div>
+              <div className="inner">
                 <img src={image.img} alt="" />
               </div>
               <span className="name">{image.goodsName}</span>
@@ -119,11 +119,6 @@ const ItemsWrap = styled.div`
   overflow: hidden;
   margin: 0 20px;
   border-bottom: 2px solid #000;
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
   display: flex;
   justify-content: center;
   align-items: center;
@@ -144,6 +139,10 @@ width: 427px;
   .inner{
     display: flex; /* 추가: 내부 컨테이너를 가로로 배치 */
     align-items: center; /* 추가: 수직 가운데 정렬 */
+    margin-top: 1rem;
+  }
+  .bm{
+    martin-top: 2rem;
   }
   p {
     display: flex;
@@ -170,7 +169,7 @@ width: 427px;
     ;
   }
  .name {
-    margin-top: 10px;
+    margin-top: 2rem;
 
     font-size: 18px;
     font-style: normal;

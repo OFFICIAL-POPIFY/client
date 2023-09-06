@@ -72,6 +72,7 @@ const Bottom = styled.div`
   align-items: center;
 
   h2 {
+    margin-bottom: 1rem;
     display: flex;
     width: 440px;
     height: 20px;
@@ -89,7 +90,7 @@ const Bottom = styled.div`
 
   p {
     display: flex;
-    width: 440px;
+    width: 470px;
     height: 120px;
     flex-direction: column;
     justify-content: center;
