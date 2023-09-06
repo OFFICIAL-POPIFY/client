@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FaInstagram } from "react-icons/fa";
@@ -11,7 +10,9 @@ function Footer() {
     <Wrapper>
       <Subscript>
         <div>INFINITE MOMENTS FLOW FROM PLACES THAT ARE NOT FOREVER</div>
-        <p>영원하지 않은 공간으로부터의 무한한 순간들</p>
+        <p className="centered-text">
+          영원하지 않은 공간으로부터의 무한한 순간들
+        </p>
       </Subscript>
       <Link to="/">
         <img src="/images/logo2.png" alt="logo2" className={classes.logo2} />
@@ -19,7 +20,7 @@ function Footer() {
       <Link to="https://www.instagram.com/popify.official/">
         <div className="follow">FOLLOW</div>
         <div className="icon">
-          <FaInstagram/>
+          <FaInstagram />
         </div>
       </Link>
       <span id="copyright">
@@ -41,8 +42,8 @@ const Wrapper = styled.div`
   position: relative;
   background: #000;
   flex-direction: column;
-  top:20%;
-  
+  top: 20%;
+
   .follow {
     position: absolute;
     top: 75%;
@@ -63,7 +64,6 @@ const Wrapper = styled.div`
     left: 49%;
     transform: translateX(-50%);
     justify-content: center;
-    
   }
 
   .icon {
@@ -80,7 +80,6 @@ const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
   }
-
 
   #copyright {
     position: absolute;
@@ -119,7 +118,7 @@ const Subscript = styled.div`
   div {
     margin-top: 30px;
   }
-  
+
   p {
     color: #fff;
     text-align: center;

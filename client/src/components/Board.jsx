@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "../api/axios";
 import styled from "styled-components";
 
@@ -19,8 +19,7 @@ function Board() {
         console.log(error);
       });
   }, [CORPORATION_URL]);
-  
-  
+
   const corporationItems = (
     <>
     <img src={corporationContents} alt="corporation" />
@@ -35,7 +34,6 @@ function Board() {
 export default Board;
 
 const Wrap = styled.div`
-
   position: absolute;
   display: flex;
   width: 600px;
@@ -57,5 +55,4 @@ const Wrap = styled.div`
   transform: translate(-50%);
   top: 120%;
   margin: 40px 0px;
-
 `;
