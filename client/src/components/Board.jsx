@@ -34,25 +34,20 @@ function Board() {
 export default Board;
 
 const Wrap = styled.div`
-  position: absolute;
+
+  position: relative;
   display: flex;
-  width: 600px;
-  height: 300px;
+  width: 1200px;
+  height: 800px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
 
-  color: #000;
-  text-align: center;
-  font-family: Pretendard;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-
   left: 50%;
-  transform: translate(-50%);
-  top: 120%;
-  margin: 40px 0px;
+  transform: translate(-57%);
+  top: 150%;
+  margin-top: -350px;
+
+  z-index: -100;
 `;
