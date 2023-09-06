@@ -1,3 +1,4 @@
+import React from "react";
 import { useRef, useState, useEffect, useContext } from "react";
 import AuthContext from "../context/AuthProvider";
 import axios from "../api/axios";
@@ -6,18 +7,19 @@ import { HiOutlineKey } from "react-icons/hi2";
 
 import classes from "./SignupPage.module.css";
 import { Link } from "react-router-dom";
-const user_id = "user_id";
-const SIGNUP_URL = `${process.env.REACT_APP_BASE_URL}/users/signup`;
-const EXIST_URL = `${process.env.REACT_APP_BASE_URL}/users/id/${user_id}/exist`;
 function Signup() {
+  // const user_id = "user_id";
   const { setAuth } = useContext(AuthContext);
   const userRef = useRef(null);
   const errRef = useRef();
   const [user_id, setUser_id] = useState("");
+  const SIGNUP_URL = `${process.env.REACT_APP_BASE_URL}/users/signup`;
+  const EXIST_URL = `${process.env.REACT_APP_BASE_URL}/users/id/${user_id}/exist`;
   const [errMsg, setErrMsg] = useState("");
   const [password, setPassword] = useState("");
   const [succsess, setSuccsess] = useState(false);
-  const [passwordConfrim, setPasswordConfrim] = useState("");
+
+  const [passwordConfirm, setPasswordConfirm] = useState(""); // 변수 이름 수정
 
   const handleCheckDuplicate = async () => {
     try {
@@ -28,12 +30,13 @@ function Signup() {
       });
 
       if (response.data.isDuplicate) {
-        setErrMsg("이미 사용 중인 아이디입니다.");
+        setErrMsg("아이디가 중복되었습니다.");
       } else {
-        setErrMsg("");
+        setErrMsg("중복확인이 되었습니다.");
       }
     } catch (err) {
       console.error("중복확인 오류:", err);
+      setErrMsg("중복확인에 오류가 발생했습니다.");
     }
   };
   useEffect(() => {
@@ -49,6 +52,12 @@ function Signup() {
   const handlerSubmit = async (event) => {
     event.preventDefault();
     try {
+      // 비밀번호와 비밀번호 확인이 일치하는지 확인
+      if (password !== passwordConfirm) {
+        alert("비밀번호가 일치하지 않습니다.");
+        return;
+      }
+
       const response = await axios.post(
         SIGNUP_URL,
         JSON.stringify({ user_id, password }),
@@ -59,12 +68,16 @@ function Signup() {
         }
       );
       console.log(JSON.stringify(response?.data));
-      const accsessToken = response?.data?.accsessToken;
+      const accessToken = response?.data?.accessToken; // 변수 이름 수정
       const roles = response?.data?.roles;
-      setAuth({ user_id, password, accsessToken, roles });
+      setAuth({ user_id, password, accessToken, roles });
       setUser_id("");
       setPassword("");
+      setPasswordConfirm(""); // 비밀번호 확인 필드 지우기
       setSuccsess(true);
+
+      // 비밀번호가 일치할 때 알림 창 띄우기
+      alert("비밀번호가 일치합니다.");
     } catch (err) {
       if (!err?.response) {
         setErrMsg("서버와 연결할 수 없습니다.");
@@ -73,10 +86,8 @@ function Signup() {
       } else {
         setErrMsg("알 수 없는 오류가 발생했습니다.");
       }
-      errRef.current.focus();
     }
   };
-
   return (
     <div>
       <p className={classes.title}>SIGN UP</p>
@@ -142,8 +153,8 @@ function Signup() {
                   type="password"
                   id="passwordConfirm"
                   autoComplete="off"
-                  onChange={(e) => setPasswordConfrim(e.target.value)}
-                  value={passwordConfrim}
+                  onChange={(e) => setPasswordConfirm(e.target.value)}
+                  value={passwordConfirm}
                   required
                 />
               </div>
