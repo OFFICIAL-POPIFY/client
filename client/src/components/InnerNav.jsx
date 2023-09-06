@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import AuthContext from "../context/AuthProvider";
 import styled from "styled-components";
 import { Link } from "react-router-dom";

@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Rating from "react-rating-stars-component";
 import classes from "./CommentForm.module.css";
 import axios from "../api/axios";
@@ -151,7 +151,8 @@ const CommentForm = () => {
         <div>
           <label className={classes.commentFormLabel}></label>
           <div>
-          <FaCamera size="24" color="#808080"/><span> : </span>
+            <FaCamera size="24" color="#808080" />
+            <span> : </span>
             <input type="file" accept="image/*" onChange={handleImageChange} />
             {previewImage && <img src={previewImage} alt="Preview" />}
           </div>

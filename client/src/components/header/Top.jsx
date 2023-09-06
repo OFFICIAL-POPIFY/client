@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./Top.module.css";
 import { FaAngleUp } from "react-icons/fa";
 
