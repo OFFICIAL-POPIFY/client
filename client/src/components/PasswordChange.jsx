@@ -47,54 +47,54 @@ function PasswordChange() {
     }
   };
   return (
-        <Styledform onSubmit={formSubmit}>
-            <span>{value.userName}</span>
-          <div className={classes.control}>
-          <label htmlFor="change"></label>
-            <div className={classes.icon}>
-              <HiOutlineKey size="20"/>
-            </div>
-          <input
-            id="1"
-            ref={changeRef}
-            value={passwordConfirm}
-            type="password"
-            placeholder="현재 비밀번호"
-            onChange={(e) => setPasswordConfrim(e.target.value)}
-          />
-          </div>
-          <div className={classes.control}>
-          <label htmlFor="newPassword"></label>
-            <div className={classes.icon}>
-              <HiOutlineKey size="20"/>
-            </div>
-          <input
-            id="2"
-            ref={newRef}
-            value={newPassword}
-            type="password"
-            placeholder="새 비밀번호"
-            onChange={(e) => setNewPassword(e.target.value)}
-          />
-          </div>
-          <div className={classes.control}>
-          <div className={classes.icon}>
-              <HiOutlineKey size="20" />
-            </div>
-          <input
-            id="3"
-            ref={newRef}
-            value={newPasswordConfirm}
-            type="password"
-            placeholder="새 비밀번호 확인"
-            onChange={(e) => setNewPasswordConfirm(e.target.value)}
-          />
+    <Styledform onSubmit={formSubmit}>
+      <span>{value.userName}</span>
+      <div className={classes.control}>
+        <label htmlFor="change"></label>
+        <div className={classes.icon}>
+          <HiOutlineKey size="20" />
+        </div>
+        <input
+          id="1"
+          ref={changeRef}
+          value={passwordConfirm}
+          type="password"
+          placeholder="현재 비밀번호"
+          onChange={(e) => setPasswordConfrim(e.target.value)}
+        />
+      </div>
+      <div className={classes.control}>
+        <label htmlFor="newPassword"></label>
+        <div className={classes.icon}>
+          <HiOutlineKey size="20" />
+        </div>
+        <input
+          id="2"
+          ref={newRef}
+          value={newPassword}
+          type="password"
+          placeholder="새 비밀번호"
+          onChange={(e) => setNewPassword(e.target.value)}
+        />
+      </div>
+      <div className={classes.control}>
+        <div className={classes.icon}>
+          <HiOutlineKey size="20" />
+        </div>
+        <input
+          id="3"
+          ref={newRef}
+          value={newPasswordConfirm}
+          type="password"
+          placeholder="새 비밀번호 확인"
+          onChange={(e) => setNewPasswordConfirm(e.target.value)}
+        />
 
-          <button className="submit" onClick={handleCheckPassword}>
-            변경하기
-          </button>
-          </div>
-        </Styledform>
+        <button className="submit" onClick={handleCheckPassword}>
+          변경하기
+        </button>
+      </div>
+    </Styledform>
   );
 }
 
@@ -102,7 +102,7 @@ const Styledform = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
   .submit {
     position: absolute;
     display: block;

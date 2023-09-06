@@ -13,29 +13,27 @@ function Board() {
       .then((response) => {
         setCorporationData(response.data);
         setCorporationContents(response.data.contents);
-        console.log("resData",response.data.contents)
+        console.log("resData", response.data.contents);
       })
       .catch((error) => {
         console.log(error);
       });
   }, [CORPORATION_URL]);
-  
-  
+
   const corporationItems = (
     <>
-    <img src={corporationContents} alt="corporation" />
+      <img src={corporationContents} alt="corporation" />
       {/*<span>{corporationData.contents}</span>*/}
-      </>
+    </>
   );
 
-  console.log('item',corporationItems);
+  console.log("item", corporationItems);
   return <Wrap>{corporationItems}</Wrap>;
 }
 
 export default Board;
 
 const Wrap = styled.div`
-
   position: absolute;
   display: flex;
   width: 600px;
@@ -57,5 +55,4 @@ const Wrap = styled.div`
   transform: translate(-50%);
   top: 120%;
   margin: 40px 0px;
-
 `;

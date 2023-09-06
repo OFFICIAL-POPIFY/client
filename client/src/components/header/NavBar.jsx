@@ -99,26 +99,33 @@ function NavBar() {
               </button>
 
               <div className={classes.dropdown_contents}>
-                <Link to="/about"><AiOutlineInfoCircle />About</Link>
+                <Link to="/about">
+                  <AiOutlineInfoCircle />
+                  About
+                </Link>
                 {auth ? (
                   <>
-                    <Link to="/mypage"><IoPersonCircleOutline />Mypage</Link>
+                    <Link to="/mypage">
+                      <IoPersonCircleOutline />
+                      Mypage
+                    </Link>
                     <Link onClick={handleLogout}>
-                      <IoMdLogOut />Logout
+                      <IoMdLogOut />
+                      Logout
                     </Link>
                   </>
                 ) : (
-                  <Link to="/login">Login
+                  <Link to="/login">
+                    Login
                     <IoMdLogIn />
                   </Link>
                 )}
-                 <Link to="https://www.instagram.com/popify.official/">
+                <Link to="https://www.instagram.com/popify.official/">
                   <BsInstagram />
                 </Link>
 
                 {/* <Link to="/contents">Contents</Link> */}
               </div>
-              
             </div>
           </ul>
         </nav>

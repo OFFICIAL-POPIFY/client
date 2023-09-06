@@ -1,7 +1,5 @@
-import React from "react";
 import classes from "./InnerNav.module.css";
 import styled from "styled-components";
-
 
 function ScrollToTopButton() {
   const scrollToTop = () => {
@@ -17,7 +15,7 @@ function ScrollToTopButton() {
     window.scrollTo({ top: 2500, behavior: "smooth" });
   };
 
-return (
+  return (
     <Wrapper className={classes.wrapper}>
       <ul>
         <li>
@@ -27,17 +25,17 @@ return (
         </li>
         <li>
           <div>
-          <button onClick={scrollToTop2}>INTRODUCTION</button>
+            <button onClick={scrollToTop2}>INTRODUCTION</button>
           </div>
         </li>
         <li>
           <div>
-          <button onClick={scrollToTop3}>REVIEW</button>
+            <button onClick={scrollToTop3}>REVIEW</button>
           </div>
         </li>
         <li>
           <div>
-          <button onClick={scrollToTop4}>MAP</button>
+            <button onClick={scrollToTop4}>MAP</button>
           </div>
         </li>
       </ul>
@@ -54,10 +52,10 @@ const Wrapper = styled.div`
   border: 0.5px solid #959595;
   background: #fff;
   margin: 0 auto;
-  top:-390px;
+  top: -390px;
   position: relative;
   transform: translateX(-3.5%);
-  
+
   ul {
     display: flex;
     justify-content: space-around;

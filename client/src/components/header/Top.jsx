@@ -25,7 +25,7 @@ function Top() {
       <div className={classes.wrap}>
         <div></div>
         <button className={classes.top} onClick={topBtnhandler}>
-        <span style={{ marginTop: "5px" }}>
+          <span style={{ marginTop: "5px" }}>
             <FaAngleUp size="15" />
           </span>
           TOP

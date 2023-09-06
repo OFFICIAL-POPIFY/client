@@ -60,9 +60,9 @@ const Wrapper = styled.div`
   border: 0.5px solid #959595;
   background: #fff;
   margin: 0 auto;
-  top:-390px;
+  top: -390px;
   position: relative;
-  
+
   ul {
     display: flex;
     justify-content: space-around;
