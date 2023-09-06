@@ -30,7 +30,7 @@ li{
   border-radius: 10px;
 
   font-family: Pretendard;
-  font-size: 18px;
+  font-size: 16px;
   font-style: normal;
   line-height: normal;
   padding: 15px 10px;
@@ -116,7 +116,7 @@ button{
 }
 
 .commentImagePreview {
-  max-width:400px;
-  border-radius: 10px;
+  max-width: 100vh;
+  max-height: 100vh;
   margin: 5px;
 }
