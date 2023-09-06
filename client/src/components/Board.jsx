@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "../api/axios";
 import styled from "styled-components";
 
@@ -13,7 +13,7 @@ function Board() {
       .then((response) => {
         setCorporationData(response.data);
         setCorporationContents(response.data.contents);
-        console.log("resData", response.data.contents);
+        console.log("resData",response.data.contents)
       })
       .catch((error) => {
         console.log(error);
@@ -22,37 +22,32 @@ function Board() {
 
   const corporationItems = (
     <>
-      <img src={corporationContents} alt="corporation" />
+    <img src={corporationContents} alt="corporation" />
       {/*<span>{corporationData.contents}</span>*/}
-    </>
+      </>
   );
 
-  console.log("item", corporationItems);
+  console.log('item',corporationItems);
   return <Wrap>{corporationItems}</Wrap>;
 }
 
 export default Board;
 
 const Wrap = styled.div`
-  position: absolute;
+
+  position: relative;
   display: flex;
-  width: 600px;
-  height: 300px;
+  width: 1200px;
+  height: 800px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
 
-  color: #000;
-  text-align: center;
-  font-family: Pretendard;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-
   left: 50%;
-  transform: translate(-50%);
-  top: 120%;
-  margin: 40px 0px;
+  transform: translate(-57%);
+  top: 150%;
+  margin-top: -350px;
+
+  z-index: -100;
 `;

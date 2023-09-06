@@ -13,8 +13,8 @@ import axios from "../../api/axios";
 import AuthContext from "../../context/AuthProvider";
 function NavBar() {
   const [isSticky, setIsSticky] = useState(false);
-  const { setAuth } = useContext(AuthContext);
-  const [auth] = useState(null);
+  const { auth, setAuth } = useContext(AuthContext);
+
   const LOGOUT_URL = `${process.env.REACT_APP_BASE_URL}/users/logout`;
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -51,7 +51,7 @@ function NavBar() {
     window.addEventListener("scroll", handleScroll);
     return () => {
       if (isDropdownOpen) {
-      window.removeEventListener("scroll", handleScroll);
+        window.removeEventListener("scroll", handleScroll);
       }
     };
   }, [isDropdownOpen]);
@@ -64,7 +64,7 @@ function NavBar() {
     };
 
     document.addEventListener("click", handleClickOutside);
-    
+
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
@@ -84,7 +84,8 @@ function NavBar() {
               <SearchBar placeholder="Search..." data={PopupData} />
             </div>
             <div
-              className={`${classes.dropdown} ${isDropdownOpen ? classes.active : ""
+              className={`${classes.dropdown} ${
+                isDropdownOpen ? classes.active : ""
               }`}
               ref={dropdownRef}
             >
@@ -120,6 +121,7 @@ function NavBar() {
                     <IoMdLogIn />
                   </Link>
                 )}
+
                 <Link to="https://www.instagram.com/popify.official/">
                   <BsInstagram />
                 </Link>
