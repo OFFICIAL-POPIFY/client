@@ -45,7 +45,7 @@ function GoodsCarousel() {
                 <img className="sm" src={image.icon} alt="" />
                 <p>{image.name}</p>
               </div>
-              <div>
+              <div className="inner">
                 <img src={image.img} alt="" />
               </div>
               <span className="name">{image.goodsName}</span>
@@ -139,6 +139,10 @@ width: 427px;
   .inner{
     display: flex; /* 추가: 내부 컨테이너를 가로로 배치 */
     align-items: center; /* 추가: 수직 가운데 정렬 */
+    margin-top: 1rem;
+  }
+  .bm{
+    martin-top: 2rem;
   }
   p {
     display: flex;
@@ -165,7 +169,7 @@ width: 427px;
     ;
   }
  .name {
-    margin-top: 10px;
+    margin-top: 2rem;
 
     font-size: 18px;
     font-style: normal;
